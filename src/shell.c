@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 13:02:54 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/19 19:39:46 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/19 19:41:47 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -42,7 +42,6 @@ char	*ft_specpy(char *s, char c)
 	}
 	return (ret);
 }
-
 
 int		main(int args, char **argv)
 {

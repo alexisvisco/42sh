@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   shell.c                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 13:02:54 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/19 14:42:15 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/19 15:01:16 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,6 +15,5 @@
 
 int		main(int args, char **argv)
 {
-	ft_printf("Hello i am a shell not 2!");
-	ft_fonctionalacon("Amis", 5);
+	ft_printf("Hello i am a shell !");
 }

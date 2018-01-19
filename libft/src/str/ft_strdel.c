@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   shell.h                                          .::    .:/ .      .::   */
+/*   ft_strdel.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/19 12:54:00 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/19 14:05:47 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/11/10 18:52:27 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2017/11/25 10:49:55 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef SHELL_H
-# define SHELL_H
+#include "libft.h"
 
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <stdarg.h>
-# include <termcap.h>
-# include <term.h>
-# include <termios.h>
-# include <dirent.h>
-# include <signal.h>
-# include <stdint.h>
-# include "editor.h"
-# include "lex.h"
-# include "libft.h"
-
-#endif
+void	ft_strdel(char **as)
+{
+	if (as)
+	{
+		free(*as);
+		*as = NULL;
+	}
+}

@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   shell.h                                          .::    .:/ .      .::   */
+/*   ft_strstarts_with.c                              .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/19 12:54:00 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/19 14:05:47 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/12/10 17:55:55 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/02 12:46:40 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef SHELL_H
-# define SHELL_H
+#include "libft.h"
 
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <stdarg.h>
-# include <termcap.h>
-# include <term.h>
-# include <termios.h>
-# include <dirent.h>
-# include <signal.h>
-# include <stdint.h>
-# include "editor.h"
-# include "lex.h"
-# include "libft.h"
+int		ft_strstarts_with(const char *s, char c)
+{
+	return (s[0] == c);
+}
 
-#endif
+int		ft_strstarts_with_str(const char *s, char *str)
+{
+	int i;
+
+	i = 0;
+	while (s[i] == str[i])
+		i++;
+	return (i == ((int)ft_strlen(str)));
+}

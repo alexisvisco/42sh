@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   shell.h                                          .::    .:/ .      .::   */
+/*   ft_strdup.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/19 12:54:00 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/19 14:05:47 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/10/20 21:24:39 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2017/11/25 10:50:58 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef SHELL_H
-# define SHELL_H
+#include "libft.h"
 
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <stdarg.h>
-# include <termcap.h>
-# include <term.h>
-# include <termios.h>
-# include <dirent.h>
-# include <signal.h>
-# include <stdint.h>
-# include "editor.h"
-# include "lex.h"
-# include "libft.h"
+char	*ft_strdup(const char *src)
+{
+	char	*str;
+	size_t	i;
 
-#endif
+	i = -1;
+	str = (char *)malloc(sizeof(char) * ft_strlen(src) + 1);
+	if (str == NULL)
+		return (NULL);
+	while (src[++i])
+		str[i] = src[i];
+	str[i] = '\0';
+	return (str);
+}

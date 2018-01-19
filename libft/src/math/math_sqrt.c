@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   shell.h                                          .::    .:/ .      .::   */
+/*   math_sqrt.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/19 12:54:00 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/19 14:05:47 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/11/16 11:02:10 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2017/11/25 10:52:53 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef SHELL_H
-# define SHELL_H
+#include "libft.h"
 
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <stdarg.h>
-# include <termcap.h>
-# include <term.h>
-# include <termios.h>
-# include <dirent.h>
-# include <signal.h>
-# include <stdint.h>
-# include "editor.h"
-# include "lex.h"
-# include "libft.h"
+static int		my_sqrt(int nb, int target)
+{
+	if (nb * nb > target)
+		return (0);
+	else if (nb * nb == target)
+		return (nb);
+	else
+		return (my_sqrt(nb + 1, target));
+}
 
-#endif
+int				math_sqrt(int nb)
+{
+	return (my_sqrt(1, nb));
+}

@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   shell.h                                          .::    .:/ .      .::   */
+/*   free_smart.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/19 12:54:00 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/19 14:05:47 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/11/26 15:40:19 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2017/11/29 10:12:54 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef SHELL_H
-# define SHELL_H
+#include <stdlib.h>
 
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <stdarg.h>
-# include <termcap.h>
-# include <term.h>
-# include <termios.h>
-# include <dirent.h>
-# include <signal.h>
-# include <stdint.h>
-# include "editor.h"
-# include "lex.h"
-# include "libft.h"
+void	free_smart(void *ptr)
+{
+	void **real_ptr;
 
-#endif
+	real_ptr = (void **)ptr;
+	free(*real_ptr);
+	*real_ptr = NULL;
+}

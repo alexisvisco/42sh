@@ -1,32 +1,39 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   shell.h                                          .::    .:/ .      .::   */
+/*   get_wchar.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/19 12:54:00 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/19 14:05:47 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/12/26 19:44:15 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/05 13:52:05 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef SHELL_H
-# define SHELL_H
+#include "ft_printf.h"
 
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <stdarg.h>
-# include <termcap.h>
-# include <term.h>
-# include <termios.h>
-# include <dirent.h>
-# include <signal.h>
-# include <stdint.h>
-# include "editor.h"
-# include "lex.h"
-# include "libft.h"
+static char		*get_wchar_st(wchar_t arg)
+{
+	char	*str;
+	int		len;
 
-#endif
+	if (arg == 0)
+		return (ft_strdup(PRNT_NULL));
+	len = ft_wcharlen(arg);
+	str = (char *)malloc(sizeof(char) * (len + 1));
+	str[len] = 0;
+	ft_wchar_in_str(arg, str, 0);
+	return (str);
+}
+
+void			get_wchar(t_formatter *t, va_list lst)
+{
+	wchar_t	arg;
+	char	*str;
+
+	arg = va_arg(lst, wchar_t);
+	str = get_wchar_st(arg);
+	free(t->to_replace);
+	t->to_replace = str;
+}

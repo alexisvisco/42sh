@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   shell.h                                          .::    .:/ .      .::   */
+/*   lst_collect_if.c                                 .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/19 12:54:00 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/19 14:05:47 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/11/29 09:32:43 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2017/11/29 10:06:04 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef SHELL_H
-# define SHELL_H
+#include "libft.h"
 
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <stdarg.h>
-# include <termcap.h>
-# include <term.h>
-# include <termios.h>
-# include <dirent.h>
-# include <signal.h>
-# include <stdint.h>
-# include "editor.h"
-# include "lex.h"
-# include "libft.h"
+t_list	*lst_collect_if(t_list *lst, void *data_ref, int (*cmp)())
+{
+	t_list	*new_list;
 
-#endif
+	if (!cmp || !lst || !data_ref)
+		return (NULL);
+	new_list = NULL;
+	while (lst)
+	{
+		if (cmp(data_ref, lst->content))
+			lst_push(&new_list, lst_new(lst->content, lst->content_size));
+		lst = lst->next;
+	}
+	return (new_list);
+}

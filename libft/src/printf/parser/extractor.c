@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   shell.h                                          .::    .:/ .      .::   */
+/*   extractor.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/19 12:54:00 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/19 14:05:47 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/12/21 20:20:55 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/04 09:42:13 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef SHELL_H
-# define SHELL_H
+#include "ft_printf.h"
 
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <stdarg.h>
-# include <termcap.h>
-# include <term.h>
-# include <termios.h>
-# include <dirent.h>
-# include <signal.h>
-# include <stdint.h>
-# include "editor.h"
-# include "lex.h"
-# include "libft.h"
-
-#endif
+void	extract_params(t_formatter *fmt, char *full)
+{
+	if (!full)
+		return ;
+	while (*full)
+	{
+		if (ft_strchr(FLAGS, *full))
+			extract_flags(fmt, &full);
+		else if (ft_isdigit(*full) || *full == '*')
+			extract_width(fmt, &full);
+		else if (*full == '.')
+			extract_precision(fmt, &full);
+		else if (ft_strchr(LENGTH, *full))
+			extract_length(fmt, &full);
+		else
+			full++;
+	}
+}

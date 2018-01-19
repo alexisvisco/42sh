@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   shell.h                                          .::    .:/ .      .::   */
+/*   ft_strmatch.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/19 12:54:00 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/19 14:05:47 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/11/26 21:35:43 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2017/11/29 10:06:56 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef SHELL_H
-# define SHELL_H
+#include "libft.h"
 
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <stdarg.h>
-# include <termcap.h>
-# include <term.h>
-# include <termios.h>
-# include <dirent.h>
-# include <signal.h>
-# include <stdint.h>
-# include "editor.h"
-# include "lex.h"
-# include "libft.h"
-
-#endif
+int		ft_strmatch(const char *str, const char *match)
+{
+	if (!*str)
+	{
+		if (!*match)
+			return (1);
+		if (*match == '*')
+			return (ft_strmatch(str, match + 1));
+	}
+	else if (*str == *match)
+		return (ft_strmatch(str + 1, match + 1));
+	else if (*match == '*')
+	{
+		if (!match[1])
+			return (1);
+		return (ft_strmatch(str, match + 1) || ft_strmatch(str + 1, match));
+	}
+	return (0);
+}

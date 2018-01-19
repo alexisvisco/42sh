@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   shell.h                                          .::    .:/ .      .::   */
+/*   get_string.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/19 12:54:00 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/19 14:05:47 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/12/23 14:45:00 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/04 13:27:06 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef SHELL_H
-# define SHELL_H
+#include "ft_printf.h"
 
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <stdarg.h>
-# include <termcap.h>
-# include <term.h>
-# include <termios.h>
-# include <dirent.h>
-# include <signal.h>
-# include <stdint.h>
-# include "editor.h"
-# include "lex.h"
-# include "libft.h"
+void	get_string(t_formatter *t, va_list lst)
+{
+	char *arg;
+	char *tmp;
 
-#endif
+	if (ft_strchr(t->length, 'l') || t->type == 'S')
+		return (get_wstring(t, lst));
+	tmp = va_arg(lst, char *);
+	arg = ft_strdup(tmp ? tmp : "(null)");
+	free(t->to_replace);
+	t->to_replace = arg;
+	str_compute(t);
+}

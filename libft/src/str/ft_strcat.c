@@ -1,32 +1,40 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   shell.h                                          .::    .:/ .      .::   */
+/*   ft_strcat.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/19 12:54:00 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/19 14:05:47 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/11/08 16:08:52 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/02 13:15:52 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef SHELL_H
-# define SHELL_H
+#include "libft.h"
 
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <stdarg.h>
-# include <termcap.h>
-# include <term.h>
-# include <termios.h>
-# include <dirent.h>
-# include <signal.h>
-# include <stdint.h>
-# include "editor.h"
-# include "lex.h"
-# include "libft.h"
+char	*ft_strcat(char *dest, const char *src)
+{
+	int index;
+	int from;
 
-#endif
+	from = ft_strlen_classic(dest);
+	index = 0;
+	while (src[index] != '\0')
+	{
+		dest[index + from] = src[index];
+		index++;
+	}
+	dest[index + from] = '\0';
+	return (dest);
+}
+
+char	*ft_strcat_ch(char *dest, const char c)
+{
+	int from;
+
+	from = ft_strlen_classic(dest);
+	dest[from] = c;
+	dest[from + 1] = '\0';
+	return (dest);
+}

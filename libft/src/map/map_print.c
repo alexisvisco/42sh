@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   shell.h                                          .::    .:/ .      .::   */
+/*   map_print.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/19 12:54:00 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/19 14:05:47 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/12/02 17:01:14 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/02 12:50:52 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef SHELL_H
-# define SHELL_H
+#include "libft.h"
 
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <stdarg.h>
-# include <termcap.h>
-# include <term.h>
-# include <termios.h>
-# include <dirent.h>
-# include <signal.h>
-# include <stdint.h>
-# include "editor.h"
-# include "lex.h"
-# include "libft.h"
+void	map_print(t_map *map)
+{
+	t_list	*lst;
+	t_entry	*tmp;
 
-#endif
+	lst = map->lst;
+	ft_putstr("{\n");
+	while (lst)
+	{
+		tmp = (t_entry *)lst->content;
+		ft_printf("  %s=%s", tmp->key, tmp->value);
+		ft_putstr(lst->next ? ",\n" : "\n");
+		lst = lst->next;
+	}
+	ft_putstr("}\n");
+}

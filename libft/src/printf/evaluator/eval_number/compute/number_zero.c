@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   shell.h                                          .::    .:/ .      .::   */
+/*   number_zero.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/19 12:54:00 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/19 14:05:47 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/12/27 11:01:09 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/04 11:10:00 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef SHELL_H
-# define SHELL_H
+#include "ft_printf.h"
 
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <stdarg.h>
-# include <termcap.h>
-# include <term.h>
-# include <termios.h>
-# include <dirent.h>
-# include <signal.h>
-# include <stdint.h>
-# include "editor.h"
-# include "lex.h"
-# include "libft.h"
+void	number_zero(t_formatter *t)
+{
+	char	*str;
+	char	*pad;
+	int		diff;
 
-#endif
+	diff = t->width - ft_strlen(t->to_replace);
+	if ((ft_strchr(t->flags, '+') || ft_strchr(t->flags, ' ')) &&
+	t->to_replace[0] != '-')
+		diff -= diff == 0 ? 0 : 1;
+	if (diff <= 0)
+		return ;
+	pad = ft_str_repeatm('0', diff);
+	str = ft_strappend_at(t->to_replace[0] == '-' ? 1 : 0, t->to_replace, pad);
+	free(t->to_replace);
+	free(pad);
+	t->to_replace = str;
+}

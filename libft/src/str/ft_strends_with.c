@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   shell.h                                          .::    .:/ .      .::   */
+/*   ft_strends_with.c                                .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/19 12:54:00 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/19 14:05:47 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/12/10 17:55:55 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/02 12:47:12 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef SHELL_H
-# define SHELL_H
+#include "libft.h"
 
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <stdarg.h>
-# include <termcap.h>
-# include <term.h>
-# include <termios.h>
-# include <dirent.h>
-# include <signal.h>
-# include <stdint.h>
-# include "editor.h"
-# include "lex.h"
-# include "libft.h"
+int		ft_strends_with(const char *s, char c)
+{
+	return (s[ft_strlen(s) - 1] == c);
+}
 
-#endif
+int		ft_strends_with_str(const char *s, char *str)
+{
+	int64_t i;
+	int64_t j;
+
+	i = (int64_t)ft_strlen(s) - 1;
+	j = (int64_t)ft_strlen(str) - 1;
+	while (j >= 0 && i >= 0 && s[i] == str[j])
+	{
+		i--;
+		j--;
+	}
+	return (j == -1);
+}

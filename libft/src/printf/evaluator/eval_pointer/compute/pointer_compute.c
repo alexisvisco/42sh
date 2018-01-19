@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   shell.h                                          .::    .:/ .      .::   */
+/*   pointer_compute.c                                .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/19 12:54:00 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/19 14:05:47 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/12/28 12:28:08 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/05 13:52:54 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef SHELL_H
-# define SHELL_H
+#include "ft_printf.h"
 
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <stdarg.h>
-# include <termcap.h>
-# include <term.h>
-# include <termios.h>
-# include <dirent.h>
-# include <signal.h>
-# include <stdint.h>
-# include "editor.h"
-# include "lex.h"
-# include "libft.h"
+#define P_ZERO_CHILD (ft_strchr(t->flags, '0') && !ft_strchr(t->flags, '-'))
+#define P_HAS_ZERO ((P_ZERO_CHILD && !has_prec))
 
-#endif
+void	pointer_compute(t_formatter *t)
+{
+	int	has_prec;
+
+	has_prec = t->precision > 0 && ft_strlen(t->to_replace);
+	if (has_prec)
+		number_precision(t);
+	if (P_HAS_ZERO)
+		base_zero(t);
+	if ((!P_HAS_ZERO || ft_strchr(t->flags, '-')))
+		if (t->width > 0 && (int)ft_strlen(t->to_replace) < t->width)
+			str_padding(t);
+}

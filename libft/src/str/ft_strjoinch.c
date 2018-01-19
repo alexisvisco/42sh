@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   shell.h                                          .::    .:/ .      .::   */
+/*   ft_strjoinch.c                                   .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/19 12:54:00 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/19 14:05:47 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/11/20 21:06:24 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2017/11/25 14:43:42 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef SHELL_H
-# define SHELL_H
+#include "libft.h"
 
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <stdarg.h>
-# include <termcap.h>
-# include <term.h>
-# include <termios.h>
-# include <dirent.h>
-# include <signal.h>
-# include <stdint.h>
-# include "editor.h"
-# include "lex.h"
-# include "libft.h"
+char	*ft_strjoinch(char const *s1, char c)
+{
+	char	*new_str;
+	size_t	i;
+	size_t	s1_len;
 
-#endif
+	if (!s1 || !c)
+		return (NULL);
+	s1_len = ft_strlen(s1);
+	new_str = ft_strnew(s1_len + 1);
+	if (!new_str)
+		return (NULL);
+	i = -1;
+	while (++i < s1_len)
+		*(new_str + i) = *(s1 + i);
+	*(new_str + i) = c;
+	return (new_str);
+}

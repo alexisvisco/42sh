@@ -1,32 +1,42 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   shell.h                                          .::    .:/ .      .::   */
+/*   ft_strnstr.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/19 12:54:00 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/19 14:05:47 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/11/09 09:48:21 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2017/11/25 10:52:02 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef SHELL_H
-# define SHELL_H
+#include "libft.h"
 
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <stdarg.h>
-# include <termcap.h>
-# include <term.h>
-# include <termios.h>
-# include <dirent.h>
-# include <signal.h>
-# include <stdint.h>
-# include "editor.h"
-# include "lex.h"
-# include "libft.h"
+char	*ft_strnstr(const char *s, const char *find, size_t slen)
+{
+	char	c;
+	char	sc;
+	size_t	len;
 
-#endif
+	if ((c = *find++) != '\0')
+	{
+		len = ft_strlen(find);
+		while (1)
+		{
+			while (1)
+			{
+				if (slen-- < 1 || (sc = *s++) == '\0')
+					return (NULL);
+				if (sc == c)
+					break ;
+			}
+			if (len > slen)
+				return (NULL);
+			if (ft_strncmp(s, find, len) == 0)
+				break ;
+		}
+		s--;
+	}
+	return ((char *)s);
+}

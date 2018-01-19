@@ -1,32 +1,38 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   shell.h                                          .::    .:/ .      .::   */
+/*   f_map.h                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/19 12:54:00 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/19 14:05:47 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/12/02 09:48:14 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/02 12:00:35 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef SHELL_H
-# define SHELL_H
-
-# include <sys/types.h>
-# include <sys/stat.h>
+#ifndef _F_MAP_H
+# define _F_MAP_H
+# include <stdlib.h>
 # include <stdio.h>
-# include <unistd.h>
-# include <stdarg.h>
-# include <termcap.h>
-# include <term.h>
-# include <termios.h>
-# include <dirent.h>
-# include <signal.h>
-# include <stdint.h>
-# include "editor.h"
-# include "lex.h"
-# include "libft.h"
+
+typedef struct				s_entry
+{
+	char					*key;
+	char					*value;
+}							t_entry;
+
+typedef struct				s_map
+{
+	t_list					*lst;
+}							t_map;
+
+t_map						*map_new(void);
+void						map_del(t_map *hashmap);
+void						map_print(t_map *map);
+void						map_set(t_map *hashmap, char *key, char *val);
+t_entry						*map_get(t_map *hashmap, char *key);
+char						*map_getv(t_map *map, char *key);
+int							map_unset(t_map *map, char *key);
 
 #endif

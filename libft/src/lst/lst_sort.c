@@ -1,32 +1,38 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   shell.h                                          .::    .:/ .      .::   */
+/*   lst_sort.c                                       .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/19 12:54:00 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/19 14:05:47 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/11/26 11:33:52 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2017/11/26 11:58:27 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef SHELL_H
-# define SHELL_H
+#include "libft.h"
 
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <stdarg.h>
-# include <termcap.h>
-# include <term.h>
-# include <termios.h>
-# include <dirent.h>
-# include <signal.h>
-# include <stdint.h>
-# include "editor.h"
-# include "lex.h"
-# include "libft.h"
+void	lst_sort(t_list **lst, int (*comparator)())
+{
+	int		changed;
+	t_list	*current;
 
-#endif
+	if (!lst || !*lst || !comparator)
+		return ;
+	changed = 1;
+	while (changed)
+	{
+		changed = 0;
+		current = *lst;
+		while (current->next)
+		{
+			if (comparator(current->content, current->next->content) > 0)
+			{
+				lst_swap(current, current->next);
+				changed = 1;
+			}
+			current = current->next;
+		}
+	}
+}

@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   shell.h                                          .::    .:/ .      .::   */
+/*   ft_strjoin_multiple.c                            .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/19 12:54:00 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/19 14:05:47 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/11/26 21:41:12 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2017/12/16 09:58:08 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef SHELL_H
-# define SHELL_H
+#include "libft.h"
 
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <stdarg.h>
-# include <termcap.h>
-# include <term.h>
-# include <termios.h>
-# include <dirent.h>
-# include <signal.h>
-# include <stdint.h>
-# include "editor.h"
-# include "lex.h"
-# include "libft.h"
+char	*ft_strjoin_multiple(int n, ...)
+{
+	va_list	ap;
+	char	*tmp;
+	char	*cpy;
+	char	*full;
 
-#endif
+	full = ft_strdup("");
+	va_start(ap, n);
+	while (n--)
+	{
+		tmp = va_arg(ap, char *);
+		if (!tmp)
+			break ;
+		cpy = full;
+		full = ft_strjoin(cpy, tmp);
+		free(cpy);
+	}
+	va_end(ap);
+	return (full);
+}

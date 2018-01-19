@@ -1,32 +1,39 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   shell.h                                          .::    .:/ .      .::   */
+/*   lst_printer_preset.c                             .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/19 12:54:00 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/19 14:05:47 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/12/16 09:58:56 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2017/12/16 10:04:34 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef SHELL_H
-# define SHELL_H
+#include "libft.h"
 
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <stdarg.h>
-# include <termcap.h>
-# include <term.h>
-# include <termios.h>
-# include <dirent.h>
-# include <signal.h>
-# include <stdint.h>
-# include "editor.h"
-# include "lex.h"
-# include "libft.h"
+void	lst_print_str(t_list *l)
+{
+	ft_putstr((char *)l->content);
+}
 
-#endif
+void	lst_print_int(t_list *l)
+{
+	ft_putnum((int)l->content, 10);
+}
+
+void	lst_print_int_bin(t_list *l)
+{
+	ft_putnum((int)l->content, 2);
+}
+
+void	lst_print_int_hex(t_list *l)
+{
+	ft_putnum((int)l->content, 16);
+}
+
+void	lst_print_bool(t_list *l)
+{
+	ft_putstr((int)l->content == 0 ? "false" : "true");
+}

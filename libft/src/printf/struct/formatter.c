@@ -1,32 +1,38 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   shell.h                                          .::    .:/ .      .::   */
+/*   formatter.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/19 12:54:00 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/19 14:05:47 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/12/20 10:30:12 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/04 11:36:33 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef SHELL_H
-# define SHELL_H
+#include "ft_printf.h"
 
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <stdarg.h>
-# include <termcap.h>
-# include <term.h>
-# include <termios.h>
-# include <dirent.h>
-# include <signal.h>
-# include <stdint.h>
-# include "editor.h"
-# include "lex.h"
-# include "libft.h"
+t_formatter	new_formatter(void)
+{
+	t_formatter fmt;
 
-#endif
+	fmt.flags[0] = 0;
+	fmt.width = -1;
+	fmt.precision = -1;
+	fmt.is_width_first = 0;
+	fmt.length[0] = 0;
+	fmt.type = 0;
+	fmt.full_formatter = NULL;
+	fmt.non_spec_arg = 0;
+	fmt.index = -1;
+	fmt.index_replace_end = -1;
+	fmt.to_replace = ft_strdup("(null)");
+	return (fmt);
+}
+
+void		flush_formatter(t_formatter *t)
+{
+	free(t->full_formatter);
+	free(t->to_replace);
+}

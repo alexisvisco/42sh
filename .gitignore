@@ -1,0 +1,6 @@
+.vscode
+shell
+obj/
+obj/*
+*dSYM
+.DS_Store

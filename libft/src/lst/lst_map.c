@@ -1,32 +1,38 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   shell.h                                          .::    .:/ .      .::   */
+/*   lst_map.c                                        .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/19 12:54:00 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/19 14:05:47 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/11/13 13:22:25 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2017/11/25 15:26:41 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef SHELL_H
-# define SHELL_H
+#include "libft.h"
 
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <stdarg.h>
-# include <termcap.h>
-# include <term.h>
-# include <termios.h>
-# include <dirent.h>
-# include <signal.h>
-# include <stdint.h>
-# include "editor.h"
-# include "lex.h"
-# include "libft.h"
+t_list	*lst_map(t_list *lst, t_list *(*f)(t_list *elem))
+{
+	t_list	*new_list;
+	t_list	*tmp;
+	t_list	*first;
 
-#endif
+	if (!f || !lst)
+		return (NULL);
+	tmp = f(lst);
+	if (!(new_list = lst_new(tmp->content, tmp->content_size)))
+		return (NULL);
+	first = new_list;
+	lst = lst->next;
+	while (lst)
+	{
+		tmp = f(lst);
+		if (!(new_list->next = lst_new(tmp->content, tmp->content_size)))
+			return (NULL);
+		new_list = new_list->next;
+		lst = lst->next;
+	}
+	return (first);
+}

@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   shell.h                                          .::    .:/ .      .::   */
+/*   libft.h                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/19 12:54:00 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/19 14:05:47 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/11/08 12:44:50 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/05 14:12:11 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef SHELL_H
-# define SHELL_H
+#ifndef _LIBFT_H
+# define _LIBFT_H
 
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <stdio.h>
 # include <unistd.h>
+# include <stdlib.h>
+# include <string.h>
 # include <stdarg.h>
-# include <termcap.h>
-# include <term.h>
-# include <termios.h>
-# include <dirent.h>
-# include <signal.h>
-# include <stdint.h>
-# include "editor.h"
-# include "lex.h"
-# include "libft.h"
+# include "f_mem.h"
+# include "f_str.h"
+# include "f_io.h"
+# include "f_is.h"
+# include "f_lib.h"
+# include "f_lst.h"
+# include "f_math.h"
+# include "f_map.h"
+# include "ft_printf.h"
+
+# define SMART(type) __attribute__ ((__cleanup__(free_smart))) type
+# define SMART_DEBUG(type) __attribute__ ((__cleanup__(free_debug))) type
 
 #endif

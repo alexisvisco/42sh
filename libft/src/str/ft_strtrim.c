@@ -1,32 +1,43 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   shell.h                                          .::    .:/ .      .::   */
+/*   ft_strtrim.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/19 12:54:00 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/19 14:05:47 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/11/10 10:02:28 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2017/11/25 10:52:29 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef SHELL_H
-# define SHELL_H
+#include "libft.h"
 
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <stdarg.h>
-# include <termcap.h>
-# include <term.h>
-# include <termios.h>
-# include <dirent.h>
-# include <signal.h>
-# include <stdint.h>
-# include "editor.h"
-# include "lex.h"
-# include "libft.h"
+char	*ft_strtrim(char const *s)
+{
+	int		i;
+	int		j;
+	int		k;
+	char	*tmp;
 
-#endif
+	if (s)
+	{
+		i = 0;
+		j = ft_strlen((char *)s) - 1;
+		while (s[i] == ' ' || s[i] == '\n' || s[i] == '\t')
+			i++;
+		if (!(tmp = (char *)malloc(sizeof(char) * (j - i + 1))))
+			return (NULL);
+		while (s[j] == ' ' || s[j] == '\n' || s[j] == '\t')
+			j--;
+		k = 0;
+		while (i <= j)
+		{
+			tmp[k++] = s[i];
+			i++;
+		}
+		tmp[k] = '\0';
+		return (tmp);
+	}
+	return (NULL);
+}

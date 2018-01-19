@@ -6,7 +6,7 @@
 #    By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/01/19 13:46:02 by aviscogl     #+#   ##    ##    #+#        #
-#    Updated: 2018/01/19 14:10:26 by aviscogl    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/01/19 14:26:35 by aviscogl    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -67,6 +67,9 @@ git_add:
 	@git add libft/Makefile
 	@git add Makefile
 	@git add auteur
+
+git_commit:
+	git commit -a -m $(argument)
 
 norme:
 	norminette $(SRC)

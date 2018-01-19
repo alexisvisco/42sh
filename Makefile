@@ -3,10 +3,10 @@
 #                                                               /              #
 #    Makefile                                         .::    .:/ .      .::    #
 #                                                  +:+:+   +:    +:  +:+:+     #
-#    By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+      #
+#    By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/01/19 13:46:02 by aviscogl     #+#   ##    ##    #+#        #
-#    Updated: 2018/01/19 14:10:26 by aviscogl    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/01/19 14:34:30 by ggranjon    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -22,6 +22,7 @@ OBJ_PATH = ./obj/
 
 SRC_NAME = \
 shell.c \
+lex/lexer.c
 
 OBJ_FOLDERS = editor env eval exec lex messages parser util 
 OBJ_NAME = $(SRC_NAME:.c=.o)

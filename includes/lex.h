@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   lex.h                                            .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:48 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/19 12:55:52 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/19 14:33:42 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,5 +14,6 @@
 #ifndef LEX_H
 # define LEX_H
 
+void		ft_fonctionalacon(char *s, int a);
 
 #endif

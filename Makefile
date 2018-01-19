@@ -6,7 +6,7 @@
 #    By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/01/19 13:46:02 by aviscogl     #+#   ##    ##    #+#        #
-#    Updated: 2018/01/19 14:44:09 by aviscogl    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/01/19 14:55:36 by aviscogl    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -57,7 +57,6 @@ update_libft:
 	@rm -rf ./libft
 	@git clone https://github.com/AlexisVisco/libft/
 	@cd libft && rm -rf .git
-
 
 git_add:
 	@git add includes/*.h

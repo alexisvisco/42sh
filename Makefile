@@ -6,7 +6,7 @@
 #    By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/01/19 13:46:02 by aviscogl     #+#   ##    ##    #+#        #
-#    Updated: 2018/01/19 14:34:30 by ggranjon    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/01/19 14:42:40 by ggranjon    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -68,6 +68,9 @@ git_add:
 	@git add libft/Makefile
 	@git add Makefile
 	@git add auteur
+
+git_commit:
+	git commit -a -m $(argument)
 
 norme:
 	norminette $(SRC)

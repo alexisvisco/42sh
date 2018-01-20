@@ -6,14 +6,14 @@
 #    By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/01/19 13:46:02 by aviscogl     #+#   ##    ##    #+#        #
-#    Updated: 2018/01/20 12:23:30 by ggranjon    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/01/20 13:45:04 by ggranjon    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
 
 NAME = shell
 CC = gcc
-CC_FLAGS = -g
+CC_FLAGS = -g -Wall -Wextra
 
 LFT_PATH = ./libft
 SRC_PATH = ./src/

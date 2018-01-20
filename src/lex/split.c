@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 17:04:06 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/20 13:19:23 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/20 14:15:37 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,7 +22,7 @@ static int		ft_endword(char *s1, char *s2)
 	int		ret;
 
 	ret = 0;
-	while (*s1 == *s2)
+	while (*s1 && *s1 == *s2)
 	{
 		s1++;
 		s2++;
@@ -108,22 +108,29 @@ int				ft_counttoken(char *s)
 	return (nbword);
 }
 
-/*
-**	avancer tous les espaces, reconnaitre le mot, avancer les espaces, reconnaitre le mot
-
-char			**ft_recognize(char *s)
+t_token			**ft_splittokens(char *s)
 {
-	char	*word;
+	t_token	**tokens;
+	int		i;
+	int		nbtokens;
 
+	nbtokens = ft_counttoken(s);
+	tokens = malloc(sizeof(t_token*) * (nbtokens + 1));
+	i  = 0;
+	while (i < nbtokens)
+		tokens[i++] = malloc(sizeof(t_token));
+	i = 0;
 	while (*s)
 	{
 		while (*s == ' ')	
 			s++;
 		if (*s)
 		{
-			word = ft_specpy(s);
-			
+			tokens[i]->value = ft_specpy(s);
+			s += ft_endword(s, tokens[i]->value);
+			i++;
 		}
-		ft_strdel(&word);
 	}
-}*/
+	tokens[i] = NULL;
+	return (tokens);
+}

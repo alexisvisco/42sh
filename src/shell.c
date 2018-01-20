@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 13:02:54 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/20 13:17:55 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/20 14:16:04 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,9 +21,13 @@ void	test(t_tok_type type)
 
 int		main(int args, char **argv)
 {
-	char	*str;
-	char	s[] = "lo\'la\'   s  ";
+	t_token	**tokens;
+	int		i;
+	char	s[] = "lo\'la\'   s   \"test\"123 ; ls \"Coucou\"";
 	
-	ft_printf("La string : %s\n", s);
-	printf("nbre tokens %i\n", ft_counttoken(s));
+	ft_printf("Entrée standart : %s\n", s);
+	i = 0;
+	tokens = ft_splittokens(s);
+	while (tokens[i])
+		ft_printf("tokens %i : %s\n", i, tokens[i++]->value);
 }

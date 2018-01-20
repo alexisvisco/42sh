@@ -3,10 +3,10 @@
 #                                                               /              #
 #    Makefile                                         .::    .:/ .      .::    #
 #                                                  +:+:+   +:    +:  +:+:+     #
-#    By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+      #
+#    By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/01/19 13:46:02 by aviscogl     #+#   ##    ##    #+#        #
-#    Updated: 2018/01/19 14:56:08 by aviscogl    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/01/20 12:23:30 by ggranjon    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -21,7 +21,8 @@ INC_PATH = -I ./includes -I $(LFT_PATH)/includes
 OBJ_PATH = ./obj/
 
 SRC_NAME = \
-shell.c
+shell.c \
+lex/split.c
 
 OBJ_FOLDERS = editor env eval exec lex messages parser util 
 OBJ_NAME = $(SRC_NAME:.c=.o)

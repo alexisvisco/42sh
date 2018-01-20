@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:48 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/19 17:22:19 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/20 12:39:46 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,7 +20,6 @@
 **
 **
 */
-
 typedef enum	e_tok_type
 {
 				PIPE,
@@ -36,5 +35,8 @@ typedef struct	s_token
 	char 		*value;
 	t_tok_type	type;
 }				t_token;
+
+char	*ft_specpy(char *s);
+char	*ft_removeq(char *s);
 
 #endif

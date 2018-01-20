@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:48 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/20 12:39:46 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/20 13:16:16 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -36,7 +36,8 @@ typedef struct	s_token
 	t_tok_type	type;
 }				t_token;
 
-char	*ft_specpy(char *s);
-char	*ft_removeq(char *s);
+char			*ft_specpy(char *s);
+char			*ft_removeq(char *s);
+int				ft_counttoken(char *s);
 
 #endif

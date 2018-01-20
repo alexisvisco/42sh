@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 17:04:06 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/20 12:50:11 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/20 13:19:23 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,11 +22,6 @@ static int		ft_endword(char *s1, char *s2)
 	int		ret;
 
 	ret = 0;
-	while (*s1 == ' ')
-	{
-		s1++;
-		ret++;
-	}
 	while (*s1 == *s2)
 	{
 		s1++;
@@ -35,6 +30,8 @@ static int		ft_endword(char *s1, char *s2)
 	}
 	return (ret);
 }
+
+
 char			*ft_specpy(char *s)
 {
 	char	*ret;
@@ -90,9 +87,29 @@ char			*ft_removeq(char *s)
 	return (new ? new : NULL);
 }
 
+int				ft_counttoken(char *s)
+{
+	char	*word;
+	int		nbword;
+
+	nbword = 0;
+	while (*s)
+	{
+		while (*s == ' ')	
+			s++;
+		if (*s)
+		{
+			word = ft_specpy(s);
+			nbword++;
+			s += ft_endword(s, word);
+		}
+		ft_strdel(&word);
+	}
+	return (nbword);
+}
+
 /*
 **	avancer tous les espaces, reconnaitre le mot, avancer les espaces, reconnaitre le mot
-*/
 
 char			**ft_recognize(char *s)
 {
@@ -104,13 +121,9 @@ char			**ft_recognize(char *s)
 			s++;
 		if (*s)
 		{
-			word = ft_specpy(s)
+			word = ft_specpy(s);
 			
 		}
 		ft_strdel(&word);
 	}
-}
-/*
-int				ft_lexer(char *s, t_list **tokens)
-{
 }*/

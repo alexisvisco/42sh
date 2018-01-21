@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/21 10:25:20 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/21 10:33:39 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/21 16:08:43 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -44,6 +44,7 @@ int		enable_terminal(int fd)
 	if (tcsetattr(fd, TCSAFLUSH, &raw) < 0)
 		return -1;
 	raw_mode = 1;
+	return (1);
 }
 
 /*
@@ -54,4 +55,5 @@ int		disable_terminal(int fd)
 {
     if (tcsetattr(fd, TCSAFLUSH, &g_origin) != -1)
 		raw_mode = 0;
+	return (1);
 }

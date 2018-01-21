@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/20 18:19:20 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/21 10:32:58 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/21 16:25:39 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,8 +14,14 @@
 #include "shell.h"
 
 
-static t_termios	g_origin;
-static int			raw_mode;
+t_termios	g_origin;
+int			raw_mode;
+
+/*
+** Check if the terminal in the env TERM is
+** supported. If not return 1.
+** Else if term is supported return 0.
+*/
 
 static int unsupported_term(void)
 {
@@ -23,6 +29,14 @@ static int unsupported_term(void)
     //TODO : search in environement variable TERM equal to a term ^.
     return 0;
 }
+
+/*
+** This function checks if the terminal has basic capabilities, just checking
+** for a blacklist of fucking stupid terminals, and later either calls
+** the line editing function.
+**
+** Then return the line typed in the terminal.
+*/
 
 char	*readline(const char *prompt, int fd)
 {
@@ -33,12 +47,12 @@ char	*readline(const char *prompt, int fd)
 		return readline_notty();
 	if (unsupported_term())
 	{
-		ft_putstr_fd(stderr, "Shell: unsuported terminal.");
+		ft_putstr_fd(STDERR_FILENO, "Shell: unsuported terminal.");
 		exit(2);
 	}
 	else
 	{
-		count = linenoiseRaw(buf, EDITOR_MAX_LINE, prompt);
+		count = readline_raw(buf, EDITOR_MAX_LINE, prompt);
         if (count == -1)
 			return (NULL);
         return (strdup(buf));

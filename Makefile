@@ -6,7 +6,7 @@
 #    By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/01/19 13:46:02 by aviscogl     #+#   ##    ##    #+#        #
-#    Updated: 2018/01/19 14:56:08 by aviscogl    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/01/21 15:52:45 by aviscogl    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -21,9 +21,19 @@ INC_PATH = -I ./includes -I $(LFT_PATH)/includes
 OBJ_PATH = ./obj/
 
 SRC_NAME = \
-shell.c
+shell.c \
+\
+editor/editor.c \
+editor/readline.c \
+editor/readline_raw.c \
+editor/readline_notty.c \
+editor/terminal_manager.c \
+editor/util/get_colums_len.c \
+editor/util/get_cursor_pos.c \
+\
+util/ft_realloc.c \
 
-OBJ_FOLDERS = editor env eval exec lex messages parser util 
+OBJ_FOLDERS = editor editor/util env eval exec lex messages parser util 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))

@@ -6,16 +6,12 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 17:04:06 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/20 18:59:09 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/21 11:55:05 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
-/*
-**	if s begin by a quote (a ' or a ")
-**  Mod = nb of quote NOT precedeed by '\' (backslash)
-*/
 
 static int		ft_endword(char *s1, char *s2)
 {
@@ -36,19 +32,26 @@ static int		ft_cpysep(char **s, char **ret)
 	int	i;
 
 	i = 0;
-	if (ft_strchr(FT_SEP, **s) || ft_strchr(FT_REDIR, **s))
+	if (ft_strchr(FT_SEP, **s) || ft_strchr(FT_REDIR, **s) ||
+	(ft_isdigit(**s) && ft_strchr(FT_REDIR, (*(*s + 1)))))
 	{
 		i = 1;
-		*ret[0] = **s;
+		(*ret)[0] = **s;
 		(*s)++;
 		if (ft_strchr(FT_SEP, **s) || ft_strchr(FT_REDIR, **s))
 		{
-			*ret[1] = **s;
+			(*ret)[1] = **s;
 			(*s)++;
 		}
 	}
 	return (i);
 }
+
+/*
+**	if s begin by a quote (a ' or a ")
+**  Mod = nb of quote NOT precedeed by '\' (backslash)
+**	BIG CONDITION : new token if FT_SEP OR FT_REDIR or 
+*/
 
 char			*ft_specpy(char *s)
 {
@@ -66,19 +69,20 @@ char			*ft_specpy(char *s)
 	ret[i++] = *(s++);
 	while (*s)
 	{
-		if (mod % 2 == 0 && (*s == ' ' || ft_strchr(FT_SEP, *s) || ft_strchr(FT_REDIR, *s)))
+		if (mod % 2 == 0 && (*s == ' ' || ft_strchr(FT_SEP, *s) ||
+		ft_strchr(FT_REDIR, *s) || (*S && ft_strchr(FT_REDIR, (*S)))))
 			break ;
 		if (*s == c && *(s - 1) != '\\')
-		{
-			ret[i++] = *(s++);
 			mod++;
-		}
-		else
-			ret[i++] = *(s++);
+		ret[i++] = *(s++);
 	}
 	(mod % 2) ? ft_strdel(&ret) : mod / 2;
 	return (ret);
 }
+
+/*
+**	if  -2 is returned : quotes problem
+*/
 
 int				ft_counttoken(char *s)
 {
@@ -94,6 +98,8 @@ int				ft_counttoken(char *s)
 		{
 			word = ft_specpy(s);
 			nbword++;
+			if (!word)
+				return (-2);
 			s += ft_endword(s, word);
 		}
 		ft_strdel(&word);
@@ -101,13 +107,11 @@ int				ft_counttoken(char *s)
 	return (nbword);
 }
 
-t_token			**ft_splittokens(char *s)
+t_token			**ft_splittokens(char *s, int nbtokens)
 {
 	t_token	**tokens;
 	int		i;
-	int		nbtokens;
 
-	nbtokens = ft_counttoken(s);
 	tokens = malloc(sizeof(t_token*) * (nbtokens + 1));
 	i = 0;
 	while (i < nbtokens)

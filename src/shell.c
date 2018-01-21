@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 13:02:54 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/21 12:34:24 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/21 12:36:16 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,7 +23,7 @@ int		main(int args, char **argv)
 {
 	t_token	**tokens;
 	int		i;
-	char	s[] = "echo \"|lala|\" ceci; ls -t";
+	char	s[] = "echo \"|lala|\" ceci; ls -t > 5";
 	
 	tokens = NULL;
 	ft_printf("Entrée standard : %s\n\n", s);

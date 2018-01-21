@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 17:04:06 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/21 11:55:05 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/21 16:04:08 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -76,7 +76,7 @@ char			*ft_specpy(char *s)
 			mod++;
 		ret[i++] = *(s++);
 	}
-	(mod % 2) ? ft_strdel(&ret) : mod / 2;
+	(mod % 2) ? ft_strdel(&ret) : (long)mod;
 	return (ret);
 }
 

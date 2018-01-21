@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/20 17:07:59 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/21 12:39:02 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/21 16:02:37 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,28 +15,21 @@
 
 char			*ft_removeq(char *s)
 {
-	char	quote;
 	char	*new;
 	int		i;
 	int		j;
 	
 	i = 0;
 	j = 0;
-	new = ft_strnew(ft_strlen(s) - 2);
-	if (s[0] == '\'' || s[0] == '\"')
+	new = ft_strnew(ft_strlen(s));
+	while (s[i])
 	{
-		quote = s[0];
-		while (s[i])
-		{
-			if (s[i] == quote && s[i - 1] != '\\')
-				i++;
-			else
-				new[j++] = s[i++];
-		}
+		if ((s[i] == '\'' || s[i] == '\"') && s[i - 1] != '\\')
+			i++;
+		else
+			new[j++] = s[i++];
 	}
-	else
-		ft_strdel(&new);
-	return (new ? new : NULL);
+	return (new);
 }
 
 static void		ft_minirecognize(t_token ***tokens)
@@ -76,7 +69,4 @@ void		ft_lexall(t_token ***tokens, char *s)
 		return ;
 	*tokens = ft_splittokens(s, nbtokens);
 	ft_minirecognize(tokens);
-//	while ()
-/*	while (tokens[i])
-		ft_printf("tokens %i : %s\n", i, tokens[i++]->value);*/
 }

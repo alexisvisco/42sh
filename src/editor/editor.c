@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   shell.c                                          .::    .:/ .      .::   */
+/*   editor.c                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/19 13:02:54 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/20 18:18:34 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/21 10:35:37 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/21 10:36:25 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "shell.h"
+#include "editor.h"
 
-int     main()
+int		editor(int stdin_fd, int stdout_fd, char *buf, size_t buflen,
+const char *prompt)
 {
 	
 }

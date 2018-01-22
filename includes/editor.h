@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:35 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/22 16:45:51 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/22 21:32:39 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -117,7 +117,8 @@ int				readline_raw(char *buf, size_t buflen, const char *prompt);
 
 void			handle_keys(t_editor *e);
 int				editor(int stdin_fd, int stdout_fd, char *buf, size_t buflen,
-const char *prompt);
+char *prompt);
+void			editor_insert(t_editor *l, char c);
 
 int				enable_terminal(int fd);
 int				disable_terminal(int fd);

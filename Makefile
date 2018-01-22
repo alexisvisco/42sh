@@ -6,7 +6,7 @@
 #    By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/01/19 13:46:02 by aviscogl     #+#   ##    ##    #+#        #
-#    Updated: 2018/01/22 16:39:51 by aviscogl    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/01/22 21:33:31 by aviscogl    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -24,6 +24,7 @@ SRC_NAME = \
 shell.c \
 \
 editor/editor.c \
+editor/editor_insert.c \
 editor/readline.c \
 editor/readline_raw.c \
 editor/readline_notty.c \
@@ -32,11 +33,13 @@ editor/terminal_manager.c \
 editor/util/get_colums_len.c \
 editor/util/get_cursor_pos.c \
 editor/refresher/buf_append.c \
-editor/refresher/buf_append.c \
+editor/refresher/refresh_line.c \
+editor/refresher/refresh_utils.c \
 \
 util/ft_realloc.c \
+util/ft_char_to_str.c \
 
-OBJ_FOLDERS = editor editor/util env eval exec lex messages parser util 
+OBJ_FOLDERS = editor editor/util editor/refresher env eval exec lex messages parser util 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))

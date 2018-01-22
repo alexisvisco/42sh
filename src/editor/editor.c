@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/21 10:35:37 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/22 10:46:39 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/22 21:15:54 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,8 +15,8 @@
 
 static void		init_editor(t_editor *editor)
 {
-	editor->plen = ft_strlen(editor->prompt);
 	editor->pos = 0;
+	editor->len = 0;
 	editor->oldpos = 0;
 	editor->cols = get_colums_len(editor->ifd, editor->ofd);
 	editor->maxrows = 0;
@@ -35,7 +35,7 @@ static void		init_editor(t_editor *editor)
 */
 
 int				editor(int stdin_fd, int stdout_fd, char *buf, size_t buflen,
-const char *prompt)
+char *prompt)
 {
 	t_editor l;
 
@@ -43,7 +43,9 @@ const char *prompt)
     l.ofd = stdout_fd;
 	l.buf = buf;
 	l.buflen = buflen;
-	l.prompt = prompt;
+	l.prompt = ft_strdup(prompt);
+	l.plen = ft_strlen(prompt);
+	// ft_printf("len %zu\n", editor->len);
 	init_editor(&l);
 	ft_putstr_fd(l.ofd, l.prompt);
 	handle_keys(&l);

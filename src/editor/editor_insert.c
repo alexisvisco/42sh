@@ -1,31 +1,38 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   readline_raw.c                                   .::    .:/ .      .::   */
+/*   editor_insert.c                                  .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/21 10:16:16 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/22 21:05:31 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/22 21:30:31 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/22 21:47:13 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "editor.h"
 
-/*
-** This function calls the line editing function editor() using.
-** the STDIN file descriptor set in raw mode.
-*/
-
-int		readline_raw(char *buf, size_t buflen, const char *prompt)
+void	editor_insert(t_editor *l, char c)
 {
-	int count;
-
-	if (buflen == 0 || enable_terminal(STDIN_FILENO) == -1)
-    	return (-1);
-	count = editor(STDIN_FILENO, STDOUT_FILENO, buf, buflen, (char *)prompt);
-	disable_terminal(STDIN_FILENO);
-	ft_putchar_fd(STDOUT_FILENO, '\n');
-	return (count);
+	if (l->len < l->buflen)
+	{
+        if (l->len == l->pos)
+		{
+            l->buf[l->pos] = c;
+            l->pos++;
+            l->len++;
+            l->buf[l->len] = '\0';
+			refresh_line(l);
+        }
+		else
+		{
+            memmove(l->buf+l->pos+1, l->buf+l->pos, l->len-l->pos);
+            l->buf[l->pos] = c;
+            l->len++;
+            l->pos++;
+            l->buf[l->len] = '\0';
+            refresh_line(l);
+        }
+    }
 }

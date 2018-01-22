@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/22 13:23:45 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/22 16:51:46 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/22 20:37:37 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -37,16 +37,16 @@ void	refresh_line(t_editor *e)
 	t_refresher	ref;
 	t_buf		buf;
 
-	init_refresh(&ref);
-	init_buf(&buf)
-	if (ref->rows > (int)e->maxrows)
-		e->maxrows = ref->rows;
-	clear_used_before(e, ref, buf);
-	clear_and_go_up(e, ref, buf);
-	clean_top_show_prompt(e, ref, buf);
-	insert_new_line(e, ref, buf);
-	move_cursor(e, ref, buf);
-	set_colum(e, ref, buf);
+	init_refresh(e, &ref);
+	init_buf(&buf);
+	if (ref.rows > (int)e->maxrows)
+		e->maxrows = ref.rows;
+	clear_used_before(e, &ref, &buf);
+	clear_and_go_up(e, &ref, &buf);
+	clean_top_show_prompt(e, &ref, &buf);
+	insert_new_line(e, &ref, &buf);
+	move_cursor(e, &ref, &buf);
+	set_colum(e, &ref, &buf);
 	ft_putstr_fd(e->ofd, buf.b);
 	free(buf.b);
 }

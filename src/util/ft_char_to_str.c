@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   readline_raw.c                                   .::    .:/ .      .::   */
+/*   ft_char_to_str.c                                 .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/21 10:16:16 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/22 21:05:31 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/22 20:43:03 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/22 20:46:17 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "editor.h"
+#include <stdlib.h>
 
-/*
-** This function calls the line editing function editor() using.
-** the STDIN file descriptor set in raw mode.
-*/
-
-int		readline_raw(char *buf, size_t buflen, const char *prompt)
+char	*ft_char_to_str(char c)
 {
-	int count;
+	char *s;
 
-	if (buflen == 0 || enable_terminal(STDIN_FILENO) == -1)
-    	return (-1);
-	count = editor(STDIN_FILENO, STDOUT_FILENO, buf, buflen, (char *)prompt);
-	disable_terminal(STDIN_FILENO);
-	ft_putchar_fd(STDOUT_FILENO, '\n');
-	return (count);
+	s = malloc(sizeof(char) * 2);
+	s[0] = c;
+	s[1] = '\n';
+	return (s);
 }

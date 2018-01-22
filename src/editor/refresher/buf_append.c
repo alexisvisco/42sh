@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/22 15:56:56 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/22 15:59:56 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/22 21:47:05 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,10 +17,10 @@ void buf_append(t_buf *ab, const char *s, int len)
 {
     char *new;
 	
-	new = ft_realloc(ab->b, ab->len + len);
+	new = realloc(ab->b, ab->len + len);
     if (new == NULL)
 		return;
-    ft_memcpy(new + ab->len, s,len);
+    memcpy(new + ab->len, s,len);
     ab->b = new;
     ab->len += len;
 }

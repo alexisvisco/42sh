@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   refresh_clear.c                                  .::    .:/ .      .::   */
+/*   refresh_utils.c                                  .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/22 15:48:09 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/22 16:35:54 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/22 21:40:25 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,7 +23,7 @@ void	clear_used_before(t_editor *e, t_refresher *r, t_buf *b)
 	char *tmp;
 	if (r->old_rows - r->rpos > 0)
 	{
-		tmp = ft_sprintf("\x1b[%dB", r->old_rows - r->rpos)
+		tmp = ft_sprintf("\x1b[%dB", r->old_rows - r->rpos);
 		buf_append(b, tmp, ft_strlen(tmp));
 		free(tmp);
 	}
@@ -39,8 +39,8 @@ void	clear_and_go_up(t_editor *e, t_refresher *r, t_buf *b)
 	const char	*cmd = "\r\x1b[0K\x1b[1A";
 	const int	len = ft_strlen(cmd);
 
-	j = 0;
-	while (j < r->old_rows - 1)
+	i = 0;
+	while (i < r->old_rows - 1)
 	{
 		buf_append(b, cmd, len);
 		i++;
@@ -54,9 +54,12 @@ void	clear_and_go_up(t_editor *e, t_refresher *r, t_buf *b)
 
 void	clean_top_show_prompt(t_editor *e, t_refresher *r, t_buf *b)
 {
-	buf_append(b, "\r\x1b[0K", ft_strlen("\r\x1b[0K"));
-	buf_append(b, e->prompt, e->plen));
-	buf_append(b, e->buf, e->len));
+	const char	*s = "\r\x1b[0K";
+	const int	len = ft_strlen(s);
+
+	buf_append(b, s, len);
+	buf_append(b, e->prompt, e->plen);
+	buf_append(b, e->buf, e->len);
 }
 
 /*
@@ -68,11 +71,11 @@ void	insert_new_line(t_editor *e, t_refresher *r, t_buf *b)
 {
 	if (e->pos && e->pos == e->len && (e->pos + r->plen) % e->cols == 0)
 	{
-		buf_append(ab, "\n", 1);
-		buf_append(ab, "\r", 1);
+		buf_append(b, "\n", 1);
+		buf_append(b, "\r", 1);
 		r->rows++;
 		if (r->rows > (int)e->maxrows)
-			l->maxrows = r->rows;
+			e->maxrows = r->rows;
 	}
 }
 
@@ -103,10 +106,11 @@ void	set_colum(t_editor *e, t_refresher *r, t_buf *b)
 	char *tmp;
 
 	r->col = (r->plen + (int)e->pos) % (int)e->cols;
-	if (col)
-		tmp = ft_sprintf("\r\x1b[%dC", col);
+	if (r->col)
+		tmp = ft_sprintf("\r\x1b[%dC", r->col);
 	else
 		tmp = ft_strdup("\r");
 	buf_append(b, tmp, ft_strlen(tmp));
-	e->oldpos = l->pos;
+	e->oldpos = e->pos;
+	free(tmp);
 }

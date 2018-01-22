@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/22 13:23:45 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/22 16:37:41 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/22 16:51:46 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -27,6 +27,11 @@ static void	init_buf(t_buf *buf)
 	buf->len = 0;
 }
 
+/*
+** Rewrite the currently edited line accordingly to the buffer content,
+** cursor position, and number of columns of the terminal.
+*/
+
 void	refresh_line(t_editor *e)
 {
 	t_refresher	ref;
@@ -43,5 +48,5 @@ void	refresh_line(t_editor *e)
 	move_cursor(e, ref, buf);
 	set_colum(e, ref, buf);
 	ft_putstr_fd(e->ofd, buf.b);
-	free(buf.b)
+	free(buf.b);
 }

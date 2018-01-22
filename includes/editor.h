@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:35 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/22 16:01:08 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/22 16:45:51 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -124,6 +124,12 @@ int				disable_terminal(int fd);
 
 void			buf_append(t_buf *ab, const char *s, int len);
 void			refresh_line(t_editor *e);
+void			clear_used_before(t_editor *e, t_refresher *r, t_buf *b);
+void			clear_and_go_up(t_editor *e, t_refresher *r, t_buf *b);
+void			clean_top_show_prompt(t_editor *e, t_refresher *r, t_buf *b);
+void			insert_new_line(t_editor *e, t_refresher *r, t_buf *b);
+void			move_cursor(t_editor *e, t_refresher *r, t_buf *b);
+void			set_colum(t_editor *e, t_refresher *r, t_buf *b);
 
 int				get_cursor_pos(int ifd, int ofd);
 int				get_colums_len(int ifd, int ofd);

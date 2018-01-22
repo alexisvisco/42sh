@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 13:02:54 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/21 16:02:04 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/22 16:46:06 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,6 +16,6 @@
 int     main()
 {
 	char *str;
-	while ((str = readline("test>", 0)))
+	while ((str = readline("test> ", 0)))
 		;
 }

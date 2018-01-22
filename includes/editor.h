@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:35 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/22 11:35:04 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/22 16:01:08 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -63,6 +63,8 @@ enum e_key_action
 	ESC = 27,
 	BACKSPACE = 127,
 	UP_ARROW = 4283163,
+	SHIFT_UP = 71683997260571,
+	SHIFT_DOWN = 72783508888347,
 	DOWN_ARROW = 4348699,
 	LEFT_ARROW = 4479771,
 	RIGHT_ARROW = 4414235,
@@ -88,6 +90,23 @@ typedef struct	s_editor
 	t_mode		mode;
 }				t_editor;
 
+typedef struct s_refresher
+{
+	char		seq[64];
+	int			plen;
+	int			rows;
+	int			rpos;
+	int			rpos2;
+	int			col;
+	int			old_rows;
+}				t_refresher;
+
+typedef struct	s_buf
+{
+	char		*b;
+	int			len;
+}				t_buf;
+
 
 extern t_termios	g_origin;
 extern int			raw_mode;
@@ -102,6 +121,9 @@ const char *prompt);
 
 int				enable_terminal(int fd);
 int				disable_terminal(int fd);
+
+void			buf_append(t_buf *ab, const char *s, int len);
+void			refresh_line(t_editor *e);
 
 int				get_cursor_pos(int ifd, int ofd);
 int				get_colums_len(int ifd, int ofd);

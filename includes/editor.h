@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:35 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/21 15:54:10 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/22 11:35:04 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -43,6 +43,7 @@ typedef enum	e_mode {
 enum e_key_action
 {
 	KEY_NULL = 0,
+	KON = 35051931,
 	CTRL_A = 1,
 	CTRL_B = 2,
 	CTRL_C = 3,
@@ -60,7 +61,13 @@ enum e_key_action
 	CTRL_U = 21,
 	CTRL_W = 23,
 	ESC = 27,
-	BACKSPACE = 127
+	BACKSPACE = 127,
+	UP_ARROW = 4283163,
+	DOWN_ARROW = 4348699,
+	LEFT_ARROW = 4479771,
+	RIGHT_ARROW = 4414235,
+	HOME = 4741915,
+	END = 4610843,
 };
 
 typedef struct	s_editor
@@ -89,6 +96,7 @@ char			*readline(const char *prompt, int fd);
 char			*readline_notty();
 int				readline_raw(char *buf, size_t buflen, const char *prompt);
 
+void			handle_keys(t_editor *e);
 int				editor(int stdin_fd, int stdout_fd, char *buf, size_t buflen,
 const char *prompt);
 

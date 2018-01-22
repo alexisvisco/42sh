@@ -6,7 +6,7 @@
 #    By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/01/19 13:46:02 by aviscogl     #+#   ##    ##    #+#        #
-#    Updated: 2018/01/21 15:52:45 by aviscogl    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/01/22 11:25:24 by aviscogl    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -27,6 +27,7 @@ editor/editor.c \
 editor/readline.c \
 editor/readline_raw.c \
 editor/readline_notty.c \
+editor/handle_keys.c \
 editor/terminal_manager.c \
 editor/util/get_colums_len.c \
 editor/util/get_cursor_pos.c \

@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/22 21:30:31 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/22 21:47:13 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/22 21:53:33 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -27,7 +27,7 @@ void	editor_insert(t_editor *l, char c)
         }
 		else
 		{
-            memmove(l->buf+l->pos+1, l->buf+l->pos, l->len-l->pos);
+            memmove(l->buf + l->pos + 1, l->buf + l->pos, l->len - l->pos);
             l->buf[l->pos] = c;
             l->len++;
             l->pos++;

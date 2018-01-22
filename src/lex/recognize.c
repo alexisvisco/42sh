@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/20 17:07:59 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/21 16:02:37 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/22 16:52:38 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -62,7 +62,7 @@ void		ft_lexall(t_token ***tokens, char *s)
 	i = 1;
 	if ((nbtokens = ft_counttoken(s)) == -2)
 	{
-		ft_printf("Error, review your quotes!\n");
+		e_general(ERR_QUOTE, NULL);
 		return ;
 	}
 	else if (nbtokens == 0)

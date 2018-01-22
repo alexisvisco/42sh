@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   shell.h                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:00 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/19 14:05:47 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/22 17:04:12 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -28,5 +28,20 @@
 # include "editor.h"
 # include "lex.h"
 # include "libft.h"
+
+typedef enum	e_message{
+	ERR_QUOTE,
+	ERR_NOTHING_ENTERED,
+	ERR_CTRL_C,
+	ERR_CMD_NOT_FOUND,
+	ERR_EXE_CMD,
+	SHELL_EXIT,
+	ERR_PWD_NOT_FOUND,
+	ERR_SETENV_FORMAT,
+	ERR_SETENV_CMD,
+	ERR_UNENV_CMD
+}				t_message;
+
+void		e_general(t_message m, char *arg);
 
 #endif

@@ -1,33 +1,45 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   handle_keys.c                                    .::    .:/ .      .::   */
+/*   ht_free.c                                        .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/22 10:47:39 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/23 20:53:35 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/23 15:09:30 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/23 15:37:15 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "editor.h"
+#include "libft.h"
 
-int		handle_keys(t_editor *l)
+void	ht_default_free(void *a)
 {
-	char	c;
-    int		nread;
-    char	seq[3];
-	while (42)
+	t_node *n;
+
+	if (a)
 	{
-		nread = read(l->ifd, &c, 1);
-		if (c == ENTER)
-		{
-			ef_go_end(l);
-			return ((int)l->len);
-		}
-		else
-			redirect_key_fn(l, c, nread, seq);
+		n = (t_node *)a;
+		free(n->key);
+		if (n->value)
+			free(n->value);
+		free(a);
 	}
-	ft_putchar_fd(l->ofd, '\n');
+}
+
+void	ht_free(t_hashtable *t, void (*del)(void *))
+{
+	size_t i;
+	t_heap *h;
+
+	i = 0;
+	while (i < t->size)
+	{
+		h = t->heaps[i];
+		if (h)
+			heap_free(h, del);
+		i++;
+	}
+	free(t->heaps);
+	free(t);
 }

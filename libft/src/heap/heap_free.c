@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   handle_keys.c                                    .::    .:/ .      .::   */
+/*   heap_free.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/22 10:47:39 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/23 20:53:35 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/23 11:32:12 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/23 11:53:02 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "editor.h"
+#include "libft.h"
 
-int		handle_keys(t_editor *l)
+void	heap_free(t_heap *h, void (*del)(void *))
 {
-	char	c;
-    int		nread;
-    char	seq[3];
-	while (42)
+	size_t i;
+
+	i = 0;
+	while (i < h->size)
 	{
-		nread = read(l->ifd, &c, 1);
-		if (c == ENTER)
-		{
-			ef_go_end(l);
-			return ((int)l->len);
-		}
-		else
-			redirect_key_fn(l, c, nread, seq);
+		if (del)
+			del(h->list[i]);
+		i++;
 	}
-	ft_putchar_fd(l->ofd, '\n');
+	free(h->list);
+	free(h);
+	h = NULL;
 }

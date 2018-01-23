@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   handle_keys.c                                    .::    .:/ .      .::   */
+/*   heap_del.c                                       .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/22 10:47:39 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/23 20:53:35 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/23 11:27:30 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/23 15:18:53 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "editor.h"
+#include "libft.h"
 
-int		handle_keys(t_editor *l)
+void	*heap_del(t_heap *heap, size_t n)
 {
-	char	c;
-    int		nread;
-    char	seq[3];
-	while (42)
+	void *tmp;
+
+	if (n < heap->size)
 	{
-		nread = read(l->ifd, &c, 1);
-		if (c == ENTER)
-		{
-			ef_go_end(l);
-			return ((int)l->len);
-		}
-		else
-			redirect_key_fn(l, c, nread, seq);
+		tmp = heap->list[n];
+		heap->list[n] = NULL;
+		heap->last_remove = n;
+		heap->elements--;
+		return (tmp);
 	}
-	ft_putchar_fd(l->ofd, '\n');
+	return (NULL);
 }

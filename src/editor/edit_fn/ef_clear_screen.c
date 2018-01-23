@@ -1,33 +1,20 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   handle_keys.c                                    .::    .:/ .      .::   */
+/*   ef_clear_screen.c                                .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/22 10:47:39 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/23 20:53:35 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/23 20:31:56 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/23 20:45:42 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "editor.h"
 
-int		handle_keys(t_editor *l)
+void	ef_clear_screen(t_editor *l)
 {
-	char	c;
-    int		nread;
-    char	seq[3];
-	while (42)
-	{
-		nread = read(l->ifd, &c, 1);
-		if (c == ENTER)
-		{
-			ef_go_end(l);
-			return ((int)l->len);
-		}
-		else
-			redirect_key_fn(l, c, nread, seq);
-	}
-	ft_putchar_fd(l->ofd, '\n');
+	write(STDOUT_FILENO,"\x1b[H\x1b[2J",7);
+    refresh_line(l);
 }

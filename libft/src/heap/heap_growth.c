@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   handle_keys.c                                    .::    .:/ .      .::   */
+/*   heap_growth.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/22 10:47:39 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/23 20:53:35 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/23 10:44:25 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/23 11:49:35 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "editor.h"
+#include "libft.h"
 
-int		handle_keys(t_editor *l)
+void	heap_growth(t_heap *hp)
 {
-	char	c;
-    int		nread;
-    char	seq[3];
-	while (42)
+	void			**tmp;
+	size_t			i;
+
+	i = 0;
+	tmp = ft_memalloc(hp->size * 2);
+	while (i < hp->size)
 	{
-		nread = read(l->ifd, &c, 1);
-		if (c == ENTER)
-		{
-			ef_go_end(l);
-			return ((int)l->len);
-		}
-		else
-			redirect_key_fn(l, c, nread, seq);
+		if (hp->list[i] == 0)
+			hp->last_remove = i;
+		tmp[i] = hp->list[i];
+		i++;
 	}
-	ft_putchar_fd(l->ofd, '\n');
+	free(hp->list);
+	hp->size *= 2;
+	hp->list = tmp;
 }

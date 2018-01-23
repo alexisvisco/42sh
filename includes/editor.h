@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:35 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/22 21:32:39 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/23 20:55:39 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -33,6 +33,7 @@
 # define EDITOR_MAX_LINE 4096
 
 typedef struct termios t_termios;
+
 
 typedef enum	e_mode {
 	INSERTION,
@@ -107,15 +108,18 @@ typedef struct	s_buf
 	int			len;
 }				t_buf;
 
+typedef void(redirect_fn)(t_editor *);
 
 extern t_termios	g_origin;
 extern int			raw_mode;
+
 
 char			*readline(const char *prompt, int fd);
 char			*readline_notty();
 int				readline_raw(char *buf, size_t buflen, const char *prompt);
 
-void			handle_keys(t_editor *e);
+int				handle_keys(t_editor *e);
+void			redirect_key_fn(t_editor *e, char c, char *seq, int nread);
 int				editor(int stdin_fd, int stdout_fd, char *buf, size_t buflen,
 char *prompt);
 void			editor_insert(t_editor *l, char c);
@@ -135,5 +139,14 @@ void			set_colum(t_editor *e, t_refresher *r, t_buf *b);
 int				get_cursor_pos(int ifd, int ofd);
 int				get_colums_len(int ifd, int ofd);
 
+void			ef_clear_screen(t_editor *l);
+void			ef_del_prev_word(t_editor *l);
+void			ef_delete_curr_to_end(t_editor *l);
+void			ef_delete_entire_line(t_editor *l);
+void			ef_go_end(t_editor *l);
+void			ef_go_home(t_editor *l);
+void			ef_move_left(t_editor *l);
+void			ef_move_right(t_editor *l);
+void			ef_swap_char(t_editor *l);
 
 #endif

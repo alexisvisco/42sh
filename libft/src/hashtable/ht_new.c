@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   handle_keys.c                                    .::    .:/ .      .::   */
+/*   ht_new.c                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/22 10:47:39 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/23 20:53:35 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/23 13:17:41 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/23 15:18:26 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "editor.h"
+#include "libft.h"
 
-int		handle_keys(t_editor *l)
+t_hashtable	*ht_new(size_t size)
 {
-	char	c;
-    int		nread;
-    char	seq[3];
-	while (42)
-	{
-		nread = read(l->ifd, &c, 1);
-		if (c == ENTER)
-		{
-			ef_go_end(l);
-			return ((int)l->len);
-		}
-		else
-			redirect_key_fn(l, c, nread, seq);
-	}
-	ft_putchar_fd(l->ofd, '\n');
+	t_hashtable *hasht;
+
+	hasht = malloc(sizeof(t_hashtable));
+	hasht->size = size;
+	hasht->heaps = ft_memalloc(size);
+	return (hasht);
 }

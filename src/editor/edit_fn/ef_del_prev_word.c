@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   handle_keys.c                                    .::    .:/ .      .::   */
+/*   ef_del_prev_word.c                               .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/22 10:47:39 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/23 20:53:35 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/23 20:31:56 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/23 20:47:16 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "editor.h"
 
-int		handle_keys(t_editor *l)
+void	ef_del_prev_word(t_editor *l)
 {
-	char	c;
-    int		nread;
-    char	seq[3];
-	while (42)
-	{
-		nread = read(l->ifd, &c, 1);
-		if (c == ENTER)
-		{
-			ef_go_end(l);
-			return ((int)l->len);
-		}
-		else
-			redirect_key_fn(l, c, nread, seq);
-	}
-	ft_putchar_fd(l->ofd, '\n');
+	size_t old_pos;
+    size_t diff;
+
+    old_pos = l->pos;
+    while (l->pos > 0 && l->buf[l->pos-1] == ' ')
+        l->pos--;
+    while (l->pos > 0 && l->buf[l->pos-1] != ' ')
+        l->pos--;
+    diff = old_pos - l->pos;
+    ft_memmove(l->buf + l->pos, l->buf + old_pos, l->len-old_pos + 1);
+    l->len -= diff;
+    refresh_line(l);
 }

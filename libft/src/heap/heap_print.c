@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   handle_keys.c                                    .::    .:/ .      .::   */
+/*   heap_print.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/22 10:47:39 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/23 20:53:35 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/23 10:57:55 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/23 15:19:17 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "editor.h"
+#include "libft.h"
 
-int		handle_keys(t_editor *l)
+void	heap_print(t_heap *h, void (*print_function)(void*))
 {
-	char	c;
-    int		nread;
-    char	seq[3];
-	while (42)
+	size_t i;
+
+	i = 0;
+	ft_putstr("[");
+	while (i < h->size)
 	{
-		nread = read(l->ifd, &c, 1);
-		if (c == ENTER)
-		{
-			ef_go_end(l);
-			return ((int)l->len);
-		}
+		if (h->list[i] == 0)
+			ft_putstr("NULL");
 		else
-			redirect_key_fn(l, c, nread, seq);
+			print_function(h->list[i]);
+		if (i < h->size - 1)
+			ft_putstr(", ");
+		i++;
 	}
-	ft_putchar_fd(l->ofd, '\n');
+	ft_putstr("]\n");
 }

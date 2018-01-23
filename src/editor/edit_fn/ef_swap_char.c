@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   handle_keys.c                                    .::    .:/ .      .::   */
+/*   ef_swap_char.c                                   .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/22 10:47:39 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/23 20:53:35 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/23 20:20:27 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/23 20:46:02 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "editor.h"
 
-int		handle_keys(t_editor *l)
+void	ef_swap_char(t_editor *l)
 {
-	char	c;
-    int		nread;
-    char	seq[3];
-	while (42)
+	if (l->pos > 0 && l->pos < l->len)
 	{
-		nread = read(l->ifd, &c, 1);
-		if (c == ENTER)
-		{
-			ef_go_end(l);
-			return ((int)l->len);
-		}
-		else
-			redirect_key_fn(l, c, nread, seq);
+		int aux = l->buf[l->pos - 1];
+		l->buf[l->pos - 1] = l->buf[l->pos];
+		l->buf[l->pos] = aux;
+		if (l->pos != l->len - 1)
+			l->pos++;
+		refresh_line(&l);
 	}
-	ft_putchar_fd(l->ofd, '\n');
 }

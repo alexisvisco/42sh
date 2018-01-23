@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/11/24 18:51:45 by alexis       #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/25 10:46:26 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/23 10:41:44 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,12 +15,12 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	char *tmp;
+	size_t	i;
 
-	tmp = s;
-	while (n != 0)
+	i = 0;
+	while (i < n)
 	{
-		*tmp++ = 0;
-		n--;
+		((char *)s)[i] = 0;
+		i++;
 	}
 }

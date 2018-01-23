@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   handle_keys.c                                    .::    .:/ .      .::   */
+/*   ht_hash.c                                        .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/22 10:47:39 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/23 20:53:35 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/23 14:47:15 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/23 18:44:57 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "editor.h"
+#include "libft.h"
 
-int		handle_keys(t_editor *l)
+size_t	ht_hash(const char *key)
 {
-	char	c;
-    int		nread;
-    char	seq[3];
-	while (42)
+	const size_t	len = ft_strlen(key);
+	size_t			hash;
+	size_t			i;
+	
+	i = 0;
+	hash = i;
+	while (i < len)
 	{
-		nread = read(l->ifd, &c, 1);
-		if (c == ENTER)
-		{
-			ef_go_end(l);
-			return ((int)l->len);
-		}
-		else
-			redirect_key_fn(l, c, nread, seq);
+		hash += key[i];
+		hash += hash << 10;
+		hash ^= hash >> 6;
+		i++;
 	}
-	ft_putchar_fd(l->ofd, '\n');
+    hash += (hash << 3);
+	hash ^= ( hash >> 11 );
+	hash += ( hash << 15 );
+	return (hash);
 }

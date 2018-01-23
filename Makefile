@@ -6,7 +6,7 @@
 #    By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/01/19 13:46:02 by aviscogl     #+#   ##    ##    #+#        #
-#    Updated: 2018/01/22 16:20:59 by ggranjon    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/01/23 11:51:13 by ggranjon    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -25,7 +25,7 @@ shell.c \
 lex/split.c \
 lex/recognize.c \
 \
-messages.c
+messages/messages.c
 
 OBJ_FOLDERS = editor env eval exec lex messages parser util 
 OBJ_NAME = $(SRC_NAME:.c=.o)

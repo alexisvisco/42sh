@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/20 17:07:59 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/22 16:52:38 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/23 11:40:10 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,7 +18,7 @@ char			*ft_removeq(char *s)
 	char	*new;
 	int		i;
 	int		j;
-	
+
 	i = 0;
 	j = 0;
 	new = ft_strnew(ft_strlen(s));
@@ -41,7 +41,7 @@ static void		ft_minirecognize(t_token ***tokens)
 	{
 		if (ft_strchr(FT_SEP, (*tokens)[i]->value[0]))
 			(*tokens)[i++]->type = SEP_OP;
-		else if (ft_strchr(FT_REDIR, (*tokens)[i]->value[0]) || 
+		else if (ft_strchr(FT_REDIR, (*tokens)[i]->value[0]) ||
 		(ft_isdigit((*tokens)[i]->value[0]) && (*tokens)[i]->value[1] &&
 		ft_strchr(FT_REDIR, (*tokens)[i]->value[1])))
 			(*tokens)[i++]->type = IO_REDIR;
@@ -54,11 +54,11 @@ static void		ft_minirecognize(t_token ***tokens)
 	}
 }
 
-void		ft_lexall(t_token ***tokens, char *s)
+void			ft_lexall(t_token ***tokens, char *s)
 {
 	int		i;
 	int		nbtokens;
-	
+
 	i = 1;
 	if ((nbtokens = ft_counttoken(s)) == -2)
 	{

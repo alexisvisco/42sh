@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 17:04:06 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/21 16:04:08 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/23 11:48:45 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -50,7 +50,7 @@ static int		ft_cpysep(char **s, char **ret)
 /*
 **	if s begin by a quote (a ' or a ")
 **  Mod = nb of quote NOT precedeed by '\' (backslash)
-**	BIG CONDITION : new token if FT_SEP OR FT_REDIR or 
+**	BIG CONDITION : new token if FT_SEP OR FT_REDIR or
 */
 
 char			*ft_specpy(char *s)
@@ -111,9 +111,11 @@ t_token			**ft_splittokens(char *s, int nbtokens)
 {
 	t_token	**tokens;
 	int		i;
+	int		len;
 
 	tokens = malloc(sizeof(t_token*) * (nbtokens + 1));
 	i = 0;
+	len = ft_strlen(s);
 	while (i < nbtokens)
 		tokens[i++] = malloc(sizeof(t_token));
 	i = 0;
@@ -124,6 +126,7 @@ t_token			**ft_splittokens(char *s, int nbtokens)
 		if (*s)
 		{
 			tokens[i]->value = ft_specpy(s);
+			tokens[i]->index = len - ft_strlen(s);
 			s += ft_endword(s, tokens[i]->value);
 			i++;
 		}

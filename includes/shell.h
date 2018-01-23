@@ -6,13 +6,15 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:00 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/22 17:04:12 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/23 11:52:25 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #ifndef SHELL_H
 # define SHELL_H
+
+# define SHELL_NAME "./shell"
 
 # include <sys/types.h>
 # include <sys/stat.h>

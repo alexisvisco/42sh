@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/22 15:48:09 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/22 21:40:25 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/23 10:25:13 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,7 +15,7 @@
 
 /*
 ** Clear all the lines used before. To do so start by
-** going to the last row.
+** going to the last row
 */
 
 void	clear_used_before(t_editor *e, t_refresher *r, t_buf *b)
@@ -37,7 +37,7 @@ void	clear_and_go_up(t_editor *e, t_refresher *r, t_buf *b)
 {
 	int			i;
 	const char	*cmd = "\r\x1b[0K\x1b[1A";
-	const int	len = ft_strlen(cmd);
+	const int	len = 10;
 
 	i = 0;
 	while (i < r->old_rows - 1)
@@ -55,7 +55,7 @@ void	clear_and_go_up(t_editor *e, t_refresher *r, t_buf *b)
 void	clean_top_show_prompt(t_editor *e, t_refresher *r, t_buf *b)
 {
 	const char	*s = "\r\x1b[0K";
-	const int	len = ft_strlen(s);
+	const int	len = 6;
 
 	buf_append(b, s, len);
 	buf_append(b, e->prompt, e->plen);

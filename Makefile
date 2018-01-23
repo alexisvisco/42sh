@@ -6,7 +6,7 @@
 #    By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/01/19 13:46:02 by aviscogl     #+#   ##    ##    #+#        #
-#    Updated: 2018/01/22 21:33:31 by aviscogl    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/01/23 10:23:45 by aviscogl    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -39,7 +39,9 @@ editor/refresher/refresh_utils.c \
 util/ft_realloc.c \
 util/ft_char_to_str.c \
 
-OBJ_FOLDERS = editor editor/util editor/refresher env eval exec lex messages parser util 
+EDITOR_FOLDERS = editor editor/util editor/refresher editor/keys_functions
+
+OBJ_FOLDERS = $(EDITOR_FOLDERS) env eval exec lex messages parser util 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))

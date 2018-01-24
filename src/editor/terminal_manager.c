@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/21 10:25:20 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/21 16:08:43 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/24 14:58:23 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -31,9 +31,9 @@ int		enable_terminal(int fd)
 	t_termios raw;
 
 	if (!isatty(STDIN_FILENO))
-		return -1;
+		return (-1);
 	if (tcgetattr(fd, &g_origin) == -1)
-		return -1;
+		return (-1);
 	raw = g_origin;
 	raw.c_iflag &= ~(BRKINT | ICRNL | INPCK | ISTRIP | IXON);
 	raw.c_oflag &= ~(OPOST);
@@ -42,8 +42,8 @@ int		enable_terminal(int fd)
 	raw.c_cc[VMIN] = 1;
 	raw.c_cc[VTIME] = 0;
 	if (tcsetattr(fd, TCSAFLUSH, &raw) < 0)
-		return -1;
-	raw_mode = 1;
+		return (-1);
+	g_raw_mode = (1);
 	return (1);
 }
 
@@ -53,7 +53,7 @@ int		enable_terminal(int fd)
 
 int		disable_terminal(int fd)
 {
-    if (tcsetattr(fd, TCSAFLUSH, &g_origin) != -1)
-		raw_mode = 0;
+	if (tcsetattr(fd, TCSAFLUSH, &g_origin) != -1)
+		g_raw_mode = 0;
 	return (1);
 }

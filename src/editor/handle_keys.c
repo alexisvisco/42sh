@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/22 10:47:39 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/23 20:53:35 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/24 15:32:47 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,8 +16,9 @@
 int		handle_keys(t_editor *l)
 {
 	char	c;
-    int		nread;
-    char	seq[3];
+	int		nread;
+	char	seq[3];
+
 	while (42)
 	{
 		nread = read(l->ifd, &c, 1);
@@ -27,7 +28,6 @@ int		handle_keys(t_editor *l)
 			return ((int)l->len);
 		}
 		else
-			redirect_key_fn(l, c, nread, seq);
+			redirect_key_fn(l, c, seq, nread);
 	}
-	ft_putchar_fd(l->ofd, '\n');
 }

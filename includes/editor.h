@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:35 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/23 20:55:39 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/24 15:59:02 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -111,16 +111,16 @@ typedef struct	s_buf
 typedef void(redirect_fn)(t_editor *);
 
 extern t_termios	g_origin;
-extern int			raw_mode;
+extern int			g_raw_mode;
 
 
 char			*readline(const char *prompt, int fd);
 char			*readline_notty();
-int				readline_raw(char *buf, size_t buflen, const char *prompt);
+int				readline_raw(char *buf, const char *prompt);
 
 int				handle_keys(t_editor *e);
 void			redirect_key_fn(t_editor *e, char c, char *seq, int nread);
-int				editor(int stdin_fd, int stdout_fd, char *buf, size_t buflen,
+int				editor(int stdin_fd, int stdout_fd, char *buf,
 char *prompt);
 void			editor_insert(t_editor *l, char c);
 
@@ -148,5 +148,7 @@ void			ef_go_home(t_editor *l);
 void			ef_move_left(t_editor *l);
 void			ef_move_right(t_editor *l);
 void			ef_swap_char(t_editor *l);
+void			ef_del_backspace(t_editor *e);
+void			ef_del_simple(t_editor *l);
 
 #endif

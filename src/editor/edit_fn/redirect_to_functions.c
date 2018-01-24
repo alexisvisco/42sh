@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/23 20:04:51 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/23 20:56:41 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/24 16:04:56 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,7 +15,7 @@
 
 #define ISK(k) (k == c)
 
-redirect_fn *ctrl_fn(char c)
+static redirect_fn	*ctrl_fn(char c)
 {
 	if (ISK(CTRL_T))
 		return (ef_swap_char);
@@ -35,9 +35,47 @@ redirect_fn *ctrl_fn(char c)
 		return (ef_move_right);
 	if (ISK(CTRL_W))
 		return (ef_del_prev_word);
+	return (0);
 }
 
-void	redirect_key_fn(t_editor *e, char c, char *seq, int nread)
+static redirect_fn	*esc_fn(t_editor *l, char *seq)
 {
+	if (read(l->ifd, seq, 1) == -1)
+		return (NULL);
+    if (read(l->ifd, seq + 1, 1) == -1)
+		return (NULL);
+	if (seq[0] == '[')
+	{
+		if ((seq[1] >= '0' && seq[1] <= '9') && read(l->ifd, seq + 2, 1) != -1)
+			if (seq[2] == '~' && seq[1] == '3')
+				return (ef_del_simple);
+		if (seq[1] == 'C')
+			return (ef_move_right);
+		if (seq[1] == 'D')
+			return (ef_move_left);
+		if (seq[1] == 'H')
+			return (ef_go_home);
+		if (seq[1] == 'F')
+			return (ef_go_end);
+	}
+	else if (seq[0] == '0')
+	{
+		if (seq[1] == 'H')
+			return (ef_go_home);
+		if (seq[1] == 'F')
+			return (ef_go_end);
+	}
+	return (0);
+}
+
+void			redirect_key_fn(t_editor *e, char c, char *seq, int nread)
+{
+	redirect_fn *func;
 	
+	if ((ISK(ESC) && (func = esc_fn(e, seq))) ||
+		(func = ctrl_fn(c)) ||
+		(ISK(BACKSPACE) && (func = ef_del_backspace)))
+		func(e);
+	else if (ft_isprint(c))
+		editor_insert(e, c);
 }

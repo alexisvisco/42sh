@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/21 10:35:37 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/23 20:50:01 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/24 14:00:24 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,6 +21,8 @@ static void		init_editor(t_editor *editor)
 	editor->cols = get_colums_len(editor->ifd, editor->ofd);
 	editor->maxrows = 0;
 	editor->history_index = 0;
+	editor->buflen = EDITOR_MAX_LINE;
+	editor->plen = ft_strlen(editor->prompt);
 }
 
 /*
@@ -34,18 +36,15 @@ static void		init_editor(t_editor *editor)
 ** The function returns the length of the current buffer.
 */
 
-int				editor(int stdin_fd, int stdout_fd, char *buf, size_t buflen,
+int				editor(int stdin_fd, int stdout_fd, char *buf,
 char *prompt)
 {
 	t_editor l;
 
 	l.ifd = stdin_fd;
-    l.ofd = stdout_fd;
+	l.ofd = stdout_fd;
 	l.buf = buf;
-	l.buflen = buflen;
-	l.prompt = ft_strdup(prompt);
-	l.plen = ft_strlen(prompt);
-	// ft_printf("len %zu\n", editor->len);
+	l.prompt = prompt;
 	init_editor(&l);
 	ft_putstr_fd(l.ofd, l.prompt);
 	return (handle_keys(&l));

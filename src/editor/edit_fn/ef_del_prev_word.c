@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/23 20:31:56 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/23 20:47:16 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/24 13:35:41 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,15 +16,15 @@
 void	ef_del_prev_word(t_editor *l)
 {
 	size_t old_pos;
-    size_t diff;
+	size_t diff;
 
-    old_pos = l->pos;
-    while (l->pos > 0 && l->buf[l->pos-1] == ' ')
-        l->pos--;
-    while (l->pos > 0 && l->buf[l->pos-1] != ' ')
-        l->pos--;
-    diff = old_pos - l->pos;
-    ft_memmove(l->buf + l->pos, l->buf + old_pos, l->len-old_pos + 1);
-    l->len -= diff;
-    refresh_line(l);
+	old_pos = l->pos;
+	while (l->pos > 0 && l->buf[l->pos - 1] == ' ')
+		l->pos--;
+	while (l->pos > 0 && l->buf[l->pos - 1] != ' ')
+		l->pos--;
+	diff = old_pos - l->pos;
+	ft_memmove(l->buf + l->pos, l->buf + old_pos, l->len - old_pos + 1);
+	l->len -= diff;
+	refresh_line(l);
 }

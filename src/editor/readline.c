@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/20 18:19:20 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/21 16:25:39 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/24 14:00:07 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,7 +15,7 @@
 
 
 t_termios	g_origin;
-int			raw_mode;
+int			g_raw_mode;
 
 /*
 ** Check if the terminal in the env TERM is
@@ -23,11 +23,12 @@ int			raw_mode;
 ** Else if term is supported return 0.
 */
 
-static int unsupported_term(void)
+static int	unsupported_term(void)
 {
-	static char	*unsupported_term[] = {"dumb","cons25","emacs",NULL};
-    //TODO : search in environement variable TERM equal to a term ^.
-    return 0;
+	static char	*unsupported_term[] = {"dumb", "cons25", "emacs", NULL};
+
+	//TODO : search in environement variable TERM equal to a term ^.
+	return (0);
 }
 
 /*
@@ -38,13 +39,13 @@ static int unsupported_term(void)
 ** Then return the line typed in the terminal.
 */
 
-char	*readline(const char *prompt, int fd)
+char		*readline(const char *prompt, int fd)
 {
 	char	buf[EDITOR_MAX_LINE];
-    int		count;
+	int		count;
 
 	if (!isatty(STDIN_FILENO))
-		return readline_notty();
+		return (readline_notty());
 	if (unsupported_term())
 	{
 		ft_putstr_fd(STDERR_FILENO, "Shell: unsuported terminal.");
@@ -52,9 +53,9 @@ char	*readline(const char *prompt, int fd)
 	}
 	else
 	{
-		count = readline_raw(buf, EDITOR_MAX_LINE, prompt);
-        if (count == -1)
+		count = readline_raw(buf, prompt);
+		if (count == -1)
 			return (NULL);
-        return (strdup(buf));
+		return (strdup(buf));
 	}
 }

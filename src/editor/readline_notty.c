@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/21 09:49:19 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/21 10:08:06 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/24 13:33:31 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -46,7 +46,7 @@ char	*readline_notty()
 			{
 				if (old_val)
 					free(old_val);
-                return NULL;
+				return (NULL);
 			}
 		}
 		c = fgetc(stdin);

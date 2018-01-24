@@ -6,7 +6,7 @@
 #    By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/01/19 13:46:02 by aviscogl     #+#   ##    ##    #+#        #
-#    Updated: 2018/01/23 20:58:11 by aviscogl    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/01/24 15:59:11 by aviscogl    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -43,13 +43,15 @@ editor/edit_fn/ef_go_end.c \
 editor/edit_fn/ef_go_home.c \
 editor/edit_fn/ef_move_left.c \
 editor/edit_fn/ef_move_right.c \
+editor/edit_fn/ef_del_backspace.c \
+editor/edit_fn/ef_del_simple.c \
 editor/edit_fn/ef_swap_char.c \
 editor/edit_fn/redirect_to_functions.c \
 \
 util/ft_realloc.c \
 util/ft_char_to_str.c \
 
-EDITOR_FOLDERS = editor editor/util editor/refresher editor/keys_functions
+EDITOR_FOLDERS = editor editor/util editor/refresher editor/keys_functions editor/edit_fn
 
 OBJ_FOLDERS = $(EDITOR_FOLDERS) env eval exec lex messages parser util 
 OBJ_NAME = $(SRC_NAME:.c=.o)

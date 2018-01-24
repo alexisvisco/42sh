@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/21 15:21:56 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/21 16:13:58 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/24 13:30:51 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -29,17 +29,17 @@ int		get_colums_len(int ifd, int ofd)
 	{
 		start = get_cursor_pos(ifd, ofd);
 		if (start == -1)
-			return 80;
-		if (write(ofd,"\x1b[999C",6) != 6)
-			return 80;
-		cols = get_cursor_pos(ifd,ofd);
+			return (80);
+		if (write(ofd, "\x1b[999C", 6) != 6)
+			return (80);
+		cols = get_cursor_pos(ifd, ofd);
 		if (cols == -1)
-			return 80;
+			return (80);
 		tmp = ft_sprintf("\x1b[%dD", cols - start);
 		ft_putstr_fd(ofd, tmp);
 		free(tmp);
 		return (cols);
 	}
 	else
-		return ws.ws_col;
+		return (ws.ws_col);
 }

@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/22 15:48:09 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/23 10:25:13 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/24 13:29:20 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,6 +21,7 @@
 void	clear_used_before(t_editor *e, t_refresher *r, t_buf *b)
 {
 	char *tmp;
+
 	if (r->old_rows - r->rpos > 0)
 	{
 		tmp = ft_sprintf("\x1b[%dB", r->old_rows - r->rpos);
@@ -87,7 +88,7 @@ void	insert_new_line(t_editor *e, t_refresher *r, t_buf *b)
 void	move_cursor(t_editor *e, t_refresher *r, t_buf *b)
 {
 	char *tmp;
-	
+
 	r->rpos2 = (r->plen + e->pos + e->cols) / e->cols;
 	if (r->rows - r->rpos2 > 0)
 	{

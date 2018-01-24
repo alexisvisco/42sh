@@ -6,7 +6,7 @@
 #    By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/01/19 13:46:02 by aviscogl     #+#   ##    ##    #+#        #
-#    Updated: 2018/01/24 19:10:09 by aviscogl    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/01/24 21:59:16 by aviscogl    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -30,6 +30,8 @@ editor/readline_raw.c \
 editor/readline_notty.c \
 editor/handle_keys.c \
 editor/terminal_manager.c \
+editor/history/origin.c \
+editor/history/history.c \
 editor/util/get_colums_len.c \
 editor/util/get_cursor_pos.c \
 editor/refresher/buf_append.c \
@@ -53,7 +55,7 @@ editor/edit_fn/redirect_to_functions.c \
 util/ft_realloc.c \
 util/ft_char_to_str.c \
 
-EDITOR_FOLDERS = editor editor/util editor/refresher editor/keys_functions editor/edit_fn
+EDITOR_FOLDERS = editor editor/util editor/refresher editor/keys_functions editor/edit_fn editor/history
 
 OBJ_FOLDERS = $(EDITOR_FOLDERS) env eval exec lex messages parser util 
 OBJ_NAME = $(SRC_NAME:.c=.o)

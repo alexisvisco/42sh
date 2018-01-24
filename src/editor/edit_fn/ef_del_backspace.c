@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/24 15:23:51 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 15:31:59 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/24 22:10:34 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,6 +21,5 @@ void	ef_del_backspace(t_editor *l)
 		l->pos--;
 		l->len--;
 		l->buf[l->len] = '\0';
-		refresh_line(l);
 	}
 }

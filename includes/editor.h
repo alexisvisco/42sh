@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:35 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 19:09:36 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/24 21:57:41 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -102,6 +102,13 @@ typedef struct	s_buf
 	int			len;
 }				t_buf;
 
+typedef struct	s_history
+{
+	t_heap		*heap;
+	char		origin[EDITOR_MAX_LINE];
+	int64_t		index;
+}				t_history;
+
 typedef void(redirect_fn)(t_editor *);
 
 extern t_termios	g_origin;
@@ -132,6 +139,13 @@ void			set_colum(t_editor *e, t_refresher *r, t_buf *b);
 
 int				get_cursor_pos(int ifd, int ofd);
 int				get_colums_len(int ifd, int ofd);
+
+t_history		*get_history(t_editor *e);
+void			history_up(t_editor *e);
+void			history_down(t_editor *e);
+void			history_add(t_editor *e);
+void			set_origin(t_editor *e);
+void			origin_to_buf(t_editor *e);
 
 void			ef_clear_screen(t_editor *l);
 void			ef_del_prev_word(t_editor *l);

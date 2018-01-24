@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/23 20:31:56 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 13:36:20 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/24 22:10:13 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,8 +16,5 @@
 void	ef_go_end(t_editor *l)
 {
 	if (l->pos != l->len)
-	{
 		l->pos = l->len;
-		refresh_line(l);
-	}
 }

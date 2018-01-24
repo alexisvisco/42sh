@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/23 20:31:56 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 13:35:41 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/24 22:10:30 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -26,5 +26,4 @@ void	ef_del_prev_word(t_editor *l)
 	diff = old_pos - l->pos;
 	ft_memmove(l->buf + l->pos, l->buf + old_pos, l->len - old_pos + 1);
 	l->len -= diff;
-	refresh_line(l);
 }

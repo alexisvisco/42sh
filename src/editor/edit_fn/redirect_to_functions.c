@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/23 20:04:51 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 19:33:56 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/24 22:10:57 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -72,6 +72,10 @@ static redirect_fn	*esc_fn(t_editor *l, char *seq)
 			return (ef_move_right);
 		if (seq[1] == 'D')
 			return (ef_move_left);
+		if (seq[1] == 'A')
+			return (history_up);
+		if (seq[1] == 'B')
+			return (history_down);
 		if (seq[1] == 'H')
 			return (ef_go_home);
 		if (seq[1] == 'F')
@@ -98,4 +102,5 @@ void			redirect_key_fn(t_editor *e, char c, char *seq, int nread)
 		func(e);
 	else if (ft_isprint(c))
 		editor_insert(e, c);
+	refresh_line(e);
 }

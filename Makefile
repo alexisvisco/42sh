@@ -6,7 +6,7 @@
 #    By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/01/19 13:46:02 by aviscogl     #+#   ##    ##    #+#        #
-#    Updated: 2018/01/24 15:59:11 by aviscogl    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/01/24 19:10:09 by aviscogl    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -41,6 +41,8 @@ editor/edit_fn/ef_delete_curr_to_end.c \
 editor/edit_fn/ef_delete_entire_line.c \
 editor/edit_fn/ef_go_end.c \
 editor/edit_fn/ef_go_home.c \
+editor/edit_fn/ef_move_up.c \
+editor/edit_fn/ef_move_down.c \
 editor/edit_fn/ef_move_left.c \
 editor/edit_fn/ef_move_right.c \
 editor/edit_fn/ef_del_backspace.c \
@@ -67,7 +69,7 @@ $(NAME): $(OBJ)
 	$(CC) -o $(NAME) $(OBJ) -L$(LFT_PATH) -lft
 
 
-$(OBJ_PATH)%.o: $(SRC_PATH)%.c 
+$(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@mkdir -p $(OBJ_PATH) $(OBJ_FOLDERS_BIS)
 	$(CC) $(CC_FLAGS) $(INC_PATH) -o $@ -c $^
 

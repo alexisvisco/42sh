@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/23 20:04:51 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 16:04:56 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/24 19:33:56 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -35,20 +35,39 @@ static redirect_fn	*ctrl_fn(char c)
 		return (ef_move_right);
 	if (ISK(CTRL_W))
 		return (ef_del_prev_word);
+	if (ISK(CTRL_I))
+		return (ef_move_down);
+	if (ISK(CTRL_O))
+		return (ef_move_up);
 	return (0);
+}
+
+static redirect_fn	*extra_fn(t_editor *l, char *seq)
+{
+	if ((seq[1] >= '0' && seq[1] <= '9') && read(l->ifd, seq + 2, 1) != -1)
+	{
+		if (seq[2] == '~' && seq[1] == '3')
+			return (ef_del_simple);
+		if (read(l->ifd, seq + 3, 1) == -1 || read(l->ifd, seq + 4, 1) == -1)
+			return (NULL);
+		else if (ft_strequ("[1;2A", seq))
+			return (ef_move_up);
+		else if (ft_strequ("[1;2B", seq))
+			return (ef_move_down);
+	}
+	return (NULL);
 }
 
 static redirect_fn	*esc_fn(t_editor *l, char *seq)
 {
-	if (read(l->ifd, seq, 1) == -1)
-		return (NULL);
-    if (read(l->ifd, seq + 1, 1) == -1)
+	redirect_fn	*fn;
+
+	if (read(l->ifd, seq, 1) == -1 || read(l->ifd, seq + 1, 1) == -1)
 		return (NULL);
 	if (seq[0] == '[')
 	{
-		if ((seq[1] >= '0' && seq[1] <= '9') && read(l->ifd, seq + 2, 1) != -1)
-			if (seq[2] == '~' && seq[1] == '3')
-				return (ef_del_simple);
+		if ((fn = extra_fn(l, seq)))
+			return (fn);
 		if (seq[1] == 'C')
 			return (ef_move_right);
 		if (seq[1] == 'D')
@@ -74,7 +93,8 @@ void			redirect_key_fn(t_editor *e, char c, char *seq, int nread)
 	
 	if ((ISK(ESC) && (func = esc_fn(e, seq))) ||
 		(func = ctrl_fn(c)) ||
-		(ISK(BACKSPACE) && (func = ef_del_backspace)))
+		(ISK(BACKSPACE) && (func = ef_del_backspace))
+		)
 		func(e);
 	else if (ft_isprint(c))
 		editor_insert(e, c);

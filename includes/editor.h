@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:35 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 15:59:02 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/24 19:09:36 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -54,6 +54,8 @@ enum e_key_action
 	CTRL_H = 8,
 	TAB = 9,
 	CTRL_K = 11,
+	CTRL_O = 15,
+	CTRL_I = 9,
 	CTRL_L = 12,
 	ENTER = 13,
 	CTRL_N = 14,
@@ -63,14 +65,6 @@ enum e_key_action
 	CTRL_W = 23,
 	ESC = 27,
 	BACKSPACE = 127,
-	UP_ARROW = 4283163,
-	SHIFT_UP = 71683997260571,
-	SHIFT_DOWN = 72783508888347,
-	DOWN_ARROW = 4348699,
-	LEFT_ARROW = 4479771,
-	RIGHT_ARROW = 4414235,
-	HOME = 4741915,
-	END = 4610843,
 };
 
 typedef struct	s_editor
@@ -145,6 +139,8 @@ void			ef_delete_curr_to_end(t_editor *l);
 void			ef_delete_entire_line(t_editor *l);
 void			ef_go_end(t_editor *l);
 void			ef_go_home(t_editor *l);
+void			ef_move_up(t_editor *l);
+void			ef_move_down(t_editor *l);
 void			ef_move_left(t_editor *l);
 void			ef_move_right(t_editor *l);
 void			ef_swap_char(t_editor *l);

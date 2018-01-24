@@ -1,34 +1,23 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   handle_keys.c                                    .::    .:/ .      .::   */
+/*   ef_move_down.c                                   .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/22 10:47:39 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 19:30:10 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/24 18:44:46 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/24 19:14:17 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "editor.h"
 
-int		handle_keys(t_editor *l)
+void	ef_move_down(t_editor *l)
 {
-	char	c;
-	int		nread;
-	char	seq[10];
-
-	ft_bzero(seq, 10);
-	while (42)
-	{
-		nread = read(l->ifd, &c, 1);
-		if (c == ENTER)
-		{
-			ef_go_end(l);
-			return ((int)l->len);
-		}
-		else
-			redirect_key_fn(l, c, seq, nread);
-	}
+	if ((l->pos + l->cols) < l->len)
+		l->pos += l->cols;
+	else
+		l->pos = l->len;
+	refresh_line(l);
 }

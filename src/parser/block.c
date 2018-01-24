@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/23 14:07:56 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/23 16:48:38 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/24 18:02:21 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -50,6 +50,7 @@ t_block		*extractblock(t_token **tokens)
 	j = 0;
 	while (tokens[i])
 	{
+		ft_bzero(&(blocks[j]), sizeof(t_block));
 		begin = i;
 		while (tokens[i] && ft_strcmp(tokens[i]->value, "&") &&
 		ft_strcmp(tokens[i]->value, "&&") && tokens[i]->value[0] != ';'
@@ -63,6 +64,6 @@ t_block		*extractblock(t_token **tokens)
 			i++;
 	}
 	blocks[j].start_tok = -1;
-	blocks[j].end_tok = -1;
+	analizeblock(&blocks, tokens);
 	return (blocks);
 }

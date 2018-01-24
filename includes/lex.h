@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:48 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/23 16:43:38 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/24 17:43:53 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -34,17 +34,12 @@ typedef struct	s_token
 	int			index;
 }				t_token;
 
-typedef struct	s_underb
-{
-	int			start_tok;
-	int			end_tok;
-}				t_underb;
 
 typedef struct	s_block
 {
 	int			start_tok;
 	int			end_tok;
-	t_underb	under;
+	int			isredir;
 }				t_block;
 
 char			*ft_specpy(char *s);
@@ -55,5 +50,8 @@ void			ft_lexall(t_token ***tokens, char *s);
 char			*ft_removeq(char *s);
 
 t_block			*extractblock(t_token **tokens);
+
+void			analizeblock(t_block **blocks, t_token **tokens);
+void			isred(t_block **block, t_token **tokens);
 
 #endif

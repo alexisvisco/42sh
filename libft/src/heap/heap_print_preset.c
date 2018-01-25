@@ -1,26 +1,39 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_bzero.c                                       .::    .:/ .      .::   */
+/*   heap_print_preset.c                              .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/24 18:51:45 by alexis       #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/23 10:41:44 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/23 10:55:35 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/23 11:54:56 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+void	heap_print_str(void *l)
 {
-	size_t	i;
+	ft_putstr((char *)l);
+}
 
-	i = 0;
-	while (i < n)
-	{
-		((char *)s)[i] = 0;
-		i++;
-	}
+void	heap_print_int(void *l)
+{
+	ft_putnum(*(int *)l, 10);
+}
+
+void	heap_print_int_bin(void *l)
+{
+	ft_putnum(*(int *)l, 2);
+}
+
+void	heap_print_int_hex(void *l)
+{
+	ft_putnum(*(int *)l, 16);
+}
+
+void	heap_print_bool(void *l)
+{
+	ft_putstr(*(int *)l == 0 ? "false" : "true");
 }

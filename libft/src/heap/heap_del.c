@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_bzero.c                                       .::    .:/ .      .::   */
+/*   heap_del.c                                       .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/24 18:51:45 by alexis       #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/23 10:41:44 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/23 11:27:30 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/23 15:18:53 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+void	*heap_del(t_heap *heap, size_t n)
 {
-	size_t	i;
+	void *tmp;
 
-	i = 0;
-	while (i < n)
+	if (n < heap->size)
 	{
-		((char *)s)[i] = 0;
-		i++;
+		tmp = heap->list[n];
+		heap->list[n] = NULL;
+		heap->last_remove = n;
+		heap->elements--;
+		return (tmp);
 	}
+	return (NULL);
 }

@@ -1,26 +1,45 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_bzero.c                                       .::    .:/ .      .::   */
+/*   ht_free.c                                        .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/24 18:51:45 by alexis       #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/23 10:41:44 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/23 15:09:30 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/23 15:37:15 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+void	ht_default_free(void *a)
 {
-	size_t	i;
+	t_node *n;
+
+	if (a)
+	{
+		n = (t_node *)a;
+		free(n->key);
+		if (n->value)
+			free(n->value);
+		free(a);
+	}
+}
+
+void	ht_free(t_hashtable *t, void (*del)(void *))
+{
+	size_t i;
+	t_heap *h;
 
 	i = 0;
-	while (i < n)
+	while (i < t->size)
 	{
-		((char *)s)[i] = 0;
+		h = t->heaps[i];
+		if (h)
+			heap_free(h, del);
 		i++;
 	}
+	free(t->heaps);
+	free(t);
 }

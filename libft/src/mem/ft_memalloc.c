@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/11/10 18:49:29 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/25 10:47:26 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/23 10:41:32 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,13 +15,11 @@
 
 void	*ft_memalloc(size_t size)
 {
-	void *z;
+	void	*str;
 
-	if ((z = malloc(size)))
-	{
-		ft_bzero(z, size);
-		return (z);
-	}
-	else
+	str = (void*)malloc(sizeof(void*) * size);
+	if (str == NULL)
 		return (NULL);
+	ft_bzero(str, sizeof(void *) * size);
+	return (str);
 }

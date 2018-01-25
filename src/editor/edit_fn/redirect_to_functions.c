@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/23 20:04:51 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/25 10:42:50 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/25 12:53:08 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -58,6 +58,23 @@ static redirect_fn	*extra_fn(t_editor *l, char *seq)
 	return (NULL);
 }
 
+static redirect_fn	*normal_fn(t_editor *l, char c)
+{
+	if (c == 'C')
+		return (ef_move_right);
+	if (c == 'D')
+		return (ef_move_left);
+	if (c == 'A')
+		return (history_up);
+	if (c == 'B')
+		return (history_down);
+	if (c == 'H')
+		return (ef_go_home);
+	if (c == 'F')
+		return (ef_go_end);
+	return (NULL);
+}
+
 static redirect_fn	*esc_fn(t_editor *l, char *seq)
 {
 	redirect_fn	*fn;
@@ -68,39 +85,25 @@ static redirect_fn	*esc_fn(t_editor *l, char *seq)
 	{
 		if ((fn = extra_fn(l, seq)))
 			return (fn);
-		if (seq[1] == 'C')
-			return (ef_move_right);
-		if (seq[1] == 'D')
-			return (ef_move_left);
-		if (seq[1] == 'A')
-			return (history_up);
-		if (seq[1] == 'B')
-			return (history_down);
-		if (seq[1] == 'H')
-			return (ef_go_home);
-		if (seq[1] == 'F')
-			return (ef_go_end);
+		else if ((fn = normal_fn(l, seq[1])))
+			return (fn);
 	}
 	else if (seq[0] == '0')
-	{
-		if (seq[1] == 'H')
-			return (ef_go_home);
-		if (seq[1] == 'F')
-			return (ef_go_end);
-	}
+		if ((fn = normal_fn(l, seq[1])))
+			return (fn);
 	return (0);
 }
 
 /*
 ** This function redirect keys entered to edit functions.
-** An edit function take a (t_ediror *) in parameter and 
+** An edit function take a (t_ediror *) in parameter and
 ** return nothing.
 */
 
-void			redirect_key_fn(t_editor *e, char c, char *seq, int nread)
+void				redirect_key_fn(t_editor *e, char c, char *seq, int nread)
 {
 	redirect_fn *func;
-	
+
 	if ((ISK(ESC) && (func = esc_fn(e, seq))) ||
 		(func = ctrl_fn(c)) ||
 		(ISK(BACKSPACE) && (func = ef_del_backspace)))

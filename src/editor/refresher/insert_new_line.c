@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   origin.c                                         .::    .:/ .      .::   */
+/*   insert_new_line.c                                .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/24 21:08:58 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/25 12:34:46 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/25 12:58:33 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/25 12:58:47 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,40 +14,18 @@
 #include "editor.h"
 
 /*
-** Copy the current line to the origin in the history structure
+** If we are at the very end of the screen with our prompt, we need to
+** emit a newline and move the prompt to the first column
 */
 
-void	set_origin(t_editor *e)
+void	insert_new_line(t_editor *e, t_refresher *r, t_buf *b)
 {
-	t_history	*h;
-	size_t		i;
-
-	h = get_history(e);
-	i = 0;
-	while (e->buf[i])
+	if (e->pos && e->pos == e->len && (e->pos + r->plen) % e->cols == 0)
 	{
-		h->origin[i] = e->buf[i];
-		i++;
-	}
-	h->origin[i] = '\0';
-}
-
-/*
-** Reset the line and insert the origin of the history structure
-*/
-
-void	origin_to_buf(t_editor *e)
-{
-	t_history	*h;
-	size_t		i;
-
-	h = get_history(e);
-	ef_delete_entire_line(e);
-	refresh_line(e);
-	i = 0;
-	while (h->origin[i])
-	{
-		editor_insert_without_refresh(e, h->origin[i]);
-		i++;
+		buf_append(b, "\n", 1);
+		buf_append(b, "\r", 1);
+		r->rows++;
+		if (r->rows > (int)e->maxrows)
+			e->maxrows = r->rows;
 	}
 }

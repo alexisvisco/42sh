@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/24 20:48:50 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/25 11:33:09 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/25 12:28:14 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -35,7 +35,7 @@ static void	heap_to_buf(size_t i, t_editor *e)
 ** Get the old history compared to what you've been typing lately
 */
 
-void	history_up(t_editor *e)
+void		history_up(t_editor *e)
 {
 	t_history *hist;
 
@@ -46,7 +46,6 @@ void	history_up(t_editor *e)
 	{
 		hist->index = hist->heap->next_insert;
 		set_origin(e);
-
 	}
 	if (hist->index - 1 < 0)
 		return ;
@@ -60,7 +59,7 @@ void	history_up(t_editor *e)
 ** your line before using history
 */
 
-void	history_down(t_editor *e)
+void		history_down(t_editor *e)
 {
 	t_history *hist;
 
@@ -84,7 +83,7 @@ void	history_down(t_editor *e)
 ** Heap dynamicly increase the size
 */
 
-void	history_add(t_editor *e)
+void		history_add(t_editor *e)
 {
 	t_history *hist;
 

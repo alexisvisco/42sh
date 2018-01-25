@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   origin.c                                         .::    .:/ .      .::   */
+/*   move_cursor.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/24 21:08:58 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/25 12:34:46 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/25 12:59:21 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/25 12:59:32 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,40 +14,19 @@
 #include "editor.h"
 
 /*
-** Copy the current line to the origin in the history structure
+** Move cursor to right position
+** Go up till we reach the expected positon
 */
 
-void	set_origin(t_editor *e)
+void	move_cursor(t_editor *e, t_refresher *r, t_buf *b)
 {
-	t_history	*h;
-	size_t		i;
+	char *tmp;
 
-	h = get_history(e);
-	i = 0;
-	while (e->buf[i])
+	r->rpos2 = (r->plen + e->pos + e->cols) / e->cols;
+	if (r->rows - r->rpos2 > 0)
 	{
-		h->origin[i] = e->buf[i];
-		i++;
-	}
-	h->origin[i] = '\0';
-}
-
-/*
-** Reset the line and insert the origin of the history structure
-*/
-
-void	origin_to_buf(t_editor *e)
-{
-	t_history	*h;
-	size_t		i;
-
-	h = get_history(e);
-	ef_delete_entire_line(e);
-	refresh_line(e);
-	i = 0;
-	while (h->origin[i])
-	{
-		editor_insert_without_refresh(e, h->origin[i]);
-		i++;
+		tmp = ft_sprintf("\x1b[%dA", r->rows - r->rpos2);
+		buf_append(b, tmp, ft_strlen(tmp));
+		free(tmp);
 	}
 }

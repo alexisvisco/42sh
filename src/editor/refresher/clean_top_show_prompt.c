@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ef_move_down.c                                   .::    .:/ .      .::   */
+/*   clean_top_show_prompt.c                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/24 18:44:46 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/25 12:33:36 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/25 12:56:58 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/25 13:08:11 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,14 +14,16 @@
 #include "editor.h"
 
 /*
-** Move current cursor position to down if possible
-** If not possible go to the end position
+** Clean the top line
+** Write the prompt and the current buffer content
 */
 
-void	ef_move_down(t_editor *l)
+void	clean_top_show_prompt(t_editor *e, t_refresher *r, t_buf *b)
 {
-	if ((l->pos + l->cols) < l->len)
-		l->pos += l->cols;
-	else
-		l->pos = l->len;
+	const char	*s = "\r\x1b[0K";
+	const int	len = 6;
+
+	buf_append(b, s, len);
+	buf_append(b, e->prompt, e->plen);
+	buf_append(b, e->buf, e->len);
 }

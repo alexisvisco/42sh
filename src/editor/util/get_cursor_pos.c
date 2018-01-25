@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/21 15:11:47 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 13:30:30 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/25 12:53:57 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -30,9 +30,9 @@ int		get_cursor_pos(int ifd, int ofd)
 	while (i < sizeof(buf) - 1)
 	{
 		if (read(ifd, buf + i, 1) != 1)
-			break;
+			break ;
 		if (buf[i] == 'R')
-			break;
+			break ;
 		i++;
 	}
 	buf[i] = '\0';

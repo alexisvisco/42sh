@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ef_move_down.c                                   .::    .:/ .      .::   */
+/*   set_colum.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/24 18:44:46 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/25 12:33:36 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/22 15:48:09 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/25 12:59:51 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,14 +14,19 @@
 #include "editor.h"
 
 /*
-** Move current cursor position to down if possible
-** If not possible go to the end position
+** Set colum
 */
 
-void	ef_move_down(t_editor *l)
+void	set_colum(t_editor *e, t_refresher *r, t_buf *b)
 {
-	if ((l->pos + l->cols) < l->len)
-		l->pos += l->cols;
+	char *tmp;
+
+	r->col = (r->plen + (int)e->pos) % (int)e->cols;
+	if (r->col)
+		tmp = ft_sprintf("\r\x1b[%dC", r->col);
 	else
-		l->pos = l->len;
+		tmp = ft_strdup("\r");
+	buf_append(b, tmp, ft_strlen(tmp));
+	e->oldpos = e->pos;
+	free(tmp);
 }

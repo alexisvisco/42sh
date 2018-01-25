@@ -6,13 +6,12 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/20 18:19:20 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 14:00:07 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/25 13:08:18 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
-
 
 t_termios	g_origin;
 int			g_raw_mode;

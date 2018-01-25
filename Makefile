@@ -6,7 +6,7 @@
 #    By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/01/19 13:46:02 by aviscogl     #+#   ##    ##    #+#        #
-#    Updated: 2018/01/24 21:59:16 by aviscogl    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/01/25 13:01:32 by aviscogl    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -36,7 +36,12 @@ editor/util/get_colums_len.c \
 editor/util/get_cursor_pos.c \
 editor/refresher/buf_append.c \
 editor/refresher/refresh_line.c \
-editor/refresher/refresh_utils.c \
+editor/refresher/set_colum.c \
+editor/refresher/clean_and_go_up.c \
+editor/refresher/clean_top_show_prompt.c \
+editor/refresher/insert_new_line.c \
+editor/refresher/move_cursor.c \
+editor/refresher/clear_used_before.c \
 editor/edit_fn/ef_clear_screen.c \
 editor/edit_fn/ef_del_prev_word.c \
 editor/edit_fn/ef_delete_curr_to_end.c \

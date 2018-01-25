@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/25 12:56:58 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/25 14:00:33 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/25 14:15:14 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,11 +18,10 @@
 ** going to the last row
 */
 
-void	clear_used_before(t_editor *e, t_refresher *r, t_buf *b)
+void	clear_used_before(t_refresher *r, t_buf *b)
 {
 	char *tmp;
 
-	(void)e;
 	if (r->old_rows - r->rpos > 0)
 	{
 		tmp = ft_sprintf("\x1b[%dB", r->old_rows - r->rpos);

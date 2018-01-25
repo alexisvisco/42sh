@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/22 13:23:45 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 13:28:12 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/25 14:28:04 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -41,9 +41,9 @@ void		refresh_line(t_editor *e)
 	init_buf(&buf);
 	if (ref.rows > (int)e->maxrows)
 		e->maxrows = ref.rows;
-	clear_used_before(e, &ref, &buf);
-	clear_and_go_up(e, &ref, &buf);
-	clean_top_show_prompt(e, &ref, &buf);
+	clear_used_before(&ref, &buf);
+	clear_and_go_up(&ref, &buf);
+	clean_top_show_prompt(e, &buf);
 	insert_new_line(e, &ref, &buf);
 	move_cursor(e, &ref, &buf);
 	set_colum(e, &ref, &buf);

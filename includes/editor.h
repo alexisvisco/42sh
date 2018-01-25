@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:35 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/25 13:55:15 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/25 14:24:17 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -115,12 +115,12 @@ extern t_termios	g_origin;
 extern int			g_raw_mode;
 
 
-char			*readline(const char *prompt, int fd);
+char			*readline(const char *prompt);
 char			*readline_notty();
 int				readline_raw(char *buf, const char *prompt);
 
 int				handle_keys(t_editor *e);
-void			redirect_key_fn(t_editor *e, char c, char *seq, int nread);
+void			redirect_key_fn(t_editor *e, char c, char *seq);
 int				editor(int stdin_fd, int stdout_fd, char *buf,
 char *prompt);
 void			editor_insert(t_editor *l, char c);
@@ -131,9 +131,9 @@ int				disable_terminal(int fd);
 
 void			buf_append(t_buf *ab, const char *s, int len);
 void			refresh_line(t_editor *e);
-void			clear_used_before(t_editor *e, t_refresher *r, t_buf *b);
-void			clear_and_go_up(t_editor *e, t_refresher *r, t_buf *b);
-void			clean_top_show_prompt(t_editor *e, t_refresher *r, t_buf *b);
+void			clear_used_before(t_refresher *r, t_buf *b);
+void			clear_and_go_up(t_refresher *r, t_buf *b);
+void			clean_top_show_prompt(t_editor *e, t_buf *b);
 void			insert_new_line(t_editor *e, t_refresher *r, t_buf *b);
 void			move_cursor(t_editor *e, t_refresher *r, t_buf *b);
 void			set_colum(t_editor *e, t_refresher *r, t_buf *b);
@@ -141,7 +141,7 @@ void			set_colum(t_editor *e, t_refresher *r, t_buf *b);
 int				get_cursor_pos(int ifd, int ofd);
 int				get_colums_len(int ifd, int ofd);
 
-t_history		*get_history(t_editor *e);
+t_history		*get_history();
 void			history_up(t_editor *e);
 void			history_down(t_editor *e);
 void			history_add(t_editor *e);

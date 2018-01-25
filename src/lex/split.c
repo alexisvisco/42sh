@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 17:04:06 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/23 11:48:45 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/25 12:14:32 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -53,7 +53,7 @@ static int		ft_cpysep(char **s, char **ret)
 **	BIG CONDITION : new token if FT_SEP OR FT_REDIR or
 */
 
-char			*ft_specpy(char *s)
+char			*specpy(char *s)
 {
 	char	*ret;
 	int		i;
@@ -84,7 +84,7 @@ char			*ft_specpy(char *s)
 **	if  -2 is returned : quotes problem
 */
 
-int				ft_counttoken(char *s)
+int				count_tokens(char *s)
 {
 	char	*word;
 	int		nbword;
@@ -96,7 +96,7 @@ int				ft_counttoken(char *s)
 			s++;
 		if (*s)
 		{
-			word = ft_specpy(s);
+			word = specpy(s);
 			nbword++;
 			if (!word)
 				return (-2);
@@ -107,7 +107,7 @@ int				ft_counttoken(char *s)
 	return (nbword);
 }
 
-t_token			**ft_splittokens(char *s, int nbtokens)
+t_token			**split_tokens(char *s, int nbtokens)
 {
 	t_token	**tokens;
 	int		i;
@@ -125,7 +125,7 @@ t_token			**ft_splittokens(char *s, int nbtokens)
 			s++;
 		if (*s)
 		{
-			tokens[i]->value = ft_specpy(s);
+			tokens[i]->value = specpy(s);
 			tokens[i]->index = len - ft_strlen(s);
 			s += ft_endword(s, tokens[i]->value);
 			i++;

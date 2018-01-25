@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/23 14:07:56 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 18:02:21 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/25 09:48:17 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -64,6 +64,5 @@ t_block		*extractblock(t_token **tokens)
 			i++;
 	}
 	blocks[j].start_tok = -1;
-	analizeblock(&blocks, tokens);
 	return (blocks);
 }

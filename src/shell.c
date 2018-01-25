@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 13:02:54 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 18:33:47 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/25 12:21:59 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,10 +23,12 @@ int		main(int args, char **argv)
 {
 	t_token	**tokens;
 	int		i;
-	char	s[] = "  ls -t &> lol &| cat \"fd ; \\\" s\" >mama   ; echo salut ca va   ";	
+	char	s[] = "  ls -t >< cat \"fd ; \\\" s\" >mama   ; echo salut ca va   ";
+	char	s2[] = "  ls -t &> papa test ; ls\" >  ; coucou maman";	
 	tokens = NULL;
 	ft_printf("Entrée standard : %s\n\n", s);
-	ft_lexall(&tokens, s);
+	if (ft_lexall(&tokens, s) == -2)
+		return (0);
 	i = 0;
 	while (tokens[i])
 	{
@@ -41,11 +43,12 @@ int		main(int args, char **argv)
 	
 	t_block	*test;
 	test = extractblock(tokens);
+	analyzeblock(&test, tokens);
 	i = 0;
 	while (test[i].start_tok != -1)
 	{
 		ft_printf ("BLOCK begin : %i\tBLOCK end : %i\n", test[i].start_tok, test[i].end_tok);
-		ft_printf ("IS RED : %i\n", test[i].isredir);
+		ft_printf ("IS RED : %i\n", test[i].isredir[0]);
 		i++;
 	}
 	i = 0;

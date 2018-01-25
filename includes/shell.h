@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:00 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/23 11:52:25 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/25 11:39:45 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -32,7 +32,6 @@
 # include "libft.h"
 
 typedef enum	e_message{
-	ERR_QUOTE,
 	ERR_NOTHING_ENTERED,
 	ERR_CTRL_C,
 	ERR_CMD_NOT_FOUND,
@@ -44,6 +43,13 @@ typedef enum	e_message{
 	ERR_UNENV_CMD
 }				t_message;
 
+typedef enum	e_parse{
+	ERR_QUOTE,
+	ERR_REDIR,
+	ERR_PIPE
+}				t_eparse;
+
 void		e_general(t_message m, char *arg);
+void		e_parse(t_eparse m, char *arg);
 
 #endif

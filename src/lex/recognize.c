@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/20 17:07:59 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/23 11:40:10 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/25 12:14:32 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -39,12 +39,13 @@ static void		ft_minirecognize(t_token ***tokens)
 	i = 0;
 	while ((*tokens)[i])
 	{
-		if (ft_strchr(FT_SEP, (*tokens)[i]->value[0]))
-			(*tokens)[i++]->type = SEP_OP;
-		else if (ft_strchr(FT_REDIR, (*tokens)[i]->value[0]) ||
+		if (ft_strchr(FT_REDIR, (*tokens)[i]->value[0]) || ((*tokens)[i]->value
+		[1] && ft_strchr(FT_REDIR, (*tokens)[i]->value[1])) ||
 		(ft_isdigit((*tokens)[i]->value[0]) && (*tokens)[i]->value[1] &&
 		ft_strchr(FT_REDIR, (*tokens)[i]->value[1])))
 			(*tokens)[i++]->type = IO_REDIR;
+		else if (ft_strchr(FT_SEP, (*tokens)[i]->value[0]))
+			(*tokens)[i++]->type = SEP_OP;
 		else if (i == 0 || ((*tokens)[i - 1]->type == SEP_OP))
 			(*tokens)[i++]->type = COMMAND;
 		else if ((*tokens)[i - 1]->type == IO_REDIR)
@@ -54,19 +55,20 @@ static void		ft_minirecognize(t_token ***tokens)
 	}
 }
 
-void			ft_lexall(t_token ***tokens, char *s)
+int				ft_lexall(t_token ***tokens, char *s)
 {
 	int		i;
 	int		nbtokens;
 
 	i = 1;
-	if ((nbtokens = ft_counttoken(s)) == -2)
+	if ((nbtokens = count_tokens(s)) == -2)
 	{
-		e_general(ERR_QUOTE, NULL);
-		return ;
+		e_parse(ERR_QUOTE, NULL);
+		return (-2);
 	}
 	else if (nbtokens == 0)
-		return ;
-	*tokens = ft_splittokens(s, nbtokens);
+		return (-1);
+	*tokens = split_tokens(s, nbtokens);
 	ft_minirecognize(tokens);
+	return(0);
 }

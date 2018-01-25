@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:48 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/25 12:16:21 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/25 17:09:45 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -26,6 +26,7 @@ typedef enum	e_tok_type
 	SEP_OP,
 	FD_FILE
 }				t_tok_type;
+
 /*
 typedef enum	e_tok_type
 {
@@ -57,10 +58,13 @@ int				count_tokens(char *s);
 t_token			**split_tokens(char *s, int nbtokens);
 
 int				ft_lexall(t_token ***tokens, char *s);
-char			*ft_removeq(char *s);
 
 t_block			*extractblock(t_token **tokens);
 
-int				analyzeblock(t_block **blocks, t_token **tokens);
+int				analyze_block(t_block **blocks, t_token **tokens);
+
+char			*remove_quotes(char *s);
+char			*change_quotes(char *s);
+void			format_tokens_quotes(t_token ***tokens);
 
 #endif

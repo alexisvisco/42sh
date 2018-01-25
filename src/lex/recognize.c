@@ -6,31 +6,12 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/20 17:07:59 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/25 12:14:32 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/25 14:23:55 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
-
-char			*ft_removeq(char *s)
-{
-	char	*new;
-	int		i;
-	int		j;
-
-	i = 0;
-	j = 0;
-	new = ft_strnew(ft_strlen(s));
-	while (s[i])
-	{
-		if ((s[i] == '\'' || s[i] == '\"') && s[i - 1] != '\\')
-			i++;
-		else
-			new[j++] = s[i++];
-	}
-	return (new);
-}
 
 static void		ft_minirecognize(t_token ***tokens)
 {

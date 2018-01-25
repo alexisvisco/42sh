@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/22 16:21:06 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/25 11:35:17 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/25 13:06:47 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -37,4 +37,6 @@ void	e_parse(t_eparse m, char *arg)
 		ft_dprintf(2, "%s » Man... Seriously? Your quotes...\n", SHELL_NAME);
 	if (m == ERR_PIPE)
 		ft_dprintf(2, "%s » Review your pipes\n", SHELL_NAME);
+	if (m == ERR_AFTER_FD)
+		ft_dprintf(2, "%s » There is an error after your FD\n", SHELL_NAME);
 }

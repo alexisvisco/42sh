@@ -6,7 +6,7 @@
 #    By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/01/19 13:46:02 by aviscogl     #+#   ##    ##    #+#        #
-#    Updated: 2018/01/25 11:55:30 by ggranjon    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/01/25 14:53:31 by ggranjon    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -29,7 +29,8 @@ messages/messages.c \
 \
 parser/block.c \
 parser/analyze.c \
-parser/extractinfo.c
+parser/extractinfo.c \
+parser/slash.c
 
 OBJ_FOLDERS = editor env eval exec lex messages parser util 
 OBJ_NAME = $(SRC_NAME:.c=.o)

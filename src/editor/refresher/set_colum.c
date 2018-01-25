@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_bzero.c                                       .::    .:/ .      .::   */
+/*   set_colum.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/24 18:51:45 by alexis       #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/23 10:41:44 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/22 15:48:09 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/25 12:59:51 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "editor.h"
 
-void	ft_bzero(void *s, size_t n)
+/*
+** Set colum
+*/
+
+void	set_colum(t_editor *e, t_refresher *r, t_buf *b)
 {
-	size_t	i;
+	char *tmp;
 
-	i = 0;
-	while (i < n)
-	{
-		((char *)s)[i] = 0;
-		i++;
-	}
+	r->col = (r->plen + (int)e->pos) % (int)e->cols;
+	if (r->col)
+		tmp = ft_sprintf("\r\x1b[%dC", r->col);
+	else
+		tmp = ft_strdup("\r");
+	buf_append(b, tmp, ft_strlen(tmp));
+	e->oldpos = e->pos;
+	free(tmp);
 }

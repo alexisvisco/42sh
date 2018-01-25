@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_bzero.c                                       .::    .:/ .      .::   */
+/*   heap_get_whole.c                                 .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/24 18:51:45 by alexis       #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/23 10:41:44 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/23 10:47:45 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/23 11:49:09 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+int64_t	heap_get_whole(t_heap *heap)
 {
-	size_t	i;
+	size_t i;
 
-	i = 0;
-	while (i < n)
+	i = -1;
+	while (++i < heap->size)
 	{
-		((char *)s)[i] = 0;
-		i++;
+		if (heap->list[i] == 0)
+			return (i);
 	}
+	return (int64_t)-1;
 }

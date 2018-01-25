@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_bzero.c                                       .::    .:/ .      .::   */
+/*   insert_new_line.c                                .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/24 18:51:45 by alexis       #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/23 10:41:44 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/25 12:58:33 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/25 12:58:47 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "editor.h"
 
-void	ft_bzero(void *s, size_t n)
+/*
+** If we are at the very end of the screen with our prompt, we need to
+** emit a newline and move the prompt to the first column
+*/
+
+void	insert_new_line(t_editor *e, t_refresher *r, t_buf *b)
 {
-	size_t	i;
-
-	i = 0;
-	while (i < n)
+	if (e->pos && e->pos == e->len && (e->pos + r->plen) % e->cols == 0)
 	{
-		((char *)s)[i] = 0;
-		i++;
+		buf_append(b, "\n", 1);
+		buf_append(b, "\r", 1);
+		r->rows++;
+		if (r->rows > (int)e->maxrows)
+			e->maxrows = r->rows;
 	}
 }

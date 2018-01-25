@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/21 20:07:05 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/05 14:44:40 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/23 15:20:35 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -42,7 +42,7 @@ char		*ft_sprintf(char *format, ...)
 	return (dup_fmt);
 }
 
-static int	core_pf(int fd, const char *format, va_list lst)
+int			core_pf(int fd, const char *format, va_list lst)
 {
 	char	*dup_fmt;
 	int		n;

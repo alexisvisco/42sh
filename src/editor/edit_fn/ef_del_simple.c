@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_bzero.c                                       .::    .:/ .      .::   */
+/*   ef_del_simple.c                                  .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/24 18:51:45 by alexis       #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/23 10:41:44 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/24 15:58:01 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/25 12:33:10 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "editor.h"
 
-void	ft_bzero(void *s, size_t n)
+/*
+** Delete the next character if possible
+*/
+
+void	ef_del_simple(t_editor *l)
 {
-	size_t	i;
-
-	i = 0;
-	while (i < n)
+	if (l->len > 0 && l->pos < l->len)
 	{
-		((char *)s)[i] = 0;
-		i++;
+		ft_memmove(l->buf + l->pos, l->buf + l->pos + 1, l->len - l->pos - 1);
+		l->len--;
+		l->buf[l->len] = '\0';
 	}
 }

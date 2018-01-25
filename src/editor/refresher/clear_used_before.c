@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_bzero.c                                       .::    .:/ .      .::   */
+/*   clear_used_before.c                              .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/24 18:51:45 by alexis       #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/23 10:41:44 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/25 12:56:58 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/25 13:08:22 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "editor.h"
 
-void	ft_bzero(void *s, size_t n)
+/*
+** Clear all the lines used before. To do so start by
+** going to the last row
+*/
+
+void	clear_used_before(t_editor *e, t_refresher *r, t_buf *b)
 {
-	size_t	i;
+	char *tmp;
 
-	i = 0;
-	while (i < n)
+	if (r->old_rows - r->rpos > 0)
 	{
-		((char *)s)[i] = 0;
-		i++;
+		tmp = ft_sprintf("\x1b[%dB", r->old_rows - r->rpos);
+		buf_append(b, tmp, ft_strlen(tmp));
+		free(tmp);
 	}
 }

@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_bzero.c                                       .::    .:/ .      .::   */
+/*   readline_raw.c                                   .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/24 18:51:45 by alexis       #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/23 10:41:44 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/21 10:16:16 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/24 14:00:38 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "editor.h"
 
-void	ft_bzero(void *s, size_t n)
+/*
+** This function calls the line editing function editor() using.
+** the STDIN file descriptor set in raw mode.
+*/
+
+int		readline_raw(char *buf, const char *prompt)
 {
-	size_t	i;
+	int count;
 
-	i = 0;
-	while (i < n)
-	{
-		((char *)s)[i] = 0;
-		i++;
-	}
+	if (EDITOR_MAX_LINE == 0 || enable_terminal(STDIN_FILENO) == -1)
+		return (-1);
+	count = editor(STDIN_FILENO, STDOUT_FILENO, buf, (char *)prompt);
+	disable_terminal(STDIN_FILENO);
+	ft_putchar_fd(STDOUT_FILENO, '\n');
+	return (count);
 }

@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_bzero.c                                       .::    .:/ .      .::   */
+/*   heap_growth.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/24 18:51:45 by alexis       #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/23 10:41:44 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/23 10:44:25 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/23 11:49:35 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+void	heap_growth(t_heap *hp)
 {
-	size_t	i;
+	void			**tmp;
+	size_t			i;
 
 	i = 0;
-	while (i < n)
+	tmp = ft_memalloc(hp->size * 2);
+	while (i < hp->size)
 	{
-		((char *)s)[i] = 0;
+		if (hp->list[i] == 0)
+			hp->last_remove = i;
+		tmp[i] = hp->list[i];
 		i++;
 	}
+	free(hp->list);
+	hp->size *= 2;
+	hp->list = tmp;
 }

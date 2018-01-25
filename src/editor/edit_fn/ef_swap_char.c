@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_bzero.c                                       .::    .:/ .      .::   */
+/*   ef_swap_char.c                                   .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/24 18:51:45 by alexis       #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/23 10:41:44 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/23 20:20:27 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/25 10:43:25 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "editor.h"
 
-void	ft_bzero(void *s, size_t n)
+/*
+** Swap current caracter with the previous
+*/
+
+void	ef_swap_char(t_editor *l)
 {
-	size_t	i;
+	int aux;
 
-	i = 0;
-	while (i < n)
+	if (l->pos > 0 && l->pos < l->len)
 	{
-		((char *)s)[i] = 0;
-		i++;
+		aux = l->buf[l->pos - 1];
+		l->buf[l->pos - 1] = l->buf[l->pos];
+		l->buf[l->pos] = aux;
+		if (l->pos != l->len - 1)
+			l->pos++;
 	}
 }

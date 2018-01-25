@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_bzero.c                                       .::    .:/ .      .::   */
+/*   ft_realloc.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/24 18:51:45 by alexis       #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/23 10:41:44 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/21 09:56:18 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/25 12:54:04 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "shell.h"
 
-void	ft_bzero(void *s, size_t n)
+void	*ft_realloc(void *ptr, size_t size)
 {
-	size_t	i;
+	char	*newptr;
 
-	i = 0;
-	while (i < n)
+	if (!size && ptr)
 	{
-		((char *)s)[i] = 0;
-		i++;
+		if (!(newptr = (char *)malloc(1)))
+			return (NULL);
+		ft_memdel(&ptr);
+		return (newptr);
 	}
+	if (!(newptr = (char *)malloc(size)))
+		return (NULL);
+	if (ptr)
+	{
+		ft_memcpy(newptr, ptr, size);
+		ft_memdel(&ptr);
+	}
+	return (newptr);
 }

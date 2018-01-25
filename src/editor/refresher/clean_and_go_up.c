@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_bzero.c                                       .::    .:/ .      .::   */
+/*   clean_and_go_up.c                                .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/24 18:51:45 by alexis       #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/23 10:41:44 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/25 12:56:58 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/25 13:09:05 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "editor.h"
 
-void	ft_bzero(void *s, size_t n)
+/*
+** For every row clear it, go up
+*/
+
+void	clear_and_go_up(t_editor *e, t_refresher *r, t_buf *b)
 {
-	size_t	i;
+	int			i;
+	const char	*cmd = "\r\x1b[0K\x1b[1A";
+	const int	len = 10;
 
 	i = 0;
-	while (i < n)
+	while (i < r->old_rows - 1)
 	{
-		((char *)s)[i] = 0;
+		buf_append(b, cmd, len);
 		i++;
 	}
 }

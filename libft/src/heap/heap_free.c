@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_bzero.c                                       .::    .:/ .      .::   */
+/*   heap_free.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/24 18:51:45 by alexis       #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/23 10:41:44 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/23 11:32:12 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/23 11:53:02 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+void	heap_free(t_heap *h, void (*del)(void *))
 {
-	size_t	i;
+	size_t i;
 
 	i = 0;
-	while (i < n)
+	while (i < h->size)
 	{
-		((char *)s)[i] = 0;
+		if (del)
+			del(h->list[i]);
 		i++;
 	}
+	free(h->list);
+	free(h);
+	h = NULL;
 }

@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/20 09:32:20 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/05 14:40:20 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/23 11:58:36 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -145,5 +145,6 @@ char			*ft_wstr_to_str(wchar_t *ws);
 int				ft_dprintf(int fd, const char *format, ...);
 int				ft_printf(const char *format, ...);
 char			*ft_sprintf(char *format, ...);
+int				core_pf(int fd, const char *format, va_list lst);
 
 #endif

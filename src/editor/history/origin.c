@@ -6,12 +6,16 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/24 21:08:58 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/25 10:53:16 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/25 11:23:31 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "editor.h"
+
+/*
+** Copy the current line to the origin in the history structure
+*/
 
 void	set_origin(t_editor *e)
 {
@@ -27,6 +31,10 @@ void	set_origin(t_editor *e)
 	}
 	h->origin[i] = '\0';
 }
+
+/*
+** Reset the line and insert the origin of the history structure
+*/
 
 void	origin_to_buf(t_editor *e)
 {

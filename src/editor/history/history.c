@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/24 20:48:50 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/25 10:53:05 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/25 11:33:09 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -31,6 +31,10 @@ static void	heap_to_buf(size_t i, t_editor *e)
 	}
 }
 
+/*
+** Get the old history compared to what you've been typing lately
+*/
+
 void	history_up(t_editor *e)
 {
 	t_history *hist;
@@ -49,6 +53,12 @@ void	history_up(t_editor *e)
 	hist->index--;
 	heap_to_buf((size_t)hist->index, e);
 }
+
+/*
+** Get the history closest to what you've been typing
+** If you exceed the heap, replace the line with the origin
+** your line before using history
+*/
 
 void	history_down(t_editor *e)
 {
@@ -69,6 +79,11 @@ void	history_down(t_editor *e)
 	}
 }
 
+/*
+** Add the current line to the history
+** Heap dynamicly increase the size
+*/
+
 void	history_add(t_editor *e)
 {
 	t_history *hist;
@@ -76,6 +91,11 @@ void	history_add(t_editor *e)
 	hist = get_history(e);
 	heap_add(hist->heap, ft_strdup(e->buf));
 }
+
+/*
+** Getting the history structure
+** If it is not present, create it
+*/
 
 t_history	*get_history(t_editor *e)
 {

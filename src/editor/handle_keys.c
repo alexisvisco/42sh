@@ -6,12 +6,17 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/22 10:47:39 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/25 10:05:40 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/25 11:20:55 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "editor.h"
+
+/*
+** Handle the first key entered then redirect it to redirect_key_fn(..)
+** If the key pressed is ENTER finish return the len of the buffer
+*/
 
 int		handle_keys(t_editor *l)
 {

@@ -6,12 +6,16 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/23 20:28:32 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 22:10:16 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/25 10:46:27 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "editor.h"
+
+/*
+** Delete the entire line
+*/
 
 void	ef_delete_entire_line(t_editor *l)
 {

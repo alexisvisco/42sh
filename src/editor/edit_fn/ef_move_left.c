@@ -6,12 +6,16 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/23 20:31:56 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 22:10:02 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/25 10:45:24 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "editor.h"
+
+/*
+** Move current position of the cursor to the left if it is possible
+*/
 
 void	ef_move_left(t_editor *l)
 {

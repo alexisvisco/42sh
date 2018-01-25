@@ -6,12 +6,16 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/24 15:23:51 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 22:10:34 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/25 10:48:07 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "editor.h"
+
+/*
+** Delete the previous character
+*/
 
 void	ef_del_backspace(t_editor *l)
 {

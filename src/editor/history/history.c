@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/24 20:48:50 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 22:26:51 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/25 10:53:05 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,16 +21,14 @@ static void	heap_to_buf(size_t i, t_editor *e)
 
 	hist = get_history(e);
 	str = (char *)heap_get(hist->heap, i);
-	e->buf[0] = 0;
-	e->pos = 0;
-	e->len = 0;
+	ef_delete_entire_line(e);
+	refresh_line(e);
 	j = 0;
 	while (str[j])
 	{
-		editor_insert(e, str[j]);
+		editor_insert_without_refresh(e, str[j]);
 		j++;
 	}
-	ef_go_end(e);
 }
 
 void	history_up(t_editor *e)
@@ -38,13 +36,17 @@ void	history_up(t_editor *e)
 	t_history *hist;
 
 	hist = get_history(e);
+	if (hist->heap->elements == 0)
+		return ;
 	if (hist->index == -1)
 	{
+		hist->index = hist->heap->next_insert;
 		set_origin(e);
+
 	}
-	if (hist->heap->elements == 0 || hist->index == hist->heap->elements - 1)
+	if (hist->index - 1 < 0)
 		return ;
-	hist->index++;
+	hist->index--;
 	heap_to_buf((size_t)hist->index, e);
 }
 
@@ -55,14 +57,14 @@ void	history_down(t_editor *e)
 	hist = get_history(e);
 	if (hist->index == -1)
 		return ;
-	else if (hist->index == 0)
+	else if (hist->index + 1 == hist->heap->next_insert)
 	{
 		hist->index = -1;
 		origin_to_buf(e);
 	}
-	else if (hist->index > 0)
+	else if (hist->index + 1 < hist->heap->next_insert)
 	{
-		hist->index--;
+		hist->index++;
 		heap_to_buf((size_t)hist->index, e);
 	}
 }
@@ -85,7 +87,6 @@ t_history	*get_history(t_editor *e)
 		hist->heap = heap_new(32);
 		hist->index = -1;
 		hist->origin[0] = '\0';
-		set_origin(e);
 	}
 	return (hist);
 }

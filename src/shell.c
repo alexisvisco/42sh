@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 13:02:54 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 15:35:03 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/25 10:34:13 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,11 +16,14 @@
 int     main()
 {
 	char *str;
-	while ((str = readline("test> ", 0)))
+	while ((str = readline("shell> ", 0)))
 	{
-		//ft_putchar('\n');
-		ft_printf("You wrote: %s\n", str);
+		ft_printf("You wrote: {%s}\n", str);
 		if (ft_strequ("exit", str))
+		{
+			free(str);
 			exit(0);
+		}	
+		free(str);
 	}
 }

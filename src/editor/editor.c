@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/21 10:35:37 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 14:00:24 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/25 09:35:29 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,6 +23,7 @@ static void		init_editor(t_editor *editor)
 	editor->history_index = 0;
 	editor->buflen = EDITOR_MAX_LINE;
 	editor->plen = ft_strlen(editor->prompt);
+	editor->buf[0] = 0;
 }
 
 /*

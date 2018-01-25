@@ -6,12 +6,16 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/23 20:31:56 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 22:10:30 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/25 10:47:56 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "editor.h"
+
+/*
+** Delete if possible the previous word
+*/
 
 void	ef_del_prev_word(t_editor *l)
 {

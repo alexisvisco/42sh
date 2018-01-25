@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/23 20:04:51 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 22:10:57 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/25 10:42:50 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -91,14 +91,19 @@ static redirect_fn	*esc_fn(t_editor *l, char *seq)
 	return (0);
 }
 
+/*
+** This function redirect keys entered to edit functions.
+** An edit function take a (t_ediror *) in parameter and 
+** return nothing.
+*/
+
 void			redirect_key_fn(t_editor *e, char c, char *seq, int nread)
 {
 	redirect_fn *func;
 	
 	if ((ISK(ESC) && (func = esc_fn(e, seq))) ||
 		(func = ctrl_fn(c)) ||
-		(ISK(BACKSPACE) && (func = ef_del_backspace))
-		)
+		(ISK(BACKSPACE) && (func = ef_del_backspace)))
 		func(e);
 	else if (ft_isprint(c))
 		editor_insert(e, c);

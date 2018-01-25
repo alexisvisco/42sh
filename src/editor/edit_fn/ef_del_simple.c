@@ -6,12 +6,16 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/24 15:58:01 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 22:10:27 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/25 10:47:21 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "editor.h"
+
+/*
+** Delete the next character if possible
+*/
 
 void	ef_del_simple(t_editor *l)
 {

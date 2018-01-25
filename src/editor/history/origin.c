@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/24 21:08:58 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 21:17:13 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/25 10:53:16 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -34,12 +34,12 @@ void	origin_to_buf(t_editor *e)
 	size_t	i;
 
 	h = get_history(e);
+	ef_delete_entire_line(e);
+	refresh_line(e);
 	i = 0;
 	while (h->origin[i])
 	{
-		e->buf[i] = h->origin[i];
+		editor_insert_without_refresh(e, h->origin[i]);
 		i++;
 	}
-	e->buf[i] = '\0';
-	e->buflen = ft_strlen(e->buf);
 }

@@ -6,12 +6,16 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/23 20:20:27 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 22:09:51 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/25 10:43:25 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "editor.h"
+
+/*
+** Swap current caracter with the previous
+*/
 
 void	ef_swap_char(t_editor *l)
 {

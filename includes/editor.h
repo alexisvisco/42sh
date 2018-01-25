@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:35 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 21:57:41 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/25 10:52:50 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -124,6 +124,7 @@ void			redirect_key_fn(t_editor *e, char c, char *seq, int nread);
 int				editor(int stdin_fd, int stdout_fd, char *buf,
 char *prompt);
 void			editor_insert(t_editor *l, char c);
+void			editor_insert_without_refresh(t_editor *l, char c);
 
 int				enable_terminal(int fd);
 int				disable_terminal(int fd);

@@ -6,12 +6,17 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/24 18:44:46 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 22:09:54 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/25 10:44:14 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "editor.h"
+
+/*
+** Move current cursor position to up if possible
+** If not possible go to the start position
+*/
 
 void	ef_move_up(t_editor *l)
 {

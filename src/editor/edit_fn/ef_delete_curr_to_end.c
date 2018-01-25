@@ -6,12 +6,16 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/23 20:29:59 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 22:10:18 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/25 10:46:46 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "editor.h"
+
+/*
+** If possible delete only from the current position to the end
+*/
 
 void	ef_delete_curr_to_end(t_editor *l)
 {

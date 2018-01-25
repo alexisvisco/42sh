@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/20 18:19:20 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/25 13:08:18 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/25 14:02:46 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -43,6 +43,7 @@ char		*readline(const char *prompt, int fd)
 	char	buf[EDITOR_MAX_LINE];
 	int		count;
 
+	(void)fd;
 	if (!isatty(STDIN_FILENO))
 		return (readline_notty());
 	if (unsupported_term())

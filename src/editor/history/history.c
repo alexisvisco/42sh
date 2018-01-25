@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/24 20:48:50 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/25 12:28:14 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/25 14:02:18 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -66,12 +66,12 @@ void		history_down(t_editor *e)
 	hist = get_history(e);
 	if (hist->index == -1)
 		return ;
-	else if (hist->index + 1 == hist->heap->next_insert)
+	else if (hist->index + 1 == (int64_t)hist->heap->next_insert)
 	{
 		hist->index = -1;
 		origin_to_buf(e);
 	}
-	else if (hist->index + 1 < hist->heap->next_insert)
+	else if (hist->index + 1 < (int64_t)hist->heap->next_insert)
 	{
 		hist->index++;
 		heap_to_buf((size_t)hist->index, e);
@@ -100,6 +100,7 @@ t_history	*get_history(t_editor *e)
 {
 	static t_history *hist = NULL;
 
+	(void)e;
 	if (!hist)
 	{
 		hist = malloc(sizeof(t_history));

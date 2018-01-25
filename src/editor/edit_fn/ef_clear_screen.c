@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/23 20:31:56 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/25 10:48:16 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/25 13:58:00 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,5 +19,6 @@
 
 void	ef_clear_screen(t_editor *l)
 {
+	(void)l;
 	write(STDOUT_FILENO, "\x1b[H\x1b[2J", 7);
 }

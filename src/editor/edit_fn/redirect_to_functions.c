@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/23 20:04:51 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/25 13:56:05 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/25 14:00:23 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -58,7 +58,7 @@ static t_redirect_fn	*extra_fn(t_editor *l, char *seq)
 	return (NULL);
 }
 
-static t_redirect_fn	*normal_fn(t_editor *l, char c)
+static t_redirect_fn	*normal_fn(char c)
 {
 	if (c == 'C')
 		return (ef_move_right);
@@ -85,11 +85,11 @@ static t_redirect_fn	*esc_fn(t_editor *l, char *seq)
 	{
 		if ((fn = extra_fn(l, seq)))
 			return (fn);
-		else if ((fn = normal_fn(l, seq[1])))
+		else if ((fn = normal_fn(seq[1])))
 			return (fn);
 	}
 	else if (seq[0] == '0')
-		if ((fn = normal_fn(l, seq[1])))
+		if ((fn = normal_fn(seq[1])))
 			return (fn);
 	return (0);
 }
@@ -105,6 +105,7 @@ int nread)
 {
 	t_redirect_fn *func;
 
+	(void)nread;
 	if ((ISK(ESC) && (func = esc_fn(e, seq))) ||
 		(func = ctrl_fn(c)) ||
 		(ISK(BACKSPACE) && (func = ef_del_backspace)))

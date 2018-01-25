@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/25 12:56:58 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/25 13:08:11 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/25 14:01:01 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,6 +23,7 @@ void	clean_top_show_prompt(t_editor *e, t_refresher *r, t_buf *b)
 	const char	*s = "\r\x1b[0K";
 	const int	len = 6;
 
+	(void)r;
 	buf_append(b, s, len);
 	buf_append(b, e->prompt, e->plen);
 	buf_append(b, e->buf, e->len);

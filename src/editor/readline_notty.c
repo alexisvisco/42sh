@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/21 09:49:19 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/25 13:08:52 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/25 13:59:31 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -62,6 +62,7 @@ char		*readline_notty(void)
 
 	line = NULL;
 	len = 0;
+	old_val = NULL;
 	maxlen = 0;
 	while (1)
 	{
@@ -74,9 +75,6 @@ char		*readline_notty(void)
 		if ((c = fgetc(stdin)) && (c == EOF || c == '\n'))
 			return (readline_tty_end(c, len, line));
 		else
-		{
-			line[len] = c;
-			len++;
-		}
+			line[len++] = c;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:48 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/25 17:09:45 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/27 17:11:34 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -27,17 +27,6 @@ typedef enum	e_tok_type
 	FD_FILE
 }				t_tok_type;
 
-/*
-typedef enum	e_tok_type
-{
-	ZERO,
-	ARG,
-	IO_REDIR,
-	SEP_OP,
-	FD_FILE
-}				t_;*/
-
-
 typedef struct	s_token
 {
 	char		*value;
@@ -45,12 +34,21 @@ typedef struct	s_token
 	int			index;
 }				t_token;
 
+/*
+** isredir[0] = 1 if there is a redir in the block
+** isredir[1] is for the type of the redir :
+**	1 = "<<"
+**	2 = "<"
+**	3 = ">"
+**	4 = ">>"
+*/
 
 typedef struct	s_block
 {
 	int			start_tok;
 	int			end_tok;
 	int			isredir[2];
+	int			nb_pipe;
 }				t_block;
 
 char			*specpy(char *s);
@@ -66,5 +64,11 @@ int				analyze_block(t_block **blocks, t_token **tokens);
 char			*remove_quotes(char *s);
 char			*change_quotes(char *s);
 void			format_tokens_quotes(t_token ***tokens);
+
+void			extract_type_redir(t_token **tokens, t_block **block);
+
+
+int				parse_tokens(t_token ***tokens, char *s);
+int				parse_block(t_token **tokens, t_block **blocks);
 
 #endif

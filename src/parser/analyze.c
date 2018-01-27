@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/23 17:56:38 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/25 14:09:53 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/27 17:12:49 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -91,6 +91,7 @@ static int	analyze_pipe(t_block **block, t_token **tokens)
 		{
 			if (tokens[j]->value[0] == '|')
 			{
+				(*block)[i].nb_pipe++;
 				if (!(tokens[j + 1]) || tokens[j + 1]->type != COMMAND ||
 				(tokens[j]->value[1] && tokens[j]->value[1] != '|'))
 					return (-2);

@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/27 16:23:48 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/27 17:14:22 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/28 14:17:03 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,7 +23,22 @@ int		parse_tokens(t_token ***tokens, char *s)
 
 int		parse_block(t_token **tokens, t_block **blocks)
 {
-	*blocks = extractblock(tokens);
+	int	i;
+
+	if ((i = is_commentary(tokens)) == -1)
+		*blocks = extractblock(tokens);
+	else if (i == 0)
+	{
+		*blocks = NULL;
+		return (-2);
+	}
+	else
+		*blocks = extract_block_commentary(tokens, i);
+	if (operator_error(blocks, tokens) == -1)
+	{
+		e_parse(ERR_BAD_END, NULL);
+		return (-3);
+	}
 	if (analyze_block(blocks, tokens) == -2)
 		return (-1);
 	extract_type_redir(tokens, blocks);

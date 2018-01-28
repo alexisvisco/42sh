@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/22 16:21:06 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/25 13:06:47 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/28 14:16:36 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -39,4 +39,6 @@ void	e_parse(t_eparse m, char *arg)
 		ft_dprintf(2, "%s » Review your pipes\n", SHELL_NAME);
 	if (m == ERR_AFTER_FD)
 		ft_dprintf(2, "%s » There is an error after your FD\n", SHELL_NAME);
+	if (m == ERR_BAD_END)
+		ft_dprintf(2, "%s » Your command must end by another thing\n", SHELL_NAME);
 }

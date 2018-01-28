@@ -6,7 +6,7 @@
 #    By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/01/19 13:46:02 by aviscogl     #+#   ##    ##    #+#        #
-#    Updated: 2018/01/27 16:56:33 by ggranjon    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/01/28 14:13:30 by ggranjon    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -31,6 +31,8 @@ parser/block.c \
 parser/analyze.c \
 parser/extract_redir.c \
 parser/slash.c \
+parser/commentary.c \
+parser/operator_error.c \
 parser/parse_all.c
 
 OBJ_FOLDERS = editor env eval exec lex messages parser util 

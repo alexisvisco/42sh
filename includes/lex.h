@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:48 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/27 17:11:34 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/28 14:12:40 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -57,8 +57,10 @@ t_token			**split_tokens(char *s, int nbtokens);
 
 int				ft_lexall(t_token ***tokens, char *s);
 
-t_block			*extractblock(t_token **tokens);
+int				is_commentary(t_token **tokens);
+t_block			*extract_block_commentary(t_token **tokens, int nb_tokens);
 
+t_block			*extractblock(t_token **tokens);
 int				analyze_block(t_block **blocks, t_token **tokens);
 
 char			*remove_quotes(char *s);
@@ -66,7 +68,7 @@ char			*change_quotes(char *s);
 void			format_tokens_quotes(t_token ***tokens);
 
 void			extract_type_redir(t_token **tokens, t_block **block);
-
+int				operator_error(t_block **blocks, t_token **tokens);
 
 int				parse_tokens(t_token ***tokens, char *s);
 int				parse_block(t_token **tokens, t_block **blocks);

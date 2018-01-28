@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 13:02:54 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/27 17:13:45 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/28 14:18:59 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,7 +23,7 @@ int		main(int args, char **argv)
 {
 	t_token	**tokens;
 	t_block	*test;
-	char	s[] = "  ls -t | wc -c | echo ; \"fd ; \\t\"s\"\" >mama  ; echo salut ca va   ";
+	char	s[] = "  ls -t &| wc -c || #echo ; \"fd ; \\t\"s\"\" >mama  ; echo salut ca va ";
 	
 	tokens = NULL;
 	test = NULL;
@@ -44,9 +44,12 @@ int		main(int args, char **argv)
 	ft_printf("value = 3 => SEP_OP\n");
 	ft_printf("value = 4 => FD_FILE\n\n\n");
 
-	if (parse_block(tokens, &test) == -1)
-		printf("\nErreur parse block\n");
+	int	parse;
 	
+	if ((parse = parse_block(tokens, &test)) == -1)
+		printf("\nErreur parse block\n");
+	if (parse == -2)
+		printf("\nQue des commentaires\n");
 	i = 0;
 	while (test[i].start_tok != -1)
 	{

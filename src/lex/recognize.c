@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/20 17:07:59 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/25 14:23:55 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/28 15:40:06 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -29,7 +29,8 @@ static void		ft_minirecognize(t_token ***tokens)
 			(*tokens)[i++]->type = SEP_OP;
 		else if (i == 0 || ((*tokens)[i - 1]->type == SEP_OP))
 			(*tokens)[i++]->type = COMMAND;
-		else if ((*tokens)[i - 1]->type == IO_REDIR)
+		else if ((*tokens)[i - 1]->type == IO_REDIR &&
+		ft_strlen((*tokens)[i - 1]->value) <= 2)
 			(*tokens)[i++]->type = FD_FILE;
 		else
 			(*tokens)[i++]->type = ARG;

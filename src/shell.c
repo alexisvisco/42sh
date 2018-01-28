@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 13:02:54 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/28 14:18:59 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/28 15:53:18 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,7 +23,7 @@ int		main(int args, char **argv)
 {
 	t_token	**tokens;
 	t_block	*test;
-	char	s[] = "  ls -t &| wc -c || #echo ; \"fd ; \\t\"s\"\" >mama  ; echo salut ca va ";
+	char	s[] = " ls -t &| wc -c || echo ; \"fd ; \\t\"s\"\" >&1 ; mama  ; echo salut ca va 1>&2";
 	
 	tokens = NULL;
 	test = NULL;
@@ -59,6 +59,7 @@ int		main(int args, char **argv)
 		ft_printf ("Nombre de pipe : %i\n", test[i].nb_pipe);
 		i++;
 	}
+	i = 0;
 	while (tokens[i])
 	{
 		free(tokens[i]->value);

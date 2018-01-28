@@ -6,7 +6,7 @@
 #    By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/01/19 13:46:02 by aviscogl     #+#   ##    ##    #+#        #
-#    Updated: 2018/01/28 14:13:30 by ggranjon    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/01/28 14:28:41 by ggranjon    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -22,6 +22,7 @@ OBJ_PATH = ./obj/
 
 SRC_NAME = \
 shell.c \
+lex/count_tokens.c \
 lex/split.c \
 lex/recognize.c \
 \

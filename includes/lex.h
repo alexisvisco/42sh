@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:48 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/28 14:12:40 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/28 14:34:19 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -50,6 +50,8 @@ typedef struct	s_block
 	int			isredir[2];
 	int			nb_pipe;
 }				t_block;
+
+int				nb_equal_char(char *s1, char *s2);
 
 char			*specpy(char *s);
 int				count_tokens(char *s);

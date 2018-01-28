@@ -6,25 +6,17 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 17:04:06 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/25 12:14:32 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/28 15:25:04 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-static int		ft_endword(char *s1, char *s2)
+static void		simplify_cpy(char **s, char **ret, int a)
 {
-	int		ret;
-
-	ret = 0;
-	while (*s1 && *s1 == *s2)
-	{
-		s1++;
-		s2++;
-		ret++;
-	}
-	return (ret);
+	(*ret)[a] = **s;
+	(*s)++;
 }
 
 static int		ft_cpysep(char **s, char **ret)
@@ -36,12 +28,18 @@ static int		ft_cpysep(char **s, char **ret)
 	(ft_isdigit(**s) && ft_strchr(FT_REDIR, (*(*s + 1)))))
 	{
 		i = 1;
-		(*ret)[0] = **s;
-		(*s)++;
-		if (ft_strchr(FT_SEP, **s) || ft_strchr(FT_REDIR, **s))
+		simplify_cpy(s, ret, 0);
+		if ((ft_strchr(FT_SEP, **s) && !(ft_isdigit((*ret)[0])))
+		|| ft_strchr(FT_REDIR, **s))
 		{
-			(*ret)[1] = **s;
-			(*s)++;
+			simplify_cpy(s, ret, 1);
+			if (((*ret)[1] == '&' && ft_isdigit(**s)) ||
+			((*ret)[1] == '>' && **s == '&'))
+			{
+				simplify_cpy(s, ret, 2);
+				if ((*ret)[2] == '&' && ft_isdigit(**s))
+					simplify_cpy(s, ret, 3);
+			}
 		}
 	}
 	return (i);
@@ -80,33 +78,6 @@ char			*specpy(char *s)
 	return (ret);
 }
 
-/*
-**	if  -2 is returned : quotes problem
-*/
-
-int				count_tokens(char *s)
-{
-	char	*word;
-	int		nbword;
-
-	nbword = 0;
-	while (*s)
-	{
-		while (*s == ' ')
-			s++;
-		if (*s)
-		{
-			word = specpy(s);
-			nbword++;
-			if (!word)
-				return (-2);
-			s += ft_endword(s, word);
-		}
-		ft_strdel(&word);
-	}
-	return (nbword);
-}
-
 t_token			**split_tokens(char *s, int nbtokens)
 {
 	t_token	**tokens;
@@ -127,7 +98,7 @@ t_token			**split_tokens(char *s, int nbtokens)
 		{
 			tokens[i]->value = specpy(s);
 			tokens[i]->index = len - ft_strlen(s);
-			s += ft_endword(s, tokens[i]->value);
+			s += nb_equal_char(s, tokens[i]->value);
 			i++;
 		}
 	}

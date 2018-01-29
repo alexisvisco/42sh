@@ -4,3 +4,5 @@ obj/
 obj/*
 *dSYM
 .DS_Store
+libft/libft.a
+libft/auteur

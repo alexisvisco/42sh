@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/23 17:56:38 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/28 15:55:27 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/29 10:03:53 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -24,7 +24,7 @@ static int	bad_red(char *s, t_token **tokens, int j)
 			if (s[1] == '<')
 				return (-2);
 	}
-	if ((ft_strlen(s) >= 2 && (tokens[j + 1]) && tokens[j + 1]->type != SEP_OP))
+	if ((ft_strlen(s) > 2 && (tokens[j + 1]) && tokens[j + 1]->type != SEP_OP))
 		return (-2);
 	return (0);
 }

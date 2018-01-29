@@ -6,7 +6,7 @@
 #    By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/01/19 13:46:02 by aviscogl     #+#   ##    ##    #+#        #
-#    Updated: 2018/01/28 14:28:41 by ggranjon    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/01/29 09:57:45 by ggranjon    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -34,9 +34,47 @@ parser/extract_redir.c \
 parser/slash.c \
 parser/commentary.c \
 parser/operator_error.c \
-parser/parse_all.c
+parser/parse_all.c \
+\
+editor/editor.c \
+editor/editor_insert.c \
+editor/readline.c \
+editor/readline_raw.c \
+editor/readline_notty.c \
+editor/handle_keys.c \
+editor/terminal_manager.c \
+editor/history/origin.c \
+editor/history/history.c \
+editor/util/get_colums_len.c \
+editor/util/get_cursor_pos.c \
+editor/refresher/buf_append.c \
+editor/refresher/refresh_line.c \
+editor/refresher/set_colum.c \
+editor/refresher/clean_and_go_up.c \
+editor/refresher/clean_top_show_prompt.c \
+editor/refresher/insert_new_line.c \
+editor/refresher/move_cursor.c \
+editor/refresher/clear_used_before.c \
+editor/edit_fn/ef_clear_screen.c \
+editor/edit_fn/ef_del_prev_word.c \
+editor/edit_fn/ef_delete_curr_to_end.c \
+editor/edit_fn/ef_delete_entire_line.c \
+editor/edit_fn/ef_go_end.c \
+editor/edit_fn/ef_go_home.c \
+editor/edit_fn/ef_move_up.c \
+editor/edit_fn/ef_move_down.c \
+editor/edit_fn/ef_move_left.c \
+editor/edit_fn/ef_move_right.c \
+editor/edit_fn/ef_del_backspace.c \
+editor/edit_fn/ef_del_simple.c \
+editor/edit_fn/ef_swap_char.c \
+editor/edit_fn/redirect_to_functions.c \
+\
+util/ft_realloc.c \
+util/ft_char_to_str.c
 
-OBJ_FOLDERS = editor env eval exec lex messages parser util 
+EDITOR_FOLDERS = editor editor/util editor/refresher editor/keys_functions editor/edit_fn editor/history
+OBJ_FOLDERS = $(EDITOR_FOLDERS) env eval exec lex messages parser util 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
@@ -50,7 +88,7 @@ $(NAME): $(OBJ)
 	$(CC) -o $(NAME) $(OBJ) -L$(LFT_PATH) -lft
 
 
-$(OBJ_PATH)%.o: $(SRC_PATH)%.c 
+$(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@mkdir -p $(OBJ_PATH) $(OBJ_FOLDERS_BIS)
 	$(CC) $(CC_FLAGS) $(INC_PATH) -o $@ -c $^
 

@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:35 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/25 14:24:17 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/29 10:34:50 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -109,11 +109,11 @@ typedef struct	s_history
 	int64_t		index;
 }				t_history;
 
+
 typedef void(t_redirect_fn)(t_editor *);
 
 extern t_termios	g_origin;
 extern int			g_raw_mode;
-
 
 char			*readline(const char *prompt);
 char			*readline_notty();

@@ -1,22 +1,32 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ht_set.c                                         .::    .:/ .      .::   */
+/*   set_env.c                                        .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/23 13:27:45 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/29 10:58:09 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/29 10:35:59 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/29 11:04:53 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "shell.h"
 
-void	ht_set(t_hashtable *h, const char *key, void *val)
+extern char	**environ;
+
+void	set_env()
 {
-	t_node *node;
+	int		i;
+	char	**splitted;
 
-	node = ht_has_or_create(h, key);
-	node->value = val;
+	g_shell.env = ht_new(128);
+	i = -1;
+	while (environ[++i])
+	{
+		splitted = ft_strsplit(environ[i], '=');
+		if (splitted && splitted[0] && splitted[1])
+			ht_set(g_shell.env, splitted[0], ft_strdup(splitted[1]));
+		free_tab(splitted);
+	}
 }

@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ht_set.c                                         .::    .:/ .      .::   */
+/*   free_tab.c                                       .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/23 13:27:45 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/29 10:58:09 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/29 10:38:35 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/29 10:38:57 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "shell.h"
 
-void	ht_set(t_hashtable *h, const char *key, void *val)
+void	free_tab(char **table)
 {
-	t_node *node;
+	int i;
 
-	node = ht_has_or_create(h, key);
-	node->value = val;
+	i = -1;
+	if (table)
+	{
+		while (table[++i])
+			free(table[i]);
+		free(table);
+	}
 }

@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   shell.h                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:00 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/29 09:56:27 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/29 12:45:45 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -24,14 +24,17 @@
 # include <termcap.h>
 # include <term.h>
 # include <termios.h>
-# include <dirent.h>
 # include <signal.h>
 # include <stdint.h>
+# include <sys/types.h>
+# include <dirent.h>
+# include <sys/stat.h>
 # include "editor.h"
 # include "lex.h"
 # include "libft.h"
 
-typedef enum	e_message{
+typedef enum	e_message
+{
 	ERR_NOTHING_ENTERED,
 	ERR_CTRL_C,
 	ERR_CMD_NOT_FOUND,
@@ -43,7 +46,8 @@ typedef enum	e_message{
 	ERR_UNENV_CMD
 }				t_message;
 
-typedef enum	e_parse{
+typedef enum	e_parse
+{
 	ERR_QUOTE,
 	ERR_REDIR,
 	ERR_PIPE,
@@ -51,7 +55,20 @@ typedef enum	e_parse{
 	ERR_BAD_END
 }				t_eparse;
 
+
+typedef struct	s_shell
+{
+	t_hashtable	*env;
+	t_hashtable	*bin;
+	
+}				t_shell;
+
+extern t_shell	g_shell;
+
 void		e_general(t_message m, char *arg);
 void		e_parse(t_eparse m, char *arg);
+
+void		set_env();
+void		set_bin();
 
 #endif

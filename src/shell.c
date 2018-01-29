@@ -3,15 +3,17 @@
 /*                                                              /             */
 /*   shell.c                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 13:02:54 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/29 10:01:22 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/29 13:29:11 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
+
+t_shell	g_shell;
 
 int main2(char *s)
 {
@@ -65,16 +67,24 @@ int main2(char *s)
 int	main(void)
 {
 	char *str;
-
-	while ((str = readline("shell> ")))
+	
+	set_env();
+	set_bin();
+	ht_print_debug(g_shell.bin, ht_print_str);
+	while ((str = readline("get path for a binary ? ")))
 	{
-		ft_printf("You wrote: {%s}\n", str);
-		main2(str);
 		if (ft_strequ("exit", str))
 		{
 			free(str);
 			exit(0);
 		}
+		ft_printf("You want the path for: %s = ", str);
+		// main2(str);
+		t_node *node = ht_has(g_shell.bin, str);
+		if (node)
+			ft_printf("%s\n", (char *)node->value);
+		else
+			ft_printf("not found\n");
 		free(str);
 	}
 }

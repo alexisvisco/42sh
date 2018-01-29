@@ -3,10 +3,10 @@
 #                                                               /              #
 #    Makefile                                         .::    .:/ .      .::    #
 #                                                  +:+:+   +:    +:  +:+:+     #
-#    By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+      #
+#    By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/01/19 13:46:02 by aviscogl     #+#   ##    ##    #+#        #
-#    Updated: 2018/01/29 09:57:45 by ggranjon    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/01/29 12:46:13 by aviscogl    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -35,6 +35,9 @@ parser/slash.c \
 parser/commentary.c \
 parser/operator_error.c \
 parser/parse_all.c \
+\
+init/set_env.c \
+init/set_bin.c \
 \
 editor/editor.c \
 editor/editor_insert.c \
@@ -71,10 +74,11 @@ editor/edit_fn/ef_swap_char.c \
 editor/edit_fn/redirect_to_functions.c \
 \
 util/ft_realloc.c \
+util/free_tab.c \
 util/ft_char_to_str.c
 
 EDITOR_FOLDERS = editor editor/util editor/refresher editor/keys_functions editor/edit_fn editor/history
-OBJ_FOLDERS = $(EDITOR_FOLDERS) env eval exec lex messages parser util 
+OBJ_FOLDERS = $(EDITOR_FOLDERS) init eval exec lex messages parser util 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))

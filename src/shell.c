@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 13:02:54 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/29 15:38:57 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/29 18:56:02 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -38,7 +38,7 @@ int	main2(char *s)
 	ft_printf("value = 4 => FD_FILE\n\n\n");
 
 	int parse;
-	
+
 	if ((parse = parse_block(tokens, &test)) == -1)
 		printf("\nErreur parse block\n");
 	if (parse == -2)
@@ -52,6 +52,7 @@ int	main2(char *s)
 		ft_printf("Nombre de pipe : %i\n", test[i].nb_pipe);
 		i++;
 	}
+	exec_a_block(tokens, test, 0);
 	i = 0;
 	while (tokens[i])
 	{

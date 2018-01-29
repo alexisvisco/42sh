@@ -3,10 +3,10 @@
 #                                                               /              #
 #    Makefile                                         .::    .:/ .      .::    #
 #                                                  +:+:+   +:    +:  +:+:+     #
-#    By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+      #
+#    By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/01/19 13:46:02 by aviscogl     #+#   ##    ##    #+#        #
-#    Updated: 2018/01/29 12:46:13 by aviscogl    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/01/29 18:07:23 by ggranjon    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -75,7 +75,10 @@ editor/edit_fn/redirect_to_functions.c \
 \
 util/ft_realloc.c \
 util/free_tab.c \
-util/ft_char_to_str.c
+util/ft_char_to_str.c \
+\
+exec/central_exec.c  \
+exec/extract_cmd_and_args.c 
 
 EDITOR_FOLDERS = editor editor/util editor/refresher editor/keys_functions editor/edit_fn editor/history
 OBJ_FOLDERS = $(EDITOR_FOLDERS) init eval exec lex messages parser util 

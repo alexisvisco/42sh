@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   shell.c                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 13:02:54 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/29 13:29:11 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/29 15:38:57 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,18 +15,17 @@
 
 t_shell	g_shell;
 
-int main2(char *s)
+int	main2(char *s)
 {
 	t_token **tokens;
 	t_block *test;
+	int i;
 
 	tokens = NULL;
 	test = NULL;
-
 	if (parse_tokens(&tokens, s) == -1)
 		printf("\nErreur parse tokens\n");
-
-	int i = 0;
+	i = 0;
 	while (tokens[i])
 	{
 		ft_printf("tokens %-2i : %-25s  valeur =  %i \n", i, tokens[i]->value, tokens[i]->type);
@@ -39,7 +38,7 @@ int main2(char *s)
 	ft_printf("value = 4 => FD_FILE\n\n\n");
 
 	int parse;
-
+	
 	if ((parse = parse_block(tokens, &test)) == -1)
 		printf("\nErreur parse block\n");
 	if (parse == -2)
@@ -62,29 +61,24 @@ int main2(char *s)
 	}
 	free(tokens);
 	free(test);
+	return (0);
 }
 
 int	main(void)
 {
 	char *str;
-	
+
 	set_env();
 	set_bin();
-	ht_print_debug(g_shell.bin, ht_print_str);
-	while ((str = readline("get path for a binary ? ")))
+	while ((str = readline("shell> ")))
 	{
 		if (ft_strequ("exit", str))
 		{
 			free(str);
 			exit(0);
 		}
-		ft_printf("You want the path for: %s = ", str);
-		// main2(str);
-		t_node *node = ht_has(g_shell.bin, str);
-		if (node)
-			ft_printf("%s\n", (char *)node->value);
-		else
-			ft_printf("not found\n");
+		main2(str);
 		free(str);
 	}
+	return (0);
 }

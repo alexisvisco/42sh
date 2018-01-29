@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/23 14:07:56 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/28 15:25:38 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/29 16:56:34 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -26,13 +26,12 @@ static int	countsep(t_token **tokens)
 	while (tokens[i])
 	{
 		while (tokens[i] && ft_strcmp(tokens[i]->value, "&") &&
-		ft_strcmp(tokens[i]->value, "&&") && tokens[i]->value[0] != ';'
+		tokens[i]->value[0] != ';'
 		&& ft_strcmp(tokens[i]->value, "&|"))
 			i++;
 		block++;
 		if (tokens[i] && (ft_strcmp(tokens[i]->value, "&") == 0 ||
-		ft_strcmp(tokens[i]->value, "&&") == 0 || tokens[i]->value[0] == ';' ||
-		ft_strcmp(tokens[i]->value, "&|") == 0))
+		tokens[i]->value[0] == ';' || ft_strcmp(tokens[i]->value, "&|") == 0))
 			i++;
 	}
 	return (block);
@@ -53,13 +52,13 @@ t_block		*extractblock(t_token **tokens)
 		ft_bzero(&(blocks[j]), sizeof(t_block));
 		begin = i;
 		while (tokens[i] && ft_strcmp(tokens[i]->value, "&") &&
-		ft_strcmp(tokens[i]->value, "&&") && tokens[i]->value[0] != ';'
+		tokens[i]->value[0] != ';'
 		&& ft_strcmp(tokens[i]->value, "&|"))
 			i++;
 		blocks[j].start_tok = begin;
 		blocks[j++].end_tok = i - 1;
 		if (tokens[i] && (ft_strcmp(tokens[i]->value, "&") == 0 ||
-		ft_strcmp(tokens[i]->value, "&&") == 0 || tokens[i]->value[0] == ';' ||
+		tokens[i]->value[0] == ';' ||
 		ft_strcmp(tokens[i]->value, "&|") == 0))
 			i++;
 	}

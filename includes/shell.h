@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:00 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/29 12:45:45 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/29 20:49:11 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -60,6 +60,7 @@ typedef struct	s_shell
 {
 	t_hashtable	*env;
 	t_hashtable	*bin;
+	t_trie_node	*bin_trie;
 	
 }				t_shell;
 

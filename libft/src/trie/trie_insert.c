@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   util.h                                           .::    .:/ .      .::   */
+/*   trie_insert.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/21 15:53:14 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/30 14:39:23 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/29 18:37:44 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/30 14:40:46 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef UTIL_H
-# define UTIL_H
+# include "libft.h"
 
-# include <stdlib.h>
+void	trie_insert(t_trie_node *root, const char *key)
+{
+	const size_t	length = ft_strlen(key);
+    t_trie_node		*trie_node = root;
+	size_t			level;
+	int				index;
 
-void	*ft_realloc(void *ptr, size_t size);
-char	*ft_char_to_str(char c);
-void	free_tab(char **table);
-char	**env_to_array(void);
-size_t	env_size(void);
-
-#endif
+	level = 0;
+	while (level < length)
+	{
+		index = trie_char_to_index(key[level]);
+		if (!trie_node->children[index])
+		{
+			trie_node->children[index] = trie_new();
+			trie_node->has_child = 1;
+		}
+		trie_node = trie_node->children[index];
+		level++;
+	}
+	trie_node->is_word_end = 1;
+}

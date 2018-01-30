@@ -6,7 +6,7 @@
 #    By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2017/11/17 14:07:28 by aviscogl     #+#   ##    ##    #+#        #
-#    Updated: 2018/01/23 18:26:42 by aviscogl    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/01/29 21:01:26 by aviscogl    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -80,6 +80,14 @@ hashtable/ht_free.c \
 hashtable/ht_get.c \
 hashtable/ht_print.c \
 hashtable/ht_print_preset.c \
+\
+trie/trie_new.c \
+trie/trie_delete.c \
+trie/trie_insert.c \
+trie/trie_is_last_node.c \
+trie/trie_search.c \
+trie/trie_start_with.c \
+trie/trie_char_to_index.c \
 \
 math/math_abs.c \
 math/math_len.c \
@@ -193,7 +201,7 @@ CFLAGS += -g -Wall -Werror -Wextra
 SRC_PATH = ./src/
 INC_PATH = ./includes/
 OBJ_PATH = ./obj/
-OBJ_PATHS = io is lib lst heap hashtable math mem printf str map printf/parser printf/struct printf/util printf/converter printf/evaluator \
+OBJ_PATHS = io is lib trie lst heap hashtable math mem printf str map printf/parser printf/struct printf/util printf/converter printf/evaluator \
 printf/evaluator/eval_base printf/evaluator/eval_char printf/evaluator/eval_number \
 printf/evaluator/eval_pointer printf/evaluator/eval_string printf/evaluator/eval_string/compute \
 printf/evaluator/eval_base/compute printf/evaluator/eval_number/compute \

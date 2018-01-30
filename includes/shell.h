@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:00 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/29 17:29:54 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/30 14:40:18 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -61,6 +61,7 @@ typedef struct	s_shell
 {
 	t_hashtable	*env;
 	t_hashtable	*bin;
+	t_trie_node	*bin_trie;
 }				t_shell;
 
 extern t_shell	g_shell;

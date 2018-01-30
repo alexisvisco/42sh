@@ -5,8 +5,8 @@
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/29 10:43:16 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/30 11:22:29 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/30 14:42:25 by ggranjon     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/30 14:53:37 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -43,8 +43,8 @@ static void	add_to_bintable(char *path_folder)
 		if (!(ft_strequ(entry->d_name, ".") || ft_strequ(entry->d_name, ".."))
 		&& can_use(path))
 		{
-			tmp = ft_strdup(path);
-			ht_set(g_shell.bin, entry->d_name, tmp);
+			ht_set(g_shell.bin, entry->d_name, ft_strdup(path));
+			trie_insert(g_shell.bin_trie, entry->d_name);
 		}
 	}
 	closedir(dir);
@@ -57,6 +57,7 @@ void		set_bin(void)
 	int		i;
 
 	g_shell.bin = ht_new(512);
+	g_shell.bin_trie = trie_new();
 	path = (char *)ht_has(g_shell.env, "PATH")->value;
 	if (path)
 	{

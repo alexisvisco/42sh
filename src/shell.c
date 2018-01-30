@@ -5,15 +5,15 @@
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/19 13:02:54 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/30 14:33:24 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/30 14:44:16 by ggranjon     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/30 14:49:29 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-t_shell	g_shell;
+t_shell g_shell;
 
 int	main2(char *s)
 {
@@ -67,7 +67,7 @@ int	main2(char *s)
 
 int	main(void)
 {
-	char *str;
+	char	*str;
 
 	set_env();
 	set_bin();
@@ -78,9 +78,7 @@ int	main(void)
 			free(str);
 			exit(0);
 		}
-		signal(SIGINT, sig_handler);
 		main2(str);
 		free(str);
 	}
-	return (0);
 }

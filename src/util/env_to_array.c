@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 11:45:37 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/30 11:50:23 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/30 14:22:57 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -33,7 +33,6 @@ static void	put_in_array(char **env, int *k)
 				{
 					str = ft_sprintf("%s=%s", ((t_node *)
 t->heaps[i]->list[j])->key, (char *)((t_node *)t->heaps[i]->list[j])->value);
-					ft_printf("%s %lu\n", str, *k);
 					env[(*k)++] = str;
 				}
 			}
@@ -57,7 +56,6 @@ size_t		env_size(void)
 			size += t->heaps[i]->elements;
 		i++;
 	}
-	ft_printf("size: %lu\n", size);
 	return (size);
 }
 

@@ -6,7 +6,7 @@
 #    By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/01/19 13:46:02 by aviscogl     #+#   ##    ##    #+#        #
-#    Updated: 2018/01/30 13:38:36 by ggranjon    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/01/30 14:20:58 by ggranjon    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -76,6 +76,7 @@ editor/edit_fn/redirect_to_functions.c \
 util/ft_realloc.c \
 util/free_tab.c \
 util/ft_char_to_str.c \
+util/env_to_array.c \
 \
 exec/central_exec.c  \
 exec/extract_cmd_and_args.c \

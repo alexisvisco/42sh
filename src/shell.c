@@ -6,7 +6,11 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 13:02:54 by aviscogl     #+#   ##    ##    #+#       */
+<<<<<<< HEAD
 /*   Updated: 2018/01/29 21:11:54 by aviscogl    ###    #+. /#+    ###.fr     */
+=======
+/*   Updated: 2018/01/30 14:27:39 by aviscogl    ###    #+. /#+    ###.fr     */
+>>>>>>> leaks
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -66,6 +70,7 @@ int main2(char *s)
 
 int main(void)
 {
+<<<<<<< HEAD
 	char *str;
 
 	set_env();
@@ -91,5 +96,36 @@ int main(void)
 		}
 		heap_free(h, free);
 		free(str);
+=======
+	
+	set_env();
+	// set_bin();
+	// ht_print_debug(g_shell.bin, ht_print_str);
+	// while ((str = readline("get path for a binary ? ")))
+	// {
+	// 	if (ft_strequ("exit", str))
+	// 	{
+	// 		free(str);
+	// 		exit(0);
+	// 	}
+	// 	ft_printf("You want the path for: %s = ", str);
+	// 	// main2(str);
+	// 	t_node *node = ht_has(g_shell.bin, str);
+	// 	if (node)
+	// 		ft_printf("%s\n", (char *)node->value);
+	// 	else
+	// 		ft_printf("not found\n");
+	// 	free(str);
+	// }
+	char **env = env_to_array();
+	int i;
+
+	i  = 0;
+	while (env[i])
+	{
+		ft_printf("%s\n", env[i]);
+		i++;
+>>>>>>> leaks
 	}
+	free_tab(env);
 }

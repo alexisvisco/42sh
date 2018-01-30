@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/11/25 14:15:22 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/23 18:35:25 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/30 10:19:53 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,7 +18,7 @@
 
 typedef struct		s_hashtable
 {
-	void			**heaps;
+	t_heap			**heaps;
 	size_t			size;
 }					t_hashtable;
 

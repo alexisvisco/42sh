@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/29 10:43:16 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/29 13:22:21 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/30 11:43:53 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -60,5 +60,6 @@ void		set_bin()
 		i = -1;
 		while (paths[++i])
 			add_to_bintable(paths[i]);
+		free_tab(paths);
 	}
 }

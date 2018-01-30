@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:48 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/29 17:31:20 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/30 17:19:18 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -34,8 +34,16 @@ typedef struct	s_token
 	int			index;
 }				t_token;
 
+typedef enum	e_block_type
+{
+	NOTHING = 0,
+	TY_REDIR,
+	TY_AND,
+	TY_OR
+}				t_block_type;
+
 /*
-** isredir[0] = 1 if there is a redir in the block
+** isredir[0] = typedef block_type
 ** isredir[1] is for the type of the redir :
 ** 	0 =  "3>&2" even if isredir[0] = 0
 **	1 = "<<"
@@ -46,10 +54,11 @@ typedef struct	s_token
 
 typedef struct	s_block
 {
-	int			start_tok;
-	int			end_tok;
-	int			isredir[2];
-	int			nb_pipe;
+	int				start_tok;
+	int				end_tok;
+	int				isredir[2];
+	t_block_type	my_op[64];
+	int				nb_pipe;
 }				t_block;
 
 int				nb_equal_char(char *s1, char *s2);
@@ -71,6 +80,7 @@ char			*change_quotes(char *s);
 void			format_tokens_quotes(t_token ***tokens);
 
 void			extract_type_redir(t_token **tokens, t_block **block);
+void			analyze_or_and(t_block **block, t_token **tokens);
 int				operator_error(t_block **blocks, t_token **tokens);
 
 int				parse_tokens(t_token ***tokens, char *s);

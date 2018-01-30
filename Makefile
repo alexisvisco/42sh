@@ -6,7 +6,7 @@
 #    By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/01/19 13:46:02 by aviscogl     #+#   ##    ##    #+#        #
-#    Updated: 2018/01/30 14:47:07 by ggranjon    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/01/30 19:02:06 by ggranjon    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -35,6 +35,7 @@ parser/slash.c \
 parser/commentary.c \
 parser/operator_error.c \
 parser/parse_all.c \
+parser/parse_and_or.c  \
 \
 init/set_env.c \
 init/set_bin.c \
@@ -80,7 +81,8 @@ util/env_to_array.c \
 \
 exec/central_exec.c  \
 exec/extract_cmd_and_args.c \
-exec/signal.c
+exec/signal.c \
+exec/analyze_next_and_or.c 
 
 EDITOR_FOLDERS = editor editor/util editor/refresher editor/keys_functions editor/edit_fn editor/history
 OBJ_FOLDERS = $(EDITOR_FOLDERS) init eval exec lex messages parser util 

@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/23 17:56:38 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/30 09:21:56 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/30 17:17:23 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -42,7 +42,7 @@ static int	analyze_red(t_block **block, t_token **tokens)
 		{
 			if (tokens[j]->type == IO_REDIR)
 			{
-				(*block)[i].isredir[0] = 1;
+				(*block)[i].isredir[0] = TY_REDIR;
 				if (ft_strlen(tokens[j]->value) <= 2 && (!(tokens[j + 1])
 				|| tokens[j + 1]->type != FD_FILE || (tokens[j]->value[1] &&
 				!ft_strchr(FT_REDIR, tokens[j]->value[1]))))
@@ -122,5 +122,6 @@ int			analyze_block(t_block **blocks, t_token **tokens)
 		e_parse(ERR_AFTER_FD, NULL);
 		return (-2);
 	}
+	analyze_or_and(blocks, tokens);
 	return (0);
 }

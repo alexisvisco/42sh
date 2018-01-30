@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/29 18:06:54 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/30 14:05:36 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/30 16:58:35 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -40,7 +40,6 @@ char		**extract_cmd_args(t_token **tokens, t_block *block, int num)
 	num = block[num].start_tok;
 	while (i <= end)
 	{
-		printf("Num : %i\n", num);
 		argv[i] = ft_strdup(tokens[num]->value);
 		num++;
 		i++;

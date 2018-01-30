@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 13:02:54 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/30 11:43:27 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/30 14:27:39 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -66,10 +66,9 @@ int main2(char *s)
 
 int	main(void)
 {
-	// char *str;
 	
 	set_env();
-	set_bin();
+	// set_bin();
 	// ht_print_debug(g_shell.bin, ht_print_str);
 	// while ((str = readline("get path for a binary ? ")))
 	// {
@@ -87,5 +86,14 @@ int	main(void)
 	// 		ft_printf("not found\n");
 	// 	free(str);
 	// }
+	char **env = env_to_array();
+	int i;
 
+	i  = 0;
+	while (env[i])
+	{
+		ft_printf("%s\n", env[i]);
+		i++;
+	}
+	free_tab(env);
 }

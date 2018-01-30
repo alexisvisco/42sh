@@ -3,13 +3,14 @@
 /*                                                              /             */
 /*   util.h                                           .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/21 15:53:14 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/29 10:39:01 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/30 11:47:45 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
+
 #ifndef UTIL_H
 # define UTIL_H
 
@@ -18,5 +19,7 @@
 void	*ft_realloc(void *ptr, size_t size);
 char	*ft_char_to_str(char c);
 void	free_tab(char **table);
+char	**env_to_array(void);
+size_t	env_size(void);
 
 #endif

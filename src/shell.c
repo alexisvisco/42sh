@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 13:02:54 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/29 18:56:02 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/30 13:37:54 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -78,6 +78,7 @@ int	main(void)
 			free(str);
 			exit(0);
 		}
+		signal(SIGINT, sig_handler);
 		main2(str);
 		free(str);
 	}

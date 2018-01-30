@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   set_bin.c                                        .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/29 10:43:16 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/29 13:22:21 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/30 11:22:29 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -28,11 +28,12 @@ static int	can_use(char *path)
 	&& st.st_mode & S_IXUSR));
 }
 
-static void add_to_bintable(char *path_folder)
+static void	add_to_bintable(char *path_folder)
 {
 	DIR				*dir;
 	struct dirent	*entry;
 	char			path[2048];
+	char			*tmp;
 
 	if (!(dir = opendir(path_folder)))
 		return ;
@@ -41,12 +42,15 @@ static void add_to_bintable(char *path_folder)
 		path_join((char *)path, path_folder, entry->d_name);
 		if (!(ft_strequ(entry->d_name, ".") || ft_strequ(entry->d_name, ".."))
 		&& can_use(path))
-			ht_set(g_shell.bin, entry->d_name, ft_strdup(path));
+		{
+			tmp = ft_strdup(path);
+			ht_set(g_shell.bin, entry->d_name, tmp);
+		}
 	}
 	closedir(dir);
 }
 
-void		set_bin()
+void		set_bin(void)
 {
 	char	*path;
 	char	**paths;
@@ -60,5 +64,6 @@ void		set_bin()
 		i = -1;
 		while (paths[++i])
 			add_to_bintable(paths[i]);
+		free_tab(paths);
 	}
 }

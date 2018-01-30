@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   f_hashtable.h                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/11/25 14:15:22 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/23 18:35:25 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/30 11:46:39 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,7 +18,7 @@
 
 typedef struct		s_hashtable
 {
-	void			**heaps;
+	t_heap			**heaps;
 	size_t			size;
 }					t_hashtable;
 

@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/29 17:25:56 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 10:52:28 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/31 14:48:42 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -42,35 +42,4 @@ int			fork_result(char *node, char **argv)
 		perror("Fork failed");
 	free_tab(newenv);
 	return (WEXITSTATUS(status));
-}
-
-void		exec_a_block(char **argv)
-{
-	char	*node;
-	int		ret;
-
-	node = NULL;
-	ret = 0;
-	if (is_executable(argv[0]))
-		ret = fork_result(argv[0], argv);
-	else if ((node = ht_get(g_shell.bin, argv[0])))
-		ret = fork_result(node, argv);
-	else
-		e_general(ERR_CMD_NOT_FOUND, argv[0]);
-	printf("ret %i\n\n", ret);
-}
-
-void		exec_all(t_token **tokens, t_block *blocks)
-{
-	int		i;
-	char	**argv;
-
-	i = 0;
-	while (blocks[i].start_tok != -1)
-	{
-		argv = extract_cmd_args(tokens, blocks, i);
-		exec_a_block(argv);
-		free_tab(argv);
-		i++;
-	}
 }

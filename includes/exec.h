@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/29 17:26:58 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 12:00:14 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/31 14:48:37 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -37,8 +37,6 @@ int			go_to_next(t_token **tokens, t_block *block, int num, int index);
 int			exec_or_and(t_token **tokens, t_block *blocks, int num[2], int ret);
 
 int			fork_result(char *node, char **argv);
-void		exec_all(t_token **tokens, t_block *blocks);
-void		exec_a_block(char **argv);
 
 void		sig_handler(int signo);
 

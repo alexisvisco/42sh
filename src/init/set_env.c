@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/29 10:35:59 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/29 11:04:53 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/31 21:05:10 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,6 +14,10 @@
 #include "shell.h"
 
 extern char	**environ;
+
+/*
+** Retrieve all paths from environ and add it to a hashtable
+*/
 
 void	set_env()
 {

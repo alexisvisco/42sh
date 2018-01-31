@@ -6,12 +6,16 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/29 10:38:35 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 15:15:34 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/31 21:14:50 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
+
+/*
+** Free an array of strings
+*/
 
 void	free_tab(char **table)
 {

@@ -6,12 +6,16 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/22 20:43:03 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/25 12:53:48 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/31 21:15:05 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+
+/*
+** Get a string from a char
+*/
 
 char	*ft_char_to_str(char c)
 {

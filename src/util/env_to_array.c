@@ -6,14 +6,14 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 11:45:37 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 15:15:28 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/31 21:11:01 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-static void	put_in_array(char **env, int *k)
+static void		put_in_array(char **env, int *k)
 {
 	t_hashtable	*t;
 	size_t		i;
@@ -41,7 +41,7 @@ t->heaps[i]->list[j])->key, (char *)((t_node *)t->heaps[i]->list[j])->value);
 	}
 }
 
-size_t		env_size(void)
+static size_t	env_size(void)
 {
 	t_hashtable	*t;
 	size_t		i;
@@ -59,7 +59,12 @@ size_t		env_size(void)
 	return (size);
 }
 
-char		**env_to_array(void)
+/*
+** From the g_shell.env convert the hashtable in a array of string,
+** each string take the form: key=value.
+*/
+
+char			**env_to_array(void)
 {
 	t_hashtable	*envs;
 	char		**env;

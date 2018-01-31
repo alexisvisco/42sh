@@ -6,12 +6,16 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/31 19:56:38 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 19:58:10 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/31 21:28:05 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/*
+**  Copy str in src to dest
+*/
 
 void	ft_copy_str(char *dest, char *src)
 {

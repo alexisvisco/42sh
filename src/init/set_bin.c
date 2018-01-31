@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/31 15:03:52 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 18:41:52 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/31 21:04:44 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -49,6 +49,12 @@ static void	add_to_bintable(char *path_folder)
 	}
 	closedir(dir);
 }
+
+/*
+** Retrieve all paths in the PATH environement variable and for each of them
+** get all files that user can access and they are executable. Add to the 
+** hashtable and insert in the trie structure.
+*/
 
 void		set_bin(void)
 {

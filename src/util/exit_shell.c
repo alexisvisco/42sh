@@ -6,12 +6,17 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/31 13:47:54 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 20:43:32 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/31 21:14:28 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
+
+/*
+** At exit, free all variables to avoid leaks
+** Yes leaks are a pain. 
+*/
 
 void	exit_shell(void)
 {

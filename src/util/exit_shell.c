@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/31 13:47:54 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 14:12:30 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/31 14:40:16 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,5 +17,6 @@ void	exit_shell(void)
 {
 	ht_free(g_shell.bin);
 	ht_free(g_shell.env);
-	trie_delete(g_shell.bin_trie);
+	history_free();
+	trie_free(g_shell.bin_trie);
 }

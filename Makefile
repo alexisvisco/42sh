@@ -6,7 +6,7 @@
 #    By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/01/19 13:46:02 by aviscogl     #+#   ##    ##    #+#        #
-#    Updated: 2018/01/31 13:48:54 by aviscogl    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/01/31 14:40:34 by aviscogl    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -45,6 +45,7 @@ editor/readline.c \
 editor/readline_raw.c \
 editor/readline_notty.c \
 editor/handle_keys.c \
+editor/history/history_free.c \
 editor/terminal_manager.c \
 editor/history/origin.c \
 editor/history/history.c \

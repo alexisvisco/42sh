@@ -6,7 +6,7 @@
 #    By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2017/11/17 14:07:28 by aviscogl     #+#   ##    ##    #+#        #
-#    Updated: 2018/01/29 21:01:26 by aviscogl    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/01/31 14:28:21 by aviscogl    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -82,7 +82,7 @@ hashtable/ht_print.c \
 hashtable/ht_print_preset.c \
 \
 trie/trie_new.c \
-trie/trie_delete.c \
+trie/trie_free.c \
 trie/trie_insert.c \
 trie/trie_is_last_node.c \
 trie/trie_search.c \

@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/23 15:09:30 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 14:25:48 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/31 14:31:35 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -41,7 +41,6 @@ void	ht_free(t_hashtable *t)
 		if (h)
 		{
 			j = 0;
-			printf("Elements: %zu\n", h->elements);
 			while (j < h->size)
 			{
 				if (t->free_func && h->list[j])

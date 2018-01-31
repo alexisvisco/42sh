@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/29 17:26:58 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/30 19:03:10 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/31 12:00:14 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,13 +20,19 @@
 # include <stdio.h>
 # include <stdlib.h>
 
+# define EXEC_FINISH	18
+
 int			end_of_arg(t_token **tokens, t_block *block, int num);
 char		**extract_cmd_args(t_token **tokens, t_block *block, int num);
 
-int			analyze_next_and_or(t_token **tokens, int index);
-char		**next_cmd(t_token **tokens, t_block *block, int num, int index);
+int			analyze_next_and_or(char *s);
 
-int			go_next_index(t_token **tokens, t_block *blocks, int num[2]);
+char		**next_cmd(t_token **tokens, int index[2]);
+
+int			is_executable(char *path);
+
+int			go_next_index(t_token **tokens, t_block *blocks,
+			int num[2], int ret);
 int			go_to_next(t_token **tokens, t_block *block, int num, int index);
 int			exec_or_and(t_token **tokens, t_block *blocks, int num[2], int ret);
 

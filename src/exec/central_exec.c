@@ -6,14 +6,14 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/29 17:25:56 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/30 18:24:09 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/31 10:52:28 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-static int	is_executable(char *path)
+int			is_executable(char *path)
 {
 	struct stat st;
 

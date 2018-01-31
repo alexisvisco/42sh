@@ -6,7 +6,7 @@
 #    By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/01/19 13:46:02 by aviscogl     #+#   ##    ##    #+#        #
-#    Updated: 2018/01/30 19:02:06 by ggranjon    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/01/31 11:31:53 by ggranjon    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -78,11 +78,13 @@ util/ft_realloc.c \
 util/free_tab.c \
 util/ft_char_to_str.c \
 util/env_to_array.c \
+util/delete_first.c  \
 \
 exec/central_exec.c  \
 exec/extract_cmd_and_args.c \
 exec/signal.c \
-exec/analyze_next_and_or.c 
+exec/analyze_next_and_or.c  \
+exec/exec_or_and.c 
 
 EDITOR_FOLDERS = editor editor/util editor/refresher editor/keys_functions editor/edit_fn editor/history
 OBJ_FOLDERS = $(EDITOR_FOLDERS) init eval exec lex messages parser util 

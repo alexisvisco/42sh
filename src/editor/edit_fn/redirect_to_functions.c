@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/23 20:04:51 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/25 14:11:20 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/31 20:23:03 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -58,15 +58,15 @@ static t_redirect_fn	*extra_fn(t_editor *l, char *seq)
 	return (NULL);
 }
 
-static t_redirect_fn	*normal_fn(char c)
+static t_redirect_fn	*normal_fn(char c, t_editor *e)
 {
 	if (c == 'C')
 		return (ef_move_right);
 	if (c == 'D')
 		return (ef_move_left);
-	if (c == 'A')
+	if (c == 'A' && e->options->has_history)
 		return (history_up);
-	if (c == 'B')
+	if (c == 'B' && e->options->has_history)
 		return (history_down);
 	if (c == 'H')
 		return (ef_go_home);
@@ -85,11 +85,11 @@ static t_redirect_fn	*esc_fn(t_editor *l, char *seq)
 	{
 		if ((fn = extra_fn(l, seq)))
 			return (fn);
-		else if ((fn = normal_fn(seq[1])))
+		else if ((fn = normal_fn(seq[1], l)))
 			return (fn);
 	}
 	else if (seq[0] == '0')
-		if ((fn = normal_fn(seq[1])))
+		if ((fn = normal_fn(seq[1], l)))
 			return (fn);
 	return (0);
 }

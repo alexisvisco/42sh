@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   util.h                                           .::    .:/ .      .::   */
+/*   free_e_content.c                                 .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/21 15:53:14 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 19:58:28 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/31 14:35:39 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/31 20:25:22 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef UTIL_H
-# define UTIL_H
+#include "editor.h"
 
-# include <stdlib.h>
-
-void	*ft_realloc(void *ptr, size_t size);
-char	*ft_char_to_str(char c);
-void	free_tab(char **table);
-char	**env_to_array(void);
-size_t	env_size(void);
-void	ft_copy_str(char *dest, char *src);
-
-#endif
+void	free_e_content(t_e_content *h)
+{
+	if (h)
+	{
+		heap_free(h->heap);
+		free(h);
+	}
+}

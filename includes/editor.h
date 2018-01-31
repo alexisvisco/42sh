@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:35 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 14:39:35 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/31 20:42:22 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -67,24 +67,6 @@ enum	e_key_action
 	BACKSPACE = 127,
 };
 
-typedef struct	s_editor
-{
-	int			ifd;
-	int			ofd;
-	t_termios	origin;
-	char		*buf;
-	size_t		buflen;
-	const char	*prompt;
-	size_t		plen;
-	size_t		pos;
-	size_t		oldpos;
-	size_t		len;
-	size_t		cols;
-	size_t		maxrows;
-	int			history_index;
-	t_mode		mode;
-}				t_editor;
-
 typedef struct	s_refresher
 {
 	char		seq[64];
@@ -102,12 +84,39 @@ typedef struct	s_buf
 	int			len;
 }				t_buf;
 
-typedef struct	s_history
+typedef struct	s_edit_content
 {
 	t_heap		*heap;
 	char		origin[EDITOR_MAX_LINE];
 	int64_t		index;
-}				t_history;
+}				t_e_content;
+
+typedef struct	s_options
+{
+	int			has_completion;
+	int			has_history;
+	t_e_content	*history_data;
+	t_e_content	*completion_data;
+}				t_options;
+
+typedef struct	s_editor
+{
+	int			ifd;
+	int			ofd;
+	t_termios	origin;
+	char		*buf;
+	size_t		buflen;
+	const char	*prompt;
+	size_t		plen;
+	size_t		pos;
+	size_t		oldpos;
+	size_t		len;
+	size_t		cols;
+	size_t		maxrows;
+	int			history_index;
+	t_mode		mode;
+	t_options	*options;
+}				t_editor;
 
 
 typedef void(t_redirect_fn)(t_editor *);
@@ -115,14 +124,13 @@ typedef void(t_redirect_fn)(t_editor *);
 extern t_termios	g_origin;
 extern int			g_raw_mode;
 
-char			*readline(const char *prompt);
+char			*readline(const char *prompt, t_options *opt);
 char			*readline_notty();
-int				readline_raw(char *buf, const char *prompt);
+int				readline_raw(char *buf, const char *prompt, t_options *e);
 
 int				handle_keys(t_editor *e);
 void			redirect_key_fn(t_editor *e, char c, char *seq);
-int				editor(int stdin_fd, int stdout_fd, char *buf,
-char *prompt);
+int				editor(char *buf, char *prompt, t_options *opt);
 void			editor_insert(t_editor *l, char c);
 void			editor_insert_without_refresh(t_editor *l, char c);
 
@@ -141,13 +149,14 @@ void			set_colum(t_editor *e, t_refresher *r, t_buf *b);
 int				get_cursor_pos(int ifd, int ofd);
 int				get_colums_len(int ifd, int ofd);
 
-t_history		*get_history();
-void			history_free();
+void			init_history();
 void			history_up(t_editor *e);
 void			history_down(t_editor *e);
 void			history_add(t_editor *e);
 void			set_origin(t_editor *e);
 void			origin_to_buf(t_editor *e);
+
+void			free_e_content(t_e_content *h);
 
 void			ef_clear_screen(t_editor *l);
 void			ef_del_prev_word(t_editor *l);

@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   history_free.c                                   .::    .:/ .      .::   */
+/*   ft_copy_str.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/31 14:35:39 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 14:59:03 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/31 19:56:38 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/31 19:58:10 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "editor.h"
+#include "libft.h"
 
-void	history_free(void)
+void	ft_copy_str(char *dest, char *src)
 {
-	t_history *h;
+	size_t i;
 
-	h = get_history();
-	if (h)
+	i = 0;
+	while (dest && src[i])
 	{
-		heap_free(h->heap);
-		free(h);
+		dest[i] = src[i];
+		i++;
 	}
+	dest[i] = 0;
 }

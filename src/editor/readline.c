@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/20 18:19:20 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/25 14:14:55 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/31 20:17:28 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,8 +25,16 @@ int			g_raw_mode;
 static int	unsupported_term(void)
 {
 	static char	*unsupported_term[] = {"dumb", "cons25", "emacs", NULL};
+	char		*term;
+	int			i;
 
-	//TODO : search in environement variable TERM equal to a term ^.
+	term = ht_get(g_shell.env, "TERM");
+	if (!term)
+		return (1);
+	i = -1;
+	while (unsupported_term[++i])
+		if (ft_strequ(unsupported_term[i], term))
+			return (1);
 	return (0);
 }
 
@@ -38,7 +46,7 @@ static int	unsupported_term(void)
 ** Then return the line typed in the terminal.
 */
 
-char		*readline(const char *prompt)
+char		*readline(const char *prompt, t_options *e)
 {
 	char	buf[EDITOR_MAX_LINE];
 	int		count;
@@ -47,12 +55,13 @@ char		*readline(const char *prompt)
 		return (readline_notty());
 	if (unsupported_term())
 	{
-		ft_putstr_fd(STDERR_FILENO, "Shell: unsuported terminal.");
+		e_editor(ERR_UNRECOGNIZED_TERM, NULL);
+		exit_shell();
 		exit(2);
 	}
 	else
 	{
-		count = readline_raw(buf, prompt);
+		count = readline_raw(buf, prompt, e);
 		if (count == -1)
 			return (NULL);
 		return (strdup(buf));

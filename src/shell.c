@@ -6,11 +6,12 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 14:44:16 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 15:17:01 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/31 20:40:49 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 #include "shell.h"
+#include "f_colors.h"
 
 t_shell	g_shell;
 
@@ -68,9 +69,8 @@ int	main(void)
 {
 	char	*str;
 
-	set_env();
-	set_bin();
-	while ((str = readline("shell> ")))
+	init_shell();
+	while ((str = readline("shell> ", g_shell.line_edit)))
 	{
 		if (ft_strequ("exit", str))
 		{
@@ -78,6 +78,7 @@ int	main(void)
 			free(str);
 			exit(0);
 		}
+		ft_printf("You wrote: %s%s%s$. \n", L_GREEN, str, RESET_ALL);
 		free(str);
 	}
 }

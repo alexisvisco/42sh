@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/29 18:28:39 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 15:10:53 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/31 18:41:21 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -27,6 +27,7 @@ typedef struct			s_trie_node
 
 t_trie_node				*trie_new(void);
 void					trie_free(t_trie_node *root);
+void					trie_insert(t_trie_node *root, const char *str);
 int						trie_search(t_trie_node *root, const char *key);
 int						trie_is_last_node(t_trie_node *root);
 void					trie_start_with(t_trie_node *r, char *prefix,

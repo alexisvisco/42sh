@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   util.h                                           .::    .:/ .      .::   */
+/*   set_options.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/21 15:53:14 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 19:58:28 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/31 20:34:28 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/31 20:37:02 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef UTIL_H
-# define UTIL_H
+#include "shell.h"
 
-# include <stdlib.h>
+void	set_options()
+{
+	t_options	*line_edit;
 
-void	*ft_realloc(void *ptr, size_t size);
-char	*ft_char_to_str(char c);
-void	free_tab(char **table);
-char	**env_to_array(void);
-size_t	env_size(void);
-void	ft_copy_str(char *dest, char *src);
-
-#endif
+	line_edit = malloc(sizeof(t_options));
+	line_edit->completion_data = NULL;
+	line_edit->history_data = NULL;
+	line_edit->has_history = 1;
+	line_edit->has_completion = 1;
+	g_shell.line_edit = line_edit;
+}

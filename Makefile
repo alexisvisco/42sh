@@ -6,7 +6,7 @@
 #    By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/01/19 13:46:02 by aviscogl     #+#   ##    ##    #+#        #
-#    Updated: 2018/01/31 15:18:02 by aviscogl    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/01/31 20:37:28 by aviscogl    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -36,16 +36,18 @@ parser/commentary.c \
 parser/operator_error.c \
 parser/parse_all.c \
 \
+init/init_shell.c \
 init/set_env.c \
 init/set_bin.c \
+init/set_options.c \
 \
 editor/editor.c \
+editor/free_e_content.c \
 editor/editor_insert.c \
 editor/readline.c \
 editor/readline_raw.c \
 editor/readline_notty.c \
 editor/handle_keys.c \
-editor/history/history_free.c \
 editor/terminal_manager.c \
 editor/history/origin.c \
 editor/history/history.c \
@@ -79,6 +81,7 @@ util/ft_realloc.c \
 util/free_tab.c \
 util/ft_char_to_str.c \
 util/env_to_array.c \
+util/ft_copy_str.c \
 \
 exec/central_exec.c  \
 exec/extract_cmd_and_args.c \

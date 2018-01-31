@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/23 13:17:41 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/23 15:18:26 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/31 12:54:23 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,5 +20,6 @@ t_hashtable	*ht_new(size_t size)
 	hasht = malloc(sizeof(t_hashtable));
 	hasht->size = size;
 	hasht->heaps = ft_memalloc(size);
+	hasht->free_func = free;
 	return (hasht);
 }

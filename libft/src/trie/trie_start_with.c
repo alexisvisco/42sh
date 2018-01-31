@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/29 18:52:07 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/29 21:36:07 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/31 15:02:46 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,15 +21,15 @@ static void	trie_start_with_a(t_trie_node *root, char *prefix, t_heap *heap)
 	int		i;
 
 	tmp = ft_strdup(prefix);
-    if (root->is_word_end)
-        heap_add(heap, ft_strdup(prefix));
-    if (trie_is_last_node(root))
-        return ;
-	i = 0;
-	while (i < ALPHABET_SIZE)
+	if (root->is_word_end)
+		heap_add(heap, ft_strdup(prefix));
+	if (trie_is_last_node(root))
+		return ;
+	i = -1;
+	while (++i < ALPHABET_SIZE)
 	{
 		if (root->children[i])
-        {
+		{
 			tmp_ch = malloc(sizeof(char) * 2);
 			tmp_ch[0] = i;
 			tmp_ch[1] = 0;
@@ -38,12 +38,11 @@ static void	trie_start_with_a(t_trie_node *root, char *prefix, t_heap *heap)
 			trie_start_with_a(root->children[i], tmpx, heap);
 			free(tmpx);
 		}
-		i++;
 	}
 	free(tmp);
 }
 
-void	trie_start_with(t_trie_node *root, char *prefix, t_heap *heap)
+void		trie_start_with(t_trie_node *root, char *prefix, t_heap *heap)
 {
 	t_trie_node *cr;
 	size_t		level;

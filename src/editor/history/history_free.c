@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   heap_free.c                                      .::    .:/ .      .::   */
+/*   history_free.c                                   .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/23 11:32:12 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 15:00:52 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/31 14:35:39 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/31 14:59:03 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "editor.h"
 
-void	heap_free(t_heap *h)
+void	history_free(void)
 {
-	size_t i;
+	t_history *h;
 
-	i = 0;
-	while (i < h->size)
+	h = get_history();
+	if (h)
 	{
-		if (h->list[i])
-			h->free_func(h->list[i]);
-		i++;
+		heap_free(h->heap);
+		free(h);
 	}
-	free(h->list);
-	free(h);
-	h = NULL;
 }

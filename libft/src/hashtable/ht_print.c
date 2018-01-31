@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/23 18:16:20 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/23 18:36:36 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/31 14:07:19 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,7 +18,7 @@ void	ht_print(t_hashtable *t, void (*printer)(t_node *))
 	t_heap	*heap;
 	size_t	i;
 	size_t	j;
-	
+
 	i = 0;
 	ft_putstr("{\n");
 	while (i < t->size)
@@ -45,7 +45,7 @@ void	ht_print_debug(t_hashtable *t, void (*printer)(t_node *))
 	t_heap	*heap;
 	size_t	i;
 	size_t	j;
-	
+
 	i = 0;
 	while (i < t->size)
 	{

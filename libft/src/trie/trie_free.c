@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   heap_free.c                                      .::    .:/ .      .::   */
+/*   trie_free.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/23 11:32:12 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 15:00:52 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/29 19:04:16 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/31 14:28:34 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	heap_free(t_heap *h)
+void	trie_free(t_trie_node *r)
 {
-	size_t i;
+	int		index;
 
-	i = 0;
-	while (i < h->size)
+	index = 0;
+	while (index < ALPHABET_SIZE)
 	{
-		if (h->list[i])
-			h->free_func(h->list[i]);
-		i++;
+		if (!r->children[index])
+		{
+			index++;
+			continue ;
+		}
+		trie_free(r->children[index]);
+		index++;
 	}
-	free(h->list);
-	free(h);
-	h = NULL;
+	free(r);
 }

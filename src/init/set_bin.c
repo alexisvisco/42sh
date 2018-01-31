@@ -5,15 +5,12 @@
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/29 10:43:16 by aviscogl     #+#   ##    ##    #+#       */
-<<<<<<< HEAD
-/*   Updated: 2018/01/29 21:14:28 by aviscogl    ###    #+. /#+    ###.fr     */
-=======
-/*   Updated: 2018/01/30 11:43:53 by aviscogl    ###    #+. /#+    ###.fr     */
->>>>>>> leaks
+/*   Created: 2018/01/31 15:03:52 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/31 15:04:08 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
+
 
 #include "shell.h"
 
@@ -48,14 +45,12 @@ static void add_to_bintable(char *path_folder)
 		{
 			ht_set(g_shell.bin, entry->d_name, ft_strdup(path));
 			trie_insert(g_shell.bin_trie, entry->d_name);
-			ft_putstr(entry->d_name);
-			ft_putstr("\n");
 		}
 	}
 	closedir(dir);
 }
 
-void		set_bin()
+void		set_bin(void)
 {
 	char	*path;
 	char	**paths;

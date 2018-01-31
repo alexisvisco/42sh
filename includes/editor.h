@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:35 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/29 10:34:50 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/31 14:39:35 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -142,6 +142,7 @@ int				get_cursor_pos(int ifd, int ofd);
 int				get_colums_len(int ifd, int ofd);
 
 t_history		*get_history();
+void			history_free();
 void			history_up(t_editor *e);
 void			history_down(t_editor *e);
 void			history_add(t_editor *e);

@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/23 15:09:30 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 13:32:15 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/31 14:25:48 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,7 +21,6 @@ void	ht_default_free(t_hashtable *t, void *a)
 	if (a)
 	{
 		n = (t_node *)a;
-		ft_printf("Free %p\n", n);
 		free(n->key);
 		if (n->value)
 			t->free_func(n->value);

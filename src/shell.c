@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 13:02:54 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/30 14:27:39 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/31 13:46:31 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -66,34 +66,25 @@ int main2(char *s)
 
 int	main(void)
 {
-	
-	set_env();
-	// set_bin();
-	// ht_print_debug(g_shell.bin, ht_print_str);
-	// while ((str = readline("get path for a binary ? ")))
-	// {
-	// 	if (ft_strequ("exit", str))
-	// 	{
-	// 		free(str);
-	// 		exit(0);
-	// 	}
-	// 	ft_printf("You want the path for: %s = ", str);
-	// 	// main2(str);
-	// 	t_node *node = ht_has(g_shell.bin, str);
-	// 	if (node)
-	// 		ft_printf("%s\n", (char *)node->value);
-	// 	else
-	// 		ft_printf("not found\n");
-	// 	free(str);
-	// }
-	char **env = env_to_array();
-	int i;
+	char *str;
 
-	i  = 0;
-	while (env[i])
+	set_env();
+	set_bin();
+	while ((str = readline("get path for a binary ? ")))
 	{
-		ft_printf("%s\n", env[i]);
-		i++;
+		if (ft_strequ("exit", str))
+		{
+			exit_shell();
+			free(str);
+			exit(0);
+		}
+		ft_printf("You want the path for: %s = ", str);
+		// main2(str);
+		t_node *node = ht_has(g_shell.bin, str);
+		if (node)
+			ft_printf("%s\n", (char *)node->value);
+		else
+			ft_printf("not found\n");
+		free(str);
 	}
-	free_tab(env);
 }

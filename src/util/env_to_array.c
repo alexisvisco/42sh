@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 09:51:44 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/30 11:44:17 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/31 14:13:35 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,40 +17,36 @@ static void	put_in_array(char **env, int *k)
 {
 	t_hashtable	*t;
 	size_t		i;
-	size_t		j;
+	int64_t		j;
 	char		*str;
-	
+
 	i = 0;
 	t = g_shell.env;
 	while (i < t->size)
 	{
 		if (t->heaps[i])
 		{
-			j = 0;
-			while (j < t->heaps[i]->size)
+			j = -1;
+			while (++j < (int64_t)t->heaps[i]->size)
 			{
 				if (t->heaps[i]->list[j])
 				{
-					str = ft_sprintf("%s=%s",
-					((t_node *)t->heaps[i]->list[j])->key,
-					(char *)((t_node *)t->heaps[i]->list[j])->value);
-					ft_printf("%s %lu\n", str, *k);
-					env[(*k)] = str;
-					(*k)++;
+					str = ft_sprintf("%s=%s", ((t_node *)
+t->heaps[i]->list[j])->key, (char *)((t_node *)t->heaps[i]->list[j])->value);
+					env[(*k)++] = str;
 				}
-				j++;
 			}
 		}
 		i++;
 	}
 }
 
-size_t		env_size()
+size_t		env_size(void)
 {
 	t_hashtable	*t;
 	size_t		i;
 	size_t		size;
-	
+
 	i = 0;
 	t = g_shell.env;
 	size = 0;
@@ -60,7 +56,6 @@ size_t		env_size()
 			size += t->heaps[i]->elements;
 		i++;
 	}
-	ft_printf("size: %lu\n", size);
 	return (size);
 }
 
@@ -70,7 +65,6 @@ char		**env_to_array(void)
 	char		**env;
 	size_t		size;
 	int			k;
-	
 
 	envs = g_shell.env;
 	size = env_size();

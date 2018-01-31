@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ht_get.c                                         .::    .:/ .      .::   */
+/*   trie_new.c                                       .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/23 14:41:21 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/29 15:31:48 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/29 18:37:44 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/31 14:11:10 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ht_get(t_hashtable *ht, const char *key)
+t_trie_node	*trie_new(void)
 {
-	t_node *node;
+	t_trie_node	*root;
+	int			i;
 
-	node = ht_has(ht, key);
-	return (node ? node->value : NULL);
+	root = malloc(sizeof(t_trie_node));
+	root->is_word_end = 0;
+	root->has_child = 0;
+	i = 0;
+	while (i < ALPHABET_SIZE)
+	{
+		root->children[i] = NULL;
+		i++;
+	}
+	return (root);
 }

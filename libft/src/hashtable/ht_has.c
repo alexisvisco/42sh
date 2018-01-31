@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/23 13:30:10 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/23 15:18:10 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/31 13:36:04 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -59,7 +59,9 @@ t_node			*ht_has_or_create(t_hashtable *t, const char *key)
 		i++;
 	}
 	node = malloc(sizeof(t_node));
+	ft_printf("Node %p, %s\n", node, key);
 	node->key = ft_strdup(key);
+	node->value = NULL;
 	heap_add(heap, node);
 	return (node);
 }

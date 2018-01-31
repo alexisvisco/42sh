@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ht_get.c                                         .::    .:/ .      .::   */
+/*   trie_is_last_node.c                              .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/23 14:41:21 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/29 15:31:48 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/29 18:50:37 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/31 14:08:12 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ht_get(t_hashtable *ht, const char *key)
+int		trie_is_last_node(t_trie_node *root)
 {
-	t_node *node;
+	int i;
 
-	node = ht_has(ht, key);
-	return (node ? node->value : NULL);
+	i = 0;
+	while (i < ALPHABET_SIZE)
+	{
+		if (root->children[i])
+			return (0);
+		i++;
+	}
+	return (1);
 }

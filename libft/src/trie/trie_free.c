@@ -1,22 +1,32 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ht_get.c                                         .::    .:/ .      .::   */
+/*   trie_free.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/23 14:41:21 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/29 15:31:48 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/29 19:04:16 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/31 14:16:45 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ht_get(t_hashtable *ht, const char *key)
+void	trie_free(t_trie_node *r)
 {
-	t_node *node;
+	int		index;
 
-	node = ht_has(ht, key);
-	return (node ? node->value : NULL);
+	index = 0;
+	while (index < ALPHABET_SIZE)
+	{
+		if (!r->children[index])
+		{
+			index++;
+			continue ;
+		}
+		trie_delete(r->children[index]);
+		index++;
+	}
+	free(r);
 }

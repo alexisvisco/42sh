@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/23 14:47:15 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/23 18:44:57 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/31 14:07:07 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,7 +18,7 @@ size_t	ht_hash(const char *key)
 	const size_t	len = ft_strlen(key);
 	size_t			hash;
 	size_t			i;
-	
+
 	i = 0;
 	hash = i;
 	while (i < len)
@@ -28,8 +28,8 @@ size_t	ht_hash(const char *key)
 		hash ^= hash >> 6;
 		i++;
 	}
-    hash += (hash << 3);
-	hash ^= ( hash >> 11 );
-	hash += ( hash << 15 );
+	hash += (hash << 3);
+	hash ^= (hash >> 11);
+	hash += (hash << 15);
 	return (hash);
 }

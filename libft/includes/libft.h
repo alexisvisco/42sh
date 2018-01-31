@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/11/08 12:44:50 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/23 13:21:46 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/29 18:38:04 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,6 +22,7 @@
 # include "f_mem.h"
 # include "f_heap.h"
 # include "f_hashtable.h"
+# include "f_trie.h"
 # include "f_str.h"
 # include "f_io.h"
 # include "f_is.h"

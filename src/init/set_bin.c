@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/29 10:43:16 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/30 11:43:53 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/31 13:44:33 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -41,7 +41,10 @@ static void add_to_bintable(char *path_folder)
 		path_join((char *)path, path_folder, entry->d_name);
 		if (!(ft_strequ(entry->d_name, ".") || ft_strequ(entry->d_name, ".."))
 		&& can_use(path))
+		{
 			ht_set(g_shell.bin, entry->d_name, ft_strdup(path));
+			trie_insert(g_shell.bin_trie, entry->d_name);
+		}
 	}
 	closedir(dir);
 }
@@ -53,6 +56,7 @@ void		set_bin()
 	int		i;
 
 	g_shell.bin = ht_new(512);
+	g_shell.bin_trie = trie_new();
 	path = (char *)ht_has(g_shell.env, "PATH")->value;
 	if (path)
 	{

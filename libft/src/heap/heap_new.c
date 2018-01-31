@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/23 10:31:49 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/23 14:35:51 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/31 12:59:39 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,5 +23,6 @@ t_heap	*heap_new(size_t default_size)
 	heap->elements = 0;
 	heap->last_remove = -1;
 	heap->list = ft_memalloc(default_size);
+	heap->free_func = free;
 	return (heap);
 }

@@ -6,7 +6,7 @@
 #    By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/01/19 13:46:02 by aviscogl     #+#   ##    ##    #+#        #
-#    Updated: 2018/01/30 10:17:10 by aviscogl    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/01/31 13:48:54 by aviscogl    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -74,6 +74,7 @@ editor/edit_fn/ef_swap_char.c \
 editor/edit_fn/redirect_to_functions.c \
 \
 util/env_to_array.c \
+util/exit_shell.c \
 util/ft_realloc.c \
 util/free_tab.c \
 util/ft_char_to_str.c

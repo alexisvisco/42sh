@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ht_set.c                                         .::    .:/ .      .::   */
+/*   signal.c                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/23 13:27:45 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 15:14:57 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/30 13:11:13 by ggranjon     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/30 13:38:54 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "shell.h"
 
-void	ht_set(t_hashtable *h, const char *key, void *val)
+void	sig_handler(int signo)
 {
-	t_node *node;
-
-	node = ht_has_or_create(h, key);
-	if (node->value)
-		h->free_func(node->value);
-	node->value = val;
+	ft_printf("\n");
+	(void)signo;
 }

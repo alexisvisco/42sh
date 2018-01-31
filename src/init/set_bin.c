@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/31 15:03:52 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 15:04:08 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/31 15:15:21 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -29,11 +29,12 @@ static int	can_use(char *path)
 	&& st.st_mode & S_IXUSR));
 }
 
-static void add_to_bintable(char *path_folder)
+static void	add_to_bintable(char *path_folder)
 {
 	DIR				*dir;
 	struct dirent	*entry;
 	char			path[2048];
+	char			*tmp;
 
 	if (!(dir = opendir(path_folder)))
 		return ;

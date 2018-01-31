@@ -6,7 +6,7 @@
 #    By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/01/19 13:46:02 by aviscogl     #+#   ##    ##    #+#        #
-#    Updated: 2018/01/31 14:40:34 by aviscogl    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/01/31 15:18:02 by aviscogl    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -74,11 +74,15 @@ editor/edit_fn/ef_del_simple.c \
 editor/edit_fn/ef_swap_char.c \
 editor/edit_fn/redirect_to_functions.c \
 \
-util/env_to_array.c \
 util/exit_shell.c \
 util/ft_realloc.c \
 util/free_tab.c \
-util/ft_char_to_str.c
+util/ft_char_to_str.c \
+util/env_to_array.c \
+\
+exec/central_exec.c  \
+exec/extract_cmd_and_args.c \
+exec/signal.c
 
 EDITOR_FOLDERS = editor editor/util editor/refresher editor/keys_functions editor/edit_fn editor/history
 OBJ_FOLDERS = $(EDITOR_FOLDERS) init eval exec lex messages parser util 

@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:00 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 15:03:37 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/31 15:18:25 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -31,6 +31,7 @@
 # include <sys/stat.h>
 # include "editor.h"
 # include "lex.h"
+# include "exec.h"
 # include "libft.h"
 
 typedef enum	e_message

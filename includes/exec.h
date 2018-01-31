@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   util.h                                           .::    .:/ .      .::   */
+/*   exec.h                                           .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/21 15:53:14 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/30 14:39:23 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/29 17:26:58 by ggranjon     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/30 13:37:41 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef UTIL_H
-# define UTIL_H
+#ifndef EXEC_H
+# define EXEC_H
 
+# include <unistd.h>
+# include <sys/types.h>
+# include <sys/wait.h>
+# include <stdio.h>
 # include <stdlib.h>
 
-void	*ft_realloc(void *ptr, size_t size);
-char	*ft_char_to_str(char c);
-void	free_tab(char **table);
-char	**env_to_array(void);
-size_t	env_size(void);
+int			end_of_arg(t_token **tokens, t_block *block, int num);
+char		**extract_cmd_args(t_token **tokens, t_block *block, int num);
+
+void		exec_all(t_token **tokens, t_block *blocks);
+void		exec_a_block(t_token **tokens, t_block *block, int num);
+
+void		sig_handler(int signo);
 
 #endif

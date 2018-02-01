@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:35 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/01 11:24:42 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/01 15:38:16 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -169,6 +169,11 @@ void			history_add(t_editor *e);
 void			set_origin(t_editor *e);
 void			origin_to_buf(t_editor *e);
 
+void			completion_next(t_editor *e);
+void			completion_add(t_editor *e);
+void			completion_handler(t_editor *e);
+void			delete_completion(t_editor *e);
+void			init_completion(t_editor *e);
 void			get_completions(t_editor *e);
 void			get_completions_bin(t_word_info *i, t_heap *h);
 void			get_completions_env(t_word_info *i, t_heap *h);
@@ -178,7 +183,6 @@ char			*get_name_from(char *str);
 char			*get_next_str(char *from, char *full);
 char			*get_next_str(char *from, char *full);
 void			set_word_info(t_word_info *i, t_editor *e);
-
 void			free_e_content(t_e_content *h);
 
 void			ef_clear_screen(t_editor *l);

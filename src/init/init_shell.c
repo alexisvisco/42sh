@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/31 18:49:36 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 21:02:11 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/01 15:23:12 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,7 +20,7 @@
 
 static void	print_welcome_message()
 {
-	const char		*message = "Welcome to our shell (by ggranjon & aviscogl)";
+	const char		*message = "Welcome";
 	const size_t	len = ft_strlen(message);
 	const size_t	len_tr = 54;
 	ft_printf("\n╭───────────────────────────────────────────────────────╮\n");

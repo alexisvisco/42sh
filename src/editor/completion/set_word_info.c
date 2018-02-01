@@ -6,14 +6,14 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/01 10:03:32 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/01 10:20:58 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/01 17:59:17 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "editor.h"
 
-static char	*get_word_cursor(char *cmd, size_t cursor)
+char	*get_word_cursor(char *cmd, size_t cursor)
 {
 	const size_t	len = ft_strlen(cmd);
 	size_t			i;

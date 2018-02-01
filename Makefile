@@ -6,7 +6,7 @@
 #    By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/01/19 13:46:02 by aviscogl     #+#   ##    ##    #+#        #
-#    Updated: 2018/02/01 11:19:52 by aviscogl    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/02/01 18:46:11 by aviscogl    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -41,6 +41,7 @@ init/set_env.c \
 init/set_bin.c \
 init/set_options.c \
 \
+editor/deb_printer.c \
 editor/editor.c \
 editor/free_e_content.c \
 editor/editor_insert.c \
@@ -84,6 +85,7 @@ editor/completion/get_folder_from.c \
 editor/completion/get_name_from.c \
 editor/completion/get_next_str.c \
 editor/completion/set_word_info.c \
+editor/completion/update_word.c \
 \
 util/exit_shell.c \
 util/ft_realloc.c \

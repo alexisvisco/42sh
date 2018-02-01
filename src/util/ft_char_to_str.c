@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/22 20:43:03 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 21:15:05 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/01 18:36:38 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,6 +23,6 @@ char	*ft_char_to_str(char c)
 
 	s = malloc(sizeof(char) * 2);
 	s[0] = c;
-	s[1] = '\n';
+	s[1] = '\0';
 	return (s);
 }

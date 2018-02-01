@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:35 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/01 15:38:16 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/01 18:45:56 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -136,6 +136,7 @@ typedef void(t_redirect_fn)(t_editor *);
 
 extern t_termios	g_origin;
 extern int			g_raw_mode;
+void			deb_printer(const char *format, ...);
 
 char			*readline(const char *prompt, t_options *opt);
 char			*readline_notty();
@@ -146,6 +147,8 @@ void			redirect_key_fn(t_editor *e, char c, char *seq);
 int				editor(char *buf, char *prompt, t_options *opt);
 void			editor_insert(t_editor *l, char c);
 void			editor_insert_without_refresh(t_editor *l, char c);
+void			editor_insert_str(t_editor *l, char *str);
+void			editor_insert_str_without_refresh(t_editor *l, char *str);
 
 int				enable_terminal(int fd);
 int				disable_terminal(int fd);
@@ -172,8 +175,9 @@ void			origin_to_buf(t_editor *e);
 void			completion_next(t_editor *e);
 void			completion_add(t_editor *e);
 void			completion_handler(t_editor *e);
-void			delete_completion(t_editor *e);
+void			completion_delete(t_editor *e);
 void			init_completion(t_editor *e);
+char			*get_word_cursor(char *cmd, size_t cursor);
 void			get_completions(t_editor *e);
 void			get_completions_bin(t_word_info *i, t_heap *h);
 void			get_completions_env(t_word_info *i, t_heap *h);
@@ -183,6 +187,7 @@ char			*get_name_from(char *str);
 char			*get_next_str(char *from, char *full);
 char			*get_next_str(char *from, char *full);
 void			set_word_info(t_word_info *i, t_editor *e);
+void			update_word(t_editor *e, char *word);
 void			free_e_content(t_e_content *h);
 
 void			ef_clear_screen(t_editor *l);
@@ -197,6 +202,7 @@ void			ef_move_left(t_editor *l);
 void			ef_move_right(t_editor *l);
 void			ef_swap_char(t_editor *l);
 void			ef_del_backspace(t_editor *e);
+void			ef_del_backspace_times(t_editor *l, unsigned int x);
 void			ef_del_simple(t_editor *l);
 
 #endif

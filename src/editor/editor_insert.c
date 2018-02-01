@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/22 21:30:31 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/25 12:35:10 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/01 18:07:42 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -66,5 +66,33 @@ void	editor_insert_without_refresh(t_editor *l, char c)
 			l->pos++;
 			l->buf[l->len] = '\0';
 		}
+	}
+}
+
+/*
+** Insert the string at cursor current position
+*/
+
+void	editor_insert_str(t_editor *l, char *str)
+{
+	while (*str)
+	{
+		editor_insert_without_refresh(l, *str);
+		str++;
+	}
+	refresh_line(l);
+}
+
+/*
+** Insert the string at cursor current position without
+** refreshing the line
+*/
+
+void	editor_insert_str_without_refresh(t_editor *l, char *str)
+{
+	while (*str)
+	{
+		editor_insert_without_refresh(l, *str);
+		str++;
 	}
 }

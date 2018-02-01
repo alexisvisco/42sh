@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:35 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 20:42:22 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/01 11:24:42 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,6 +22,7 @@
 # include <stdio.h>
 # include <errno.h>
 # include <string.h>
+# include <dirent.h>
 # include <stdlib.h>
 # include <ctype.h>
 # include <sys/stat.h>
@@ -118,6 +119,18 @@ typedef struct	s_editor
 	t_options	*options;
 }				t_editor;
 
+typedef enum	e_cp_type
+{
+	TYPE_COMMAND_OR_BIN,
+	TYPE_ENV
+}				t_cp_type;
+
+typedef struct	s_word_info
+{
+	t_cp_type	type;
+	char		*current_word;
+	char		*prev_word;
+}				t_word_info;
 
 typedef void(t_redirect_fn)(t_editor *);
 
@@ -155,6 +168,16 @@ void			history_down(t_editor *e);
 void			history_add(t_editor *e);
 void			set_origin(t_editor *e);
 void			origin_to_buf(t_editor *e);
+
+void			get_completions(t_editor *e);
+void			get_completions_bin(t_word_info *i, t_heap *h);
+void			get_completions_env(t_word_info *i, t_heap *h);
+void			get_completions_path(t_word_info *i, t_heap *h);
+char			*get_folder_from(char *str);
+char			*get_name_from(char *str);
+char			*get_next_str(char *from, char *full);
+char			*get_next_str(char *from, char *full);
+void			set_word_info(t_word_info *i, t_editor *e);
 
 void			free_e_content(t_e_content *h);
 

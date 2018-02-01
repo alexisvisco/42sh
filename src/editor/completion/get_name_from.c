@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   exit_shell.c                                     .::    .:/ .      .::   */
+/*   get_name_from.c                                  .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/31 13:47:54 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/01 10:53:05 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/02/01 10:23:39 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/01 10:24:03 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "shell.h"
+#include "editor.h"
 
-/*
-** At exit, free all variables to avoid leaks
-** Yes leaks are a pain. 
-*/
-
-void	exit_shell(void)
+char	*get_name_from(char *str)
 {
-	ht_free(g_shell.bin);
-	ht_free(g_shell.env);
-	if (g_shell.line_edit->history_data)
-		free_e_content(g_shell.line_edit->history_data);
-	if (g_shell.line_edit->completion_data)
-		free_e_content(g_shell.line_edit->history_data);
-	trie_free(g_shell.bin_trie);
-	trie_free(g_shell.env_trie);
+	const size_t	len = ft_strlen(str);
+	int				i;
+	int				prev;
+
+	i = 0;
+	prev = 0;
+	while (i < len)
+	{
+		if (str[i] == '/')
+			prev = i;
+		i++;
+	}
+	return (ft_strsub(str, prev + 1, len - (prev + 1)));
 }

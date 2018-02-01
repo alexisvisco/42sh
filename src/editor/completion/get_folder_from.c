@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   exit_shell.c                                     .::    .:/ .      .::   */
+/*   get_folder_from.c                                .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/31 13:47:54 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/01 10:53:05 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/02/01 10:24:51 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/01 11:28:25 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "shell.h"
+#include "editor.h"
 
-/*
-** At exit, free all variables to avoid leaks
-** Yes leaks are a pain. 
-*/
-
-void	exit_shell(void)
+char	*get_folder_from(char *str)
 {
-	ht_free(g_shell.bin);
-	ht_free(g_shell.env);
-	if (g_shell.line_edit->history_data)
-		free_e_content(g_shell.line_edit->history_data);
-	if (g_shell.line_edit->completion_data)
-		free_e_content(g_shell.line_edit->history_data);
-	trie_free(g_shell.bin_trie);
-	trie_free(g_shell.env_trie);
+	const size_t	len = ft_strlen(str);
+	size_t			i;
+	size_t			prev;
+	char			*n_str;
+
+	i = 0;
+	prev = 0;
+	while (i < len)
+	{
+		if (str[i] == '/')
+			prev = i;
+		i++;
+	}
+	n_str = (char *)malloc(sizeof(char) * (prev + 2));
+	n_str[prev + 1] = 0;
+	ft_strncpy(n_str, str, prev + 1);
+	return (n_str);
 }

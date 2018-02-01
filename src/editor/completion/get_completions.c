@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   exit_shell.c                                     .::    .:/ .      .::   */
+/*   get_completions.c                                .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/31 13:47:54 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/01 10:53:05 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/02/01 10:01:06 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/01 11:26:27 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-/*
-** At exit, free all variables to avoid leaks
-** Yes leaks are a pain. 
-*/
-
-void	exit_shell(void)
+void	get_completions(t_editor *e)
 {
-	ht_free(g_shell.bin);
-	ht_free(g_shell.env);
-	if (g_shell.line_edit->history_data)
-		free_e_content(g_shell.line_edit->history_data);
-	if (g_shell.line_edit->completion_data)
-		free_e_content(g_shell.line_edit->history_data);
-	trie_free(g_shell.bin_trie);
-	trie_free(g_shell.env_trie);
+	t_word_info	info;
+
+	set_word_info(&info, e);
+	if (info.type == TYPE_COMMAND_OR_BIN)
+	{
+		get_completions_bin(&info, e->options->completion_data->heap);
+		get_completions_path(&info, e->options->completion_data->heap);
+	}
+	else
+		get_completions_env(&info, e->options->completion_data->heap);
+	if (e->options->completion_data->origin[0] == '\0')
+		ft_copy_str(e->options->completion_data->origin, info.current_word);
 }

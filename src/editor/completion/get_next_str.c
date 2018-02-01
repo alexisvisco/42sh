@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   exit_shell.c                                     .::    .:/ .      .::   */
+/*   get_next_str.c                                   .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/31 13:47:54 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/01 10:53:05 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/02/01 10:23:00 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/01 10:58:50 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "shell.h"
+#include "editor.h"
 
-/*
-** At exit, free all variables to avoid leaks
-** Yes leaks are a pain. 
-*/
-
-void	exit_shell(void)
+char	*get_next_str(char *from, char *full)
 {
-	ht_free(g_shell.bin);
-	ht_free(g_shell.env);
-	if (g_shell.line_edit->history_data)
-		free_e_content(g_shell.line_edit->history_data);
-	if (g_shell.line_edit->completion_data)
-		free_e_content(g_shell.line_edit->history_data);
-	trie_free(g_shell.bin_trie);
-	trie_free(g_shell.env_trie);
+	const size_t	len = ft_strlen(full);
+	int				i;
+	int				prev;
+
+	i = -1;
+	while (++i < len)
+	{
+		if ((!from[i]) || (from[i] != full[i]))
+			break ;
+	}
+	return (ft_strsub(full, i, len - i));
 }

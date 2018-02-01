@@ -6,7 +6,7 @@
 #    By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/01/19 13:46:02 by aviscogl     #+#   ##    ##    #+#        #
-#    Updated: 2018/01/31 20:37:28 by aviscogl    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/02/01 11:19:52 by aviscogl    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -75,6 +75,15 @@ editor/edit_fn/ef_del_backspace.c \
 editor/edit_fn/ef_del_simple.c \
 editor/edit_fn/ef_swap_char.c \
 editor/edit_fn/redirect_to_functions.c \
+editor/completion/completion.c \
+editor/completion/get_completions.c \
+editor/completion/get_completions_bin.c \
+editor/completion/get_completions_env.c \
+editor/completion/get_completions_path.c \
+editor/completion/get_folder_from.c \
+editor/completion/get_name_from.c \
+editor/completion/get_next_str.c \
+editor/completion/set_word_info.c \
 \
 util/exit_shell.c \
 util/ft_realloc.c \
@@ -87,7 +96,7 @@ exec/central_exec.c  \
 exec/extract_cmd_and_args.c \
 exec/signal.c
 
-EDITOR_FOLDERS = editor editor/util editor/refresher editor/keys_functions editor/edit_fn editor/history
+EDITOR_FOLDERS = editor editor/util editor/refresher editor/completion editor/keys_functions editor/edit_fn editor/history
 OBJ_FOLDERS = $(EDITOR_FOLDERS) init eval exec lex messages parser util 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 

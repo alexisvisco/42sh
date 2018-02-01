@@ -1,31 +1,19 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   exit_shell.c                                     .::    .:/ .      .::   */
+/*   get_completions_env.c                            .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/31 13:47:54 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/01 10:53:05 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/02/01 10:44:50 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/01 10:53:46 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-/*
-** At exit, free all variables to avoid leaks
-** Yes leaks are a pain. 
-*/
-
-void	exit_shell(void)
+void	get_completions_env(t_word_info *i, t_heap *h)
 {
-	ht_free(g_shell.bin);
-	ht_free(g_shell.env);
-	if (g_shell.line_edit->history_data)
-		free_e_content(g_shell.line_edit->history_data);
-	if (g_shell.line_edit->completion_data)
-		free_e_content(g_shell.line_edit->history_data);
-	trie_free(g_shell.bin_trie);
-	trie_free(g_shell.env_trie);
+	trie_start_with(g_shell.env_trie, i->current_word, h);
 }

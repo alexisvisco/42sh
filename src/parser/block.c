@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/23 14:07:56 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/29 18:39:18 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/01 15:37:43 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,7 +16,7 @@
 #define SEPP1 "&"
 #define SEPP2 "&&"
 
-static int	countsep(t_token **tokens)
+static int	count_sep(t_token **tokens)
 {
 	int	i;
 	int	block;
@@ -38,14 +38,14 @@ static int	countsep(t_token **tokens)
 	return (block);
 }
 
-t_block		*extractblock(t_token **tokens)
+t_block		*extract_blocks(t_token **tokens)
 {
 	int		i;
 	int		j;
 	t_block	*blocks;
 	int		begin;
 
-	blocks = malloc(sizeof(t_block) * (countsep(tokens) + 1));
+	blocks = malloc(sizeof(t_block) * (count_sep(tokens) + 1));
 	i = 0;
 	j = 0;
 	while (tokens[i])

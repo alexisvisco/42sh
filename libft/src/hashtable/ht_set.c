@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/23 13:27:45 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 14:50:12 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/31 19:16:01 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,6 +18,6 @@ void	ht_set(t_hashtable *h, const char *key, void *val)
 	t_node *node;
 
 	node = ht_has_or_create(h, key);
-	free(node->value);
+//	free(node->value);
 	node->value = val;
 }

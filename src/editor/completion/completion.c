@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/24 20:48:50 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/01 18:50:26 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/02 10:03:11 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,7 +19,10 @@ void	completion_next(t_editor *e)
 
 	completion = e->options->completion_data;
 	if (completion->heap->elements == 0)
+	{
+		completion_delete(e);
 		return ;
+	}
 	if (completion->index + 1 < (int64_t)completion->heap->elements)
 	{
 		completion->index++;
@@ -34,7 +37,6 @@ void	completion_next(t_editor *e)
 
 void	completion_handler(t_editor *e)
 {
-	// deb_printer("tcompletion_handler\n");
 	init_completion(e);
 	completion_next(e);
 }
@@ -57,9 +59,8 @@ void	init_completion(t_editor *e)
 		e->mode = COMPLETION;
 		e->options->completion_data = malloc(sizeof(t_e_content));
 		e->options->completion_data->heap = heap_new(32);
-		e->options->completion_data->index = 0;
+		e->options->completion_data->index = -1;
 		e->options->completion_data->origin[0] = '\0';
 		get_completions(e);
-		
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/29 10:35:59 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/01 18:36:06 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/02 10:01:28 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -24,6 +24,7 @@ void	set_env(void)
 	int		i;
 	char	**splitted;
 	char	*tmp;
+	char	*c;
 
 	g_shell.env = ht_new(128);
 	g_shell.env_trie = trie_new();
@@ -33,10 +34,11 @@ void	set_env(void)
 		splitted = ft_strsplit(environ[i], '=');
 		if (splitted && splitted[0] && splitted[1])
 		{
-			tmp = ft_strjoin(ft_char_to_str('$'), splitted[0]);
-			ft_printf(" - %s\n", tmp);
+			c = ft_char_to_str('$');
+			tmp = ft_strjoin(c, splitted[0]);
 			ht_set(g_shell.env, splitted[0], ft_strdup(splitted[1]));
 			trie_insert(g_shell.env_trie, tmp);
+			free(c);
 			free(tmp);
 			tmp = NULL;
 		}

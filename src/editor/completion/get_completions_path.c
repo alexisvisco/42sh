@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/01 10:39:36 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/01 11:29:56 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/02 10:25:35 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -41,6 +41,7 @@ void		get_completions_path(t_word_info *i, t_heap *heap)
 	char *start_with;
 	char *has_slash;
 
+	deb_printer("hey??\n");
 	has_slash = 0;
 	if (i->current_word != NULL)
 	{

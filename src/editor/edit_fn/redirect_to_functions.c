@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/23 20:04:51 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/01 18:26:52 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/02 09:51:37 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -110,10 +110,7 @@ void					redirect_key_fn(t_editor *e, char c, char *seq)
 		return ;
 	}
 	else if (e->mode == COMPLETION)
-	{
 		completion_delete(e);
-		return ;
-	}
 	if ((ISK(ESC) && (func = esc_fn(e, seq))) ||
 		(func = ctrl_fn(c)) ||
 		(ISK(BACKSPACE) && (func = ef_del_backspace)))

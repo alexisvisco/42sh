@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/01 10:03:32 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/01 17:59:17 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/02 09:56:10 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -39,6 +39,10 @@ void	set_word_info(t_word_info *i, t_editor *e)
 {
 	i->current_word = get_word_cursor(e->buf, e->pos);
 	i->prev_word = NULL;
+	if (!i->current_word)
+		i->current_word = ft_strdup("");
 	if (ft_strstarts_with(i->current_word, '$'))
 		i->type = TYPE_ENV;
+	else
+		i->type = TYPE_COMMAND_OR_BIN;
 }

@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:00 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/30 14:40:18 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/02 17:45:50 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -53,7 +53,8 @@ typedef enum	e_parse
 	ERR_REDIR,
 	ERR_PIPE,
 	ERR_AFTER_FD,
-	ERR_BAD_END
+	ERR_BAD_END,
+	ERR_ONLY_COMMENT
 }				t_eparse;
 
 

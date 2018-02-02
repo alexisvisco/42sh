@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 14:44:16 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 16:38:28 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/02 18:52:39 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -39,10 +39,9 @@ int	main2(char *s)
 
 	int parse;
 
-	if ((parse = parse_block(tokens, &test)) == -1)
-		printf("\nErreur parse block\n");
-	if (parse == -2)
-		printf("\nQue des commentaires\n");
+	if ((parse = parse_block(tokens, &test)) < 0)
+		return (0);
+		
 	i = 0;
 	while (test[i].start_tok != -1)
 	{

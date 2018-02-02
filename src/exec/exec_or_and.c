@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 16:59:52 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/01 16:31:19 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/02 19:12:26 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -77,7 +77,7 @@ int			exec_or_and(t_token **tokens, t_block *blocks, int num[2], int ret)
 	ind[1] = go_to_next(tokens, blocks, num[1], num[0]);
 
 	argv = next_cmd(tokens, ind);
-
+	ret = fork_result(node, argv);
 	num[0] = ind[1] + 1;
 
 	if ((ret == 1 && ft_strequ(argv[0], "&&"))
@@ -89,17 +89,17 @@ int			exec_or_and(t_token **tokens, t_block *blocks, int num[2], int ret)
 	else if (analyze_next_and_or(argv[0]))
 		delete_first_element(&argv);
 	
-	if (is_executable(argv[0]))
-		node = argv[0];
-	else if ((node = ht_get(g_shell.bin, argv[0])))
-		;
-	else
+	/*
+	** mettre la fonction exec_all_pipe
+	*/
+	
+	if (node_return(argv, &node) == 0)
 	{
 		e_general(ERR_CMD_NOT_FOUND, argv[0]);
 		free_tab(argv);
 		return (go_next_index(tokens, blocks, num, 1));
 	}
-	ret = fork_result(node, argv);
+
 	free_tab(argv);
 	return (go_next_index(tokens, blocks, num, ret));
 }

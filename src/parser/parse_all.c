@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/27 16:23:48 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/01 15:37:43 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/02 17:47:35 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -29,7 +29,7 @@ int		parse_block(t_token **tokens, t_block **blocks)
 		*blocks = extract_blocks(tokens);
 	else if (i == 0)
 	{
-		*blocks = NULL;
+		e_parse(ERR_ONLY_COMMENT, NULL);
 		return (-2);
 	}
 	else

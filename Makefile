@@ -80,6 +80,7 @@ editor/edit_fn/ef_swap_char.c \
 editor/edit_fn/redirect_to_functions.c \
 editor/completion/completion.c \
 editor/completion/get_completions.c \
+editor/completion/completion_printer.c \
 editor/completion/get_completions_bin.c \
 editor/completion/get_completions_env.c \
 editor/completion/get_completions_path.c \

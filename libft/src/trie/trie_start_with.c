@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/29 18:52:07 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/03 17:15:42 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/03 17:16:17 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -26,7 +26,7 @@ static void	trie_start_with_a(t_trie_node *root, char *prefix, t_heap *heap)
 	if (trie_is_last_node(root))
 	{
 		free(tmp);
-		return;
+		return ;
 	}
 	i = -1;
 	while (++i < ALPHABET_SIZE)

@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/02 12:05:02 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/02 19:13:03 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/03 15:10:21 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -27,50 +27,56 @@ int			there_is_pipe(char **argv)
 	return (0);
 }
 
-int			there_is_redir(char **argv)
+static int		count_pipes(char **argv)
 {
 	int	i;
+	int	count;
 
 	i = 0;
+	count = 0;
 	while (argv[i])
 	{
-		if (argv[i][0] == '>' || argv[i][0] == '<')
-			return (i);
+		if (ft_strequ(argv[i], "|"))
+			count++;
 		i++;
 	}
-	return (0);
+	return (count);
 }
 
-static int		end_of_cmd(t_token **tokens, t_block *block, int num)
+static int		end_of_cmd(char **argv)
 {
-	int	end;
+	int	a;
 
-	end = block[num].start_tok + 1;
-	while (end <= block[num].end_tok)
-	{
-		if (ft_strequ(tokens[end]->value, "|"))
-			break ;
-		end++;
-	}
-	return (end - block[num].start_tok - 1);
+	a = 0;
+	while (argv[a])
+		a++;
+	return (a);
 }
 
-char			**extract_cmd_pipes(t_token **tokens, t_block *block, int num)
+char		***extract_all_pipes(char **argv)
 {
-	char	**argv;
+	char	***cmds;
+	int		nb_cmds;
 	int		i;
-	int		end;
+	int		j;
+	int		k;
 
-	end = end_of_cmd(tokens, block, num);
-	argv = malloc(sizeof(char *) * (end + 2));
-	argv[end + 1] = NULL;
+	nb_cmds = count_pipes(argv);
+	cmds = malloc(sizeof(char**) * (nb_cmds + 2));
+	cmds[nb_cmds + 1] = NULL;
+	i = -1;
+	while (++i <= nb_cmds)
+		cmds[i] = malloc(sizeof(char*) * (end_of_cmd(argv) + 1));
 	i = 0;
-	num = block[num].start_tok;
-	while (i <= end)
+	j = 0;
+	while (i <= nb_cmds)
 	{
-		argv[i] = ft_strdup(tokens[num]->value);
-		num++;
+		k = 0;
+		while (argv[j] && ft_strcmp(argv[j], "|"))
+			cmds[i][k++] = ft_strdup(argv[j++]);
+		cmds[i][k] = NULL;
+		j++;
 		i++;
 	}
-	return (argv);
+	return (cmds);
 }

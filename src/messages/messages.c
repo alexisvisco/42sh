@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/22 16:21:06 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/02 17:46:28 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/03 18:58:33 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -43,4 +43,12 @@ void	e_parse(t_eparse m, char *arg)
 		ft_dprintf(2, "%s » Your command must end by another thing\n", SHELL_NAME);
 	if (m == ERR_ONLY_COMMENT)
 		ft_dprintf(2, "%s » Please stop comments, it's useless\n", SHELL_NAME);
+}
+
+void	e_open(t_eopen m, char *arg)
+{
+	if (m == ERR_IS_DIR)
+		ft_dprintf(2, "%s » %s is a directory!\n", SHELL_NAME, arg);
+	if (m == ERR_PERM)
+		ft_dprintf(2, "%s » %s permission denied!\n", SHELL_NAME, arg);
 }

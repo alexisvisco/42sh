@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/29 17:25:56 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/02 10:56:49 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/03 18:46:36 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,7 +14,7 @@
 #include "shell.h"
 
 /*
-** if ret = 1 > erreur else ret = 0
+** USELESS
 */
 
 int			fork_result(char *node, char **argv)

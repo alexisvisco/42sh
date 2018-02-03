@@ -6,7 +6,7 @@
 #    By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/01/19 13:46:02 by aviscogl     #+#   ##    ##    #+#        #
-#    Updated: 2018/02/02 17:42:17 by ggranjon    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/02/03 19:19:39 by ggranjon    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -81,13 +81,14 @@ util/env_to_array.c \
 util/delete_first.c  \
 \
 exec/fork.c  \
-exec/extract_cmd_and_args.c \
 exec/signal.c \
 exec/analyze_next_and_or.c  \
 exec/exec_or_and.c \
 exec/return_executable.c \
 exec/redistribute_pipe_redir.c \
-exec/execute_pipe.c 
+exec/execute_pipe.c  \
+exec/open_file.c
+
 
 EDITOR_FOLDERS = editor editor/util editor/refresher editor/keys_functions editor/edit_fn editor/history
 OBJ_FOLDERS = $(EDITOR_FOLDERS) init eval exec lex messages parser util 

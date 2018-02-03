@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/29 10:38:35 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/30 10:26:49 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/03 15:18:44 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,5 +23,25 @@ void	free_tab(char **table)
 		while (table[++i])
 			free(table[i]);
 		free(table);
+	}
+}
+
+void	free_3d_tab(char ***array)
+{
+	int i;
+	int	j;
+
+	i = 0;
+	if (array)
+	{
+		while (array[i])
+		{
+			j = 0;
+			while (array[i][j])
+				free(array[i][j++]);
+			free(array[i]);
+			i++;
+		}
+		free(array);
 	}
 }

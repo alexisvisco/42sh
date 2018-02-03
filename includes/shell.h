@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:00 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/02 17:45:50 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/03 19:16:06 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -67,8 +67,15 @@ typedef struct	s_shell
 
 extern t_shell	g_shell;
 
+typedef enum	e_open
+{
+	ERR_IS_DIR,
+	ERR_PERM
+}				t_eopen;
+
 void			e_general(t_message m, char *arg);
 void			e_parse(t_eparse m, char *arg);
+void			e_open(t_eopen m, char *arg);
 
 void			set_env();
 void			set_bin();

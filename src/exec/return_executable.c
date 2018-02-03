@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/02 10:55:20 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/02 11:23:57 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/03 17:02:47 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,17 +21,30 @@ int			is_executable(char *path)
 	&& st.st_mode & S_IXUSR));
 }
 
-int			node_return(char **argv, char **node)
+int			replace_argv0_by_exec(char ***cmds)
 {
-	if (is_executable(argv[0]))
+	int		i;
+	char	*tmp;
+
+	i = 0;
+	while (cmds[i])
 	{
-		(*node) = argv[0];
-		return (1);
+		if (is_executable(cmds[i][0]))
+			;
+		/*
+		** else if (is a buildin)
+		*/
+		else if ((tmp = ht_get(g_shell.bin, cmds[i][0])))
+		{
+			free(cmds[i][0]);
+			cmds[i][0] = ft_strdup(tmp);
+		}
+		else
+		{
+			e_general(ERR_CMD_NOT_FOUND, cmds[i][0]);
+			return (-1);
+		}
+		i++;
 	}
-	/* if (is a buildin)
-	**
-	*/
-	else if (((*node) = ht_get(g_shell.bin, argv[0])))
-		return (1);
 	return (0);
 }

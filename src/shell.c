@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 14:44:16 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/02 18:52:39 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/03 14:54:04 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -41,13 +41,12 @@ int	main2(char *s)
 
 	if ((parse = parse_block(tokens, &test)) < 0)
 		return (0);
-		
+
 	i = 0;
 	while (test[i].start_tok != -1)
 	{
 		ft_printf("BLOCK begin : %i\tBLOCK end : %i\n", test[i].start_tok, test[i].end_tok);
-		ft_printf("Typeee : %i\n", test[i].my_op[1]);
-		ft_printf("Nombre de pipe : %i\n", test[i].nb_pipe);
+		ft_printf("Typeee : %i\n\n", test[i].my_op[1]);
 		i++;
 	}
 	int		tablea[2] = {0, 0};

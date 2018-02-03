@@ -1,15 +1,15 @@
-# **************************************************************************** #
-#                                                           LE - /             #
-#                                                               /              #
-#    Makefile                                         .::    .:/ .      .::    #
-#                                                  +:+:+   +:    +:  +:+:+     #
-#    By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+      #
-#                                                  #+#   #+    #+    #+#       #
-#    Created: 2018/01/19 13:46:02 by aviscogl     #+#   ##    ##    #+#        #
-#    Updated: 2018/02/01 18:46:11 by aviscogl    ###    #+. /#+    ###.fr      #
-#                                                          /                   #
-#                                                         /                    #
-# **************************************************************************** #
+#  ************************************************************************** #
+#                                                           LE - /            #
+#                                                               /             #
+#    Makefile                                         .::    .:/ .      .::   #
+#                                                  +:+:+   +:    +:  +:+:+    #
+#    By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     #
+#                                                  #+#   #+    #+    #+#      #
+#    Created: 2018/02/03 13:57:02 by aviscogl     #+#   ##    ##    #+#       #
+#    Updated: 2018/02/03 13:57:02 by aviscogl    ###    #+. /#+    ###.fr     #
+#                                                          /                  #
+#                                                         /                   #
+#  ************************************************************************** #
 
 NAME = shell
 CC = gcc
@@ -54,6 +54,7 @@ editor/history/origin.c \
 editor/history/history.c \
 editor/util/get_colums_len.c \
 editor/util/get_cursor_pos.c \
+editor/util/free_options.c \
 editor/refresher/buf_append.c \
 editor/refresher/refresh_line.c \
 editor/refresher/set_colum.c \
@@ -68,6 +69,7 @@ editor/edit_fn/ef_delete_curr_to_end.c \
 editor/edit_fn/ef_delete_entire_line.c \
 editor/edit_fn/ef_go_end.c \
 editor/edit_fn/ef_go_home.c \
+editor/edit_fn/ef_move_cursor_to.c \
 editor/edit_fn/ef_move_up.c \
 editor/edit_fn/ef_move_down.c \
 editor/edit_fn/ef_move_left.c \
@@ -83,7 +85,6 @@ editor/completion/get_completions_env.c \
 editor/completion/get_completions_path.c \
 editor/completion/get_folder_from.c \
 editor/completion/get_name_from.c \
-editor/completion/get_next_str.c \
 editor/completion/set_word_info.c \
 editor/completion/update_word.c \
 \

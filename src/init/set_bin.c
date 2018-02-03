@@ -64,7 +64,9 @@ void		set_bin(void)
 
 	g_shell.bin = ht_new(512);
 	g_shell.bin_trie = trie_new();
-	path = (char *)ht_has(g_shell.env, "PATH")->value;
+	path = (char *)ht_get(g_shell.env, "PATH");
+	if (!path)
+		return ;
 	if (path)
 	{
 		paths = ft_strsplit(path, ':');

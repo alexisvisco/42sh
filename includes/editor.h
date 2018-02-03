@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:35 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/01 18:45:56 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/03 14:22:17 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -30,7 +30,6 @@
 # include <sys/ioctl.h>
 # include <unistd.h>
 
-# define EDITOR_DEFAULT_HISTORY_MAX_LEN 100
 # define EDITOR_MAX_LINE 4096
 
 typedef struct termios	t_termios;
@@ -44,8 +43,6 @@ typedef enum	e_mode {
 
 enum	e_key_action
 {
-	KEY_NULL = 0,
-	KON = 35051931,
 	CTRL_A = 1,
 	CTRL_B = 2,
 	CTRL_C = 3,
@@ -70,7 +67,6 @@ enum	e_key_action
 
 typedef struct	s_refresher
 {
-	char		seq[64];
 	int			plen;
 	int			rows;
 	int			rpos;
@@ -104,7 +100,6 @@ typedef struct	s_editor
 {
 	int			ifd;
 	int			ofd;
-	t_termios	origin;
 	char		*buf;
 	size_t		buflen;
 	const char	*prompt;
@@ -114,7 +109,6 @@ typedef struct	s_editor
 	size_t		len;
 	size_t		cols;
 	size_t		maxrows;
-	int			history_index;
 	t_mode		mode;
 	t_options	*options;
 }				t_editor;
@@ -129,14 +123,17 @@ typedef struct	s_word_info
 {
 	t_cp_type	type;
 	char		*current_word;
-	char		*prev_word;
+	size_t      begin;
+	size_t      end;
 }				t_word_info;
 
 typedef void(t_redirect_fn)(t_editor *);
 
 extern t_termios	g_origin;
 extern int			g_raw_mode;
+
 void			deb_printer(const char *format, ...);
+void            free_options(t_options *t);
 
 char			*readline(const char *prompt, t_options *opt);
 char			*readline_notty();
@@ -165,7 +162,7 @@ void			set_colum(t_editor *e, t_refresher *r, t_buf *b);
 int				get_cursor_pos(int ifd, int ofd);
 int				get_colums_len(int ifd, int ofd);
 
-void			init_history();
+void			init_history(t_editor *e);
 void			history_up(t_editor *e);
 void			history_down(t_editor *e);
 void			history_add(t_editor *e);
@@ -173,19 +170,16 @@ void			set_origin(t_editor *e);
 void			origin_to_buf(t_editor *e);
 
 void			completion_next(t_editor *e);
-void			completion_add(t_editor *e);
 void			completion_handler(t_editor *e);
 void			completion_delete(t_editor *e);
-void			init_completion(t_editor *e);
-char			*get_word_cursor(char *cmd, size_t cursor);
+void		    init_completion(t_editor *e);
+void            get_word_at(char *cmd, size_t position, t_word_info *w);
 void			get_completions(t_editor *e);
 void			get_completions_bin(t_word_info *i, t_heap *h);
 void			get_completions_env(t_word_info *i, t_heap *h);
 void			get_completions_path(t_word_info *i, t_heap *h);
 char			*get_folder_from(char *str);
 char			*get_name_from(char *str);
-char			*get_next_str(char *from, char *full);
-char			*get_next_str(char *from, char *full);
 void			set_word_info(t_word_info *i, t_editor *e);
 void			update_word(t_editor *e, char *word);
 void			free_e_content(t_e_content *h);
@@ -196,6 +190,7 @@ void			ef_delete_curr_to_end(t_editor *l);
 void			ef_delete_entire_line(t_editor *l);
 void			ef_go_end(t_editor *l);
 void			ef_go_home(t_editor *l);
+void            ef_move_cursor_to(t_editor *e, size_t position);
 void			ef_move_up(t_editor *l);
 void			ef_move_down(t_editor *l);
 void			ef_move_left(t_editor *l);

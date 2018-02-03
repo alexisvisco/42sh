@@ -5,16 +5,16 @@
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/20 18:19:20 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 20:17:28 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/02/02 23:16:33 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/03 10:13:38 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
+
 #include "shell.h"
 
 t_termios	g_origin;
-int			g_raw_mode;
 
 /*
 ** Check if the terminal in the env TERM is
@@ -31,6 +31,7 @@ static int	unsupported_term(void)
 	term = ht_get(g_shell.env, "TERM");
 	if (!term)
 		return (1);
+
 	i = -1;
 	while (unsupported_term[++i])
 		if (ft_strequ(unsupported_term[i], term))

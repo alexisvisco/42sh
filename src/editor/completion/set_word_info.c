@@ -6,42 +6,48 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/01 10:03:32 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/02 09:56:10 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/03 14:33:20 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "editor.h"
 
-char	*get_word_cursor(char *cmd, size_t cursor)
+void    get_word_at(char *cmd, size_t position, t_word_info *w)
 {
-	const size_t	len = ft_strlen(cmd);
-	size_t			i;
-	size_t			j;
+	int64_t i;
+	size_t	j;
 
-	i = cursor;
-	if (cursor != 0)
+	if ((cmd[position] == ' ' && position == 0) ||
+	    (cmd[position] == ' ' && cmd[position - 1] == ' '))
 	{
-		while (--i && (i == 0 || cmd[i] != ' '))
-			;
+		w->current_word = NULL;
+		return ;
 	}
-	i = i == 0 ? 0 : i + 1;
-	j = i;
-	while (j != len && cmd[j] != ' ')
-		j++;
-	j = j == len ? (j) - i : j - i;
-	if (j == 0)
-		return (NULL);
-	return (ft_strsub(cmd, i, j));
+	if (cmd[position] == ' ' || (position > (ft_strlen(cmd) - 1)))
+		position--;
+	i = (int64_t)position + 1;
+	while (cmd[--i] != ' ' && i >= 0)
+		;
+	i = i < 0 ? 0 : i + 1;
+	j = (size_t)i;
+	while (cmd[++j] != ' ' && cmd[j])
+		;
+	j--;
+	w->begin = (size_t)i;
+	w->end = j;
+	w->current_word = (ft_strsub(cmd, (unsigned int)i, j - (i - 1)));
 }
 
 void	set_word_info(t_word_info *i, t_editor *e)
 {
-	i->current_word = get_word_cursor(e->buf, e->pos);
-	i->prev_word = NULL;
+	get_word_at(e->buf, e->pos, i);
 	if (!i->current_word)
+	{
 		i->current_word = ft_strdup("");
-	if (ft_strstarts_with(i->current_word, '$'))
+		i->type = TYPE_COMMAND_OR_BIN;
+	}
+	else if (ft_strstarts_with(i->current_word, '$'))
 		i->type = TYPE_ENV;
 	else
 		i->type = TYPE_COMMAND_OR_BIN;

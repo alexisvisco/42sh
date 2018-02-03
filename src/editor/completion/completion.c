@@ -45,6 +45,7 @@ void	completion_delete(t_editor *e)
 {
 	t_e_content *completion;
 
+	deb_printer("deletion of completion\n");
 	completion = e->options->completion_data;
 	e->mode = INSERTION;
 	heap_free(completion->heap);

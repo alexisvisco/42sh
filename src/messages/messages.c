@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/22 16:21:06 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 18:46:05 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/03 10:17:48 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -24,6 +24,8 @@ void	e_general(t_message m, char *arg)
 		arg);
 	if (m == ERR_CTRL_C)
 		ft_dprintf(2, "%s » Type 'exit' to quit this shell.\n", SHELL_NAME);
+	if (m == TERM_ENV_NOT_SET)
+		ft_dprintf(2, "%s » TERM environment variable not set.\n", SHELL_NAME);
 	if (m == SHELL_EXIT)
 		ft_printf("%s » You killed me (exit code: %i)! Just say me why!\n",
 		SHELL_NAME, *(int *)arg);

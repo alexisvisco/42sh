@@ -43,7 +43,6 @@ int		enable_terminal(int fd)
 	raw.c_cc[VTIME] = 0;
 	if (tcsetattr(fd, TCSAFLUSH, &raw) < 0)
 		return (-1);
-	g_raw_mode = (1);
 	return (1);
 }
 
@@ -53,7 +52,6 @@ int		enable_terminal(int fd)
 
 int		disable_terminal(int fd)
 {
-	if (tcsetattr(fd, TCSAFLUSH, &g_origin) != -1)
-		g_raw_mode = 0;
+	tcsetattr(fd, TCSAFLUSH, &g_origin);
 	return (1);
 }

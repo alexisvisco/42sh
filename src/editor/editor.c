@@ -18,9 +18,8 @@ static void		init_editor(t_editor *editor)
 	editor->pos = 0;
 	editor->len = 0;
 	editor->oldpos = 0;
-	editor->cols = get_colums_len(editor->ifd, editor->ofd);
+	editor->cols = (size_t)get_colums_len(editor->ifd, editor->ofd);
 	editor->maxrows = 0;
-	editor->history_index = 0;
 	editor->buflen = EDITOR_MAX_LINE;
 	editor->plen = ft_strlen(editor->prompt);
 	editor->buf[0] = 0;

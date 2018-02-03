@@ -1,42 +1,29 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   shell.c                                          .::    .:/ .      .::   */
+/*   free_options.c                                   .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/30 14:44:16 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/03 14:00:53 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/02/03 16:59:20 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/03 16:59:20 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "shell.h"
-#include "f_colors.h"
+#include <editor.h>
 
-t_shell	g_shell;
-
-int	main(void)
+void    free_options(t_options *t)
 {
-
-	char	*str;
-
-	init_shell();
-	if (!ht_get(g_shell.env, "TERM"))
+	if (t->completion_data)
 	{
-		e_general(TERM_ENV_NOT_SET, NULL);
-		exit_shell();
-		exit(EXIT_FAILURE);
+		heap_free(t->completion_data->heap);
+		free(t->completion_data);
 	}
-	while ((str = readline("shell> ", g_shell.line_edit)))
+	if (t->history_data)
 	{
-		if (ft_strequ("exit", str))
-		{
-			exit_shell();
-			free(str);
-			exit(0);
-		}
-		ft_printf("You wrote: %s%s%s$. \n", L_GREEN, str, RESET_ALL);
-		free(str);
+		heap_free(t->history_data->heap);
+		free(t->history_data);
 	}
+	free(t);
 }

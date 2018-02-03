@@ -6,33 +6,47 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/01 10:39:36 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/02 10:25:35 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/03 17:03:00 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-static void	get_completions_path_a(char *folder, char *start, t_heap *heap)
+static void	path_join(char *path, char *path_folder, char *file_path_folder)
+{
+	ft_strcpy(path, path_folder);
+	if (!ft_strends_with(path_folder, '/'))
+		ft_strcat(path, "/");
+	ft_strcat(path, file_path_folder);
+}
+
+static void	get_completions_path_a(char *folder, char *start, char *origin, t_heap *heap)
 {
 	struct dirent	*dent;
 	DIR				*dir;
-	char			*to_add;
+	char            path[2048];
+	char            *tmp;
 
 	dir = opendir(folder);
 	if (!dir)
 		return ;
 	while ((dent = readdir(dir)) != NULL)
 	{
-		if (ft_strstarts_with_str(start, dent->d_name))
+		if (*start == 0 || ft_strstarts_with_str(dent->d_name, start))
 		{
-			to_add = get_next_str(start, dent->d_name);
-			heap_add(heap, ft_strdup(to_add));
-			free(to_add);
-			to_add = NULL;
+			path_join(path, folder, dent->d_name);
+			if (ft_strstarts_with(folder, '.') &&
+			    !ft_strstarts_with(origin, '.'))
+			{
+				tmp = ft_strrep_first_aft("./", "", path, 0);
+				heap_add(heap, tmp);
+			}
+			else
+				heap_add(heap, ft_strdup(path));
 		}
 	}
-	free(dir);
+	closedir(dir);
 }
 
 void		get_completions_path(t_word_info *i, t_heap *heap)
@@ -41,8 +55,6 @@ void		get_completions_path(t_word_info *i, t_heap *heap)
 	char *start_with;
 	char *has_slash;
 
-	deb_printer("hey??\n");
-	has_slash = 0;
 	if (i->current_word != NULL)
 	{
 		has_slash = ft_strchr(i->current_word, '/');
@@ -55,7 +67,7 @@ void		get_completions_path(t_word_info *i, t_heap *heap)
 		folder = ft_strdup(".");
 		start_with = ft_strdup("");
 	}
-	get_completions_path_a(folder, start_with, heap);
+	get_completions_path_a(folder, start_with, i->current_word, heap);
 	free(folder);
 	free(start_with);
 }

@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:35 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/03 17:03:00 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/03 17:35:12 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -143,6 +143,7 @@ int				handle_keys(t_editor *e);
 void			redirect_key_fn(t_editor *e, char c, char *seq);
 int				editor(char *buf, char *prompt, t_options *opt);
 void			editor_insert(t_editor *l, char c);
+void        	editor_insert_instant(t_editor *l, char c);
 void			editor_insert_without_refresh(t_editor *l, char c);
 void			editor_insert_str(t_editor *l, char *str);
 void			editor_insert_str_without_refresh(t_editor *l, char *str);

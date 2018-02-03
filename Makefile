@@ -45,6 +45,7 @@ editor/deb_printer.c \
 editor/editor.c \
 editor/free_e_content.c \
 editor/editor_insert.c \
+editor/editor_insert_instant.c \
 editor/readline.c \
 editor/readline_raw.c \
 editor/readline_notty.c \

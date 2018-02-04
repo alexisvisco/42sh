@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   exit_shell.c                                     .::    .:/ .      .::   */
+/*   ef_move_word.c                                   .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/31 13:47:54 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/03 16:58:42 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/02/04 09:09:19 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/04 09:13:14 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-/*
-** At exit, free all variables to avoid leaks
-** Yes leaks are a pain. 
-*/
-
-void	exit_shell(void)
+void    ef_move_word_right(t_editor *l)
 {
-	ht_free(g_shell.bin);
-	ht_free(g_shell.env);
-	trie_free(g_shell.bin_trie);
-	trie_free(g_shell.env_trie);
-	free_options(g_shell.line_edit);
-	free_options(g_shell.history_search);
-	disable_terminal(0);
+	while (l->pos < l->len && l->buf[l->pos + 1] == ' ')
+		l->pos++;
+	while (l->pos < l->len && l->buf[l->pos + 1] != ' ')
+		l->pos++;
+}
+
+void    ef_move_word_left(t_editor *l)
+{
+
+	while (l->pos > 0 && l->buf[l->pos - 1] == ' ')
+		l->pos--;
+	while (l->pos > 0 && l->buf[l->pos - 1] != ' ')
+		l->pos--;
 }

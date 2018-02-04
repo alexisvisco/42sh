@@ -163,7 +163,8 @@ void			set_colum(t_editor *e, t_refresher *r, t_buf *b);
 int				get_cursor_pos(int ifd, int ofd);
 int				get_colums_len(int ifd, int ofd);
 
-void			init_history(t_editor *e);
+void		    init_history(t_editor *e);
+void            history_search(t_editor *e);
 void			history_up(t_editor *e);
 void			history_down(t_editor *e);
 void			history_add(t_editor *e);
@@ -187,6 +188,8 @@ void			update_word(t_editor *e, char *word);
 void			free_e_content(t_e_content *h);
 
 void			ef_clear_screen(t_editor *l);
+void            ef_move_word_right(t_editor *e);
+void            ef_move_word_left(t_editor *e);
 void			ef_del_prev_word(t_editor *l);
 void			ef_delete_curr_to_end(t_editor *l);
 void			ef_delete_entire_line(t_editor *l);

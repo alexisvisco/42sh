@@ -53,6 +53,7 @@ editor/handle_keys.c \
 editor/terminal_manager.c \
 editor/history/origin.c \
 editor/history/history.c \
+editor/history/history_search.c \
 editor/util/get_colums_len.c \
 editor/util/get_cursor_pos.c \
 editor/util/free_options.c \
@@ -73,6 +74,7 @@ editor/edit_fn/ef_go_home.c \
 editor/edit_fn/ef_move_cursor_to.c \
 editor/edit_fn/ef_move_up.c \
 editor/edit_fn/ef_move_down.c \
+editor/edit_fn/ef_move_word.c \
 editor/edit_fn/ef_move_left.c \
 editor/edit_fn/ef_move_right.c \
 editor/edit_fn/ef_del_backspace.c \

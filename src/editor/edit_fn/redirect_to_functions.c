@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/23 20:04:51 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/03 18:42:29 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/04 09:13:14 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -39,6 +39,8 @@ static t_redirect_fn	*ctrl_fn(char c)
 		return (ef_move_down);
 	if (ISK(CTRL_O))
 		return (ef_move_up);
+	if (ISK(CTRL_H))
+		return (history_search);
 	return (0);
 }
 
@@ -54,6 +56,10 @@ static t_redirect_fn	*extra_fn(t_editor *l, char *seq)
 			return (ef_move_up);
 		else if (ft_strequ("[1;2B", seq))
 			return (ef_move_down);
+		else if (ft_strequ("[1;2D", seq))
+			return (ef_move_word_left);
+		else if (ft_strequ("[1;2C", seq))
+			return (ef_move_word_right);
 	}
 	return (NULL);
 }

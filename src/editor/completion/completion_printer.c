@@ -29,6 +29,10 @@ static size_t   get_max_length(t_heap *h)
 	return (max);
 }
 
+/*
+** Print all completions in columns above the prompt
+*/
+
 void            completion_printer(t_editor *e, t_heap *list)
 {
 	const size_t    max_len = get_max_length(list);
@@ -47,10 +51,9 @@ void            completion_printer(t_editor *e, t_heap *list)
 	{
 		if (list->list[i])
 		{
-			ft_printf("%*-s", max_len + 1, (char *) list->list[i]);
+			ft_printf("%*-s", max_len + 1, (char *) list->list[i++]);
 			j++;
 		}
-		i++;
 		if ((int)j == max_colums)
 		{
 			ft_putchar('\n');

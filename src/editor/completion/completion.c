@@ -13,6 +13,12 @@
 
 #include "editor.h"
 
+/*
+** Get the next completion, if the index of the completion reach the end of the
+** list, the completion will be deleted and the current word will be the origin
+** before the completion
+*/
+
 void	completion_next(t_editor *e)
 {
 	t_e_content *completion;
@@ -35,11 +41,22 @@ void	completion_next(t_editor *e)
 	}
 }
 
+/*
+** This method is called when user type <TAB>
+** Create a completion structure if not exist then call the completion_next
+** method
+*/
+
 void	completion_handler(t_editor *e)
 {
 	init_completion(e);
 	completion_next(e);
 }
+
+/*
+** This method delete the structure t_e_content and
+** reset options->completion_data to NULL
+*/
 
 void	completion_delete(t_editor *e)
 {
@@ -51,6 +68,12 @@ void	completion_delete(t_editor *e)
 	free(e->options->completion_data);
 	e->options->completion_data = NULL;
 }
+
+/*
+** This method init completion_data if not exist
+** Init all types of completions with get_completions method
+** Print all completions in columns above the prompt
+*/
 
 void	init_completion(t_editor *e)
 {

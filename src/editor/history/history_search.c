@@ -31,7 +31,7 @@ static t_heap   *get_result(char *query, t_heap *h)
 	return (results);
 }
 
-static int  is_only_num(char *query)
+static int      is_only_num(char *query)
 {
 	while (*query)
 	{
@@ -42,13 +42,54 @@ static int  is_only_num(char *query)
 	return (1);
 }
 
-void        history_search(t_editor *e)
+static t_heap   *show_result(char *str, t_heap *history,
+                             t_heap *result)
+{
+	size_t i;
+
+	i = 0;
+	if (result)
+			heap_free(result);
+	result = get_result(str, history);
+	while (i < result->elements)
+		{
+			if (result->list[i])
+				ft_printf(" * %llu : %s\n", i, (char *)result->list[i]);
+			i++;
+		}
+	free(str);
+	return result;
+}
+
+static int      update_line(t_editor *e, char *str, t_heap *result)
+{
+	char *tmp;
+
+	if (result && is_only_num(str))
+	{
+		tmp = heap_get(result, (size_t)ft_atoi(str));
+		if (tmp)
+		{
+			ef_delete_entire_line(e);
+			editor_insert_str_without_refresh(e, tmp);
+			heap_free(result);
+			free(str);
+			return (1);
+		}
+	}
+	return (0);
+}
+
+/*
+** Show history search prompt
+** User need to type a text then a number to validate what history he want
+*/
+
+void            history_search(t_editor *e)
 {
 	char    *str;
 	t_heap  *history;
 	t_heap  *result;
-	size_t  i;
-	char    *tmp;
 
 	history = e->options->history_data->heap;
 	disable_terminal(0);
@@ -57,29 +98,9 @@ void        history_search(t_editor *e)
 	while ((str = readline("(search in history) ", g_shell.history_search)))
 	{
 		disable_terminal(0);
-		if (result && is_only_num(str))
-		{
-			tmp = heap_get(result, (size_t)ft_atoi(str));
-			if (tmp)
-			{
-				ef_delete_entire_line(e);
-				editor_insert_str_without_refresh(e, tmp);
-				heap_free(result);
-				free(str);
-				break ;
-			}
-		}
-		if (result)
-			heap_free(result);
-		result = get_result(str, history);
-		i = 0;
-		while (i < result->elements)
-		{
-			if (result->list[i])
-				ft_printf(" * %llu : %s\n", i, (char *)result->list[i]);
-			i++;
-		}
-		free(str);
+		if (update_line(e, str, result))
+			break ;
+		result = show_result(str, history, result);
 	}
 	ft_putchar('\n');
 	enable_terminal(0);

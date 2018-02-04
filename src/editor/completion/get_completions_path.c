@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/01 10:39:36 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/03 17:03:00 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/04 09:41:14 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -48,6 +48,11 @@ static void	get_completions_path_a(char *folder, char *start, char *origin, t_he
 	}
 	closedir(dir);
 }
+
+/*
+** Get all completions possible for i->current_word that is a path
+** If there is no word or word is empty search paths with '.'
+*/
 
 void		get_completions_path(t_word_info *i, t_heap *heap)
 {

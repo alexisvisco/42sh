@@ -13,6 +13,10 @@
 
 #include "editor.h"
 
+/*
+** Update the word at current position with the word passed in parameter
+*/
+
 void	update_word(t_editor *e, char *word)
 {
 	t_word_info info;

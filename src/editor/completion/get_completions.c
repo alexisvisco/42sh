@@ -6,19 +6,26 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/01 10:01:06 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/01 11:26:27 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/04 09:41:14 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
 
+/*
+** This method insert all completions according to the type of the completion
+** There is two types:
+**  - TYPE_COMMAND_OR_PATH
+**  - TYPE_ENV
+*/
+
 void	get_completions(t_editor *e)
 {
 	t_word_info	info;
 
 	set_word_info(&info, e);
-	if (info.type == TYPE_COMMAND_OR_BIN)
+	if (info.type == TYPE_COMMAND_OR_PATH)
 	{
 		get_completions_bin(&info, e->options->completion_data->heap);
 		get_completions_path(&info, e->options->completion_data->heap);

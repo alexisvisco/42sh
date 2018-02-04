@@ -39,16 +39,26 @@ void    get_word_at(char *cmd, size_t position, t_word_info *w)
 	w->current_word = (ft_strsub(cmd, (unsigned int)i, j - (i - 1)));
 }
 
+/*
+** Set all information about t_word_info, the word at cursor
+** Define the end, the begin of the word and the type of the word
+** Sample:
+**  index 3 of 'hey im really happy' -> word = 'hey', start = 0, end = 2
+**  index 9 of 'hey im really happy' -> word = 'really', start = 7, end = 11
+** The types are set by this rule: if the word start with a '$' it's a env
+** variable, else its a command or a path
+*/
+
 void	set_word_info(t_word_info *i, t_editor *e)
 {
 	get_word_at(e->buf, e->pos, i);
 	if (!i->current_word)
 	{
 		i->current_word = ft_strdup("");
-		i->type = TYPE_COMMAND_OR_BIN;
+		i->type = TYPE_COMMAND_OR_PATH;
 	}
 	else if (ft_strstarts_with(i->current_word, '$'))
 		i->type = TYPE_ENV;
 	else
-		i->type = TYPE_COMMAND_OR_BIN;
+		i->type = TYPE_COMMAND_OR_PATH;
 }

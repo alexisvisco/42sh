@@ -13,6 +13,13 @@
 
 #include "editor.h"
 
+/*
+** Get only the name from a path
+** Sample:
+**  src/lex/hi.c -> hi.c
+**  src/editor/completion/get_name -> get_name
+*/
+
 char	*get_name_from(char *str)
 {
 	const size_t	len = ft_strlen(str);

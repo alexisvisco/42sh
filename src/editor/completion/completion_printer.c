@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/03 17:24:42 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/05 10:46:25 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/05 12:07:34 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -44,18 +44,19 @@ void			completion_printer(t_editor *e, t_heap *list)
 	if (max_colums < 0)
 		max_colums = 1;
 	disable_terminal(STDIN_FILENO);
-	ft_putstr("\n\n");
+	ft_printf("\n", list->elements);
 	i = 0;
 	j = 0;
 	while (i < list->size)
 	{
 		if (list->list[i])
 		{
-			ft_printf("%*-s", max_len + 1, (char *)list->list[i++]);
+			ft_printf("%*-s", max_len + 1, list->list[i]);
 			j++;
 		}
-		if ((int)j == max_colums && !(j = 0))
+		if (((int)j == max_colums && !(j = 0)) || (i + 1 == list->size))
 			ft_putchar('\n');
+		i++;
 	}
 	enable_terminal(STDIN_FILENO);
 }

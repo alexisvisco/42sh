@@ -37,7 +37,7 @@ void	completion_next(t_editor *e)
 	else
 	{
 		update_word(e, completion->origin);
-		completion_delete(e);
+		completion->index = -1;
 	}
 }
 

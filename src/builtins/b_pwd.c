@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   exit_shell.c                                     .::    .:/ .      .::   */
+/*   b_pwd.c                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/31 13:47:54 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/05 18:42:35 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/02/05 18:56:46 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/05 19:23:34 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-/*
-** At exit, free all variables to avoid leaks
-** Yes leaks are a pain. 
-*/
-
-void	exit_shell(void)
+int     b_pwd(char **args, t_hashtable *envs)
 {
-	ht_free(g_shell.bin);
-	ht_free(g_shell.env);
-	trie_free(g_shell.bin_trie);
-	trie_free(g_shell.env_trie);
-	free_options(g_shell.line_edit);
-	free_options(g_shell.history_search);
-	ht_free(get_builtins());
-	disable_terminal(0);
+	char cwd[2048];
+
+	(void)args;
+	if (ht_get(envs, "PWD"))
+		ft_printf("%s\n", ht_get(envs, "PWD"));
+	else if (getcwd(cwd, sizeof(cwd)) != NULL)
+	{
+		ft_printf("%s\n", cwd);
+		ht_set(envs, "PWD", cwd);
+	}
+	else
+	{
+		err_builtins(ERR_PWD_NOT_FOUND);
+		return (0);
+	}
+	return (1);
 }

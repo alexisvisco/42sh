@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   exit_shell.c                                     .::    .:/ .      .::   */
+/*   builtins.h                                       .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/31 13:47:54 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/05 18:42:35 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/02/05 18:45:07 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/05 20:59:03 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "shell.h"
+#ifndef BUILTINS_H
+# define BUILTINS_H
 
-/*
-** At exit, free all variables to avoid leaks
-** Yes leaks are a pain. 
-*/
+# include <stdlib.h>
 
-void	exit_shell(void)
-{
-	ht_free(g_shell.bin);
-	ht_free(g_shell.env);
-	trie_free(g_shell.bin_trie);
-	trie_free(g_shell.env_trie);
-	free_options(g_shell.line_edit);
-	free_options(g_shell.history_search);
-	ht_free(get_builtins());
-	disable_terminal(0);
-}
+typedef int(t_builtins_fun)(char **, t_hashtable *);
+
+t_builtins_fun  *builtins(char *cmd);
+t_hashtable     *get_builtins();
+int             b_pwd(char **args, t_hashtable *envs);
+int             b_env(char **args, t_hashtable *envs);
+int             b_env_set(char **args, t_hashtable *envs);
+int             b_env_unset(char **args, t_hashtable *envs);
+int             b_clear(char **args, t_hashtable *envs);
+
+#endif

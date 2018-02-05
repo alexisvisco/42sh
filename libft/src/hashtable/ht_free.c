@@ -22,7 +22,7 @@ void	ht_default_free(t_hashtable *t, void *a)
 	{
 		n = (t_node *)a;
 		free(n->key);
-		if (n->value)
+		if (n->value && t->free_func)
 			t->free_func(n->value);
 		free(a);
 	}
@@ -43,7 +43,7 @@ void	ht_free(t_hashtable *t)
 			j = 0;
 			while (j < h->size)
 			{
-				if (t->free_func && h->list[j])
+				if (h->list[j])
 					ht_default_free(t, h->list[j]);
 				j++;
 			}

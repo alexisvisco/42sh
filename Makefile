@@ -6,7 +6,7 @@
 #    By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/01/19 13:46:02 by aviscogl     #+#   ##    ##    #+#        #
-#   Updated: 2018/02/05 16:12:47 by aviscogl    ###    #+. /#+    ###.fr     # #
+#   Updated: 2018/02/05 20:56:42 by aviscogl    ###    #+. /#+    ###.fr     # #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -27,6 +27,7 @@ lex/split.c \
 lex/recognize.c \
 \
 messages/messages.c \
+messages/msg_builtins.c \
 \
 parser/block.c \
 parser/analyze.c \
@@ -107,11 +108,18 @@ exec/core_exec.c \
 exec/return_executable.c \
 exec/redistribute_pipe_redir.c \
 exec/exec_pipe.c  \
-exec/open_file.c
+exec/open_file.c \
+\
+builtins/b_env.c \
+builtins/b_env_unset.c \
+builtins/b_env_set.c \
+builtins/b_pwd.c \
+builtins/b_clear.c \
+builtins/is_builtins.c \
 
 
 EDITOR_FOLDERS = editor editor/util editor/refresher editor/completion editor/keys_functions editor/edit_fn editor/history
-OBJ_FOLDERS = $(EDITOR_FOLDERS) init eval exec lex messages parser util 
+OBJ_FOLDERS = $(EDITOR_FOLDERS) init builtins exec lex messages parser util
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))

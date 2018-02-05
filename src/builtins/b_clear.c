@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   exit_shell.c                                     .::    .:/ .      .::   */
+/*   b_clear.c                                        .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/31 13:47:54 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/05 18:42:35 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/02/05 18:56:46 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/05 20:15:40 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-/*
-** At exit, free all variables to avoid leaks
-** Yes leaks are a pain. 
-*/
-
-void	exit_shell(void)
+int     b_clear(char **args, t_hashtable *envs)
 {
-	ht_free(g_shell.bin);
-	ht_free(g_shell.env);
-	trie_free(g_shell.bin_trie);
-	trie_free(g_shell.env_trie);
-	free_options(g_shell.line_edit);
-	free_options(g_shell.history_search);
-	ht_free(get_builtins());
-	disable_terminal(0);
+	(void)args;
+	(void)envs;
+	write(STDOUT_FILENO, "\x1b[H\x1b[2J", 7);
+	return (1);
 }

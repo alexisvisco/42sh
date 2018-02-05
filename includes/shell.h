@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:00 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/05 16:12:47 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/05 21:28:21 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -28,11 +28,13 @@
 # include <stdint.h>
 # include <sys/types.h>
 # include <dirent.h>
+# include "libft.h"
 # include <sys/stat.h>
 # include "editor.h"
+# include "builtins.h"
 # include "lex.h"
 # include "exec.h"
-# include "libft.h"
+
 
 typedef enum	e_message
 {
@@ -42,11 +44,17 @@ typedef enum	e_message
 	ERR_EXE_CMD,
 	SHELL_EXIT,
 	TERM_ENV_NOT_SET,
+}				t_message;
+
+typedef enum    e_msg_builtins
+{
 	ERR_PWD_NOT_FOUND,
 	ERR_SETENV_FORMAT,
-	ERR_SETENV_CMD,
-	ERR_UNENV_CMD
-}				t_message;
+	MSG_SETENV,
+	ERR_UNSETENV_FORMAT,
+	ERR_UNSETENV_NOT_EXIST,
+	MSG_UNSETENV,
+}               t_msg_builtins;
 
 typedef enum	e_parse
 {
@@ -87,9 +95,12 @@ void			e_general(t_message m, char *arg);
 void			e_parse(t_eparse m, char *arg);
 void			e_open(t_eopen m, char *arg);
 void			e_editor(t_eeditor m, char *arg);
+void            err_builtins(t_msg_builtins m, ...);
+void            msg_builtins(t_msg_builtins m, ...);
 
 void			set_env();
 void			set_bin();
+void            update_bin();
 void			set_options();
 void			exit_shell();
 void			init_shell();

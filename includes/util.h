@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/21 15:53:14 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/05 16:12:47 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/05 18:44:11 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,7 +14,7 @@
 #ifndef UTIL_H
 # define UTIL_H
 
-# include <stdlib.h>
+# include <libft.h>
 
 void	*ft_realloc(void *ptr, size_t size);
 char	*ft_char_to_str(char c);

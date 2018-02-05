@@ -1,31 +1,46 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   exit_shell.c                                     .::    .:/ .      .::   */
+/*   b_env.c                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/31 13:47:54 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/05 18:42:35 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/02/05 18:56:46 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/05 19:23:34 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-/*
-** At exit, free all variables to avoid leaks
-** Yes leaks are a pain. 
-*/
-
-void	exit_shell(void)
+static void print_env(const t_heap *heap, size_t j)
 {
-	ht_free(g_shell.bin);
-	ht_free(g_shell.env);
-	trie_free(g_shell.bin_trie);
-	trie_free(g_shell.env_trie);
-	free_options(g_shell.line_edit);
-	free_options(g_shell.history_search);
-	ht_free(get_builtins());
-	disable_terminal(0);
+	t_node *n;
+
+	n = (t_node *)heap->list[j];
+	if (n->key && n->value)
+		ft_printf("%s=%s\n", n->key, n->value);
+}
+
+int     b_env(char **args, t_hashtable *t)
+{
+	t_heap	*heap;
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	(void)args;
+	while (i < t->size)
+	{
+		heap = t->heaps[i];
+		j = 0;
+		while (heap && heap->elements > 0 && j < heap->size)
+		{
+			if (heap->list[j])
+				print_env(heap, j);
+			j++;
+		}
+		i++;
+	}
+	return (1);
 }

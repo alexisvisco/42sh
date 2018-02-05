@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/31 15:03:52 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/05 11:49:31 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/05 18:42:35 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -67,12 +67,16 @@ void		set_bin(void)
 	path = (char *)ht_get(g_shell.env, "PATH");
 	if (!path)
 		return ;
-	if (path)
-	{
-		paths = ft_strsplit(path, ':');
-		i = -1;
-		while (paths[++i])
-			add_to_bintable(paths[i]);
-		free_tab(paths);
-	}
+	paths = ft_strsplit(path, ':');
+	i = -1;
+	while (paths[++i])
+		add_to_bintable(paths[i]);
+	free_tab(paths);
+}
+
+void        update_bin()
+{
+	ht_free(g_shell.bin);
+	trie_free(g_shell.bin_trie);
+	set_bin();
 }

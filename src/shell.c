@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 14:44:16 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/03 14:00:53 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/05 10:27:05 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,7 +18,6 @@ t_shell	g_shell;
 
 int	main(void)
 {
-
 	char	*str;
 
 	init_shell();

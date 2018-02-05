@@ -13,6 +13,13 @@
 
 #include "editor.h"
 
+/*
+** Get only the folder from a path
+** Sample:
+**  src/shell/hey -> src/shell/
+**  src/lex/trefv.c -> src/lex/
+*/
+
 char	*get_folder_from(char *str)
 {
 	const size_t	len = ft_strlen(str);

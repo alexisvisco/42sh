@@ -25,4 +25,6 @@ void	exit_shell(void)
 	trie_free(g_shell.bin_trie);
 	trie_free(g_shell.env_trie);
 	free_options(g_shell.line_edit);
+	free_options(g_shell.history_search);
+	disable_terminal(0);
 }

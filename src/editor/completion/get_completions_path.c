@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/01 10:39:36 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/03 17:03:00 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/05 10:35:47 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,12 +21,13 @@ static void	path_join(char *path, char *path_folder, char *file_path_folder)
 	ft_strcat(path, file_path_folder);
 }
 
-static void	get_completions_path_a(char *folder, char *start, char *origin, t_heap *heap)
+static void	get_completions_path_a(char *folder, char *start, char *origin,
+t_heap *heap)
 {
 	struct dirent	*dent;
 	DIR				*dir;
-	char            path[2048];
-	char            *tmp;
+	char			path[2048];
+	char			*tmp;
 
 	dir = opendir(folder);
 	if (!dir)
@@ -37,7 +38,7 @@ static void	get_completions_path_a(char *folder, char *start, char *origin, t_he
 		{
 			path_join(path, folder, dent->d_name);
 			if (ft_strstarts_with(folder, '.') &&
-			    !ft_strstarts_with(origin, '.'))
+				!ft_strstarts_with(origin, '.'))
 			{
 				tmp = ft_strrep_first_aft("./", "", path, 0);
 				heap_add(heap, tmp);
@@ -48,6 +49,11 @@ static void	get_completions_path_a(char *folder, char *start, char *origin, t_he
 	}
 	closedir(dir);
 }
+
+/*
+** Get all completions possible for i->current_word that is a path
+** If there is no word or word is empty search paths with '.'
+*/
 
 void		get_completions_path(t_word_info *i, t_heap *heap)
 {

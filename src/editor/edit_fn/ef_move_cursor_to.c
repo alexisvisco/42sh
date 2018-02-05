@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/03 13:53:33 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/03 13:56:32 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/05 10:35:47 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,7 +17,7 @@
 ** Move the cursor to the needed position
 */
 
-void    ef_move_cursor_to(t_editor *e, size_t position)
+void	ef_move_cursor_to(t_editor *e, size_t position)
 {
 	while (e->pos != position)
 		(e->pos < position) ? ef_move_right(e) : ef_move_left(e);

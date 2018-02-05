@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   get_completions_bin.c                            .::    .:/ .      .::   */
+/*   ef_move_word.c                                   .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/02/01 10:41:23 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/01 10:43:57 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/02/04 09:09:19 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/05 10:40:58 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-/*
-** Retrieve all completions in the trie structure of binaries start with
-** i->current_word
-*/
-
-void	get_completions_bin(t_word_info *i, t_heap *h)
+void	ef_move_word_right(t_editor *l)
 {
-	trie_start_with(g_shell.bin_trie, i->current_word, h);
+	while (l->pos < l->len && l->buf[l->pos + 1] == ' ')
+		l->pos++;
+	while (l->pos < l->len && l->buf[l->pos + 1] != ' ')
+		l->pos++;
+}
+
+void	ef_move_word_left(t_editor *l)
+{
+	while (l->pos > 0 && l->buf[l->pos - 1] == ' ')
+		l->pos--;
+	while (l->pos > 0 && l->buf[l->pos - 1] != ' ')
+		l->pos--;
 }

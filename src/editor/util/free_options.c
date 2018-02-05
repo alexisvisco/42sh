@@ -6,14 +6,14 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/03 16:59:20 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/03 16:59:20 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/05 10:40:01 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include <editor.h>
 
-void    free_options(t_options *t)
+void	free_options(t_options *t)
 {
 	if (t->completion_data)
 	{

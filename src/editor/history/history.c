@@ -6,14 +6,14 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/24 20:48:50 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 20:15:53 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/05 10:38:17 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "editor.h"
 
-static void	heap_to_buf(size_t i, t_editor *e)
+static void		heap_to_buf(size_t i, t_editor *e)
 {
 	t_e_content	*hist;
 	char		*str;
@@ -35,7 +35,7 @@ static void	heap_to_buf(size_t i, t_editor *e)
 ** Get the old history compared to what you've been typing lately
 */
 
-void		history_up(t_editor *e)
+void			history_up(t_editor *e)
 {
 	t_e_content *hist;
 
@@ -59,7 +59,7 @@ void		history_up(t_editor *e)
 ** your line before using history
 */
 
-void		history_down(t_editor *e)
+void			history_down(t_editor *e)
 {
 	t_e_content *hist;
 
@@ -83,7 +83,7 @@ void		history_down(t_editor *e)
 ** Heap dynamicly increase the size
 */
 
-void		history_add(t_editor *e)
+void			history_add(t_editor *e)
 {
 	t_e_content *hist;
 
@@ -99,7 +99,7 @@ void		history_add(t_editor *e)
 ** If it is not present, create it
 */
 
-void	init_history(t_editor *e)
+void			init_history(t_editor *e)
 {
 	if (!e->options->history_data)
 	{

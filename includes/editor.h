@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:35 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/03 17:35:12 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/04 09:13:14 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -115,7 +115,7 @@ typedef struct	s_editor
 
 typedef enum	e_cp_type
 {
-	TYPE_COMMAND_OR_BIN,
+	TYPE_COMMAND_OR_PATH,
 	TYPE_ENV
 }				t_cp_type;
 
@@ -163,7 +163,8 @@ void			set_colum(t_editor *e, t_refresher *r, t_buf *b);
 int				get_cursor_pos(int ifd, int ofd);
 int				get_colums_len(int ifd, int ofd);
 
-void			init_history(t_editor *e);
+void		    init_history(t_editor *e);
+void            history_search(t_editor *e);
 void			history_up(t_editor *e);
 void			history_down(t_editor *e);
 void			history_add(t_editor *e);
@@ -187,6 +188,8 @@ void			update_word(t_editor *e, char *word);
 void			free_e_content(t_e_content *h);
 
 void			ef_clear_screen(t_editor *l);
+void            ef_move_word_right(t_editor *e);
+void            ef_move_word_left(t_editor *e);
 void			ef_del_prev_word(t_editor *l);
 void			ef_delete_curr_to_end(t_editor *l);
 void			ef_delete_entire_line(t_editor *l);

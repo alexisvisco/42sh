@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   exec_or_and.c                                    .::    .:/ .      .::   */
+/*   core_exec.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 16:59:52 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/03 19:18:51 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/05 15:38:26 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -69,6 +69,8 @@ int			exec_or_and(t_token **tokens, t_block *blocks, int num[2], int ret)
 	char	**argv;
 	char	***cmds;
 	char	*node;
+	int		output_file;
+	int		intput_file;
 
 	node = NULL;
 	if (blocks[num[1]].start_tok == -1)
@@ -96,11 +98,11 @@ int			exec_or_and(t_token **tokens, t_block *blocks, int num[2], int ret)
 		free_3d_tab(cmds);
 		return (go_next_index(tokens, blocks, num, 1));
 	}
-	int	file;
-	if ((file = call_redir(cmds)) == -1)
+	if ((output_file = call_right_redir(cmds)) == -1
+	|| (intput_file = call_left_redir(cmds)) == -1)
 		return (go_next_index(tokens, blocks, num, 1));
 //	ret = fork_result(node, argv);
-	ret = exec_all_pipe(cmds, file);
+	ret = exec_all_pipe(cmds, output_file, intput_file);
 	
 	/*
 	** mettre la fonction exec_all_pipe

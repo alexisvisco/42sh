@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/29 17:26:58 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/03 19:14:03 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/05 15:43:50 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -30,11 +30,11 @@ int			analyze_next_and_or(char *s);
 char		**next_cmd(t_token **tokens, int index[2]);
 
 int			is_executable(char *path);
-int			call_redir(char ***cmds);
-
+int			call_right_redir(char ***cmds);
+int			call_left_redir(char ***cmds);
 
 int			there_is_pipe(char **argv);
-int			exec_all_pipe(char ***argv, int fd);
+int			exec_all_pipe(char ***argv, int fd, int input_file);
 char		***extract_all_pipes(char **argv);
 
 int			go_next_index(t_token **tokens, t_block *blocks,

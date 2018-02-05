@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:00 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/03 19:16:06 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/05 15:40:46 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -70,7 +70,8 @@ extern t_shell	g_shell;
 typedef enum	e_open
 {
 	ERR_IS_DIR,
-	ERR_PERM
+	ERR_PERM,
+	ERR_EXIST
 }				t_eopen;
 
 void			e_general(t_message m, char *arg);

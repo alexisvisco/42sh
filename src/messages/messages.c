@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/22 16:21:06 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/03 18:58:33 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/05 15:41:36 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -51,4 +51,6 @@ void	e_open(t_eopen m, char *arg)
 		ft_dprintf(2, "%s » %s is a directory!\n", SHELL_NAME, arg);
 	if (m == ERR_PERM)
 		ft_dprintf(2, "%s » %s permission denied!\n", SHELL_NAME, arg);
+	if (m == ERR_EXIST)
+		ft_dprintf(2, "%s » %s does not exist!\n", SHELL_NAME, arg);
 }

@@ -6,7 +6,7 @@
 #    By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/01/19 13:46:02 by aviscogl     #+#   ##    ##    #+#        #
-#    Updated: 2018/02/03 19:19:39 by ggranjon    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/02/05 15:22:51 by ggranjon    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -80,13 +80,12 @@ util/ft_char_to_str.c \
 util/env_to_array.c \
 util/delete_first.c  \
 \
-exec/fork.c  \
 exec/signal.c \
 exec/analyze_next_and_or.c  \
-exec/exec_or_and.c \
+exec/core_exec.c \
 exec/return_executable.c \
 exec/redistribute_pipe_redir.c \
-exec/execute_pipe.c  \
+exec/exec_pipe.c  \
 exec/open_file.c
 
 

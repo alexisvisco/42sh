@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/01 10:01:06 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/04 09:41:14 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/05 14:52:00 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -34,5 +34,6 @@ void	get_completions(t_editor *e)
 		get_completions_env(&info, e->options->completion_data->heap);
 	if (e->options->completion_data->origin[0] == '\0')
 		ft_copy_str(e->options->completion_data->origin, info.current_word);
-	free(info.current_word);
+	if (info.current_word)
+		free(info.current_word);
 }

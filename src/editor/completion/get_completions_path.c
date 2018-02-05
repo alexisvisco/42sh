@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/01 10:39:36 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/05 10:46:25 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/05 15:23:10 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -50,6 +50,19 @@ t_heap *heap)
 	closedir(dir);
 }
 
+static void replace_tilde(t_word_info *i)
+{
+	char *tmp;
+
+	if (ht_get(g_shell.env, "HOME") && ft_strstr(i->current_word, "~/"))
+	{
+		tmp = i->current_word;
+		i->current_word = ft_strrep_first_aft("~", ht_get(g_shell.env, "HOME"),
+		                                      i->current_word, 0);
+		free(tmp);
+	}
+}
+
 /*
 ** Get all completions possible for i->current_word that is a path
 ** If there is no word or word is empty search paths with '.'
@@ -63,10 +76,11 @@ void		get_completions_path(t_word_info *i, t_heap *heap)
 
 	if (i->current_word != NULL)
 	{
+		replace_tilde(i);
 		has_slash = ft_strchr(i->current_word, '/');
 		folder = has_slash ? get_folder_from(i->current_word) : ft_strdup(".");
 		start_with = has_slash ?
-		get_name_from(i->current_word) : ft_strdup(i->current_word);
+		             get_name_from(i->current_word) : ft_strdup(i->current_word);
 	}
 	else
 	{

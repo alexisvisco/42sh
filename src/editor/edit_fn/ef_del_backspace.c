@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/24 15:23:51 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/25 12:32:58 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/05 11:49:31 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,5 +25,21 @@ void	ef_del_backspace(t_editor *l)
 		l->pos--;
 		l->len--;
 		l->buf[l->len] = '\0';
+	}
+}
+
+/*
+** Delete the previous character x times
+*/
+
+void	ef_del_backspace_times(t_editor *l, unsigned int x)
+{
+	unsigned int i;
+
+	i = 0;
+	while (i < x)
+	{
+		ef_del_backspace(l);
+		i++;
 	}
 }

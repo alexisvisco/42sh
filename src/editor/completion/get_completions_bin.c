@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   heap_free.c                                      .::    .:/ .      .::   */
+/*   get_completions_bin.c                            .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/23 11:32:12 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 15:00:52 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/02/01 10:41:23 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/01 10:43:57 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "shell.h"
 
-void	heap_free(t_heap *h)
+/*
+** Retrieve all completions in the trie structure of binaries start with
+** i->current_word
+*/
+
+void	get_completions_bin(t_word_info *i, t_heap *h)
 {
-	size_t i;
-
-	i = 0;
-	while (i < h->size)
-	{
-		if (h->list[i])
-			h->free_func(h->list[i]);
-		i++;
-	}
-	free(h->list);
-	free(h);
-	h = NULL;
+	trie_start_with(g_shell.bin_trie, i->current_word, h);
 }

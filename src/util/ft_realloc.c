@@ -6,12 +6,25 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/21 09:56:18 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/25 12:54:04 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/05 11:49:31 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
+
+/*
+** ptr: This is the pointer to a memory block previously allocated with malloc,
+** calloc or realloc to be reallocated. If this is NULL, a new block is allocated
+** and a pointer to it is returned by the function
+**
+** size: This is the new size for the memory block, in bytes. If it is 0 and
+** ptr points to an existing block of memory, the memory block pointed by ptr is
+** deallocated and a NULL pointer is returned.
+**
+** This function returns a pointer to the newly allocated memory, or NULL if the
+** request fails
+*/
 
 void	*ft_realloc(void *ptr, size_t size)
 {

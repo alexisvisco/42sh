@@ -1,30 +1,42 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   heap_free.c                                      .::    .:/ .      .::   */
+/*   get_folder_from.c                                .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/23 11:32:12 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 15:00:52 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/02/01 10:24:51 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/01 11:28:25 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "editor.h"
 
-void	heap_free(t_heap *h)
+/*
+** Get only the folder from a path
+** Sample:
+**  src/shell/hey -> src/shell/
+**  src/lex/trefv.c -> src/lex/
+*/
+
+char	*get_folder_from(char *str)
 {
-	size_t i;
+	const size_t	len = ft_strlen(str);
+	size_t			i;
+	size_t			prev;
+	char			*n_str;
 
 	i = 0;
-	while (i < h->size)
+	prev = 0;
+	while (i < len)
 	{
-		if (h->list[i])
-			h->free_func(h->list[i]);
+		if (str[i] == '/')
+			prev = i;
 		i++;
 	}
-	free(h->list);
-	free(h);
-	h = NULL;
+	n_str = (char *)malloc(sizeof(char) * (prev + 2));
+	n_str[prev + 1] = 0;
+	ft_strncpy(n_str, str, prev + 1);
+	return (n_str);
 }

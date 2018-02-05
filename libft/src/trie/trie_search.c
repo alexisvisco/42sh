@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/29 18:47:27 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/29 21:00:54 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/31 15:02:33 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,8 +15,8 @@
 
 int		trie_search(t_trie_node *root, const char *key)
 {
-    const size_t	length = ft_strlen(key);
-    t_trie_node		*trie_node;
+	const size_t	length = ft_strlen(key);
+	t_trie_node		*trie_node;
 	size_t			level;
 	int				index;
 
@@ -26,9 +26,9 @@ int		trie_search(t_trie_node *root, const char *key)
 	{
 		index = trie_char_to_index(key[level]);
 		if (!trie_node->children[index])
-            return (0);
+			return (0);
 		trie_node = trie_node->children[index];
 		level++;
 	}
-    return (trie_node != NULL && trie_node->is_word_end);
+	return (trie_node != NULL && trie_node->is_word_end);
 }

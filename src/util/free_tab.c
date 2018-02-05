@@ -6,12 +6,16 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/29 10:38:35 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/03 15:18:44 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/05 15:52:54 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
+
+/*
+** Free an array of strings
+*/
 
 void	free_tab(char **table)
 {

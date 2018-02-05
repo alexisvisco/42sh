@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/22 16:21:06 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/05 15:41:36 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/05 15:52:39 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -24,6 +24,8 @@ void	e_general(t_message m, char *arg)
 		arg);
 	if (m == ERR_CTRL_C)
 		ft_dprintf(2, "%s » Type 'exit' to quit this shell.\n", SHELL_NAME);
+	if (m == TERM_ENV_NOT_SET)
+		ft_dprintf(2, "%s » TERM environment variable not set.\n", SHELL_NAME);
 	if (m == SHELL_EXIT)
 		ft_printf("%s » You killed me (exit code: %i)! Just say me why!\n",
 		SHELL_NAME, *(int *)arg);
@@ -31,6 +33,7 @@ void	e_general(t_message m, char *arg)
 
 void	e_parse(t_eparse m, char *arg)
 {
+	(void)arg;
 	if (m == ERR_REDIR)
 		ft_dprintf(2, "%s » There is a redirection error\n", SHELL_NAME);
 	if (m == ERR_QUOTE)
@@ -53,4 +56,11 @@ void	e_open(t_eopen m, char *arg)
 		ft_dprintf(2, "%s » %s permission denied!\n", SHELL_NAME, arg);
 	if (m == ERR_EXIST)
 		ft_dprintf(2, "%s » %s does not exist!\n", SHELL_NAME, arg);
+}
+
+void	e_editor(t_eeditor m, char *arg)
+{
+	(void)arg;
+	if (m == ERR_UNRECOGNIZED_TERM)
+		ft_dprintf(2, "%s » This shell is unsuported\n", SHELL_NAME);
 }

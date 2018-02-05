@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/21 10:35:37 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/25 09:35:29 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/05 11:49:31 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,12 +18,12 @@ static void		init_editor(t_editor *editor)
 	editor->pos = 0;
 	editor->len = 0;
 	editor->oldpos = 0;
-	editor->cols = get_colums_len(editor->ifd, editor->ofd);
+	editor->cols = (size_t)get_colums_len(editor->ifd, editor->ofd);
 	editor->maxrows = 0;
-	editor->history_index = 0;
 	editor->buflen = EDITOR_MAX_LINE;
 	editor->plen = ft_strlen(editor->prompt);
 	editor->buf[0] = 0;
+	init_history(editor);
 }
 
 /*
@@ -37,15 +37,15 @@ static void		init_editor(t_editor *editor)
 ** The function returns the length of the current buffer.
 */
 
-int				editor(int stdin_fd, int stdout_fd, char *buf,
-char *prompt)
+int				editor(char *buf, char *prompt, t_options *opt)
 {
 	t_editor l;
 
-	l.ifd = stdin_fd;
-	l.ofd = stdout_fd;
+	l.ifd = STDIN_FILENO;
+	l.ofd = STDOUT_FILENO;
 	l.buf = buf;
 	l.prompt = prompt;
+	l.options = opt;
 	init_editor(&l);
 	ft_putstr_fd(l.ofd, l.prompt);
 	return (handle_keys(&l));

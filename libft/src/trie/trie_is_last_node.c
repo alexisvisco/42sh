@@ -6,23 +6,23 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/29 18:50:37 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/29 19:19:27 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/31 15:02:09 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		trie_is_last_node(t_trie_node* root)
+int		trie_is_last_node(t_trie_node *root)
 {
-    int i;
+	int i;
 
-    i = 0;
-    while (i < ALPHABET_SIZE)
-    {
-        if (root->children[i])
-            return (0);
-        i++;
-    }
-    return (1);
+	i = 0;
+	while (i < ALPHABET_SIZE)
+	{
+		if (root->children[i])
+			return (0);
+		i++;
+	}
+	return (1);
 }

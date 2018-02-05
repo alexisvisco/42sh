@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   heap_free.c                                      .::    .:/ .      .::   */
+/*   exit_shell.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/23 11:32:12 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 15:00:52 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/31 13:47:54 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/05 11:49:31 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "shell.h"
 
-void	heap_free(t_heap *h)
+/*
+** At exit, free all variables to avoid leaks
+** Yes leaks are a pain. 
+*/
+
+void	exit_shell(void)
 {
-	size_t i;
-
-	i = 0;
-	while (i < h->size)
-	{
-		if (h->list[i])
-			h->free_func(h->list[i]);
-		i++;
-	}
-	free(h->list);
-	free(h);
-	h = NULL;
+	ht_free(g_shell.bin);
+	ht_free(g_shell.env);
+	trie_free(g_shell.bin_trie);
+	trie_free(g_shell.env_trie);
+	free_options(g_shell.line_edit);
+	free_options(g_shell.history_search);
+	disable_terminal(0);
 }

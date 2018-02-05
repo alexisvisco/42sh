@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   heap_free.c                                      .::    .:/ .      .::   */
+/*   ef_move_word.c                                   .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/23 11:32:12 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 15:00:52 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/02/04 09:09:19 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/05 10:46:25 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "shell.h"
 
-void	heap_free(t_heap *h)
+void	ef_move_word_right(t_editor *l)
 {
-	size_t i;
+	while (l->pos < l->len && l->buf[l->pos + 1] == ' ')
+		l->pos++;
+	while (l->pos < l->len && l->buf[l->pos + 1] != ' ')
+		l->pos++;
+}
 
-	i = 0;
-	while (i < h->size)
-	{
-		if (h->list[i])
-			h->free_func(h->list[i]);
-		i++;
-	}
-	free(h->list);
-	free(h);
-	h = NULL;
+void	ef_move_word_left(t_editor *l)
+{
+	while (l->pos > 0 && l->buf[l->pos - 1] == ' ')
+		l->pos--;
+	while (l->pos > 0 && l->buf[l->pos - 1] != ' ')
+		l->pos--;
 }

@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   heap_free.c                                      .::    .:/ .      .::   */
+/*   deb_printer.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/23 11:32:12 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 15:00:52 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/02/01 18:44:10 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/02 10:26:03 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "shell.h"
 
-void	heap_free(t_heap *h)
+void	deb_printer(const char *format, ...)
 {
-	size_t i;
+	va_list	ap;
+	int		write;
 
-	i = 0;
-	while (i < h->size)
-	{
-		if (h->list[i])
-			h->free_func(h->list[i]);
-		i++;
-	}
-	free(h->list);
-	free(h);
-	h = NULL;
+	disable_terminal(STDIN_FILENO);
+	ft_putchar('\n');
+	va_start(ap, format);
+	write = core_pf(1, format, ap);
+	va_end(ap);
+	enable_terminal(STDIN_FILENO);
 }

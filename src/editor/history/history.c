@@ -6,20 +6,20 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/24 20:48:50 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/25 14:31:53 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/05 11:49:31 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "editor.h"
 
-static void	heap_to_buf(size_t i, t_editor *e)
+static void		heap_to_buf(size_t i, t_editor *e)
 {
-	t_history	*hist;
+	t_e_content	*hist;
 	char		*str;
 	size_t		j;
 
-	hist = get_history();
+	hist = e->options->history_data;
 	str = (char *)heap_get(hist->heap, i);
 	ef_delete_entire_line(e);
 	refresh_line(e);
@@ -35,11 +35,11 @@ static void	heap_to_buf(size_t i, t_editor *e)
 ** Get the old history compared to what you've been typing lately
 */
 
-void		history_up(t_editor *e)
+void			history_up(t_editor *e)
 {
-	t_history *hist;
+	t_e_content *hist;
 
-	hist = get_history();
+	hist = e->options->history_data;
 	if (hist->heap->elements == 0)
 		return ;
 	if (hist->index == -1)
@@ -59,11 +59,11 @@ void		history_up(t_editor *e)
 ** your line before using history
 */
 
-void		history_down(t_editor *e)
+void			history_down(t_editor *e)
 {
-	t_history *hist;
+	t_e_content *hist;
 
-	hist = get_history();
+	hist = e->options->history_data;
 	if (hist->index == -1)
 		return ;
 	else if (hist->index + 1 == (int64_t)hist->heap->next_insert)
@@ -83,11 +83,11 @@ void		history_down(t_editor *e)
 ** Heap dynamicly increase the size
 */
 
-void		history_add(t_editor *e)
+void			history_add(t_editor *e)
 {
-	t_history *hist;
+	t_e_content *hist;
 
-	hist = get_history();
+	hist = e->options->history_data;
 	if (hist->heap->elements > 0 &&
 	ft_strequ(hist->heap->list[hist->heap->elements - 1], e->buf))
 		return ;
@@ -99,16 +99,13 @@ void		history_add(t_editor *e)
 ** If it is not present, create it
 */
 
-t_history	*get_history(void)
+void			init_history(t_editor *e)
 {
-	static t_history *hist = NULL;
-
-	if (!hist)
+	if (!e->options->history_data)
 	{
-		hist = malloc(sizeof(t_history));
-		hist->heap = heap_new(32);
-		hist->index = -1;
-		hist->origin[0] = '\0';
+		e->options->history_data = malloc(sizeof(t_e_content));
+		e->options->history_data->heap = heap_new(32);
+		e->options->history_data->index = -1;
+		e->options->history_data->origin[0] = '\0';
 	}
-	return (hist);
 }

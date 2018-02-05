@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:00 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/05 15:40:46 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/05 15:51:41 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,7 +14,7 @@
 #ifndef SHELL_H
 # define SHELL_H
 
-# define SHELL_NAME "./shell"
+# define SHELL_NAME "shell"
 
 # include <sys/types.h>
 # include <sys/stat.h>
@@ -41,6 +41,7 @@ typedef enum	e_message
 	ERR_CMD_NOT_FOUND,
 	ERR_EXE_CMD,
 	SHELL_EXIT,
+	TERM_ENV_NOT_SET,
 	ERR_PWD_NOT_FOUND,
 	ERR_SETENV_FORMAT,
 	ERR_SETENV_CMD,
@@ -57,12 +58,20 @@ typedef enum	e_parse
 	ERR_ONLY_COMMENT
 }				t_eparse;
 
+typedef enum	e_editor
+{
+	ERR_UNRECOGNIZED_TERM
+}				t_eeditor;
+
 
 typedef struct	s_shell
 {
 	t_hashtable	*env;
 	t_hashtable	*bin;
 	t_trie_node	*bin_trie;
+	t_trie_node	*env_trie;
+	t_options	*line_edit;
+	t_options	*history_search;
 }				t_shell;
 
 extern t_shell	g_shell;
@@ -77,8 +86,12 @@ typedef enum	e_open
 void			e_general(t_message m, char *arg);
 void			e_parse(t_eparse m, char *arg);
 void			e_open(t_eopen m, char *arg);
+void			e_editor(t_eeditor m, char *arg);
 
 void			set_env();
 void			set_bin();
+void			set_options();
+void			exit_shell();
+void			init_shell();
 
 #endif

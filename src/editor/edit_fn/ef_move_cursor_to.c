@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   heap_free.c                                      .::    .:/ .      .::   */
+/*   ef_move_cursor_to.c                              .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/23 11:32:12 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 15:00:52 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/02/03 13:53:33 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/05 10:35:47 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <editor.h>
 
-void	heap_free(t_heap *h)
+/*
+** Move the cursor to the needed position
+*/
+
+void	ef_move_cursor_to(t_editor *e, size_t position)
 {
-	size_t i;
-
-	i = 0;
-	while (i < h->size)
-	{
-		if (h->list[i])
-			h->free_func(h->list[i]);
-		i++;
-	}
-	free(h->list);
-	free(h);
-	h = NULL;
+	while (e->pos != position)
+		(e->pos < position) ? ef_move_right(e) : ef_move_left(e);
 }

@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/21 10:16:16 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 14:00:38 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/05 11:49:31 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,13 +18,13 @@
 ** the STDIN file descriptor set in raw mode.
 */
 
-int		readline_raw(char *buf, const char *prompt)
+int		readline_raw(char *buf, const char *prompt, t_options *e)
 {
 	int count;
 
 	if (EDITOR_MAX_LINE == 0 || enable_terminal(STDIN_FILENO) == -1)
 		return (-1);
-	count = editor(STDIN_FILENO, STDOUT_FILENO, buf, (char *)prompt);
+	count = editor(buf, (char *)prompt, e);
 	disable_terminal(STDIN_FILENO);
 	ft_putchar_fd(STDOUT_FILENO, '\n');
 	return (count);

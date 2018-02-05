@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/21 10:25:20 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 14:58:23 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/05 11:49:31 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -43,7 +43,6 @@ int		enable_terminal(int fd)
 	raw.c_cc[VTIME] = 0;
 	if (tcsetattr(fd, TCSAFLUSH, &raw) < 0)
 		return (-1);
-	g_raw_mode = (1);
 	return (1);
 }
 
@@ -53,7 +52,6 @@ int		enable_terminal(int fd)
 
 int		disable_terminal(int fd)
 {
-	if (tcsetattr(fd, TCSAFLUSH, &g_origin) != -1)
-		g_raw_mode = 0;
+	tcsetattr(fd, TCSAFLUSH, &g_origin);
 	return (1);
 }

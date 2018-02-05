@@ -3,13 +3,14 @@
 /*                                                              /             */
 /*   set_bin.c                                        .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/30 14:42:25 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/30 14:53:37 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/31 15:03:52 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/05 11:49:31 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
+
 
 #include "shell.h"
 
@@ -33,7 +34,6 @@ static void	add_to_bintable(char *path_folder)
 	DIR				*dir;
 	struct dirent	*entry;
 	char			path[2048];
-	char			*tmp;
 
 	if (!(dir = opendir(path_folder)))
 		return ;
@@ -50,6 +50,12 @@ static void	add_to_bintable(char *path_folder)
 	closedir(dir);
 }
 
+/*
+** Retrieve all paths in the PATH environement variable and for each of them
+** get all files that user can access and they are executable. Add to the 
+** hashtable and insert in the trie structure.
+*/
+
 void		set_bin(void)
 {
 	char	*path;
@@ -58,7 +64,9 @@ void		set_bin(void)
 
 	g_shell.bin = ht_new(512);
 	g_shell.bin_trie = trie_new();
-	path = (char *)ht_has(g_shell.env, "PATH")->value;
+	path = (char *)ht_get(g_shell.env, "PATH");
+	if (!path)
+		return ;
 	if (path)
 	{
 		paths = ft_strsplit(path, ':');

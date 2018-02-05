@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/23 20:04:51 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/25 14:11:20 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/05 11:49:31 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -39,6 +39,8 @@ static t_redirect_fn	*ctrl_fn(char c)
 		return (ef_move_down);
 	if (ISK(CTRL_O))
 		return (ef_move_up);
+	if (ISK(CTRL_H))
+		return (history_search);
 	return (0);
 }
 
@@ -54,19 +56,23 @@ static t_redirect_fn	*extra_fn(t_editor *l, char *seq)
 			return (ef_move_up);
 		else if (ft_strequ("[1;2B", seq))
 			return (ef_move_down);
+		else if (ft_strequ("[1;2D", seq))
+			return (ef_move_word_left);
+		else if (ft_strequ("[1;2C", seq))
+			return (ef_move_word_right);
 	}
 	return (NULL);
 }
 
-static t_redirect_fn	*normal_fn(char c)
+static t_redirect_fn	*normal_fn(char c, t_editor *e)
 {
 	if (c == 'C')
 		return (ef_move_right);
 	if (c == 'D')
 		return (ef_move_left);
-	if (c == 'A')
+	if (c == 'A' && e->options->has_history)
 		return (history_up);
-	if (c == 'B')
+	if (c == 'B' && e->options->has_history)
 		return (history_down);
 	if (c == 'H')
 		return (ef_go_home);
@@ -85,11 +91,11 @@ static t_redirect_fn	*esc_fn(t_editor *l, char *seq)
 	{
 		if ((fn = extra_fn(l, seq)))
 			return (fn);
-		else if ((fn = normal_fn(seq[1])))
+		else if ((fn = normal_fn(seq[1], l)))
 			return (fn);
 	}
 	else if (seq[0] == '0')
-		if ((fn = normal_fn(seq[1])))
+		if ((fn = normal_fn(seq[1], l)))
 			return (fn);
 	return (0);
 }
@@ -104,11 +110,20 @@ void					redirect_key_fn(t_editor *e, char c, char *seq)
 {
 	t_redirect_fn *func;
 
+	if (ISK(TAB) && e->options->has_completion)
+	{
+		completion_handler(e);
+		return ;
+	}
+	else if (e->mode == COMPLETION)
+		completion_delete(e);
 	if ((ISK(ESC) && (func = esc_fn(e, seq))) ||
 		(func = ctrl_fn(c)) ||
 		(ISK(BACKSPACE) && (func = ef_del_backspace)))
+	{
 		func(e);
+		refresh_line(e);
+	}
 	else if (ft_isprint(c))
 		editor_insert(e, c);
-	refresh_line(e);
 }

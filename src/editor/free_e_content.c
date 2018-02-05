@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   heap_free.c                                      .::    .:/ .      .::   */
+/*   free_e_content.c                                 .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/23 11:32:12 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 15:00:52 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/31 14:35:39 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/31 21:00:12 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "editor.h"
 
-void	heap_free(t_heap *h)
+/*
+** Free type of t_e_content used in autocompletion or in history
+*/
+
+void	free_e_content(t_e_content *h)
 {
-	size_t i;
-
-	i = 0;
-	while (i < h->size)
+	if (h)
 	{
-		if (h->list[i])
-			h->free_func(h->list[i]);
-		i++;
+		heap_free(h->heap);
+		free(h);
 	}
-	free(h->list);
-	free(h);
-	h = NULL;
 }

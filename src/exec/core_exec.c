@@ -103,11 +103,6 @@ int			exec_or_and(t_token **tokens, t_block *blocks, int num[2], int ret)
 		return (go_next_index(tokens, blocks, num, 1));
 //	ret = fork_result(node, argv);
 	ret = exec_all_pipe(cmds, output_file, intput_file);
-	
-	/*
-	** mettre la fonction exec_all_pipe
-	*/
-
 	free_3d_tab(cmds);
 	return (go_next_index(tokens, blocks, num, ret));
 }

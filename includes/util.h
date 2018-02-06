@@ -24,5 +24,6 @@ char	**env_to_array(void);
 size_t	env_size(void);
 void	delete_first_element(char ***s);
 void	ft_copy_str(char *dest, char *src);
+int		count_tab(char **table);
 
 #endif

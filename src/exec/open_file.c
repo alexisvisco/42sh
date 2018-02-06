@@ -30,36 +30,32 @@ static int	open_right_redir(char **str, int flag, int i)
 	return (file);
 }
 
-int			call_right_redir(char ***cmds)
+int			call_right_redir(char **cmds)
 {
-	int	i;
+
 	int	k;
 	int	fd;
 
-	i = 0;
-	while (cmds[i])
-		i++;
-	i--;
 	k = 0;
-	while (cmds[i][k])
+	while (cmds[k])
 	{
-		if (ft_strequ(cmds[i][k], ">>"))
+		if (ft_strequ(cmds[k], ">>"))
 		{
-			fd = open_right_redir(cmds[i], O_APPEND, k);
+			fd = open_right_redir(cmds, O_APPEND, k);
 			break ;
 		}
-		else if (ft_strequ(cmds[i][k], ">"))
+		else if (ft_strequ(cmds[k], ">"))
 		{
-			fd = open_right_redir(cmds[i], O_TRUNC, k);
+			fd = open_right_redir(cmds, O_TRUNC, k);
 			break ;
 		}
 		k++;
 	}
-	if (cmds[i][k] == NULL)
+	if (cmds[k] == NULL)
 		return (1);
-	free(cmds[i][k]);
-	free(cmds[i][k + 1]);
-	cmds[i][k] = NULL;
+	free(cmds[k]);
+	free(cmds[k + 1]);
+	cmds[k] = NULL;
 	return (fd);
 }
 

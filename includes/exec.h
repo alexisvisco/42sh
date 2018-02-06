@@ -30,11 +30,11 @@ int			analyze_next_and_or(char *s);
 char		**next_cmd(t_token **tokens, int index[2]);
 
 int			is_executable(char *path);
-int			call_right_redir(char ***cmds);
+int			call_right_redir(char **cmds);
 int			call_left_redir(char **cmds);
 
 int			there_is_pipe(char **argv);
-int			exec_all_pipe(char ***argv, int fd);
+int			exec_all_pipe(char ***argv);
 char		***extract_all_pipes(char **argv);
 
 int			go_next_index(t_token **tokens, t_block *blocks,

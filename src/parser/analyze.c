@@ -70,7 +70,8 @@ static int	analyze_after_fd(t_block **block, t_token **tokens)
 		{
 			if (tokens[j]->type == FD_FILE)
 			{
-				if (tokens[j + 1] && tokens[j + 1]->type != SEP_OP)
+				if (tokens[j + 1] && (tokens[j + 1]->type != SEP_OP &&
+						tokens[j + 1]->type != IO_REDIR))
 					return (-2);
 			}
 			j++;

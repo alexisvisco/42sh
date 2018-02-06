@@ -28,11 +28,12 @@ static void     child_fork(char ***argv, int fd, const int *p)
 	exit(EXIT_FAILURE);
 }
 
-int		exec_all_pipe(char ***argv, int fd)
+int		exec_all_pipe(char ***argv)
 {
 	int		p[2];
 	int		save_fd;
 	int		status;
+	int 	fd;
 	int		input_file;
 
 	save_fd = 0;
@@ -40,6 +41,8 @@ int		exec_all_pipe(char ***argv, int fd)
 	while (*argv)
 	{
 		pipe(p);
+		if ((fd = call_right_redir(*argv)) == -1)
+			return (1);
 		if ((input_file = call_left_redir(*argv)) == -1)
 			return (1);
 		if ((fork()) == 0)
@@ -52,11 +55,8 @@ int		exec_all_pipe(char ***argv, int fd)
 		else
 		{
 			wait(&status);
-			if (input_file != 0)
-      		{
+			if (input_file > 0)
 				close(input_file);
-				input_file = 0;
-      		}
 			close((*(argv + 1) == NULL && fd != 1) ? fd : p[WRITE_END]);
 			save_fd = p[READ_END]; //save the input for the next command
 			argv++;

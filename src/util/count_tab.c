@@ -1,38 +1,24 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   analyze_next_and_or.c                            .::    .:/ .      .::   */
+/*   count_tab.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/30 19:01:40 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 12:33:46 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/30 11:45:37 by ggranjon     #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/05 16:12:47 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-int			analyze_next_and_or(char *s)
+int		count_tab(char **table)
 {
-	if (ft_strequ(s, "&&"))
-		return (3);
-	if (ft_strequ(s, "||"))
-		return (4);
-	return (0);
-}
+	int i;
 
-int			go_to_next(t_token **tokens, t_block *block, int num, int index)
-{
-	if (ft_strequ(tokens[index]->value, "&&") ||
-		ft_strequ(tokens[index]->value, "||"))
-		index++;
-	while (index < block[num].end_tok)
-	{
-		if (ft_strequ(tokens[index]->value, "&&") ||
-		ft_strequ(tokens[index]->value, "||"))
-			return (index - 1);
-		index++;
-	}
-	return (block[num].end_tok);
+	i = 0;
+	while (table[i])
+		i++;
+	return (i);
 }

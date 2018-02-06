@@ -69,7 +69,6 @@ int			exec_or_and(t_token **tokens, t_block *blocks, int num[2], int ret)
 	char	**argv;
 	char	***cmds;
 	char	*node;
-	int		output_file;
 
 	node = NULL;
 	if (blocks[num[1]].start_tok == -1)
@@ -97,10 +96,7 @@ int			exec_or_and(t_token **tokens, t_block *blocks, int num[2], int ret)
 		free_3d_tab(cmds);
 		return (go_next_index(tokens, blocks, num, 1));
 	}
-	if ((output_file = call_right_redir(cmds)) == -1)
-		return (go_next_index(tokens, blocks, num, 1));
-//	ret = fork_result(node, argv);
-	ret = exec_all_pipe(cmds, output_file);
+	ret = exec_all_pipe(cmds);
 	free_3d_tab(cmds);
 	return (go_next_index(tokens, blocks, num, ret));
 }

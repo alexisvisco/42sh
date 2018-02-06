@@ -1,50 +1,42 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   b_binary_search.c                                .::    .:/ .      .::   */
+/*   b_cd.c                                           .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/05 18:56:46 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/06 12:50:44 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/06 21:22:56 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-
-
-void 		b_best_matchs(char *key, t_trie_node *tries)
+int		b_cd(char **args, t_shell *shell)
 {
-	char	*first_letter;
-	t_heap	*heap;
-	size_t	i;
+	char cwd[2048];
 
-	first_letter = ft_char_to_str(key[0]);
-	heap = heap_new(16);
-	trie_start_with(tries, first_letter, heap);
-	i = 0;
-	while (i < heap->size)
+	if (getcwd(cwd, sizeof(cwd)) == NULL)
 	{
-		if (heap->list[i] && ft_levenshtein(key, heap->list[i], ft_strlen(key),
-		ft_strlen(heap->list[i])) <= 2)
-			ft_printf(" * %s\n", heap->list[i]);
-		i++;
-	}
-}
-
-int			b_binary_search(char **args, t_shell *shell)
-{
-	if (size_tab(args) < 1)
-	{
-		msg_builtins(ERR_BIN_SEARCH_FORMAT);
+		err_builtins(ERR_CD, NULL);
 		return (0);
 	}
-	if (ht_get(shell->bin, args[0]))
-		msg_builtins(MSG_SEARCH_BIN_FOUND, args[0]);
-	else if (ft_strlen(args[0]) >= 2)
-		b_best_matchs(args[0], shell->bin_trie);
+	if (access(args[0] == NULL
+	? ht_get(shell->env, "HOME") : args[0], R_OK) == -1)
+	{
+		err_builtins(ERR_CD_ACCESS, args[0] == NULL
+		? ht_get(shell->env, "HOME") : args[0]);
+		return (0);
+	}
+	if (chdir(args[0] == NULL
+	? ht_get(shell->env, "HOME") : args[0]) == -1)
+	{
+		err_builtins(ERR_CD_DIR, args[0]);
+		return (0);
+	}
+	ht_set(shell->env, "OLDPWD", ft_strdup(cwd));
+	ht_set(shell->env, "PWD", ft_strdup(getcwd(cwd, sizeof(cwd))));
+	msg_builtins(MSG_CD, getcwd(cwd, sizeof(cwd)));
 	return (1);
 }
-

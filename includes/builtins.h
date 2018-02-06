@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/05 18:45:07 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/06 18:36:32 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/06 20:13:28 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -24,10 +24,11 @@ int				b_pwd(char **args, t_shell *shell);
 int				b_env(char **args, t_shell *shell);
 int				b_echo(char **args, t_shell *shell);
 int				b_history(char **args, t_shell *shell);
+int				b_cd(char **args, t_shell *shell);
 int				b_env_set(char **args, t_shell *shell);
 int				b_env_unset(char **args, t_shell *shell);
 int				b_clear(char **args, t_shell *shell);
 int				b_exit(char **args, t_shell *shell);
-int				b_binary_search(char **args, t_shell *shell);
+int				b_search_binary(char **args, t_shell *shell);
 
 #endif

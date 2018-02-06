@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/05 20:56:27 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/05 21:01:47 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/06 10:20:22 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,6 +21,7 @@ static char *g_msg_builtins[] = {
 		"To unset env user: unsetenv key [key...].",
 		"Env variable %s is unknown.",
 		"Env variable %s was unset (the value was %s).",
+		"You killed me (exit code: %i)! Just say me why ?\n"
 };
 
 void   err_builtins(t_msg_builtins m, ...)

@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/05 21:00:29 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/05 21:28:21 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/06 10:09:15 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,11 +20,11 @@ static int     b_set_env_a(t_hashtable *envs, char *str)
 	splitted = ft_strsplit(str, '=');
 	if (size_tab(splitted) >= 2)
 	{
-		ht_set(envs, splitted[0], ft_strdup(splitted[0]));
+		ht_set(envs, splitted[0], ft_strdup(splitted[1]));
 		trie_insert(g_shell.env_trie, splitted[0]);
 		if (ft_strequ("PATH", splitted[0]))
 			update_bin();
-		msg_builtins(MSG_SETENV, splitted[0], splitted[0]);
+		msg_builtins(MSG_SETENV, splitted[0], splitted[1]);
 	}
 	else
 	{
@@ -40,7 +40,7 @@ int     b_env_set(char **args, t_hashtable *envs)
 {
 	char *str;
 
-	if (!args)
+	if (!args || !(*args))
 	{
 		err_builtins(ERR_SETENV_FORMAT);
 		return (0);

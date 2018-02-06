@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   shell.h                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:00 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/05 21:28:21 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/06 10:14:37 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -42,11 +42,10 @@ typedef enum	e_message
 	ERR_CTRL_C,
 	ERR_CMD_NOT_FOUND,
 	ERR_EXE_CMD,
-	SHELL_EXIT,
 	TERM_ENV_NOT_SET,
 }				t_message;
 
-typedef enum    e_msg_builtins
+typedef enum	e_msg_builtins
 {
 	ERR_PWD_NOT_FOUND,
 	ERR_SETENV_FORMAT,
@@ -54,7 +53,8 @@ typedef enum    e_msg_builtins
 	ERR_UNSETENV_FORMAT,
 	ERR_UNSETENV_NOT_EXIST,
 	MSG_UNSETENV,
-}               t_msg_builtins;
+	SHELL_EXIT,
+}				t_msg_builtins;
 
 typedef enum	e_parse
 {

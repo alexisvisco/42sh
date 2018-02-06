@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/05 18:45:07 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/05 20:59:03 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/06 10:15:38 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,5 +25,6 @@ int             b_env(char **args, t_hashtable *envs);
 int             b_env_set(char **args, t_hashtable *envs);
 int             b_env_unset(char **args, t_hashtable *envs);
 int             b_clear(char **args, t_hashtable *envs);
+int				b_exit(char **args, t_hashtable *envs);
 
 #endif

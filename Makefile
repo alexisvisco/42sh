@@ -3,10 +3,10 @@
 #                                                               /              #
 #    Makefile                                         .::    .:/ .      .::    #
 #                                                  +:+:+   +:    +:  +:+:+     #
-#    By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+      #
+#    By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/01/19 13:46:02 by aviscogl     #+#   ##    ##    #+#        #
-#   Updated: 2018/02/05 20:56:42 by aviscogl    ###    #+. /#+    ###.fr     # #
+#    Updated: 2018/02/06 10:16:19 by aviscogl    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -115,6 +115,7 @@ builtins/b_env_unset.c \
 builtins/b_env_set.c \
 builtins/b_pwd.c \
 builtins/b_clear.c \
+builtins/b_exit.c \
 builtins/is_builtins.c \
 
 

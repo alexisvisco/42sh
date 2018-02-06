@@ -94,6 +94,7 @@ editor/completion/get_name_from.c \
 editor/completion/set_word_info.c \
 editor/completion/update_word.c \
 \
+util/ft_levenshtein.c \
 util/exit_shell.c \
 util/ft_realloc.c \
 util/free_tab.c \

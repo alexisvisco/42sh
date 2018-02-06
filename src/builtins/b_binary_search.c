@@ -6,31 +6,13 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/05 18:56:46 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/06 12:42:55 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/06 12:50:44 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
-#define MIN3(a, b, c) ((a) < (b) ? ((a) < (c) ? (a) : (c)) : ((b) < (c) ? (b) : (c)))
 
-static int	levenshtein(char *s1, char *s2) {
-	unsigned int s1len, s2len, x, y, lastdiag, olddiag;
-	s1len = (unsigned int) ft_strlen(s1);
-	s2len = (unsigned int) ft_strlen(s2);
-	unsigned int column[s1len+1];
-	for (y = 1; y <= s1len; y++)
-		column[y] = y;
-	for (x = 1; x <= s2len; x++) {
-		column[0] = x;
-		for (y = 1, lastdiag = x-1; y <= s1len; y++) {
-			olddiag = column[y];
-			column[y] = MIN3(column[y] + 1, column[y-1] + 1, lastdiag + (s1[y-1] == s2[x-1] ? 0 : 1));
-			lastdiag = olddiag;
-		}
-	}
-	return(column[s1len]);
-}
 
 
 void 		b_best_matchs(char *key, t_trie_node *tries)
@@ -45,10 +27,9 @@ void 		b_best_matchs(char *key, t_trie_node *tries)
 	i = 0;
 	while (i < heap->size)
 	{
-		if (heap->list[i] && levenshtein(key, heap->list[i]) <= 2)
-		{
+		if (heap->list[i] && ft_levenshtein(key, heap->list[i], ft_strlen(key),
+		ft_strlen(heap->list[i])) <= 2)
 			ft_printf(" * %s\n", heap->list[i]);
-		}
 		i++;
 	}
 }

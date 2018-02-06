@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/05 20:56:27 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/06 10:20:22 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/06 12:32:28 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,7 +21,9 @@ static char *g_msg_builtins[] = {
 		"To unset env user: unsetenv key [key...].",
 		"Env variable %s is unknown.",
 		"Env variable %s was unset (the value was %s).",
-		"You killed me (exit code: %i)! Just say me why ?\n"
+		"You killed me (exit code: %i)! Just say me why ?\n",
+		"To search binary use: search-binary query\n",
+		"One match found: %s\n",
 };
 
 void   err_builtins(t_msg_builtins m, ...)
@@ -32,7 +34,6 @@ void   err_builtins(t_msg_builtins m, ...)
 	va_start(ap, m);
 	core_pf(STDERR_FILENO, g_msg_builtins[m], ap);
 	va_end(ap);
-	ft_putchar('\n');
 }
 
 void   msg_builtins(t_msg_builtins m, ...)
@@ -43,5 +44,4 @@ void   msg_builtins(t_msg_builtins m, ...)
 	va_start(ap, m);
 	core_pf(STDOUT_FILENO, g_msg_builtins[m], ap);
 	va_end(ap);
-	ft_putchar('\n');
 }

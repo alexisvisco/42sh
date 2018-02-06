@@ -32,7 +32,7 @@ int	main(void)
 		char **s = ft_split(str, " ");
 		t_builtins_fun *f = builtins(s[0]);
 		if (f)
-			f(s + 1, g_shell.env);
+			f(s + 1, &g_shell);
 		free(str);
 	}
 }

@@ -21,7 +21,7 @@ static void    b_unset_env_a(t_hashtable *envs, char *str, t_node *node)
 		update_bin();
 }
 
-int     b_env_unset(char **args, t_hashtable *envs)
+int     b_env_unset(char **args, t_shell *shell)
 {
 	char    *str;
 	t_node  *node;
@@ -34,9 +34,9 @@ int     b_env_unset(char **args, t_hashtable *envs)
 	while (*args)
 	{
 		str = *args;
-		node = ht_remove(envs, str);
+		node = ht_remove(shell->env, str);
 		if (node)
-			b_unset_env_a(envs, str, node);
+			b_unset_env_a(shell->env, str, node);
 		else
 		{
 			err_builtins(ERR_UNSETENV_NOT_EXIST, str);

@@ -22,7 +22,7 @@ static void print_env(const t_heap *heap, size_t j)
 		ft_printf("%s=%s\n", n->key, n->value);
 }
 
-int     b_env(char **args, t_hashtable *t)
+int     b_env(char **args, t_shell *shell)
 {
 	t_heap	*heap;
 	size_t	i;
@@ -30,9 +30,9 @@ int     b_env(char **args, t_hashtable *t)
 
 	i = 0;
 	(void)args;
-	while (i < t->size)
+	while (i < shell->env->size)
 	{
-		heap = t->heaps[i];
+		heap = shell->env->heaps[i];
 		j = 0;
 		while (heap && heap->elements > 0 && j < heap->size)
 		{

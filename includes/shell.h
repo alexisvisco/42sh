@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:00 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/06 10:14:37 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/06 12:32:28 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -31,10 +31,12 @@
 # include "libft.h"
 # include <sys/stat.h>
 # include "editor.h"
-# include "builtins.h"
 # include "lex.h"
 # include "exec.h"
+# include "shell_struct.h"
+# include "builtins.h"
 
+extern t_shell	g_shell;
 
 typedef enum	e_message
 {
@@ -54,6 +56,8 @@ typedef enum	e_msg_builtins
 	ERR_UNSETENV_NOT_EXIST,
 	MSG_UNSETENV,
 	SHELL_EXIT,
+	ERR_BIN_SEARCH_FORMAT,
+	MSG_SEARCH_BIN_FOUND,
 }				t_msg_builtins;
 
 typedef enum	e_parse
@@ -70,19 +74,6 @@ typedef enum	e_editor
 {
 	ERR_UNRECOGNIZED_TERM
 }				t_eeditor;
-
-
-typedef struct	s_shell
-{
-	t_hashtable	*env;
-	t_hashtable	*bin;
-	t_trie_node	*bin_trie;
-	t_trie_node	*env_trie;
-	t_options	*line_edit;
-	t_options	*history_search;
-}				t_shell;
-
-extern t_shell	g_shell;
 
 typedef enum	e_open
 {

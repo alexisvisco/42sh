@@ -13,14 +13,14 @@
 
 #include "shell.h"
 
-int		b_exit(char **args, t_hashtable *envs)
+int		b_exit(char **args, t_shell *shell)
 {
 	int exit_status;
 
+	(void)shell;
 	disable_terminal(STDIN_FILENO);
 	exit_shell();
 	exit_status = (size_tab(args) == 2) ? ft_atoi(args[0]) : 0;
 	msg_builtins(SHELL_EXIT, exit_status);
 	exit(exit_status);
-	return (0);
 }

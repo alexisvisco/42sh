@@ -36,7 +36,7 @@ static int     b_set_env_a(t_hashtable *envs, char *str)
 	return (1);
 }
 
-int     b_env_set(char **args, t_hashtable *envs)
+int     b_env_set(char **args, t_shell *shell)
 {
 	char *str;
 
@@ -48,7 +48,7 @@ int     b_env_set(char **args, t_hashtable *envs)
 	while (*args)
 	{
 		str = *args;
-		if (ft_strchr(str, '=') && ft_strlen(str) > 2 && b_set_env_a(envs, str))
+		if (ft_strchr(str, '=') && ft_strlen(str) > 2 && b_set_env_a(shell->env, str))
 			args++;
 		else
 		{

@@ -111,6 +111,7 @@ exec/exec_pipe.c  \
 exec/open_file.c \
 \
 builtins/b_env.c \
+builtins/b_binary_search.c \
 builtins/b_env_unset.c \
 builtins/b_env_set.c \
 builtins/b_pwd.c \

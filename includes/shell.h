@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:00 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/06 12:32:28 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/06 18:33:14 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -58,6 +58,7 @@ typedef enum	e_msg_builtins
 	SHELL_EXIT,
 	ERR_BIN_SEARCH_FORMAT,
 	MSG_SEARCH_BIN_FOUND,
+	ERR_NO_HISTORY,
 }				t_msg_builtins;
 
 typedef enum	e_parse
@@ -90,8 +91,8 @@ void            err_builtins(t_msg_builtins m, ...);
 void            msg_builtins(t_msg_builtins m, ...);
 
 void			set_env();
-void			set_bin();
-void            update_bin();
+void			set_bin(t_shell *shell);
+void            update_bin(t_shell *shell);
 void			set_options();
 void			exit_shell();
 void			init_shell();

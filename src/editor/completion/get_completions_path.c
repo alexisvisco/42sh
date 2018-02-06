@@ -34,7 +34,8 @@ t_heap *heap)
 		return ;
 	while ((dent = readdir(dir)) != NULL)
 	{
-		if (*start == 0 || ft_strstarts_with_str(dent->d_name, start))
+		if ((*start == 0 || ft_strstarts_with_str(dent->d_name, start)) &&
+		!(ft_strchr(dent->d_name, ' ') || ft_strchr(folder, ' ')))
 		{
 			path_join(path, folder, dent->d_name);
 			if (ft_strstarts_with(folder, '.') &&

@@ -6,14 +6,14 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/05 21:00:29 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/06 10:09:15 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/06 18:27:46 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-static int     b_set_env_a(t_hashtable *envs, char *str)
+static int     b_set_env_a(t_hashtable *envs, char *str, t_shell *shell)
 {
 	char **splitted;
 
@@ -23,7 +23,7 @@ static int     b_set_env_a(t_hashtable *envs, char *str)
 		ht_set(envs, splitted[0], ft_strdup(splitted[1]));
 		trie_insert(g_shell.env_trie, splitted[0]);
 		if (ft_strequ("PATH", splitted[0]))
-			update_bin();
+			update_bin(shell);
 		msg_builtins(MSG_SETENV, splitted[0], splitted[1]);
 	}
 	else
@@ -48,7 +48,8 @@ int     b_env_set(char **args, t_shell *shell)
 	while (*args)
 	{
 		str = *args;
-		if (ft_strchr(str, '=') && ft_strlen(str) > 2 && b_set_env_a(shell->env, str))
+		if (ft_strchr(str, '=') && ft_strlen(str) > 2 &&
+				b_set_env_a(shell->env, str, shell))
 			args++;
 		else
 		{

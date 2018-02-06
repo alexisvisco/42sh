@@ -6,19 +6,19 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/05 21:00:29 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/05 21:34:41 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/06 18:27:46 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-static void    b_unset_env_a(t_hashtable *envs, char *str, t_node *node)
+static void    b_unset_env_a(char *str, t_node *node, t_shell *shell)
 {
 	msg_builtins(MSG_UNSETENV, str, node->value);
-	ht_default_free(envs, node);
+	ht_default_free(shell->env, node);
 	if (ft_strequ("PATH", str))
-		update_bin();
+		update_bin(shell);
 }
 
 int     b_env_unset(char **args, t_shell *shell)
@@ -36,7 +36,7 @@ int     b_env_unset(char **args, t_shell *shell)
 		str = *args;
 		node = ht_remove(shell->env, str);
 		if (node)
-			b_unset_env_a(shell->env, str, node);
+			b_unset_env_a(str, node, shell);
 		else
 		{
 			err_builtins(ERR_UNSETENV_NOT_EXIST, str);

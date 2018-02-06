@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/05 18:44:23 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/06 12:15:30 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/06 18:43:16 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -24,9 +24,11 @@ t_hashtable     *get_builtins()
 		builtins_methods->free_func = NULL;
 		ht_set(builtins_methods, "pwd", b_pwd);
 		ht_set(builtins_methods, "env", b_env);
+		ht_set(builtins_methods, "echo", b_echo);
 		ht_set(builtins_methods, "setenv", b_env_set);
 		ht_set(builtins_methods, "unsetenv", b_env_unset);
 		ht_set(builtins_methods, "clear", b_clear);
+		ht_set(builtins_methods, "history", b_history);
 		ht_set(builtins_methods, "binary-search", b_binary_search);
 		ht_set(builtins_methods, "exit", b_exit);
 	}

@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/05 20:56:27 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/06 12:32:28 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/06 18:27:46 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -24,6 +24,7 @@ static char *g_msg_builtins[] = {
 		"You killed me (exit code: %i)! Just say me why ?\n",
 		"To search binary use: search-binary query\n",
 		"One match found: %s\n",
+		"There is currently no history.\n",
 };
 
 void   err_builtins(t_msg_builtins m, ...)

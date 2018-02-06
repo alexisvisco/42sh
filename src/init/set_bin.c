@@ -29,7 +29,7 @@ static int	can_use(char *path)
 	&& st.st_mode & S_IXUSR));
 }
 
-static void	add_to_bintable(char *path_folder)
+static void	add_to_bintable(char *path_folder, t_shell *shell)
 {
 	DIR				*dir;
 	struct dirent	*entry;
@@ -43,8 +43,8 @@ static void	add_to_bintable(char *path_folder)
 		if (!(ft_strequ(entry->d_name, ".") || ft_strequ(entry->d_name, ".."))
 		&& can_use(path))
 		{
-			ht_set(g_shell.bin, entry->d_name, ft_strdup(path));
-			trie_insert(g_shell.bin_trie, entry->d_name);
+			ht_set(shell->bin, entry->d_name, ft_strdup(path));
+			trie_insert(shell->bin_trie, entry->d_name);
 		}
 	}
 	closedir(dir);
@@ -56,27 +56,27 @@ static void	add_to_bintable(char *path_folder)
 ** hashtable and insert in the trie structure.
 */
 
-void		set_bin(void)
+void		set_bin(t_shell *shell)
 {
 	char	*path;
 	char	**paths;
 	int		i;
 
-	g_shell.bin = ht_new(512);
-	g_shell.bin_trie = trie_new();
-	path = (char *)ht_get(g_shell.env, "PATH");
+	shell->bin = ht_new(512);
+	shell->bin_trie = trie_new();
+	path = (char *)ht_get(shell->env, "PATH");
 	if (!path)
 		return ;
 	paths = ft_strsplit(path, ':');
 	i = -1;
 	while (paths[++i])
-		add_to_bintable(paths[i]);
+		add_to_bintable(paths[i], shell);
 	free_tab(paths);
 }
 
-void        update_bin()
+void        update_bin(t_shell *shell)
 {
-	ht_free(g_shell.bin);
-	trie_free(g_shell.bin_trie);
-	set_bin();
+	ht_free(shell->bin);
+	trie_free(shell->bin_trie);
+	set_bin(shell);
 }

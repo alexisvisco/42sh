@@ -1,38 +1,43 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   shell.c                                          .::    .:/ .      .::   */
+/*   b_history.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/30 14:44:16 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/06 18:28:19 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/02/05 18:56:46 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/06 19:19:33 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
-#include "f_colors.h"
 
-t_shell	g_shell;
-
-int		main(void)
+int     b_history(char **args, t_shell *shell)
 {
-	char	*str;
+	t_heap *h;
+	size_t i;
+	size_t j;
 
-	init_shell();
-	if (!ht_get(g_shell.env, "TERM"))
+	(void)args;
+	(void)shell;
+	if (!shell->line_edit->history_data || !shell->line_edit->history_data->heap
+	|| shell->line_edit->history_data->heap->elements == 0)
 	{
-		e_general(TERM_ENV_NOT_SET, NULL);
-		exit_shell();
-		exit(EXIT_FAILURE);
+		err_builtins(ERR_NO_HISTORY);
+		return (0);
 	}
-	while ((str = readline("shell> ", g_shell.line_edit)))
+	h = shell->line_edit->history_data->heap;
+	i = 0;
+	j = 0;
+	while (i < h->size)
 	{
-		char **s = ft_split(str, " ");
-		t_builtins_fun *f = builtins(s[0]);
-		if (f)
-			f(s + 1, &g_shell);
-		free(str);
+		if (h->list[i])
+		{
+			ft_printf(" * %i %s\n", j + 1, (char *)h->list[i]);
+			j++;
+		}
+		i++;
 	}
+	return (1);
 }

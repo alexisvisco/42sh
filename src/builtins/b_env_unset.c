@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/05 21:00:29 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/07 09:41:51 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/07 12:24:19 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -26,12 +26,12 @@ int     b_env_unset(char **args, t_shell *shell)
 	char    *str;
 	t_node  *node;
 
-	if (!args)
+	if (!args || size_tab(args) < 2)
 	{
 		err_builtins(ERR_UNSETENV_FORMAT);
 		return (0);
 	}
-	while (*args)
+	while (*(++args))
 	{
 		str = *args;
 		node = ht_remove(shell->env, str);
@@ -42,7 +42,6 @@ int     b_env_unset(char **args, t_shell *shell)
 			err_builtins(ERR_UNSETENV_NOT_EXIST, str);
 			return (0);
 		}
-		args++;
 	}
 	return (1);
 }

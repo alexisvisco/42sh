@@ -18,9 +18,8 @@ int     b_echo(char **args, t_shell *shell)
 	int without_nl;
 
 	without_nl = 0;
-	(void)args;
 	(void)shell;
-	while (*args)
+	while (*(++args))
 	{
 		if (ft_strequ(*args, "-n"))
 			without_nl = 1;
@@ -30,7 +29,6 @@ int     b_echo(char **args, t_shell *shell)
 			if (*(args + 1) != NULL)
 				ft_putchar(' ');
 		}
-		args++;
 	}
 	if (!without_nl)
 		ft_putchar('\n');

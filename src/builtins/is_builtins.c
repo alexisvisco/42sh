@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/05 18:44:23 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/07 09:41:51 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/07 11:02:06 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -32,12 +32,15 @@ t_hashtable     *get_builtins()
 		ht_set(builtins_methods, "cd", b_cd);
 		ht_set(builtins_methods, "searchbin", b_search_binary);
 		ht_set(builtins_methods, "exit", b_exit);
+		ht_set(builtins_methods, "quit", b_exit);
 	}
 	return (builtins_methods);
 }
 
 t_builtins_fun  *builtins(char *cmd)
 {
+	if (ft_strstarts_with(cmd, '!'))
+		return (b_history_handler(cmd));
 	if (ht_has(get_builtins(), cmd))
 		return ((t_builtins_fun *)ht_get(get_builtins(), cmd));
 	else

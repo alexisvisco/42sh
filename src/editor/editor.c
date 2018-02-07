@@ -6,12 +6,12 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/21 10:35:37 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/05 18:42:35 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/07 11:04:06 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "editor.h"
+#include <shell.h>
 
 static void		init_editor(t_editor *editor)
 {
@@ -48,5 +48,7 @@ int				editor(char *buf, char *prompt, t_options *opt)
 	l.options = opt;
 	init_editor(&l);
 	ft_putstr_fd(l.ofd, l.prompt);
+	editor_insert_str(&l, g_shell.line_edit->next_line);
+	g_shell.line_edit->next_line[0] = 0;
 	return (handle_keys(&l));
 }

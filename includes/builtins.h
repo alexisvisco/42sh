@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/05 18:45:07 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/07 09:41:51 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/07 12:59:45 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -30,5 +30,11 @@ int				b_env_unset(char **args, t_shell *shell);
 int				b_clear(char **args, t_shell *shell);
 int				b_exit(char **args, t_shell *shell);
 int				b_search_binary(char **args, t_shell *shell);
+int				b_set_last_history(char **args, t_shell *shell);
+int 			b_set_history_contain(char **args, t_shell *shell);
+int 			b_set_history_start(char **args, t_shell *shell);
+int 			b_set_history_from_n_last(char **args, t_shell *shell);
+int 			b_set_history_from_n(char **args, t_shell *shell);
+t_builtins_fun	*b_history_handler(char *cmd);
 
 #endif

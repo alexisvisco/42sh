@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:00 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/07 09:42:47 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/07 13:06:05 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -63,6 +63,11 @@ typedef enum	e_msg_builtins
 	ERR_CD_ACCESS,
 	ERR_CD_DIR,
 	MSG_CD,
+	ERR_NO_HISTORY_AVAILABLE,
+	ERR_NO_HISTORY_THAT_CONTAIN,
+	ERR_NO_HISTORY_THAT_START,
+	ERR_NO_HISTORY_FROM_BEGIN,
+	ERR_NO_HISTORY_FROM_END,
 }				t_msg_builtins;
 
 typedef enum	e_parse

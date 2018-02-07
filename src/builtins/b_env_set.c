@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/05 21:00:29 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/07 09:41:51 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/07 12:24:19 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -40,17 +40,17 @@ int     b_env_set(char **args, t_shell *shell)
 {
 	char *str;
 
-	if (!args || !(*args))
+	if (!args || size_tab(args) < 2)
 	{
 		err_builtins(ERR_SETENV_FORMAT);
 		return (0);
 	}
-	while (*args)
+	while (*(++args))
 	{
 		str = *args;
 		if (ft_strchr(str, '=') && ft_strlen(str) > 2 &&
-				b_set_env_a(shell->env, str, shell))
-			args++;
+		b_set_env_a(shell->env, str, shell))
+			;
 		else
 		{
 			err_builtins(ERR_SETENV_FORMAT);

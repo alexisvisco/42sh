@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/05 18:56:46 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/07 10:05:27 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/07 11:53:50 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -38,15 +38,15 @@ void 		b_best_matchs(char *key, t_trie_node *tries)
 
 int			b_search_binary(char **args, t_shell *shell)
 {
-	if (size_tab(args) < 1)
+	if (size_tab(args) < 2)
 	{
 		msg_builtins(ERR_BIN_SEARCH_FORMAT);
 		return (0);
 	}
-	if (ht_get(shell->bin, args[0]))
-		msg_builtins(MSG_SEARCH_BIN_FOUND, args[0]);
-	else if (ft_strlen(args[0]) >= 2)
-		b_best_matchs(args[0], shell->bin_trie);
+	if (ht_get(shell->bin, args[1]))
+		msg_builtins(MSG_SEARCH_BIN_FOUND, args[1]);
+	else if (ft_strlen(args[1]) >= 2)
+		b_best_matchs(args[1], shell->bin_trie);
 	return (1);
 }
 

@@ -14,7 +14,7 @@
 #include "shell.h"
 
 /*
-**
+** Set options for line editing
 */
 
 void	set_options()
@@ -27,11 +27,13 @@ void	set_options()
 	line_edit->history_data = NULL;
 	line_edit->has_history = 1;
 	line_edit->has_completion = 1;
+	line_edit->next_line[0] = 0;
 	history_search = malloc(sizeof(t_options));
 	history_search->completion_data = NULL;
 	history_search->history_data = NULL;
 	history_search->has_history = 1;
 	history_search->has_completion = 1;
+	history_search->next_line[0] = 0;
 	g_shell.history_search = history_search;
 	g_shell.line_edit = line_edit;
 }

@@ -6,7 +6,7 @@
 #    By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/01/19 13:46:02 by aviscogl     #+#   ##    ##    #+#        #
-#   Updated: 2018/02/07 10:01:20 by aviscogl    ###    #+. /#+    ###.fr     # #
+#   Updated: 2018/02/07 10:43:07 by aviscogl    ###    #+. /#+    ###.fr     # #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -119,14 +119,15 @@ builtins/b_env_set.c \
 builtins/b_pwd.c \
 builtins/b_clear.c \
 builtins/b_cd.c \
-builtins/b_history.c \
+builtins/history/b_history.c \
+builtins/history/b_history_cmd.c \
 builtins/b_echo.c \
 builtins/b_exit.c \
 builtins/is_builtins.c \
 
 
 EDITOR_FOLDERS = editor editor/util editor/refresher editor/completion editor/keys_functions editor/edit_fn editor/history
-OBJ_FOLDERS = $(EDITOR_FOLDERS) init builtins exec lex messages parser util
+OBJ_FOLDERS = $(EDITOR_FOLDERS) init builtins builtins/history exec lex messages parser util
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))

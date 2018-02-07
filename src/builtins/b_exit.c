@@ -20,7 +20,7 @@ int		b_exit(char **args, t_shell *shell)
 	(void)shell;
 	disable_terminal(STDIN_FILENO);
 	exit_shell();
-	exit_status = (size_tab(args) == 2) ? ft_atoi(args[0]) : 0;
+	exit_status = (size_tab(args) >= 3) ? ft_atoi(args[1]) : 0;
 	msg_builtins(SHELL_EXIT, exit_status);
 	exit(exit_status);
 }

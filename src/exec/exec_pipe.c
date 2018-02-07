@@ -5,15 +5,15 @@
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/02/02 12:05:55 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/05 19:19:04 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/02/07 14:22:23 by ggranjon     #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/07 14:31:42 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-static void     child_fork(char ***argv, int fd, const int *p)
+static void		child_fork(char ***argv, int fd, const int *p)
 {
 	char	**envp;
 
@@ -28,7 +28,12 @@ static void     child_fork(char ***argv, int fd, const int *p)
 	exit(EXIT_FAILURE);
 }
 
-int		exec_all_pipe(char ***argv)
+/*
+ ** dup2(input_file != 0 ? input_file : save_fd, STDIN_FILENO); =
+ ** change the input according to the old output
+ */
+
+int				exec_all_pipe(char ***argv)
 {
 	int		p[2];
 	int		save_fd;
@@ -49,7 +54,7 @@ int		exec_all_pipe(char ***argv)
 		{
 			if (input_file != 0)
 				dup2(input_file, STDIN_FILENO);
-			dup2(input_file != 0 ? input_file : save_fd, STDIN_FILENO); //change the input according to the old one
+			dup2(input_file != 0 ? input_file : save_fd, STDIN_FILENO);
 			child_fork(argv, fd, p);
 		}
 		else

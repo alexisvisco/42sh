@@ -100,7 +100,6 @@ util/ft_char_to_str.c \
 util/env_to_array.c \
 util/delete_first.c  \
 util/ft_copy_str.c \
-util/count_tab.c \
 \
 exec/signal.c \
 exec/analyze_next_and_or.c  \

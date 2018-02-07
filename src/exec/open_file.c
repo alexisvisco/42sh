@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/03 18:41:11 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/05 19:20:47 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/07 14:33:18 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,14 +25,15 @@ static int	open_right_redir(char **str, int flag, int i)
 		if (errno == EISDIR)
 			e_open(ERR_IS_DIR, str[i + 1]);
 		else if (access(str[i + 1], X_OK) == -1)
-			e_open(ERR_PERM, str[i + 1]);
+			e_open(ERR_ACCES, str[i + 1]);
+		else
+			e_open(ERR_EXIST, str[i + 1]);
 	}
 	return (file);
 }
 
 int			call_right_redir(char **cmds)
 {
-
 	int	k;
 	int	fd;
 
@@ -66,7 +67,7 @@ static void	error_left_redir(int fd, int k, char **cmds)
 		if (errno == EISDIR)
 			e_open(ERR_IS_DIR, cmds[k + 1]);
 		else if (access(cmds[k + 1], X_OK) == -1)
-			e_open(ERR_PERM, cmds[k + 1]);
+			e_open(ERR_ACCES, cmds[k + 1]);
 		else
 			e_open(ERR_EXIST, cmds[k + 1]);
 	}

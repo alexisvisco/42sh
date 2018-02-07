@@ -80,6 +80,7 @@ typedef enum	e_open
 {
 	ERR_IS_DIR,
 	ERR_PERM,
+	ERR_ACCES,
 	ERR_EXIST
 }				t_eopen;
 

@@ -52,8 +52,9 @@ void	e_open(t_eopen m, char *arg)
 {
 	if (m == ERR_IS_DIR)
 		ft_dprintf(2, "%s » %s is a directory!\n", SHELL_NAME, arg);
-	if (m == ERR_PERM)
-		ft_dprintf(2, "%s » %s permission denied!\n", SHELL_NAME, arg);
+	if (m == ERR_ACCES)
+		ft_dprintf(2, "%s » %s does not exist or permission denied!\n",
+				   SHELL_NAME, arg);
 	if (m == ERR_EXIST)
 		ft_dprintf(2, "%s » %s does not exist!\n", SHELL_NAME, arg);
 }

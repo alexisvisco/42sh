@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:00 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/07 13:06:05 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/07 14:46:31 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -89,6 +89,7 @@ typedef enum	e_open
 {
 	ERR_IS_DIR,
 	ERR_PERM,
+	ERR_ACCES,
 	ERR_EXIST
 }				t_eopen;
 

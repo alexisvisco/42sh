@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 16:59:52 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/05 15:38:26 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/07 14:46:31 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,7 +20,7 @@
 ** Next_cmd is ok
 */
 
-char		**next_cmd(t_token **tokens, int index[2])
+char	**next_cmd(t_token **tokens, int index[2])
 {
 	char	**ret;
 	int		i;
@@ -39,11 +39,11 @@ char		**next_cmd(t_token **tokens, int index[2])
 }
 
 /*
-** num[0] = start index 
+** num[0] = start index
 ** num[1] = num block
 */
 
-int			go_next_index(t_token **tokens, t_block *blocks, int num[2], int ret)
+int		go_next_index(t_token **tokens, t_block *blocks, int num[2], int ret)
 {
 	if (blocks[num[1]].end_tok <= num[0])
 	{
@@ -57,31 +57,26 @@ int			go_next_index(t_token **tokens, t_block *blocks, int num[2], int ret)
 }
 
 /*
-** num[0] = start index 
+** num[0] = start index
 ** num[1] = num block
 ** I rlly fuck the 42 norm.
 ** ind is for the index of the beginnng and the end
 */
 
-int			exec_or_and(t_token **tokens, t_block *blocks, int num[2], int ret)
+int		exec_or_and(t_token **tokens, t_block *blocks, int num[2], int ret)
 {
 	int		ind[2];
 	char	**argv;
 	char	***cmds;
 	char	*node;
-	int		output_file;
-	int		intput_file;
 
 	node = NULL;
 	if (blocks[num[1]].start_tok == -1)
 		return (EXEC_FINISH);
-
 	ind[0] = num[0];
 	ind[1] = go_to_next(tokens, blocks, num[1], num[0]);
-
-	argv = next_cmd(tokens, ind);
-
 	num[0] = ind[1] + 1;
+	argv = next_cmd(tokens, ind);
 	if ((ret == 1 && ft_strequ(argv[0], "&&"))
 	|| (ret == 0 && ft_strequ(argv[0], "||")))
 	{
@@ -90,7 +85,6 @@ int			exec_or_and(t_token **tokens, t_block *blocks, int num[2], int ret)
 	}
 	else if (analyze_next_and_or(argv[0]))
 		delete_first_element(&argv);
-
 	cmds = extract_all_pipes(argv);
 	free_tab(argv);
 	if (replace_argv0_by_exec(cmds) == -1)
@@ -98,11 +92,7 @@ int			exec_or_and(t_token **tokens, t_block *blocks, int num[2], int ret)
 		free_3d_tab(cmds);
 		return (go_next_index(tokens, blocks, num, 1));
 	}
-	if ((output_file = call_right_redir(cmds)) == -1
-	|| (intput_file = call_left_redir(cmds)) == -1)
-		return (go_next_index(tokens, blocks, num, 1));
-//	ret = fork_result(node, argv);
-	ret = exec_all_pipe(cmds, output_file, intput_file);
+	ret = exec_all_pipe(cmds);
 	free_3d_tab(cmds);
 	return (go_next_index(tokens, blocks, num, ret));
 }

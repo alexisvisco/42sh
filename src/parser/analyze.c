@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/23 17:56:38 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/05 18:42:35 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/07 14:46:31 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -70,7 +70,8 @@ static int	analyze_after_fd(t_block **block, t_token **tokens)
 		{
 			if (tokens[j]->type == FD_FILE)
 			{
-				if (tokens[j + 1] && tokens[j + 1]->type != SEP_OP)
+				if (tokens[j + 1] && (tokens[j + 1]->type != SEP_OP &&
+						tokens[j + 1]->type != IO_REDIR))
 					return (-2);
 			}
 			j++;

@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 14:44:16 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/07 14:48:03 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/07 17:01:59 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -62,12 +62,7 @@ int	main(void)
 	}
 	while ((str = readline("shell> ", g_shell.line_edit)))
 	{
-		if (ft_strequ("exit", str))
-		{
-			exit_shell();
-			free(str);
-			exit(0);
-		}
+		signal(SIGINT, sig_handler);
 		main2(str);
 		free(str);
 	}

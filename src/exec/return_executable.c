@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/02 10:55:20 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/03 17:02:47 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/07 14:52:33 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,17 +23,16 @@ int			is_executable(char *path)
 
 int			replace_argv0_by_exec(char ***cmds)
 {
-	int		i;
-	char	*tmp;
+	int				i;
+	char			*tmp;
 
 	i = 0;
 	while (cmds[i])
 	{
 		if (is_executable(cmds[i][0]))
 			;
-		/*
-		** else if (is a buildin)
-		*/
+		else if (builtins(cmds[i][0]))
+			;
 		else if ((tmp = ht_get(g_shell.bin, cmds[i][0])))
 		{
 			free(cmds[i][0]);

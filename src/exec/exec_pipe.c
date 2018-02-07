@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/07 14:22:23 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/07 18:37:59 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/07 18:44:51 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -51,7 +51,7 @@ static int		built_in(char ***argv, int fd, const int *p)
 
 int	g_ret;
 
-static void		close_fd(const int *p, int *status, t_fd *fd)
+static void		close_fd(const int *p, int *status, t_fd *fd, char ****av)
 {
 	if (g_ret == -1)
 		wait(status);
@@ -63,6 +63,7 @@ static void		close_fd(const int *p, int *status, t_fd *fd)
 	close(((*fd).output != 1) ? (*fd).output : p[WRITE_END]);
 	if (g_ret != -1)
 		dup(STDIN_FILENO);
+	(*av)++;
 }
 
 int				exec_all_pipe(char ***argv)
@@ -88,10 +89,7 @@ int				exec_all_pipe(char ***argv)
 			child_fork(argv, fd.output, p);
 		}
 		else
-		{
-			close_fd(p, &status, &fd);
-			argv++;
-		}
+			close_fd(p, &status, &fd, &argv);
 	}
 	return (WEXITSTATUS(status));
 }

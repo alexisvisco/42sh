@@ -1,22 +1,43 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   b_clear.c                                        .::    .:/ .      .::   */
+/*   set_builtins.c                                   .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/02/05 18:56:46 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/07 09:41:51 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/29 10:35:59 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/07 09:57:42 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-int     b_clear(char **args, t_shell *shell)
+extern char	**environ;
+
+/*
+** Add builtins to completions
+*/
+
+void	set_builtins(void)
 {
-	(void)args;
-	(void)shell;
-	write(STDOUT_FILENO, "\x1b[H\x1b[2J", 7);
-	return (1);
+	size_t			i;
+	size_t			j;
+	t_heap			*h;
+	t_hashtable		*ht;
+
+	ht = get_builtins();
+	i = 0;
+	while (ht && i < ht->size)
+	{
+		h = ht->heaps[i];
+		j = 0;
+		while (h && j < h->size)
+		{
+			if (h->list[j])
+				trie_insert(g_shell.bin_trie, ((t_node *)h->list[j])->key);
+			j++;
+		}
+		i++;
+	}
 }

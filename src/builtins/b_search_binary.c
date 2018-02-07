@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/05 18:56:46 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/06 21:25:12 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/07 10:05:27 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -28,10 +28,12 @@ void 		b_best_matchs(char *key, t_trie_node *tries)
 	while (i < heap->size)
 	{
 		if (heap->list[i] && ft_levenshtein(key, heap->list[i], ft_strlen(key),
-		ft_strlen(heap->list[i])) <= 1)
+		ft_strlen(heap->list[i])) <= 2)
 			ft_printf(" * %s\n", heap->list[i]);
 		i++;
 	}
+	free(first_letter);
+	heap_free(heap);
 }
 
 int			b_search_binary(char **args, t_shell *shell)

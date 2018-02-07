@@ -6,7 +6,7 @@
 #    By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/01/19 13:46:02 by aviscogl     #+#   ##    ##    #+#        #
-#   Updated: 2018/02/06 20:13:43 by aviscogl    ###    #+. /#+    ###.fr     # #
+#   Updated: 2018/02/07 10:01:20 by aviscogl    ###    #+. /#+    ###.fr     # #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -42,6 +42,7 @@ init/init_shell.c \
 init/set_env.c \
 init/set_bin.c \
 init/set_options.c \
+init/set_builtins.c \
 \
 editor/deb_printer.c \
 editor/editor.c \

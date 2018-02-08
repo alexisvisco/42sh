@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/07 14:22:23 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 12:30:35 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 14:28:44 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -28,7 +28,7 @@ static void		child_fork(char ***argv, int fd, const int *p)
 	exit(EXIT_FAILURE);
 }
 
-static int		built_in(char ***argv, int fd, const int *p)
+static int		built_in(char ***argv, int fd)
 {
 	t_builtins_fun	*buitlin;
 
@@ -66,7 +66,7 @@ static void		close_fd(const int *p, int *status, t_fd *fd, char ****av)
 	(*av)++;
 }
 
-int				exec_all_pipe(char ***argv)
+int				exec_cmds(char ***argv)
 {
 	int		p[2];
 	int		status;
@@ -81,7 +81,7 @@ int				exec_all_pipe(char ***argv)
 			return (1);
 		if ((fd.input = call_left_redir(*argv)) == -1)
 			return (1);
-		if ((g_ret = built_in(argv, fd.output, p)) != -1)
+		if ((g_ret = built_in(argv, fd.output)) != -1)
 			status = (g_ret == 1) ? 0 : 256;
 		if (g_ret == -1 && (fork()) == 0)
 		{

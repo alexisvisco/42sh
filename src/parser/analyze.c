@@ -13,6 +13,13 @@
 
 #include "shell.h"
 
+/*
+** Check if commentaries are well formated, it means
+** there are not like this <> or this ><
+** and it also check, if it's longer than 2 (for the >&2, 1>&2, etc...),
+** there is a separator after
+*/
+
 static int	bad_red(char *s, t_token **tokens, int j)
 {
 	if (s[1])
@@ -28,6 +35,11 @@ static int	bad_red(char *s, t_token **tokens, int j)
 		return (-2);
 	return (0);
 }
+
+/*
+** Check if there is a FD (or a file) after a redirection
+** Call bad_red
+*/
 
 static int	analyze_red(t_block **block, t_token **tokens)
 {
@@ -57,6 +69,10 @@ static int	analyze_red(t_block **block, t_token **tokens)
 	return (0);
 }
 
+/*
+** Check if there is a bad type after a redirection
+*/
+
 static int	analyze_after_fd(t_block **block, t_token **tokens)
 {
 	int		i;
@@ -80,6 +96,10 @@ static int	analyze_after_fd(t_block **block, t_token **tokens)
 	}
 	return (0);
 }
+
+/*
+** Check if there is a command after a pipe
+*/
 
 static int	analyze_pipe(t_block **block, t_token **tokens)
 {
@@ -105,6 +125,10 @@ static int	analyze_pipe(t_block **block, t_token **tokens)
 	}
 	return (0);
 }
+
+/*
+** Just call above functions
+*/
 
 int			analyze_block(t_block **blocks, t_token **tokens)
 {

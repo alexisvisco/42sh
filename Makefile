@@ -3,10 +3,10 @@
 #                                                               /              #
 #    Makefile                                         .::    .:/ .      .::    #
 #                                                  +:+:+   +:    +:  +:+:+     #
-#    By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+      #
+#    By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/01/19 13:46:02 by aviscogl     #+#   ##    ##    #+#        #
-#   Updated: 2018/02/08 12:49:42 by aviscogl    ###    #+. /#+    ###.fr     # #
+#    Updated: 2018/02/08 14:25:51 by ggranjon    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -22,6 +22,8 @@ OBJ_PATH = ./obj/
 
 SRC_NAME = \
 shell.c \
+shell_process.c\
+\
 lex/count_tokens.c \
 lex/split.c \
 lex/recognize.c \
@@ -104,6 +106,7 @@ util/ft_char_to_str.c \
 util/env_to_array.c \
 util/delete_first.c  \
 util/ft_copy_str.c \
+util/equal_char.c \
 \
 exec/signal.c \
 exec/analyze_next_and_or.c  \

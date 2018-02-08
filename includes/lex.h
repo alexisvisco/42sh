@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:48 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 12:30:35 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 14:26:44 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -61,14 +61,12 @@ typedef struct	s_block
 	int				nb_pipe;
 }				t_block;
 
-int				nb_equal_char(char *s1, char *s2);
-
-char			*specpy(char *s);
+char			*cpy_special(char *s);
 int				count_tokens(char *s);
 t_token			**split_tokens(char *s, int nbtokens);
 
-int				ft_lexall(t_token ***tokens, char *s);
-int 			analyze_sep(t_token **tokens);
+int				lex_all(t_token ***tokens, char *s);
+int				analyze_sep(t_token **tokens);
 
 
 int				is_commentary(t_token **tokens);

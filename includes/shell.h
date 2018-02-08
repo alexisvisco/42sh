@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:00 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 13:25:57 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 14:34:26 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -57,6 +57,7 @@ typedef enum	e_msgs
 	ERR_IS_DIR,
 	ERR_ACCES,
 	ERR_EXIST,
+	ERR_PERM,
 
 	ERR_UNRECOGNIZED_TERM,
 	ERR_UNSUPORTED_OPERATION,
@@ -83,13 +84,15 @@ typedef enum	e_msgs
 	ERR_NO_OLD_PWD
 }				t_msgs;
 
+int				shell_process(char *s);
+
 void			message(t_msgs m, ...);
 void			message_err(t_msgs m, ...);
 void			message_fd(int fd, t_msgs m, ...);
 
 void			set_env();
 void			set_bin(t_shell *shell);
-void            update_bin(t_shell *shell);
+void			update_bin(t_shell *shell);
 void			set_builtins(void);
 void			set_options();
 void			exit_shell();

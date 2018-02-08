@@ -6,14 +6,18 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/20 17:07:59 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 12:46:26 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 14:31:47 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-static void		ft_minirecognize(t_token ***tokens)
+/*
+** detect the type of the argument thanks to the previous one
+*/
+
+static void		recognize_type(t_token ***tokens)
 {
 	int		i;
 
@@ -37,12 +41,10 @@ static void		ft_minirecognize(t_token ***tokens)
 	}
 }
 
-int				ft_lexall(t_token ***tokens, char *s)
+int				lex_all(t_token ***tokens, char *s)
 {
-	int		i;
 	int		nbtokens;
 
-	i = 1;
 	if ((nbtokens = count_tokens(s)) == -2)
 	{
 		message_err(ERR_QUOTE, NULL);
@@ -51,6 +53,6 @@ int				ft_lexall(t_token ***tokens, char *s)
 	else if (nbtokens == 0)
 		return (-1);
 	*tokens = split_tokens(s, nbtokens);
-	ft_minirecognize(tokens);
+	recognize_type(tokens);
 	return (0);
 }

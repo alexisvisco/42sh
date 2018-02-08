@@ -6,24 +6,52 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/27 16:23:48 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 12:46:26 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 14:32:21 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-int		parse_tokens(t_token ***tokens, char *s)
+static void	change_variable(t_token ***tokens)
 {
-	if (ft_lexall(tokens, s) < 0)
+	int		i;
+	char	*tmp;
+
+	i = 0;
+	while ((*tokens)[i])
+	{
+		if (ht_has(g_shell.env, (*tokens)[i]->value + 1))
+		{
+			tmp = ft_strrep_first_aft((*tokens)[i]->value, ht_get(g_shell.env,
+				(*tokens)[i]->value + 1), (*tokens)[i]->value, 0);
+			free((*tokens)[i]->value);
+			(*tokens)[i]->value = tmp;
+		}
+		else if (ft_strrchr((*tokens)[i]->value, '~')
+			&& ht_has(g_shell.env, "HOME"))
+		{
+			tmp = ft_strrep_first_aft("~", ht_get(g_shell.env, "HOME"),
+				(*tokens)[i]->value, 0);
+			free((*tokens)[i]->value);
+			(*tokens)[i]->value = tmp;
+		}
+		i++;
+	}
+}
+
+int			parse_tokens(t_token ***tokens, char *s)
+{
+	if (lex_all(tokens, s) < 0)
 		return (-1);
 	if (analyze_sep(*tokens) < 0)
 		return (-2);
+	change_variable(tokens);
 	format_tokens_quotes(tokens);
 	return (1);
 }
 
-int		parse_block(t_token **tokens, t_block **blocks)
+int			parse_block(t_token **tokens, t_block **blocks)
 {
 	int	i;
 

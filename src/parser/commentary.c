@@ -6,12 +6,16 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/28 13:30:15 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 12:30:35 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 14:32:12 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
+
+/*
+** Count the number of block until the comment block
+*/
 
 static int		count_block_until_com(t_token **tokens, int nb_tokens)
 {
@@ -35,6 +39,10 @@ static int		count_block_until_com(t_token **tokens, int nb_tokens)
 	return (block);
 }
 
+/*
+** Check if it's a comment, a comment begin by a #
+*/
+
 int				is_commentary(t_token **tokens)
 {
 	int		i;
@@ -48,6 +56,10 @@ int				is_commentary(t_token **tokens)
 	}
 	return (-1);
 }
+
+/*
+** if there is a comment, extract all the block
+*/
 
 t_block			*extract_block_commentary(t_token **tokens, int nb_tokens)
 {

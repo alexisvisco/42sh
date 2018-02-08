@@ -1,41 +1,28 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   set_builtins.c                                   .::    .:/ .      .::   */
+/*   equal_char.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/29 10:35:59 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 12:22:56 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/02/08 13:35:18 by ggranjon     #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/08 13:35:18 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-/*
-** Add builtins to completions
-*/
-
-void	set_builtins(void)
+int				nb_equal_char(char *s1, char *s2)
 {
-	size_t			i;
-	size_t			j;
-	t_heap			*h;
-	t_hashtable		*ht;
+	int		ret;
 
-	ht = get_builtins();
-	i = 0;
-	while (ht && i < ht->size)
+	ret = 0;
+	while (*s1 && *s1 == *s2)
 	{
-		h = ht->heaps[i];
-		j = 0;
-		while (h && j < h->size)
-		{
-			if (h->list[j])
-				trie_insert(g_shell.bin_trie, ((t_node *)h->list[j])->key);
-			j++;
-		}
-		i++;
+		s1++;
+		s2++;
+		ret++;
 	}
+	return (ret);
 }

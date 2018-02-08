@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/22 16:21:06 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 13:25:57 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 14:31:53 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -30,6 +30,7 @@ static char	*g_msg_list[] = {
 	"%s is a directory!\n",
 	"%s does not exist or permission denied!\n",
 	"%s does not exist!\n",
+	"%s permission denied!\n",
 
 	"This shell is unsuported\n",
 	"This operation is currently unsuported\n",

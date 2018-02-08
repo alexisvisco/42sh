@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/28 14:28:00 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 12:30:35 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 14:31:43 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -29,7 +29,7 @@ int				count_tokens(char *s)
 			s++;
 		if (*s)
 		{
-			word = specpy(s);
+			word = cpy_special(s);
 			nbword++;
 			if (!word)
 				return (-2);
@@ -38,18 +38,4 @@ int				count_tokens(char *s)
 		}
 	}
 	return (nbword);
-}
-
-int				nb_equal_char(char *s1, char *s2)
-{
-	int		ret;
-
-	ret = 0;
-	while (*s1 && *s1 == *s2)
-	{
-		s1++;
-		s2++;
-		ret++;
-	}
-	return (ret);
 }

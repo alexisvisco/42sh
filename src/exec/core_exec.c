@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 16:59:52 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 10:54:49 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 12:27:37 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -88,7 +88,7 @@ int		exec_or_and(t_token **tokens, t_block *blocks, int num[2], int ret)
 		free_3d_tab(cmds);
 		return (go_next_index(tokens, blocks, num, 1));
 	}
-	ret = exec_all_pipe(cmds);
+	ret = exec_cmds(cmds);
 	free_3d_tab(cmds);
 	return (go_next_index(tokens, blocks, num, ret));
 }

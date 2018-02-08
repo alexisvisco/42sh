@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/29 17:26:58 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/07 18:29:47 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 12:22:56 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -41,7 +41,7 @@ int			is_executable(char *path);
 int			call_right_redir(char **cmds);
 int			call_left_redir(char **cmds);
 
-int			exec_all_pipe(char ***argv);
+int			exec_cmds(char ***argv);
 char		***extract_all_pipes(char **argv);
 
 int			go_next_index(t_token **tokens, t_block *blocks,

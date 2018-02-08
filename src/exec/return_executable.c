@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/02 10:55:20 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/07 14:52:33 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 13:00:10 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,6 +21,15 @@ int			is_executable(char *path)
 	&& st.st_mode & S_IXUSR));
 }
 
+static int	permission_or_not_found(char *s)
+{
+	struct stat file_stat;
+
+	if(stat(s,&file_stat) < 0)
+		return (1);
+	return(0);
+}
+
 int			replace_argv0_by_exec(char ***cmds)
 {
 	int				i;
@@ -29,9 +38,7 @@ int			replace_argv0_by_exec(char ***cmds)
 	i = 0;
 	while (cmds[i])
 	{
-		if (is_executable(cmds[i][0]))
-			;
-		else if (builtins(cmds[i][0]))
+		if (is_executable(cmds[i][0]) || builtins(cmds[i][0]))
 			;
 		else if ((tmp = ht_get(g_shell.bin, cmds[i][0])))
 		{
@@ -40,7 +47,10 @@ int			replace_argv0_by_exec(char ***cmds)
 		}
 		else
 		{
-			e_general(ERR_CMD_NOT_FOUND, cmds[i][0]);
+			if (permission_or_not_found(cmds[i][0]) == 0)
+				ft_printf("Permission denied!\n");
+			else
+				e_general(ERR_CMD_NOT_FOUND, cmds[i][0]);
 			return (-1);
 		}
 		i++;

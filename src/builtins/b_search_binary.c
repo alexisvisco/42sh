@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/05 18:56:46 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 14:28:03 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 14:45:10 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -39,7 +39,7 @@ static void		b_best_matchs(char *key, t_trie_node *tries)
 ** Take only one argument
 */
 
-int			b_search_binary(char **args, t_shell *shell)
+int				b_search_binary(char **args, t_shell *shell)
 {
 	if (size_tab(args) < 2)
 	{

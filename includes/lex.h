@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:48 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 14:26:44 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 14:40:56 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -67,7 +67,6 @@ t_token			**split_tokens(char *s, int nbtokens);
 
 int				lex_all(t_token ***tokens, char *s);
 int				analyze_sep(t_token **tokens);
-
 
 int				is_commentary(t_token **tokens);
 t_block			*extract_block_commentary(t_token **tokens, int nb_tokens);

@@ -6,16 +6,16 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/06 12:17:33 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 12:22:56 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 14:39:54 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #ifndef SHELL_STRUCT_H
-#define SHELL_STRUCT_H
+# define SHELL_STRUCT_H
 
-#include <libft.h>
-#include "editor.h"
+# include "libft.h"
+# include "editor.h"
 
 typedef struct	s_shell
 {

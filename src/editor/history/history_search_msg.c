@@ -13,7 +13,7 @@
 
 #include "libft.h"
 
-void 	history_search_msg(void)
+void		history_search_msg(void)
 {
 	ft_putstr("\n-----------------------------------------------------------\n"
 	"Type something to search in the shell history.\n"

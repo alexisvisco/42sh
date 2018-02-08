@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/06 12:48:22 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 12:22:56 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 14:37:34 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -30,6 +30,7 @@ static int		min_3(unsigned int a, unsigned int b, unsigned int c)
 			return (c);
 	}
 }
+
 /*
 ** THe Levenshtein distance is a string metric for measuring the difference
 ** between two sequences.

@@ -6,16 +6,28 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/29 18:52:07 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 12:30:35 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 14:50:15 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+static char	*set_next_prefix(char *tmp, int i)
+{
+	char	*tmpx;
+	char	*tmp_ch;
+
+	tmp_ch = malloc(sizeof(char) * 2);
+	tmp_ch[0] = (char)i;
+	tmp_ch[1] = 0;
+	tmpx = ft_strjoin(tmp, tmp_ch);
+	free(tmp_ch);
+	return (tmpx);
+}
+
 static void	trie_start_with_a(t_trie_node *root, char *prefix, t_heap *heap)
 {
-	char	*tmp_ch;
 	char	*tmp;
 	char	*tmpx;
 	int		i;
@@ -33,11 +45,7 @@ static void	trie_start_with_a(t_trie_node *root, char *prefix, t_heap *heap)
 	{
 		if (root->children[i])
 		{
-			tmp_ch = malloc(sizeof(char) * 2);
-			tmp_ch[0] = (char) i;
-			tmp_ch[1] = 0;
-			tmpx = ft_strjoin(tmp, tmp_ch);
-			free(tmp_ch);
+			tmpx = set_next_prefix(tmp, i);
 			trie_start_with_a(root->children[i], tmpx, heap);
 			free(tmpx);
 		}

@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/29 17:26:58 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 14:26:31 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 14:39:25 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -28,31 +28,31 @@
 
 typedef struct	s_fd
 {
-	int				save;
-	int				output;
-	int				input;
+	int			save;
+	int			output;
+	int			input;
 }				t_fd;
 
-int			analyze_next_and_or(char *s);
+int				analyze_next_and_or(char *s);
 
-char		**extract_cmd(t_token **tokens, int *index);
+char			**extract_cmd(t_token **tokens, int *index);
 
-int			is_executable(char *path);
-int			call_right_redir(char **cmds);
-int			call_left_redir(char **cmds);
+int				is_executable(char *path);
+int				call_right_redir(char **cmds);
+int				call_left_redir(char **cmds);
 
-int			exec_cmds(char ***argv);
-char		***extract_all_pipes(char **argv);
+int				exec_cmds(char ***argv);
+char			***extract_all_pipes(char **argv);
 
-int			exec_next_index(t_token **tokens, t_block *blocks,
-	int *num, int ret);
-int			go_to_next(t_token **tokens, t_block *block, int num, int index);
-int			exec_or_and(t_token **tokens, t_block *blocks, int num[2], int ret);
+int				exec_next_index(t_token **tokens, t_block *blocks,
+				int *num, int ret);
+int				go_to_next(t_token **tokens, t_block *block,
+				int num, int index);
+int				exec_or_and(t_token **tokens, t_block *blocks,
+				int num[2], int ret);
 
-int			replace_argv0_by_exec(char ***cmds);
+int				replace_argv0_by_exec(char ***cmds);
 
-
-void		sig_handler(int signo);
-
+void			sig_handler(int signo);
 
 #endif

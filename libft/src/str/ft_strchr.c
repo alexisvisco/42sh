@@ -6,12 +6,12 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/11/08 16:45:30 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/25 10:48:37 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 14:17:52 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strchr(const char *s, char c)
 {
 	while (*s != c)
 	{

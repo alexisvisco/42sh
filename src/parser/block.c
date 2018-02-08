@@ -13,8 +13,9 @@
 
 #include "shell.h"
 
-#define SEPP1 "&"
-#define SEPP2 "&&"
+/*
+** count sep to malloc extract blocks
+*/
 
 static int	count_sep(t_token **tokens)
 {
@@ -37,6 +38,10 @@ static int	count_sep(t_token **tokens)
 	}
 	return (block);
 }
+
+/*
+** extract blocks, a block is separed by a &, ;, &| or &;
+*/
 
 t_block		*extract_blocks(t_token **tokens)
 {

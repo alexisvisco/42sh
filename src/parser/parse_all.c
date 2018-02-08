@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/27 16:23:48 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 12:37:17 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 14:18:26 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -28,13 +28,21 @@ static void	change_variable(t_token ***tokens)
 			free((*tokens)[i]->value);
 			(*tokens)[i]->value = tmp;
 		}
+		else if (ft_strrchr((*tokens)[i]->value, '~')
+			&& ht_has(g_shell.env, "HOME"))
+		{
+			tmp = ft_strrep_first_aft("~", ht_get(g_shell.env, "HOME"),
+				(*tokens)[i]->value, 0);
+			free((*tokens)[i]->value);
+			(*tokens)[i]->value = tmp;
+		}
 		i++;
 	}
 }
 
 int			parse_tokens(t_token ***tokens, char *s)
 {
-	if (ft_lexall(tokens, s) < 0)
+	if (lex_all(tokens, s) < 0)
 		return (-1);
 	if (analyze_sep(*tokens) < 0)
 		return (-2);

@@ -1,42 +1,28 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   shell_process.c                                  .::    .:/ .      .::   */
+/*   equal_char.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/02/08 13:17:46 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 13:21:48 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/02/08 13:35:18 by ggranjon     #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/08 13:35:18 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-int	shell_process(char *s)
+int				nb_equal_char(char *s1, char *s2)
 {
-	t_token	**tokens;
-	t_block	*blocks;
-	int		i;
-	int		tablea[2];
+	int		ret;
 
-	tokens = NULL;
-	blocks = NULL;
-	tablea[0] = 0;
-	tablea[1] = 0;
-	if (parse_tokens(&tokens, s) < 0)
-		return (0);
-	if (parse_block(tokens, &blocks) < 0)
-		return (0);
-	exec_or_and(tokens, blocks, tablea, 0);
-	i = 0;
-	while (tokens[i])
+	ret = 0;
+	while (*s1 && *s1 == *s2)
 	{
-		free(tokens[i]->value);
-		free(tokens[i]);
-		i++;
+		s1++;
+		s2++;
+		ret++;
 	}
-	free(tokens);
-	free(blocks);
-	return (0);
+	return (ret);
 }

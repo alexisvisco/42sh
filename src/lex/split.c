@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 17:04:06 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/28 15:25:04 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 13:49:22 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,7 +19,11 @@ static void		simplify_cpy(char **s, char **ret, int a)
 	(*s)++;
 }
 
-static int		ft_cpysep(char **s, char **ret)
+/*
+** if there is a separator into a string, cut the seperator and the string
+*/
+
+static int		cpy_seprator(char **s, char **ret)
 {
 	int	i;
 
@@ -46,12 +50,15 @@ static int		ft_cpysep(char **s, char **ret)
 }
 
 /*
+**	copy the *s if "" = everything in the quotes
+**	else cut to the next space or separator or redirection
+**
 **	if s begin by a quote (a ' or a ")
 **  Mod = nb of quote NOT precedeed by '\' (backslash)
 **	BIG CONDITION : new token if FT_SEP OR FT_REDIR or
 */
 
-char			*specpy(char *s)
+char			*cpy_special(char *s)
 {
 	char	*ret;
 	int		i;
@@ -60,7 +67,7 @@ char			*specpy(char *s)
 
 	i = 0;
 	ret = ft_strnew(ft_strlen(s));
-	if (ft_cpysep(&s, &ret))
+	if (cpy_seprator(&s, &ret))
 		return (ret);
 	mod = (*s == '\'' || *s == '\"') ? 1 : 0;
 	c = (mod == 1) ? *s : '\"';
@@ -96,7 +103,7 @@ t_token			**split_tokens(char *s, int nbtokens)
 			s++;
 		if (*s)
 		{
-			tokens[i]->value = specpy(s);
+			tokens[i]->value = cpy_special(s);
 			tokens[i]->index = len - ft_strlen(s);
 			s += nb_equal_char(s, tokens[i]->value);
 			i++;

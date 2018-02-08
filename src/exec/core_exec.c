@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 16:59:52 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 13:11:15 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 13:31:00 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,7 +18,7 @@
 ** index[1] = end
 */
 
-char		**next_cmd(t_token **tokens, int index[2])
+char		**extract_cmd(t_token **tokens, int *index)
 {
 	char	**ret;
 	int		i;
@@ -37,11 +37,12 @@ char		**next_cmd(t_token **tokens, int index[2])
 }
 
 /*
+** execute the next index
 ** num[0] = start index
 ** num[1] = num block
 */
 
-int			go_next_index(t_token **tokens, t_block *blocks, int num[2],
+int			exec_next_index(t_token **tokens, t_block *blocks, int *num,
 	int ret)
 {
 	if (blocks[num[1]].end_tok <= num[0])
@@ -87,12 +88,12 @@ int			exec_or_and(t_token **tokens, t_block *blocks, int num[2], int ret)
 	if (blocks[num[1]].start_tok == -1)
 		return (EXEC_FINISH);
 	next_index(tokens, blocks, num, ind);
-	argv = next_cmd(tokens, ind);
+	argv = extract_cmd(tokens, ind);
 	if ((ret == 1 && ft_strequ(argv[0], "&&"))
 	|| (ret == 0 && ft_strequ(argv[0], "||")))
 	{
 		free_tab(argv);
-		return (go_next_index(tokens, blocks, num, ret));
+		return (exec_next_index(tokens, blocks, num, ret));
 	}
 	if (analyze_next_and_or(argv[0]))
 		delete_first_element(&argv);
@@ -101,8 +102,8 @@ int			exec_or_and(t_token **tokens, t_block *blocks, int num[2], int ret)
 	if (replace_argv0_by_exec(cmds) == -1)
 	{
 		free_3d_tab(cmds);
-		return (go_next_index(tokens, blocks, num, 1));
+		return (exec_next_index(tokens, blocks, num, 1));
 	}
 	ret = return_exec_value(cmds);
-	return (go_next_index(tokens, blocks, num, ret));
+	return (exec_next_index(tokens, blocks, num, ret));
 }

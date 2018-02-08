@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/29 17:26:58 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 12:22:56 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 13:31:00 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -35,7 +35,7 @@ typedef struct	s_fd
 
 int			analyze_next_and_or(char *s);
 
-char		**next_cmd(t_token **tokens, int index[2]);
+char		**extract_cmd(t_token **tokens, int *index);
 
 int			is_executable(char *path);
 int			call_right_redir(char **cmds);
@@ -44,8 +44,8 @@ int			call_left_redir(char **cmds);
 int			exec_cmds(char ***argv);
 char		***extract_all_pipes(char **argv);
 
-int			go_next_index(t_token **tokens, t_block *blocks,
-			int num[2], int ret);
+int			exec_next_index(t_token **tokens, t_block *blocks,
+							   int *num, int ret);
 int			go_to_next(t_token **tokens, t_block *block, int num, int index);
 int			exec_or_and(t_token **tokens, t_block *blocks, int num[2], int ret);
 

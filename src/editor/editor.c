@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/21 10:35:37 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/07 14:46:31 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 12:30:35 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -28,11 +28,10 @@ static void		init_editor(t_editor *editor)
 
 /*
 ** This function is the core of the line editing capability of readline.
-** It expects 'fd' to be already in "raw mode" so that every key pressed
-** will be returned ASAP to read().
+** Need to be already in "raw mode" so that every key pressed
+** will be returned ASAP to read(). (so read of 1)
 **
-** The resulting string is put into 'buf' when the user type enter, or
-** when ctrl+d is typed.
+** The resulting string is put into 'buf' when the user type enter
 **
 ** The function returns the length of the current buffer.
 */

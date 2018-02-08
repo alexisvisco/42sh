@@ -13,6 +13,11 @@
 
 #include "shell.h"
 
+/*
+** Clear the terminal
+** Take no arguments
+*/
+
 int		b_clear(char **args, t_shell *shell)
 {
 	(void)args;

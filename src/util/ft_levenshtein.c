@@ -30,6 +30,13 @@ static int		min_3(unsigned int a, unsigned int b, unsigned int c)
 			return (c);
 	}
 }
+/*
+** THe Levenshtein distance is a string metric for measuring the difference
+** between two sequences.
+** 0 == exactly the same string
+** 1 == one modification
+** ...
+*/
 
 int				ft_levenshtein(char *s1, char *s2, size_t s1len, size_t s2len)
 {

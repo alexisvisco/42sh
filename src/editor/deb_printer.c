@@ -6,12 +6,17 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/01 18:44:10 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/07 14:46:31 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 12:30:35 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
+
+/*
+** Printer that print when readline function is launched
+** Print behind current line
+*/
 
 void	deb_printer(const char *format, ...)
 {

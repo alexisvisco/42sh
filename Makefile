@@ -6,7 +6,7 @@
 #    By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/01/19 13:46:02 by aviscogl     #+#   ##    ##    #+#        #
-#   Updated: 2018/02/07 14:46:31 by ggranjon    ###    #+. /#+    ###.fr     # #
+#   Updated: 2018/02/08 12:49:42 by aviscogl    ###    #+. /#+    ###.fr     # #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -28,7 +28,6 @@ lex/recognize.c \
 lex/bad_format_sep.c \
 \
 messages/messages.c \
-messages/msg_builtins.c \
 \
 parser/block.c \
 parser/analyze.c \
@@ -58,6 +57,7 @@ editor/terminal_manager.c \
 editor/history/origin.c \
 editor/history/history.c \
 editor/history/history_search.c \
+editor/history/history_search_msg.c \
 editor/util/get_colums_len.c \
 editor/util/get_cursor_pos.c \
 editor/util/free_options.c \

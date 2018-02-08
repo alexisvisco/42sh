@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/08 10:40:59 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 10:50:51 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 13:47:08 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,6 +17,10 @@
 #define HAS_HISTORY (HDATA && (hist = HDATA->heap))
 #define CONTAIN hist->list[i] && ft_strstr(hist->list[i], query)
 #define START hist->list[i] && ft_strstarts_with_str(hist->list[i], query)
+
+/*
+** !! : set the next buffer line to the last command typed
+*/
 
 int				b_set_last_history(char **args, t_shell *shell)
 {
@@ -33,11 +37,15 @@ int				b_set_last_history(char **args, t_shell *shell)
 	}
 	else
 	{
-		err_builtins(ERR_NO_HISTORY_AVAILABLE);
+		message_err(ERR_NO_HISTORY_AVAILABLE);
 		return (0);
 	}
 	return (1);
 }
+
+/*
+** !?name : set the next buffer line to the last command that contain 'name'
+*/
 
 int				b_set_history_contain(char **args, t_shell *shell)
 {
@@ -57,15 +65,19 @@ int				b_set_history_contain(char **args, t_shell *shell)
 				return (1);
 			}
 		}
-		err_builtins(ERR_NO_HISTORY_THAT_CONTAIN, query);
+		message_err(ERR_NO_HISTORY_THAT_CONTAIN, query);
 		return (0);
 	}
 	else
 	{
-		err_builtins(ERR_NO_HISTORY_AVAILABLE);
+		message_err(ERR_NO_HISTORY_AVAILABLE);
 		return (0);
 	}
 }
+
+/*
+** !name : set the next buffer line to the last command that start with 'name'
+*/
 
 int				b_set_history_start(char **args, t_shell *shell)
 {
@@ -85,15 +97,19 @@ int				b_set_history_start(char **args, t_shell *shell)
 				return (1);
 			}
 		}
-		err_builtins(ERR_NO_HISTORY_THAT_START, query);
+		message_err(ERR_NO_HISTORY_THAT_START, query);
 		return (0);
 	}
 	else
 	{
-		err_builtins(ERR_NO_HISTORY_AVAILABLE);
+		message_err(ERR_NO_HISTORY_AVAILABLE);
 		return (0);
 	}
 }
+
+/*
+** !n : set the next buffer line to the n history index from begin
+*/
 
 int				b_set_history_from_n(char **args, t_shell *shell)
 {
@@ -108,15 +124,19 @@ int				b_set_history_from_n(char **args, t_shell *shell)
 			ft_copy_str(shell->line_edit->next_line, hist->list[query]);
 			return (1);
 		}
-		err_builtins(ERR_NO_HISTORY_FROM_BEGIN, query);
+		message_err(ERR_NO_HISTORY_FROM_BEGIN, query);
 		return (0);
 	}
 	else
 	{
-		err_builtins(ERR_NO_HISTORY_AVAILABLE);
+		message_err(ERR_NO_HISTORY_AVAILABLE);
 		return (0);
 	}
 }
+
+/*
+** !-n : set the next buffer line to the n history index from end
+*/
 
 int				b_set_history_from_n_last(char **args, t_shell *shell)
 {
@@ -137,12 +157,12 @@ int				b_set_history_from_n_last(char **args, t_shell *shell)
 				return (1);
 			}
 		}
-		err_builtins(ERR_NO_HISTORY_FROM_END, ft_atoi((*args) + 2));
+		message_err(ERR_NO_HISTORY_FROM_END, ft_atoi((*args) + 2));
 		return (0);
 	}
 	else
 	{
-		err_builtins(ERR_NO_HISTORY_AVAILABLE);
+		message_err(ERR_NO_HISTORY_AVAILABLE);
 		return (0);
 	}
 }

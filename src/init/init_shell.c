@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/31 18:49:36 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 11:30:04 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 12:46:26 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,7 +20,7 @@
 
 static void		print_welcome_message(void)
 {
-	const char		*message = "Welcome";
+	const char		*message = "Welcome to Alexis and Guillaume's shell";
 	const size_t	len = ft_strlen(message);
 	const size_t	len_tr = 54;
 

@@ -13,6 +13,11 @@
 
 #include "shell.h"
 
+/*
+** Redirect to the correct ! builtins commands
+** Take no arguments
+*/
+
 t_builtins_fun	*b_history_handler(char *cmd)
 {
 	if (ft_strequ(cmd, "!!"))

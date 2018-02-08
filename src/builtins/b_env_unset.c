@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/05 21:00:29 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 10:38:14 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 12:55:06 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,11 +15,16 @@
 
 static void		b_unset_env_a(char *str, t_node *node, t_shell *shell)
 {
-	msg_builtins(MSG_UNSETENV, str, node->value);
+	message(MSG_UNSETENV, str, node->value);
 	ht_default_free(shell->env, node);
 	if (ft_strequ("PATH", str))
 		update_bin(shell);
 }
+
+/*
+** Unset a environment variable
+** Take one or more arguments
+*/
 
 int				b_env_unset(char **args, t_shell *shell)
 {
@@ -28,7 +33,7 @@ int				b_env_unset(char **args, t_shell *shell)
 
 	if (!args || size_tab(args) < 2)
 	{
-		err_builtins(ERR_UNSETENV_FORMAT);
+		message_err(ERR_UNSETENV_FORMAT);
 		return (0);
 	}
 	while (*(++args))
@@ -39,7 +44,7 @@ int				b_env_unset(char **args, t_shell *shell)
 			b_unset_env_a(str, node, shell);
 		else
 		{
-			err_builtins(ERR_UNSETENV_NOT_EXIST, str);
+			message_err(ERR_UNSETENV_NOT_EXIST, str);
 			return (0);
 		}
 	}

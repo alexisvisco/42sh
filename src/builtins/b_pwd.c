@@ -6,12 +6,17 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/05 18:56:46 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/07 09:41:51 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 12:55:06 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
+
+/*
+** Show the current working directory
+** Take no arguments
+*/
 
 int		b_pwd(char **args, t_shell *shell)
 {
@@ -27,7 +32,7 @@ int		b_pwd(char **args, t_shell *shell)
 	}
 	else
 	{
-		err_builtins(ERR_PWD_NOT_FOUND);
+		message_err(ERR_PWD_NOT_FOUND);
 		return (0);
 	}
 	return (1);

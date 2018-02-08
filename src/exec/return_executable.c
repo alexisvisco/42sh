@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/02 10:55:20 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/07 14:52:33 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 12:46:26 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -40,7 +40,7 @@ int			replace_argv0_by_exec(char ***cmds)
 		}
 		else
 		{
-			e_general(ERR_CMD_NOT_FOUND, cmds[i][0]);
+			message_err(ERR_CMD_NOT_FOUND, cmds[i][0]);
 			return (-1);
 		}
 		i++;

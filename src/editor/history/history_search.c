@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/03 21:41:01 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/07 14:46:31 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 13:28:30 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -94,10 +94,12 @@ void			history_search(t_editor *e)
 	history = e->options->history_data->heap;
 	disable_terminal(0);
 	result = NULL;
-	ft_putchar('\n');
+	history_search_msg();
 	while ((str = readline("(search in history) ", g_shell.history_search)))
 	{
 		disable_terminal(0);
+		if (ft_strequ("exit", str))
+			break ;
 		if (update_line(e, str, result))
 			break ;
 		result = show_result(str, history, result);

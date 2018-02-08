@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:00 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 11:34:24 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 13:25:57 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -39,17 +39,28 @@
 
 extern t_shell	g_shell;
 
-typedef enum	e_message
+typedef enum	e_msgs
 {
-	ERR_NOTHING_ENTERED,
-	ERR_CTRL_C,
 	ERR_CMD_NOT_FOUND,
+	ERR_NOTHING_ENTERED,
 	ERR_EXE_CMD,
 	TERM_ENV_NOT_SET,
-}				t_message;
 
-typedef enum	e_msg_builtins
-{
+	ERR_REDIR,
+	ERR_QUOTE,
+	ERR_PIPE,
+	ERR_AFTER_FD,
+	ERR_BAD_END,
+	ERR_ONLY_COMMENT,
+	ERR_SYNTAX_NEAR_TOKEN,
+
+	ERR_IS_DIR,
+	ERR_ACCES,
+	ERR_EXIST,
+
+	ERR_UNRECOGNIZED_TERM,
+	ERR_UNSUPORTED_OPERATION,
+
 	ERR_PWD_NOT_FOUND,
 	ERR_SETENV_FORMAT,
 	MSG_SETENV,
@@ -70,38 +81,11 @@ typedef enum	e_msg_builtins
 	ERR_NO_HISTORY_FROM_BEGIN,
 	ERR_NO_HISTORY_FROM_END,
 	ERR_NO_OLD_PWD
-}				t_msg_builtins;
+}				t_msgs;
 
-typedef enum	e_parse
-{
-	ERR_QUOTE,
-	ERR_REDIR,
-	ERR_PIPE,
-	ERR_AFTER_FD,
-	ERR_BAD_END,
-	ERR_ONLY_COMMENT,
-	ERR_SEMICOL
-}				t_eparse;
-
-typedef enum	e_editor
-{
-	ERR_UNRECOGNIZED_TERM
-}				t_eeditor;
-
-typedef enum	e_open
-{
-	ERR_IS_DIR,
-	ERR_PERM,
-	ERR_ACCES,
-	ERR_EXIST
-}				t_eopen;
-
-void			e_general(t_message m, char *arg);
-void			e_parse(t_eparse m, char *arg);
-void			e_open(t_eopen m, char *arg);
-void			e_editor(t_eeditor m, char *arg);
-void            err_builtins(t_msg_builtins m, ...);
-void            msg_builtins(t_msg_builtins m, ...);
+void			message(t_msgs m, ...);
+void			message_err(t_msgs m, ...);
+void			message_fd(int fd, t_msgs m, ...);
 
 void			set_env();
 void			set_bin(t_shell *shell);

@@ -24,6 +24,6 @@ void	clean_top_show_prompt(t_editor *e, t_buf *b)
 	const int	len = 6;
 
 	buf_append(b, s, len);
-	buf_append(b, e->prompt, e->plen);
-	buf_append(b, e->buf, e->len);
+	buf_append(b, e->prompt, (int)e->plen);
+	buf_append(b, e->buf, (int)e->len);
 }

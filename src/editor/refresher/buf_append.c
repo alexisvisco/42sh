@@ -21,10 +21,10 @@ void	buf_append(t_buf *ab, const char *s, int len)
 {
 	char *new;
 
-	new = ft_realloc(ab->b, ab->len + len);
+	new = ft_realloc(ab->b, ab->len + (size_t)len);
 	if (new == NULL)
 		return ;
-	ft_memcpy(new + ab->len, s, len);
+	ft_memcpy(new + ab->len, s, (size_t)len);
 	ab->b = new;
 	ab->len += len;
 }

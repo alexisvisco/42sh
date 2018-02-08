@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/24 20:48:50 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/07 14:46:31 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 13:04:45 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -88,7 +88,7 @@ void	init_completion(t_editor *e)
 		e->options->completion_data->index = -1;
 		e->options->completion_data->origin[0] = '\0';
 		get_completions(e);
-		if (e->options->completion_data->heap->elements != 0)
+		if (e->options->completion_data->heap->elements >= 1)
 			completion_printer(e, e->options->completion_data->heap);
 	}
 }

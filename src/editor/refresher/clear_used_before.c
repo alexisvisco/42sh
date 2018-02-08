@@ -25,7 +25,7 @@ void	clear_used_before(t_refresher *r, t_buf *b)
 	if (r->old_rows - r->rpos > 0)
 	{
 		tmp = ft_sprintf("\x1b[%dB", r->old_rows - r->rpos);
-		buf_append(b, tmp, ft_strlen(tmp));
+		buf_append(b, tmp, (int)ft_strlen(tmp));
 		free(tmp);
 	}
 }

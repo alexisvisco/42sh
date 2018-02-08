@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/03 17:24:42 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/07 14:46:31 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 13:06:34 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -44,7 +44,7 @@ void			completion_printer(t_editor *e, t_heap *list)
 	if (max_colums < 0)
 		max_colums = 1;
 	disable_terminal(STDIN_FILENO);
-	ft_printf("\n", list->elements);
+	ft_printf("\nListe des completions (%i):\n", list->elements);
 	i = 0;
 	j = 0;
 	while (i < list->size)

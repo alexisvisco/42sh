@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/02 23:16:33 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/07 14:46:31 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 12:52:46 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -51,10 +51,14 @@ char		*readline(const char *prompt, t_options *e)
 	int		count;
 
 	if (!isatty(STDIN_FILENO))
-		return (readline_notty());
+	{
+		message_err(ERR_UNSUPORTED_OPERATION);
+		exit_shell();
+		exit(2);
+	}
 	if (unsupported_term())
 	{
-		e_editor(ERR_UNRECOGNIZED_TERM, NULL);
+		message_err(ERR_UNRECOGNIZED_TERM);
 		exit_shell();
 		exit(2);
 	}

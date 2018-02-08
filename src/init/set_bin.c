@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/31 15:03:52 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 11:30:08 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 12:46:26 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -74,7 +74,7 @@ void		set_bin(t_shell *shell)
 }
 
 /*
-** update bin table after updating PATh environement with setenv or unsetenv
+** update bin table after updating PATh environment with setenv or unsetenv
 */
 
 void		update_bin(t_shell *shell)

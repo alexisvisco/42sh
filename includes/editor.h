@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:35 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/07 14:46:31 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 12:30:35 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -171,6 +171,7 @@ void			history_down(t_editor *e);
 void			history_add(t_editor *e);
 void			set_origin(t_editor *e);
 void			origin_to_buf(t_editor *e);
+void 			history_search_msg(void);
 
 void			completion_next(t_editor *e);
 void            completion_printer(t_editor *e, t_heap *list);

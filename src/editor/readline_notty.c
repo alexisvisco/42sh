@@ -69,12 +69,12 @@ char		*readline_notty(void)
 		if (maxlen == len)
 		{
 			readline_notty_aux(maxlen, old_val, line);
-			if (line == NULL)
+			if (!line)
 				return (NULL);
 		}
 		if ((c = fgetc(stdin)) && (c == EOF || c == '\n'))
-			return (readline_tty_end(c, len, line));
+			return (readline_tty_end((char)c, len, line));
 		else
-			line[len++] = c;
+			line[len++] = (char)c;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 14:44:16 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 10:17:25 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 12:46:26 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -52,7 +52,7 @@ int	main(void)
 	init_shell();
 	if (!ht_get(g_shell.env, "TERM"))
 	{
-		e_general(TERM_ENV_NOT_SET, NULL);
+		message_err(TERM_ENV_NOT_SET, NULL);
 		exit_shell();
 		exit(EXIT_FAILURE);
 	}

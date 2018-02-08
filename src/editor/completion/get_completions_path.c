@@ -6,12 +6,13 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/01 10:39:36 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 11:30:34 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 12:46:26 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
+#define NOT_DOT !(ft_strequ(dent->d_name, ".") || ft_strequ(dent->d_name, ".."))
 
 static void	path_join(char *path, char *path_folder, char *file_path_folder)
 {
@@ -35,7 +36,7 @@ t_heap *heap)
 	while ((dent = readdir(dir)) != NULL)
 	{
 		if ((*start == 0 || ft_strstarts_with_str(dent->d_name, start)) &&
-		!(ft_strchr(dent->d_name, ' ') || ft_strchr(folder, ' ')))
+		!(ft_strchr(dent->d_name, ' ') || ft_strchr(folder, ' ')) && NOT_DOT)
 		{
 			path_join(path, folder, dent->d_name);
 			if (ft_strstarts_with(folder, '.') &&

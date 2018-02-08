@@ -6,14 +6,14 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/05 18:56:46 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 10:38:14 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 12:55:06 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-void		b_best_matchs(char *key, t_trie_node *tries)
+static void		b_best_matchs(char *key, t_trie_node *tries)
 {
 	char	*first_letter;
 	t_heap	*heap;
@@ -34,15 +34,20 @@ void		b_best_matchs(char *key, t_trie_node *tries)
 	heap_free(heap);
 }
 
+/*
+** Search binaries that match perfectly or approximately the binary searched
+** Take only one argument
+*/
+
 int			b_search_binary(char **args, t_shell *shell)
 {
 	if (size_tab(args) < 2)
 	{
-		msg_builtins(ERR_BIN_SEARCH_FORMAT);
+		message(ERR_BIN_SEARCH_FORMAT);
 		return (0);
 	}
 	if (ht_get(shell->bin, args[1]))
-		msg_builtins(MSG_SEARCH_BIN_FOUND, args[1]);
+		message(MSG_SEARCH_BIN_FOUND, args[1]);
 	else if (ft_strlen(args[1]) >= 2)
 		b_best_matchs(args[1], shell->bin_trie);
 	return (1);

@@ -22,11 +22,11 @@ void	move_cursor(t_editor *e, t_refresher *r, t_buf *b)
 {
 	char *tmp;
 
-	r->rpos2 = (r->plen + e->pos + e->cols) / e->cols;
+	r->rpos2 = (int)((r->plen + e->pos + e->cols) / e->cols);
 	if (r->rows - r->rpos2 > 0)
 	{
 		tmp = ft_sprintf("\x1b[%dA", r->rows - r->rpos2);
-		buf_append(b, tmp, ft_strlen(tmp));
+		buf_append(b, tmp, (int)ft_strlen(tmp));
 		free(tmp);
 	}
 }

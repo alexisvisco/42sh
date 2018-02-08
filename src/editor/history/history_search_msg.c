@@ -1,38 +1,23 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   get_name_from.c                                  .::    .:/ .      .::   */
+/*   history_search_msg.c                             .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/02/01 10:23:39 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 12:30:35 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/02/08 13:26:01 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/08 13:28:50 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "editor.h"
+#include "libft.h"
 
-/*
-** Get only the name from a path
-** Sample:
-**  src/lex/hi.c -> hi.c
-**  src/editor/completion/get_name -> get_name
-*/
-
-char	*get_name_from(char *str)
+void 	history_search_msg(void)
 {
-	const size_t	len = ft_strlen(str);
-	size_t			i;
-	size_t			prev;
-
-	i = 0;
-	prev = 0;
-	while (i < len)
-	{
-		if (str[i] == '/')
-			prev = i;
-		i++;
-	}
-	return (ft_strsub(str, (unsigned int)prev + 1, len - (prev + 1)));
+	ft_putstr("\n-----------------------------------------------------------\n"
+	"Type something to search in the shell history.\n"
+	"When results appear, type the index of the line you want.\n"
+	"To quit type search history prompt 'exit'.\n"
+	"-----------------------------------------------------------\n");
 }

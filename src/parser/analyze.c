@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/23 17:56:38 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/07 14:46:31 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 12:46:26 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -110,17 +110,17 @@ int			analyze_block(t_block **blocks, t_token **tokens)
 {
 	if (analyze_red(blocks, tokens) == -2)
 	{
-		e_parse(ERR_REDIR, NULL);
+		message_err(ERR_REDIR);
 		return (-2);
 	}
 	if (analyze_pipe(blocks, tokens) == -2)
 	{
-		e_parse(ERR_PIPE, NULL);
+		message_err(ERR_PIPE);
 		return (-2);
 	}
 	if (analyze_after_fd(blocks, tokens) == -2)
 	{
-		e_parse(ERR_AFTER_FD, NULL);
+		message_err(ERR_AFTER_FD);
 		return (-2);
 	}
 	analyze_or_and(blocks, tokens);

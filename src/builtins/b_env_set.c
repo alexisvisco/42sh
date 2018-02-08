@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/05 21:00:29 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/07 12:24:19 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 12:55:06 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -24,11 +24,11 @@ static int		b_set_env_a(t_hashtable *envs, char *str, t_shell *shell)
 		trie_insert(g_shell.env_trie, splitted[0]);
 		if (ft_strequ("PATH", splitted[0]))
 			update_bin(shell);
-		msg_builtins(MSG_SETENV, splitted[0], splitted[1]);
+		message(MSG_SETENV, splitted[0], splitted[1]);
 	}
 	else
 	{
-		err_builtins(ERR_SETENV_FORMAT);
+		message_err(ERR_SETENV_FORMAT);
 		free_tab(splitted);
 		return (0);
 	}
@@ -36,13 +36,18 @@ static int		b_set_env_a(t_hashtable *envs, char *str, t_shell *shell)
 	return (1);
 }
 
+/*
+** Set or create a environment variable (syntax: name=value)
+** Take one or more arguments
+*/
+
 int				b_env_set(char **args, t_shell *shell)
 {
 	char *str;
 
 	if (!args || size_tab(args) < 2)
 	{
-		err_builtins(ERR_SETENV_FORMAT);
+		message_err(ERR_SETENV_FORMAT);
 		return (0);
 	}
 	while (*(++args))
@@ -53,7 +58,7 @@ int				b_env_set(char **args, t_shell *shell)
 			;
 		else
 		{
-			err_builtins(ERR_SETENV_FORMAT);
+			message_err(ERR_SETENV_FORMAT);
 			return (0);
 		}
 	}

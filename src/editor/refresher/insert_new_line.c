@@ -26,6 +26,6 @@ void	insert_new_line(t_editor *e, t_refresher *r, t_buf *b)
 		buf_append(b, "\r", 1);
 		r->rows++;
 		if (r->rows > (int)e->maxrows)
-			e->maxrows = r->rows;
+			e->maxrows = (size_t)r->rows;
 	}
 }

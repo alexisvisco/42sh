@@ -26,7 +26,7 @@ void	set_colum(t_editor *e, t_refresher *r, t_buf *b)
 		tmp = ft_sprintf("\r\x1b[%dC", r->col);
 	else
 		tmp = ft_strdup("\r");
-	buf_append(b, tmp, ft_strlen(tmp));
+	buf_append(b, tmp, (int)ft_strlen(tmp));
 	e->oldpos = e->pos;
 	free(tmp);
 }

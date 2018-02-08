@@ -22,7 +22,7 @@ int			analyze_sep(t_token **tokens)
 	{
 		if (tokens[0]->value[0] == ';')
 		{
-			e_parse(ERR_SEMICOL, tokens[i]->value);
+			message_err(ERR_SEMICOL, tokens[i]->value);
 			return (-2);
 		}
 	}
@@ -30,7 +30,7 @@ int			analyze_sep(t_token **tokens)
 	{
 		if (tokens[i]->type == SEP_OP && tokens[i + 1]->type == SEP_OP)
 		{
-			e_parse(ERR_SEMICOL, tokens[i]->value);
+			message_err(ERR_SEMICOL, tokens[i]->value);
 			return (-1);
 		}
 		i++;

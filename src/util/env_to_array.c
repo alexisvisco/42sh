@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 11:45:37 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/07 14:46:31 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 12:30:35 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -66,12 +66,10 @@ size_t			env_size(void)
 
 char			**env_to_array(void)
 {
-	t_hashtable	*envs;
 	char		**env;
 	size_t		size;
 	int			k;
 
-	envs = g_shell.env;
 	size = env_size();
 	env = (char **)malloc((size + 1) * sizeof(char *));
 	env[size] = 0;

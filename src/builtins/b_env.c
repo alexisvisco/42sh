@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/05 18:56:46 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/07 09:41:51 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 13:37:11 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,6 +21,11 @@ static void		print_env(const t_heap *heap, size_t j)
 	if (n->key && n->value)
 		ft_printf("%s=%s\n", n->key, n->value);
 }
+
+/*
+** List all environments variables
+** Take no arguments
+*/
 
 int				b_env(char **args, t_shell *shell)
 {

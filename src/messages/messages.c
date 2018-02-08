@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/22 16:21:06 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/07 14:46:31 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 11:38:38 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,14 +21,14 @@ void	e_general(t_message m, char *arg)
 		ft_dprintf(2, "%s » You entered nothing...\n", SHELL_NAME);
 	if (m == ERR_EXE_CMD)
 		ft_dprintf(2, "%s » Error while executing command: %s\n", SHELL_NAME,
-		arg);
+	arg);
 	if (m == ERR_CTRL_C)
 		ft_dprintf(2, "%s » Type 'exit' to quit this shell.\n", SHELL_NAME);
 	if (m == TERM_ENV_NOT_SET)
 		ft_dprintf(2, "%s » TERM environment variable not set.\n", SHELL_NAME);
 	if (m == SHELL_EXIT)
 		ft_printf("%s » You killed me (exit code: %i)! Just say me why!\n",
-		SHELL_NAME, *(int *)arg);
+	SHELL_NAME, *(int *)arg);
 }
 
 void	e_parse(t_eparse m, char *arg)
@@ -43,9 +43,13 @@ void	e_parse(t_eparse m, char *arg)
 	if (m == ERR_AFTER_FD)
 		ft_dprintf(2, "%s » There is an error after your FD\n", SHELL_NAME);
 	if (m == ERR_BAD_END)
-		ft_dprintf(2, "%s » Your command must end by another thing\n", SHELL_NAME);
+		ft_dprintf(2, "%s » Your command must end by another thing\n",
+	SHELL_NAME);
 	if (m == ERR_ONLY_COMMENT)
 		ft_dprintf(2, "%s » Please stop comments, it's useless\n", SHELL_NAME);
+	if (m == ERR_SEMICOL)
+		ft_dprintf(2, "%s » Syntax error near unexpected token %s\n",
+	SHELL_NAME, arg);
 }
 
 void	e_open(t_eopen m, char *arg)
@@ -54,7 +58,7 @@ void	e_open(t_eopen m, char *arg)
 		ft_dprintf(2, "%s » %s is a directory!\n", SHELL_NAME, arg);
 	if (m == ERR_ACCES)
 		ft_dprintf(2, "%s » %s does not exist or permission denied!\n",
-				   SHELL_NAME, arg);
+	SHELL_NAME, arg);
 	if (m == ERR_EXIST)
 		ft_dprintf(2, "%s » %s does not exist!\n", SHELL_NAME, arg);
 }

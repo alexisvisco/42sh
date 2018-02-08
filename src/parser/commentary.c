@@ -6,14 +6,14 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/28 13:30:15 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/28 14:01:34 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 09:47:41 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-static int	count_block_until_com(t_token **tokens, int nb_tokens)
+static int		count_block_until_com(t_token **tokens, int nb_tokens)
 {
 	int	i;
 	int	block;
@@ -35,7 +35,7 @@ static int	count_block_until_com(t_token **tokens, int nb_tokens)
 	return (block);
 }
 
-int			is_commentary(t_token **tokens)
+int				is_commentary(t_token **tokens)
 {
 	int		i;
 

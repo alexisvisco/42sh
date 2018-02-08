@@ -1,46 +1,36 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   return_executable.c                              .::    .:/ .      .::   */
+/*   bad_format_semicolon.c                           .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/02/02 10:55:20 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/07 14:52:33 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/02/08 10:31:30 by ggranjon     #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/08 11:13:51 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-int			is_executable(char *path)
+int			analyze_sep(t_token **tokens)
 {
-	struct stat st;
-
-	return ((access(path, X_OK) != -1) && (stat(path, &st) == 0
-	&& st.st_mode & S_IXUSR));
-}
-
-int			replace_argv0_by_exec(char ***cmds)
-{
-	int				i;
-	char			*tmp;
+	int i;
 
 	i = 0;
-	while (cmds[i])
+	if (tokens[0]->value)
 	{
-		if (is_executable(cmds[i][0]))
-			;
-		else if (builtins(cmds[i][0]))
-			;
-		else if ((tmp = ht_get(g_shell.bin, cmds[i][0])))
+		if (tokens[0]->value[0] == ';')
 		{
-			free(cmds[i][0]);
-			cmds[i][0] = ft_strdup(tmp);
+			e_parse(ERR_SEMICOL, tokens[i]->value);
+			return (-2);
 		}
-		else
+	}
+	while (tokens[i + 1])
+	{
+		if (tokens[i]->type == SEP_OP && tokens[i + 1]->type == SEP_OP)
 		{
-			e_general(ERR_CMD_NOT_FOUND, cmds[i][0]);
+			e_parse(ERR_SEMICOL, tokens[i]->value);
 			return (-1);
 		}
 		i++;

@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 16:59:52 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/07 14:46:31 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 10:54:49 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,8 +16,6 @@
 /*
 ** index[0] = begin
 ** index[1] = end
-** il faut que je gère si j'ai une redir entre des || ou des &&
-** Next_cmd is ok
 */
 
 char	**next_cmd(t_token **tokens, int index[2])
@@ -68,9 +66,7 @@ int		exec_or_and(t_token **tokens, t_block *blocks, int num[2], int ret)
 	int		ind[2];
 	char	**argv;
 	char	***cmds;
-	char	*node;
 
-	node = NULL;
 	if (blocks[num[1]].start_tok == -1)
 		return (EXEC_FINISH);
 	ind[0] = num[0];
@@ -83,7 +79,7 @@ int		exec_or_and(t_token **tokens, t_block *blocks, int num[2], int ret)
 		free_tab(argv);
 		return (go_next_index(tokens, blocks, num, ret));
 	}
-	else if (analyze_next_and_or(argv[0]))
+	if (analyze_next_and_or(argv[0]))
 		delete_first_element(&argv);
 	cmds = extract_all_pipes(argv);
 	free_tab(argv);

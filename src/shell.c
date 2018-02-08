@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 14:44:16 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/07 14:48:03 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 10:17:25 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,13 +23,10 @@ int	main2(char *s)
 
 	tokens = NULL;
 	test = NULL;
-	if (parse_tokens(&tokens, s) == -1)
-		printf("\nErreur parse tokens\n");
-	i = 0;
+	if (parse_tokens(&tokens, s) < 0)
+		return (0);
 
-	int parse;
-
-	if ((parse = parse_block(tokens, &test)) < 0)
+	if (parse_block(tokens, &test) < 0)
 		return (0);
 	int		tablea[2] = {0, 0};
 
@@ -61,12 +58,7 @@ int	main(void)
 	}
 	while ((str = readline("shell> ", g_shell.line_edit)))
 	{
-		if (ft_strequ("exit", str))
-		{
-			exit_shell();
-			free(str);
-			exit(0);
-		}
+		signal(SIGINT, sig_handler);
 		main2(str);
 		free(str);
 	}

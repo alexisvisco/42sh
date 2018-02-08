@@ -52,5 +52,5 @@ int				ft_lexall(t_token ***tokens, char *s)
 		return (-1);
 	*tokens = split_tokens(s, nbtokens);
 	ft_minirecognize(tokens);
-	return(0);
+	return (0);
 }

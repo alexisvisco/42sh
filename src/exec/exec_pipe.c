@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/07 14:22:23 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/07 14:46:31 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/07 18:44:51 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,7 +15,7 @@
 
 static void		child_fork(char ***argv, int fd, const int *p)
 {
-	char	**envp;
+	char			**envp;
 
 	envp = env_to_array();
 	if (*(argv + 1))
@@ -28,44 +28,68 @@ static void		child_fork(char ***argv, int fd, const int *p)
 	exit(EXIT_FAILURE);
 }
 
+static int		built_in(char ***argv, int fd, const int *p)
+{
+	t_builtins_fun	*buitlin;
+
+	if ((buitlin = builtins(*argv[0])))
+		;
+	else
+		return (-1);
+	if (fd != 1)
+		dup2(fd, STDOUT_FILENO);
+	return (buitlin(*argv, &g_shell));
+}
+
 /*
- ** dup2(input_file != 0 ? input_file : save_fd, STDIN_FILENO); =
- ** change the input according to the old output
- */
+** dup2(input_file != 0 ? input_file : save_fd, STDIN_FILENO); =
+** change the input according to the old output
+**
+**	save_fd = (g_ret == -1) ? p[READ_END] : fd;
+** save the input
+*/
+
+int	g_ret;
+
+static void		close_fd(const int *p, int *status, t_fd *fd, char ****av)
+{
+	if (g_ret == -1)
+		wait(status);
+	else
+		close(STDOUT_FILENO);
+	if ((*fd).input > 0)
+		close((*fd).input);
+	(*fd).save = (g_ret == -1) ? p[READ_END] : (*fd).output;
+	close(((*fd).output != 1) ? (*fd).output : p[WRITE_END]);
+	if (g_ret != -1)
+		dup(STDIN_FILENO);
+	(*av)++;
+}
 
 int				exec_all_pipe(char ***argv)
 {
 	int		p[2];
-	int		save_fd;
 	int		status;
-	int 	fd;
-	int		input_file;
+	t_fd	fd;
 
-	save_fd = 0;
+	fd.save = 0;
 	status = 0;
 	while (*argv)
 	{
 		pipe(p);
-		if ((fd = call_right_redir(*argv)) == -1)
+		if ((fd.output = call_right_redir(*argv)) == -1)
 			return (1);
-		if ((input_file = call_left_redir(*argv)) == -1)
+		if ((fd.input = call_left_redir(*argv)) == -1)
 			return (1);
-		if ((fork()) == 0)
+		if ((g_ret = built_in(argv, fd.output, p)) != -1)
+			status = (g_ret == 1) ? 0 : 256;
+		if (g_ret == -1 && (fork()) == 0)
 		{
-			if (input_file != 0)
-				dup2(input_file, STDIN_FILENO);
-			dup2(input_file != 0 ? input_file : save_fd, STDIN_FILENO);
-			child_fork(argv, fd, p);
+			dup2(fd.input != 0 ? fd.input : fd.save, STDIN_FILENO);
+			child_fork(argv, fd.output, p);
 		}
 		else
-		{
-			wait(&status);
-			if (input_file > 0)
-				close(input_file);
-			close((*(argv + 1) == NULL && fd != 1) ? fd : p[WRITE_END]);
-			save_fd = p[READ_END]; //save the input for the next command
-			argv++;
-		}
+			close_fd(p, &status, &fd, &argv);
 	}
 	return (WEXITSTATUS(status));
 }

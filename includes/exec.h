@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/29 17:26:58 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/07 14:46:31 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/07 18:29:47 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,10 +20,18 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include "shell_struct.h"
 
 # define EXEC_FINISH	18
 # define READ_END		0
 # define WRITE_END		1
+
+typedef struct	s_fd
+{
+	int				save;
+	int				output;
+	int				input;
+}				t_fd;
 
 int			analyze_next_and_or(char *s);
 
@@ -33,7 +41,6 @@ int			is_executable(char *path);
 int			call_right_redir(char **cmds);
 int			call_left_redir(char **cmds);
 
-int			there_is_pipe(char **argv);
 int			exec_all_pipe(char ***argv);
 char		***extract_all_pipes(char **argv);
 
@@ -44,8 +51,8 @@ int			exec_or_and(t_token **tokens, t_block *blocks, int num[2], int ret);
 
 int			replace_argv0_by_exec(char ***cmds);
 
-int			fork_result(char *node, char **argv);
 
 void		sig_handler(int signo);
+
 
 #endif

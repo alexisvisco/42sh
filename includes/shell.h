@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   shell.h                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:00 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 11:30:28 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 11:34:24 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -79,7 +79,8 @@ typedef enum	e_parse
 	ERR_PIPE,
 	ERR_AFTER_FD,
 	ERR_BAD_END,
-	ERR_ONLY_COMMENT
+	ERR_ONLY_COMMENT,
+	ERR_SEMICOL
 }				t_eparse;
 
 typedef enum	e_editor

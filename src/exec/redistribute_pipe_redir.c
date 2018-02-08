@@ -6,26 +6,12 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/02 12:05:02 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/03 15:10:21 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/07 18:38:25 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
-
-int			there_is_pipe(char **argv)
-{
-	int	i;
-
-	i = 0;
-	while (argv[i])
-	{
-		if (argv[i][0] == '|')
-			return (i);
-		i++;
-	}
-	return (0);
-}
 
 static int		count_pipes(char **argv)
 {
@@ -53,7 +39,7 @@ static int		end_of_cmd(char **argv)
 	return (a);
 }
 
-char		***extract_all_pipes(char **argv)
+char			***extract_all_pipes(char **argv)
 {
 	char	***cmds;
 	int		nb_cmds;

@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/28 14:28:00 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/28 14:50:51 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 11:23:51 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -34,13 +34,13 @@ int				count_tokens(char *s)
 			if (!word)
 				return (-2);
 			s += nb_equal_char(s, word);
+			ft_strdel(&word);
 		}
-		ft_strdel(&word);
 	}
 	return (nbword);
 }
 
-int		nb_equal_char(char *s1, char *s2)
+int				nb_equal_char(char *s1, char *s2)
 {
 	int		ret;
 

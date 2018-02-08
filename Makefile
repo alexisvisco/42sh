@@ -25,6 +25,7 @@ shell.c \
 lex/count_tokens.c \
 lex/split.c \
 lex/recognize.c \
+lex/bad_format_sep.c \
 \
 messages/messages.c \
 messages/msg_builtins.c \

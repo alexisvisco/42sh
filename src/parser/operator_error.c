@@ -6,12 +6,12 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/28 14:03:09 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/28 14:20:04 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 11:03:31 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "lex.h"
+#include "shell.h"
 
 int			operator_error(t_block **blocks, t_token **tokens)
 {
@@ -22,7 +22,7 @@ int			operator_error(t_block **blocks, t_token **tokens)
 	while ((*blocks)[nb_blocks].start_tok != -1)
 		nb_blocks++;
 	j = (*blocks)[nb_blocks - 1].end_tok;
-	if (tokens[j]->value[0] == '|')
+	if (tokens[j]->value[0] == '|' || tokens[j]->value[0] == '&')
 		return (-1);
 	if (tokens[j + 1] && (tokens[j + 1]->value[0] == '|' ||
 							tokens[j + 1]->value[0] == '&'))

@@ -13,7 +13,7 @@
 
 #include "shell.h"
 
-int     b_echo(char **args, t_shell *shell)
+int		b_echo(char **args, t_shell *shell)
 {
 	int without_nl;
 

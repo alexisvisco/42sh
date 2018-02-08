@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/31 19:56:38 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/05 18:42:35 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 11:07:59 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -27,5 +27,6 @@ void	ft_copy_str(char *dest, char *src)
 		dest[i] = src[i];
 		i++;
 	}
-	dest[i] = 0;
+	if (dest)
+		dest[i] = 0;
 }

@@ -121,6 +121,7 @@ builtins/b_clear.c \
 builtins/b_cd.c \
 builtins/history/b_history.c \
 builtins/history/b_history_cmd.c \
+builtins/history/b_history_func.c \
 builtins/b_echo.c \
 builtins/b_exit.c \
 builtins/is_builtins.c \

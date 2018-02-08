@@ -6,16 +6,14 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/05 18:56:46 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/07 11:53:50 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 10:38:14 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-
-
-void 		b_best_matchs(char *key, t_trie_node *tries)
+void		b_best_matchs(char *key, t_trie_node *tries)
 {
 	char	*first_letter;
 	t_heap	*heap;
@@ -49,4 +47,3 @@ int			b_search_binary(char **args, t_shell *shell)
 		b_best_matchs(args[1], shell->bin_trie);
 	return (1);
 }
-

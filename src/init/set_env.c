@@ -40,7 +40,6 @@ void	set_env(void)
 			trie_insert(g_shell.env_trie, tmp);
 			free(c);
 			free(tmp);
-			tmp = NULL;
 		}
 		free_tab(splitted);
 	}

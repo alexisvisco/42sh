@@ -6,15 +6,14 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/05 18:44:23 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/07 11:02:06 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 10:51:51 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include <builtins.h>
 
-
-t_hashtable     *get_builtins()
+t_hashtable		*get_builtins(void)
 {
 	static t_hashtable *builtins_methods = NULL;
 
@@ -37,7 +36,7 @@ t_hashtable     *get_builtins()
 	return (builtins_methods);
 }
 
-t_builtins_fun  *builtins(char *cmd)
+t_builtins_fun	*builtins(char *cmd)
 {
 	if (ft_strstarts_with(cmd, '!'))
 		return (b_history_handler(cmd));

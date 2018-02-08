@@ -13,7 +13,7 @@
 
 #include "shell.h"
 
-static int     b_set_env_a(t_hashtable *envs, char *str, t_shell *shell)
+static int		b_set_env_a(t_hashtable *envs, char *str, t_shell *shell)
 {
 	char **splitted;
 
@@ -36,7 +36,7 @@ static int     b_set_env_a(t_hashtable *envs, char *str, t_shell *shell)
 	return (1);
 }
 
-int     b_env_set(char **args, t_shell *shell)
+int				b_env_set(char **args, t_shell *shell)
 {
 	char *str;
 

@@ -6,11 +6,10 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/31 15:03:52 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/07 09:41:51 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 10:57:22 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
-
 
 #include "shell.h"
 
@@ -52,7 +51,7 @@ static void	add_to_bintable(char *path_folder, t_shell *shell)
 
 /*
 ** Retrieve all paths in the PATH environement variable and for each of them
-** get all files that user can access and they are executable. Add to the 
+** get all files that user can access and they are executable. Add to the
 ** hashtable and insert in the trie structure.
 */
 
@@ -74,9 +73,14 @@ void		set_bin(t_shell *shell)
 	free_tab(paths);
 }
 
-void        update_bin(t_shell *shell)
+/*
+** update bin table after updating PATh environement with setenv or unsetenv
+*/
+
+void		update_bin(t_shell *shell)
 {
 	ht_free(shell->bin);
 	trie_free(shell->bin_trie);
 	set_bin(shell);
+	set_builtins();
 }

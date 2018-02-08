@@ -11,8 +11,7 @@
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "shell.h"
-#include "f_colors.h"
+#include <builtins.h>
 
 t_shell	g_shell;
 

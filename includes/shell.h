@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:00 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/07 13:06:05 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 10:05:14 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -30,10 +30,11 @@
 # include <dirent.h>
 # include "libft.h"
 # include <sys/stat.h>
+# include "shell_struct.h"
 # include "editor.h"
 # include "lex.h"
 # include "exec.h"
-# include "shell_struct.h"
+# include "util.h"
 # include "builtins.h"
 
 extern t_shell	g_shell;
@@ -68,6 +69,7 @@ typedef enum	e_msg_builtins
 	ERR_NO_HISTORY_THAT_START,
 	ERR_NO_HISTORY_FROM_BEGIN,
 	ERR_NO_HISTORY_FROM_END,
+	ERR_NO_OLD_PWD
 }				t_msg_builtins;
 
 typedef enum	e_parse

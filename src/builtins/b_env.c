@@ -13,7 +13,7 @@
 
 #include "shell.h"
 
-static void print_env(const t_heap *heap, size_t j)
+static void		print_env(const t_heap *heap, size_t j)
 {
 	t_node *n;
 
@@ -22,7 +22,7 @@ static void print_env(const t_heap *heap, size_t j)
 		ft_printf("%s=%s\n", n->key, n->value);
 }
 
-int     b_env(char **args, t_shell *shell)
+int				b_env(char **args, t_shell *shell)
 {
 	t_heap	*heap;
 	size_t	i;

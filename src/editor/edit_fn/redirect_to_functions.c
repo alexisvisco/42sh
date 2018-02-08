@@ -110,6 +110,12 @@ void					redirect_key_fn(t_editor *e, char c, char *seq)
 {
 	t_redirect_fn *func;
 
+	if (ISK(CTRL_C))
+	{
+		ef_delete_entire_line(e);
+		ft_putchar('\n');
+		refresh_line(e);
+	}
 	if (ISK(TAB) && e->options->has_completion)
 	{
 		completion_handler(e);

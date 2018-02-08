@@ -13,7 +13,7 @@
 
 #include "shell.h"
 
-int     b_pwd(char **args, t_shell *shell)
+int		b_pwd(char **args, t_shell *shell)
 {
 	char cwd[2048];
 

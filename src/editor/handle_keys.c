@@ -6,14 +6,14 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/05 10:50:17 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/05 18:42:35 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 10:27:27 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "editor.h"
 
-static int      add_history(const t_editor *l)
+static int		add_history(const t_editor *l)
 {
 	if (l->options->has_history)
 	{
@@ -29,7 +29,7 @@ static int      add_history(const t_editor *l)
 ** If the key pressed is ENTER finish return the len of the buffer
 */
 
-int          handle_keys(t_editor *l)
+int				handle_keys(t_editor *l)
 {
 	char	c;
 	char	seq[10];
@@ -46,11 +46,9 @@ int          handle_keys(t_editor *l)
 				continue ;
 			}
 			ef_go_end(l);
-			return add_history(l);
+			return (add_history(l));
 		}
 		else
 			redirect_key_fn(l, c, seq);
 	}
 }
-
-

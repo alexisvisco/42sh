@@ -14,6 +14,9 @@
 #ifndef SHELL_STRUCT_H
 #define SHELL_STRUCT_H
 
+#include <libft.h>
+#include "editor.h"
+
 typedef struct	s_shell
 {
 	t_hashtable	*env;

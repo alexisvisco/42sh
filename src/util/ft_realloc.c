@@ -15,7 +15,8 @@
 
 /*
 ** ptr: This is the pointer to a memory block previously allocated with malloc,
-** calloc or realloc to be reallocated. If this is NULL, a new block is allocated
+** calloc or realloc to be reallocated. If this is NULL, a new block is
+** allocated.
 ** and a pointer to it is returned by the function
 **
 ** size: This is the new size for the memory block, in bytes. If it is 0 and

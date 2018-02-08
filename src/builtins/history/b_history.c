@@ -13,7 +13,7 @@
 
 #include "shell.h"
 
-int     b_history(char **args, t_shell *shell)
+int		b_history(char **args, t_shell *shell)
 {
 	t_heap *h;
 	size_t i;

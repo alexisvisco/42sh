@@ -15,7 +15,7 @@
 
 /*
 ** At exit, free all variables to avoid leaks
-** Yes leaks are a pain. 
+** Yes leaks are a pain.
 */
 
 void	exit_shell(void)

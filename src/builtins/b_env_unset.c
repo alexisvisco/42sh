@@ -6,14 +6,14 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/05 21:00:29 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/07 12:24:19 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 10:38:14 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-static void    b_unset_env_a(char *str, t_node *node, t_shell *shell)
+static void		b_unset_env_a(char *str, t_node *node, t_shell *shell)
 {
 	msg_builtins(MSG_UNSETENV, str, node->value);
 	ht_default_free(shell->env, node);
@@ -21,10 +21,10 @@ static void    b_unset_env_a(char *str, t_node *node, t_shell *shell)
 		update_bin(shell);
 }
 
-int     b_env_unset(char **args, t_shell *shell)
+int				b_env_unset(char **args, t_shell *shell)
 {
-	char    *str;
-	t_node  *node;
+	char	*str;
+	t_node	*node;
 
 	if (!args || size_tab(args) < 2)
 	{

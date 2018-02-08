@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/31 20:34:28 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/05 18:42:35 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 11:00:54 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,7 +17,7 @@
 ** Set options for line editing
 */
 
-void	set_options()
+void	set_options(void)
 {
 	t_options	*line_edit;
 	t_options	*history_search;

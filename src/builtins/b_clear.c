@@ -6,14 +6,14 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/05 18:56:46 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/07 09:41:51 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 10:34:23 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-int     b_clear(char **args, t_shell *shell)
+int		b_clear(char **args, t_shell *shell)
 {
 	(void)args;
 	(void)shell;

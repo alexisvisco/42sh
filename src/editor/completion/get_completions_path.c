@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/01 10:39:36 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/07 09:41:51 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 10:30:14 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -51,7 +51,7 @@ t_heap *heap)
 	closedir(dir);
 }
 
-static void replace_tilde(t_word_info *i)
+static void	replace_tilde(t_word_info *i)
 {
 	char *tmp;
 
@@ -59,7 +59,7 @@ static void replace_tilde(t_word_info *i)
 	{
 		tmp = i->current_word;
 		i->current_word = ft_strrep_first_aft("~", ht_get(g_shell.env, "HOME"),
-		                                      i->current_word, 0);
+		i->current_word, 0);
 		free(tmp);
 	}
 }
@@ -81,7 +81,7 @@ void		get_completions_path(t_word_info *i, t_heap *heap)
 		has_slash = ft_strchr(i->current_word, '/');
 		folder = has_slash ? get_folder_from(i->current_word) : ft_strdup(".");
 		start_with = has_slash ?
-		             get_name_from(i->current_word) : ft_strdup(i->current_word);
+		get_name_from(i->current_word) : ft_strdup(i->current_word);
 	}
 	else
 	{

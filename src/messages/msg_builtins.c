@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/05 20:56:27 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/07 13:06:05 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 10:05:14 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -33,7 +33,8 @@ static char *g_msg_builtins[] = {
 		"There is no history available that contain %s.\n",
 		"There is no history available that start with %s.\n",
 		"There is no history available at index %i from begin.\n",
-		"There is no history available at index %i from end.\n"
+		"There is no history available at index %i from end.\n",
+		"There is no previous working directory.\n"
 };
 
 void   err_builtins(t_msg_builtins m, ...)

@@ -44,7 +44,7 @@ void			history_up(t_editor *e)
 		return ;
 	if (hist->index == -1)
 	{
-		hist->index = hist->heap->next_insert;
+		hist->index = (int64_t)hist->heap->next_insert;
 		set_origin(e);
 	}
 	if (hist->index - 1 < 0)

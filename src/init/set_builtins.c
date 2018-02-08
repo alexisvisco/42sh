@@ -13,8 +13,6 @@
 
 #include "shell.h"
 
-extern char	**environ;
-
 /*
 ** Add builtins to completions
 */

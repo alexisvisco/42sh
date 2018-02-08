@@ -6,12 +6,14 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/21 10:35:37 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 14:36:52 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 19:09:33 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include <shell.h>
+
+#define END_NO_NEW_LINE "\e[7m\e[1m%\n\e[0m"
 
 static void		init_editor(t_editor *editor)
 {
@@ -46,6 +48,8 @@ int				editor(char *buf, char *prompt, t_options *opt)
 	l.prompt = prompt;
 	l.options = opt;
 	init_editor(&l);
+	if(get_cursor_pos(l.ifd, l.ofd) != 1)
+		ft_putstr(END_NO_NEW_LINE);
 	ft_putstr_fd(l.ofd, l.prompt);
 	editor_insert_str(&l, g_shell.line_edit->next_line);
 	g_shell.line_edit->next_line[0] = 0;

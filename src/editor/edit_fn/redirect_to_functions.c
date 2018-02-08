@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/23 20:04:51 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 16:33:52 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 19:17:13 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -26,7 +26,7 @@ static t_redirect_fn	*ctrl_fn(char c)
 	if (ISK(CTRL_A))
 		return (ef_go_home);
 	if (ISK(CTRL_E))
-		return (ef_go_home);
+		return (ef_go_end);
 	if (ISK(CTRL_L))
 		return (ef_clear_screen);
 	if (ISK(CTRL_B))
@@ -112,8 +112,8 @@ void					redirect_key_fn(t_editor *e, char c, char *seq)
 
 	if (ISK(CTRL_C))
 	{
-		ef_delete_entire_line(e);
 		ft_putchar('\n');
+		ef_delete_entire_line(e);
 		refresh_line(e);
 	}
 	if (ISK(TAB) && e->options->has_completion)
@@ -131,5 +131,5 @@ void					redirect_key_fn(t_editor *e, char c, char *seq)
 		refresh_line(e);
 	}
 	else if (ft_isprint(c))
-		editor_insert(e, c);
+		editor_insert_instant(e, c);
 }

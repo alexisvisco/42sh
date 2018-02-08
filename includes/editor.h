@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:35 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 14:43:25 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 18:51:05 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -130,7 +130,6 @@ typedef struct		s_word_info
 typedef void(t_redirect_fn)(t_editor *);
 
 extern t_termios	g_origin;
-extern int			g_raw_mode;
 
 void				deb_printer(const char *format, ...);
 void				free_options(t_options *t);

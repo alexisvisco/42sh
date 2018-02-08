@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 14:44:16 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 15:40:05 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 19:06:06 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,11 +15,13 @@
 
 t_shell	g_shell;
 
-int	main(void)
+int	main(int n, char **args, char **env)
 {
 	char	*str;
 
-	init_shell();
+	init_shell(env);
+	(void)n;
+	(void)args;
 	if (!ht_get(g_shell.env, "TERM"))
 	{
 		message_err(TERM_ENV_NOT_SET, NULL);

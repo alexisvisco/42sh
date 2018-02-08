@@ -6,20 +6,18 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/29 10:35:59 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 14:36:52 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 18:51:05 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-extern char	**environ;
-
 /*
 ** Retrieve all paths from environ and add it to a hashtable
 */
 
-void	set_env(void)
+void set_env(char **environ)
 {
 	int		i;
 	char	**splitted;

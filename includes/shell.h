@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:00 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 14:36:52 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 18:55:26 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -90,12 +90,12 @@ void			message(t_msgs m, ...);
 void			message_err(t_msgs m, ...);
 void			message_fd(int fd, t_msgs m, ...);
 
-void			set_env();
+void			set_env(char **env);
 void			set_bin(t_shell *shell);
 void			update_bin(t_shell *shell);
 void			set_builtins(void);
 void			set_options();
 void			exit_shell();
-void			init_shell();
+void			init_shell(char **env);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/31 13:47:54 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 15:43:35 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 16:45:03 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -24,7 +24,6 @@ void	exit_shell(void)
 	ht_free(g_shell.env);
 	trie_free(g_shell.bin_trie);
 	trie_free(g_shell.env_trie);
-	free_3d_tab(g_shell.cmds);
 	free_options(g_shell.line_edit);
 	free(g_shell.line);
 	free_options(g_shell.history_search);

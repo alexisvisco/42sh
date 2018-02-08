@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/21 10:16:16 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 14:36:52 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 16:28:41 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,7 +22,7 @@ int		readline_raw(char *buf, const char *prompt, t_options *e)
 {
 	int count;
 
-	if (EDITOR_MAX_LINE == 0 || enable_terminal(STDIN_FILENO) == -1)
+	if (EDITOR_MAX_LINE <= 0 || enable_terminal(STDIN_FILENO) == -1)
 		return (-1);
 	count = editor(buf, (char *)prompt, e);
 	disable_terminal(STDIN_FILENO);

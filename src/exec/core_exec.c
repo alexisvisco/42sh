@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 16:59:52 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 14:36:52 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 15:10:24 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -63,11 +63,11 @@ static void	next_index(t_token **tokens, t_block *blocks, int *num, int *ind)
 	num[0] = ind[1] + 1;
 }
 
-static int	return_exec_value(char ***cmds)
+static int	return_exec_value(char ***cmds, t_block *blocks, t_token **tokens)
 {
 	int ret;
 
-	ret = exec_cmds(cmds);
+	ret = exec_cmds(cmds, blocks, tokens);
 	free_3d_tab(cmds);
 	return (ret);
 }
@@ -99,11 +99,11 @@ int			exec_or_and(t_token **tokens, t_block *blocks, int num[2], int ret)
 		delete_first_element(&argv);
 	cmds = extract_all_pipes(argv);
 	free_tab(argv);
-	if (replace_argv0_by_exec(cmds) == -1)
+	if ((g_shell.cmds = cmds) && replace_argv0_by_exec(cmds) == -1)
 	{
 		free_3d_tab(cmds);
 		return (exec_next_index(tokens, blocks, num, 1));
 	}
-	ret = return_exec_value(cmds);
+	ret = return_exec_value(cmds, blocks, tokens);
 	return (exec_next_index(tokens, blocks, num, ret));
 }

@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/07 14:22:23 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 14:36:52 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 15:14:21 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -28,12 +28,26 @@ static void		child_fork(char ***argv, int fd, const int *p)
 	exit(EXIT_FAILURE);
 }
 
-static int		built_in(char ***argv, int fd)
+static int		built_in(char ***argv, int fd, t_block *blocks, t_token **tok)
 {
 	t_builtins_fun	*buitlin;
+	int				i;
 
+	i = 0;
 	if ((buitlin = builtins(*argv[0])))
-		;
+	{
+		if (ft_strequ(*argv[0], "exit") || ft_strequ(*argv[0], "quit"))
+		{
+			while (tok[i])
+			{
+				free(tok[i]->value);
+				free(tok[i]);
+				i++;
+			}
+			free(tok);
+			free(blocks);
+		}
+	}
 	else
 		return (-1);
 	if (fd != 1)
@@ -66,7 +80,7 @@ static void		close_fd(const int *p, int *status, t_fd *fd, char ****av)
 	(*av)++;
 }
 
-int				exec_cmds(char ***argv)
+int				exec_cmds(char ***argv, t_block *blocks, t_token **tokens)
 {
 	int		p[2];
 	int		status;
@@ -81,7 +95,7 @@ int				exec_cmds(char ***argv)
 			return (1);
 		if ((fd.input = call_left_redir(*argv)) == -1)
 			return (1);
-		if ((g_ret = built_in(argv, fd.output)) != -1)
+		if ((g_ret = built_in(argv, fd.output, blocks, tokens)) != -1)
 			status = (g_ret == 1) ? 0 : 256;
 		if (g_ret == -1 && (fork()) == 0)
 		{

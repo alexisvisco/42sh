@@ -1,35 +1,42 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   shell.c                                          .::    .:/ .      .::   */
+/*   shell_process.c                                  .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/30 14:44:16 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 13:17:38 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/02/08 13:17:46 by ggranjon     #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/08 13:21:26 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-t_shell	g_shell;
-
-int	main(void)
+int	shell_process(char *s)
 {
-	char	*str;
+	t_token	**tokens;
+	t_block	*test;
+	int		i;
+	int		tablea[2];
 
-	init_shell();
-	if (!ht_get(g_shell.env, "TERM"))
+	tokens = NULL;
+	test = NULL;
+	tablea[0] = 0;
+	tablea[1] = 0;
+	if (parse_tokens(&tokens, s) < 0)
+		return (0);
+	if (parse_block(tokens, &test) < 0)
+		return (0);
+	exec_or_and(tokens, test, tablea, 0);
+	i = 0;
+	while (tokens[i])
 	{
-		e_general(TERM_ENV_NOT_SET, NULL);
-		exit_shell();
-		exit(EXIT_FAILURE);
+		free(tokens[i]->value);
+		free(tokens[i]);
+		i++;
 	}
-	while ((str = readline("shell> ", g_shell.line_edit)))
-	{
-		signal(SIGINT, sig_handler);
-		shell_process(str);
-		free(str);
-	}
+	free(tokens);
+	free(test);
+	return (0);
 }

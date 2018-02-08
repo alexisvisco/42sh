@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/02 10:55:20 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 13:00:10 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 13:06:39 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,9 +25,9 @@ static int	permission_or_not_found(char *s)
 {
 	struct stat file_stat;
 
-	if(stat(s,&file_stat) < 0)
+	if (stat(s, &file_stat) < 0)
 		return (1);
-	return(0);
+	return (0);
 }
 
 int			replace_argv0_by_exec(char ***cmds)

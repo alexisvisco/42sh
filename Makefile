@@ -22,6 +22,8 @@ OBJ_PATH = ./obj/
 
 SRC_NAME = \
 shell.c \
+shell_process.c\
+\
 lex/count_tokens.c \
 lex/split.c \
 lex/recognize.c \

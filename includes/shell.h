@@ -96,6 +96,8 @@ typedef enum	e_open
 	ERR_EXIST
 }				t_eopen;
 
+int				shell_process(char *s);
+
 void			e_general(t_message m, char *arg);
 void			e_parse(t_eparse m, char *arg);
 void			e_open(t_eopen m, char *arg);

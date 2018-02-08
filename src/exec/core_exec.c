@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 16:59:52 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/07 18:39:43 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 10:54:49 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,8 +16,6 @@
 /*
 ** index[0] = begin
 ** index[1] = end
-** il faut que je gère si j'ai une redir entre des || ou des &&
-** Next_cmd is ok
 */
 
 char	**next_cmd(t_token **tokens, int index[2])

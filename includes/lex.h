@@ -68,6 +68,8 @@ int				count_tokens(char *s);
 t_token			**split_tokens(char *s, int nbtokens);
 
 int				ft_lexall(t_token ***tokens, char *s);
+int 			analyze_sep(t_token **tokens);
+
 
 int				is_commentary(t_token **tokens);
 t_block			*extract_block_commentary(t_token **tokens, int nb_tokens);

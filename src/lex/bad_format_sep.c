@@ -1,31 +1,39 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   operator_error.c                                 .::    .:/ .      .::   */
+/*   bad_format_semicolon.c                           .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/28 14:03:09 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 11:03:31 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/02/08 10:31:30 by ggranjon     #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/08 11:13:51 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-int			operator_error(t_block **blocks, t_token **tokens)
+int			analyze_sep(t_token **tokens)
 {
-	int	nb_blocks;
-	int	j;
+	int i;
 
-	nb_blocks = 0;
-	while ((*blocks)[nb_blocks].start_tok != -1)
-		nb_blocks++;
-	j = (*blocks)[nb_blocks - 1].end_tok;
-	if (tokens[j]->value[0] == '|' || tokens[j]->value[0] == '&')
-		return (-1);
-	if (tokens[j + 1] && (tokens[j + 1]->value[0] == '|' ||
-							tokens[j + 1]->value[0] == '&'))
-		return (-1);
+	i = 0;
+	if (tokens[0]->value)
+	{
+		if (tokens[0]->value[0] == ';')
+		{
+			e_parse(ERR_SEMICOL, tokens[i]->value);
+			return (-2);
+		}
+	}
+	while (tokens[i + 1])
+	{
+		if (tokens[i]->type == SEP_OP && tokens[i + 1]->type == SEP_OP)
+		{
+			e_parse(ERR_SEMICOL, tokens[i]->value);
+			return (-1);
+		}
+		i++;
+	}
 	return (0);
 }

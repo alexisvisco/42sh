@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/25 14:24:49 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/28 15:11:20 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 10:09:37 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -79,6 +79,34 @@ char			*change_quotes(char *s)
 	return (new);
 }
 
+static char		*change_back_quotes(char *s)
+{
+	char	*new;
+	int		i;
+	int		k;
+	int		j;
+
+	i = 0;
+	j = 0;
+	new = ft_strnew(ft_strlen(s));
+	while (s[i] && (k = 0) == 0)
+	{
+		if (s[i] == '\\')
+		{
+			if (s[i + 1] == '\'' && (k = 1))
+				new[j++] = '\'';
+			else if (s[i + 1] == '\"' && (k = 1))
+				new[j++] = '\"';
+			else
+				new[j++] = s[i];
+			i = (k == 1) ? i + 2 : i + 1;
+		}
+		else
+			new[j++] = s[i++];
+	}
+	return (new);
+}
+
 void			format_tokens_quotes(t_token ***tokens)
 {
 	int		i;
@@ -92,6 +120,9 @@ void			format_tokens_quotes(t_token ***tokens)
 		free(tmp);
 		tmp = (*tokens)[i]->value;
 		(*tokens)[i]->value = remove_quotes((*tokens)[i]->value);
+		free(tmp);
+		tmp = (*tokens)[i]->value;
+		(*tokens)[i]->value = change_back_quotes((*tokens)[i]->value);
 		free(tmp);
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:00 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/07 17:01:59 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/08 10:47:31 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -77,7 +77,8 @@ typedef enum	e_parse
 	ERR_PIPE,
 	ERR_AFTER_FD,
 	ERR_BAD_END,
-	ERR_ONLY_COMMENT
+	ERR_ONLY_COMMENT,
+	ERR_SEMICOL
 }				t_eparse;
 
 typedef enum	e_editor

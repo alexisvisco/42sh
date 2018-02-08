@@ -13,7 +13,7 @@
 
 NAME = shell
 CC = gcc
-CC_FLAGS = -g -Wall -Wextra
+CC_FLAGS = -g -Wall -Wextra -Werror
 
 LFT_PATH = ./libft
 SRC_PATH = ./src/

@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/29 10:35:59 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 18:51:05 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/09 12:41:42 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,7 +17,7 @@
 ** Retrieve all paths from environ and add it to a hashtable
 */
 
-void set_env(char **environ)
+void	set_env(char **environ)
 {
 	int		i;
 	char	**splitted;

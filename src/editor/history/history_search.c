@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/03 21:41:01 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 19:26:49 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/09 12:41:42 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -54,7 +54,7 @@ static t_heap	*show_result(char *str, t_heap *history,
 	while (i < result->elements)
 	{
 		if (result->list[i])
-			ft_printf(" * %llu : %s\n", i, (char *)result->list[i]);
+			ft_printf(" * %i : %s\n", i, (char *)result->list[i]);
 		i++;
 	}
 	free(str);

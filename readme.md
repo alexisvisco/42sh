@@ -55,12 +55,12 @@
 | Commande du path | Éxecute une commande depuis le path | ✓ | ✗ |
 | Séparateur `;` | Éxecute une commande puis une autre | ✓ | ✓ |
 | Séparateur  | Éxecute une commande OU une autre en fonction de si l'execution m'a pas été reussi ou pas | ✓ | ✓ |
-| Séparateur <code>&[&#124;]</code> | Éxecute une commande puis une autre | ✓ | ✓ |
+| Séparateur <code>&&#124;</code> | Éxecute une commande puis une autre | ✓ | ✓ |
 | Séparateur && | Éxecute une commande ET une autre en fonction de si l'execution à été reussi| ✓ | ✓ |
 | Opérateur > | Redirige la sortie standard vers un autre file descriptor| ✓ | ✓ |
 | Opérateur >> | Redirige la sortie standard vers un autre file descriptor (ajout à la fin)| ✓ | ✓ |
 | Opérateur < | Redirige l'entrée standard vers la commande| ✓ | ✓ |
-| Pipe <code>[&#124;]</code>| le fameux pipe (ex ls <code>[&#124;]</code> frep 21sh)| ✓ | ✓ |
+| Pipe <code>&#124;</code>| le fameux pipe (ex ls <code>&#124;</code> frep 21sh)| ✓ | ✓ |
 | Echappement des guillements dans les commandes | Exemple: "l"s | ✓ | ✓ |
 | Gestion avancée des erreurs | Exemple: ls ; ; | ✓ | ✓ |
 | Gestion du tilde | Exemple: cd ~ | ✓ | ✓ |

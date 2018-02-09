@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/31 18:49:36 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/09 15:02:11 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/09 15:17:12 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -36,7 +36,7 @@ static void		print_welcome_message(void)
 ** Set builtins names in the completion for binairy.
 */
 
-void init_shell(char **env)
+void			init_shell(char **env)
 {
 	print_welcome_message();
 	set_env(env);

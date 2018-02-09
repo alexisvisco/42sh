@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   free_debug.c                                     .::    .:/ .      .::   */
+/*   trie_is_last_node.c                              .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/25 21:41:11 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/02 12:45:58 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/29 18:50:37 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/31 15:02:09 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
-void	free_debug(void *ptr)
+int		trie_is_last_node(t_trie_node *root)
 {
-	void **real_ptr;
+	int i;
 
-	real_ptr = (void **)ptr;
-	free(*real_ptr);
-	*real_ptr = NULL;
-	ft_printf("Pointer %p is now free.\n", ptr);
+	i = 0;
+	while (i < ALPHABET_SIZE)
+	{
+		if (root->children[i])
+			return (0);
+		i++;
+	}
+	return (1);
 }

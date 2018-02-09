@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/22 16:21:06 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 18:51:05 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/09 14:55:09 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -68,7 +68,7 @@ void		message(t_msgs m, ...)
 
 	ft_printf("%s » ", SHELL_NAME);
 	va_start(ap, m);
-	core_pf(STDOUT_FILENO, g_msg_list[m], ap);
+	core_dprintf(STDOUT_FILENO, g_msg_list[m], ap);
 	va_end(ap);
 }
 
@@ -83,7 +83,7 @@ void		message_err(t_msgs m, ...)
 
 	ft_printf("%s » ", SHELL_NAME);
 	va_start(ap, m);
-	core_pf(STDERR_FILENO, g_msg_list[m], ap);
+	core_dprintf(STDERR_FILENO, g_msg_list[m], ap);
 	va_end(ap);
 }
 
@@ -98,6 +98,6 @@ void		message_fd(int fd, t_msgs m, ...)
 
 	ft_printf("%s » ", SHELL_NAME);
 	va_start(ap, m);
-	core_pf(fd, g_msg_list[m], ap);
+	core_dprintf(fd, g_msg_list[m], ap);
 	va_end(ap);
 }

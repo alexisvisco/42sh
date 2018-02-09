@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   deb_printer.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/01 18:44:10 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 18:51:05 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/09 15:01:16 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,12 +21,11 @@
 void	deb_printer(const char *format, ...)
 {
 	va_list	ap;
-	int		write;
 
 	disable_terminal(STDIN_FILENO);
 	ft_putchar('\n');
 	va_start(ap, format);
-	write = core_pf(1, format, ap);
+	core_dprintf(1, format, ap);
 	va_end(ap);
 	enable_terminal(STDIN_FILENO);
 }

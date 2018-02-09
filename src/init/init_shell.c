@@ -6,13 +6,12 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/31 18:49:36 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 18:51:05 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/09 15:02:11 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
-#include "f_colors.h"
 
 /*
 ** Display a fun and cool message when shell start !
@@ -20,16 +19,12 @@
 
 static void		print_welcome_message(void)
 {
-	const char		*message = "Welcome to Alexis and Guillaume's shell";
-	const size_t	len = ft_strlen(message);
-	const size_t	len_tr = 54;
-
 	ft_printf("\n╭───────────────────────────────────────────────────────╮\n");
-	ft_printf("│%*s│\n", len_tr + 1, " ");
-	ft_printf("│%s%*s%-*s%s│\n", CYAN,
-	len + ((len_tr - len) / 2) + 1, message,
-	((len_tr - len) / 2) + ((len % 2 == 0) ? 0 : 1), " ", RESET_ALL);
-	ft_printf("│%*s│\n", len_tr + 1, " ");
+	ft_printf("│                                                       │\n");
+	ft_printf("│                                                       │\n");
+	ft_printf("│          Welcome to Alexis and Guillaume's            │\n");
+	ft_printf("│                        shell                          │\n");
+	ft_printf("│                                                       │\n");
 	ft_printf("╰───────────────────────────────────────────────────────╯\n\n");
 }
 

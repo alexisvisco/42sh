@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   f_hashtable.h                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/25 14:15:22 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/31 15:15:07 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/11/25 14:15:22 by ggranjon     #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/08 18:51:54 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -39,11 +39,9 @@ void				*ht_get(t_hashtable *ht, const char *key);
 void				ht_free(t_hashtable *t);
 void				ht_default_free(t_hashtable *ht, void *a);
 void				ht_print(t_hashtable *ht, void (*printer)(t_node *));
-void				ht_print_debug(t_hashtable *t, void (*printer)(t_node *));
 
 void				ht_print_str(t_node *a);
 void				ht_print_int(t_node *a);
-void				ht_print_int_hex(t_node *a);
 void				ht_print_bool(t_node *a);
 
 #endif

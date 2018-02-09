@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   f_str.h                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/25 14:38:52 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/08 18:51:05 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/11/25 14:38:52 by ggranjon     #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/09 14:52:11 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -40,8 +40,6 @@ int		ft_strnequ(char const *s1, char const *s2, size_t n);
 char	*ft_strnew(size_t size);
 char	*ft_strnstr(const char *s, const char *find, size_t slen);
 char	*ft_strrchr(const char *s, int c);
-char	*ft_strreplace_first(char *search, char *replace, char *subject);
-char	*ft_strreplace(char *search, char *replace, char *subject);
 char	**ft_strsplit(char *s, char delimiter);
 char	**ft_strsplit_f(char *s, int (*is_del)(char));
 char	**ft_split(char *str, char *charset);
@@ -62,6 +60,7 @@ char	*ft_strcat_ch(char *dest, const char c);
 char	*ft_strdel_at(char *str, int pos);
 char	*ft_strdel_all_from(char *str, int pos);
 char	*ft_strdel_all_from_to(char *str, int from, int to);
+char	*ft_strrep_first_aft(char *search, char *replace, char *subject, int n);
 
 int		ft_tolower(int c);
 int		ft_toupper(int c);

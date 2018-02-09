@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   f_lib.h                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/25 14:31:50 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/02 13:09:03 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/11/25 14:31:50 by ggranjon     #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/09 13:37:11 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,6 +15,8 @@
 # define _F_LIB_H
 # include <string.h>
 # include <stdlib.h>
+
+char	*ft_itoa_base(int value, int base);
 
 uint8_t	ft_floatstr(char *dst, float n, int precision, uint8_t base);
 uint8_t	ft_intstr(char *dst, int64_t n, uint8_t base);

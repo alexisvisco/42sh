@@ -131,5 +131,5 @@ void					redirect_key_fn(t_editor *e, char c, char *seq)
 		refresh_line(e);
 	}
 	else if (ft_isprint(c))
-		editor_insert_instant(e, c);
+		editor_insert(e, c);
 }

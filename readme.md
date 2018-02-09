@@ -48,3 +48,15 @@
 | <kbd>▲</kbd>| Affiche le prochain historique le plus vieux | ✓ | ✓ |
 | <kbd>▼</kbd>| Affiche le prochain historique le plus récent | ✓ | ✓ |
 
+## Éxectution des commandes
+
+| Nom           | Description            | Supporté ?  | Bonus ?  |
+| ------------- |:----------------      | -----:| -----:|
+| Commande du path | Éxecute une commande depuis le path | ✓ | ✗ |
+| Séparateur `;` | Éxecute une commande puis une autre | ✓ | ✓ |
+| Séparateur `||` | Éxecute une command OU une autre en fonction de si l'execution m'a pas été reussi ou pas | ✓ | ✓ |
+| Séparateur `&&` | Éxecute une command ET une autre en fonction de si l'execution à été reussi| ✓ | ✓ |
+| Opérateur `>` | Redirige la sortie standart vers un autre file descriptor| ✓ | ✓ |
+| Opérateur `>>` | Redirige la sortie standart vers un autre file descriptor (ajout à la fin)| ✓ | ✓ |
+| Opérateur `<` | Éxecute une command ET une autre en fonction de si l'execution à été reussi| ✓ | ✓ |
+| Pipe `|` | le fameux pipe (ex ls | frep 21sh)| ✓ | ✓ |

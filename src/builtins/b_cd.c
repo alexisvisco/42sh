@@ -52,7 +52,7 @@ int			b_cd(char **args, t_shell *shell)
 	char cwd[2048];
 
 	dir = args[1] == NULL ? ht_get(shell->env, "HOME") : args[1];
-	if (args[1][0] == '-')
+	if (size_tab(args) > 1 && args[1][0] == '-')
 		return (b_cd_old(args, shell));
 	if (getcwd(cwd, sizeof(cwd)) == NULL || access(dir, R_OK) == -1)
 	{

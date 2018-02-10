@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/07 14:22:23 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/10 11:37:16 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/10 14:14:31 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,6 +19,7 @@ static void		child_fork(char ***argv, int fd, const int *p)
 	t_builtins_fun	*buitlin;
 	int				a;
 
+
 	envp = env_to_array();
 	if (*(argv + 1))
 		dup2(p[WRITE_END], STDOUT_FILENO);
@@ -26,7 +27,10 @@ static void		child_fork(char ***argv, int fd, const int *p)
 		dup2(fd, STDOUT_FILENO);
 	close(p[READ_END]);
 	if ((buitlin = builtins((*argv)[0])))
+	{
 		a = buitlin(*argv, &g_shell);
+		exit_shell();
+	}
 	else
 	{
 		a = -1;

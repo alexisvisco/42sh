@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:35 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/10 13:54:37 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/11 16:58:22 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -115,7 +115,8 @@ typedef struct		s_editor
 
 typedef enum		e_cp_type
 {
-	TYPE_COMMAND_OR_PATH,
+	TYPE_COMMAND,
+	TYPE_PATH,
 	TYPE_ENV
 }					t_cp_type;
 

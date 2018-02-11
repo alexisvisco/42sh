@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/01 10:01:06 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/10 13:54:37 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/11 17:24:49 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,7 +16,7 @@
 /*
 ** This method insert all completions according to the type of the completion
 ** There is two types:
-**  - TYPE_COMMAND_OR_PATH
+**  - TYPE_PATH
 **  - TYPE_ENV
 */
 
@@ -25,11 +25,10 @@ void	get_completions(t_editor *e)
 	t_word_info	info;
 
 	set_word_info(&info, e);
-	if (info.type == TYPE_COMMAND_OR_PATH)
-	{
+	if (info.type == TYPE_COMMAND)
 		get_completions_bin(&info, e->options->completion_data->heap);
+	else if (info.type == TYPE_PATH)
 		get_completions_path(&info, e->options->completion_data->heap);
-	}
 	else
 		get_completions_env(&info, e->options->completion_data->heap);
 	if (e->options->completion_data->origin[0] == '\0')

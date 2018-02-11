@@ -107,6 +107,7 @@ util/env_to_array.c \
 util/delete_first.c  \
 util/ft_copy_str.c \
 util/equal_char.c \
+util/ft_tab_contain.c \
 \
 exec/signal.c \
 exec/analyze_next_and_or.c  \

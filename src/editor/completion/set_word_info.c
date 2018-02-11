@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/01 10:03:32 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/10 13:54:37 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/11 17:26:50 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -51,14 +51,31 @@ void	get_word_at(char *cmd, size_t position, t_word_info *w)
 
 void	set_word_info(t_word_info *i, t_editor *e)
 {
+	const char	*t[] = {"&&", "||", "&|", ";", 0};
+	t_word_info	info;
+	int			x;
+
 	get_word_at(e->buf, e->pos, i);
-	if (!i->current_word)
-	{
-		i->current_word = ft_strdup("");
-		i->type = TYPE_COMMAND_OR_PATH;
-	}
-	else if (ft_strstarts_with(i->current_word, '$'))
+	if (ft_strstarts_with(i->current_word, '$'))
 		i->type = TYPE_ENV;
 	else
-		i->type = TYPE_COMMAND_OR_PATH;
+	{
+		x = (int)i->begin;
+		while (x > 0 && e->buf[--x] == ' ')
+			;
+		info.current_word = NULL;
+		if (i->begin != 0)
+			get_word_at(e->buf, x, &info);
+		if (i->begin == 0 || ft_tab_contain(t, info.current_word))
+			i->type = TYPE_COMMAND;
+		else if (!i->current_word)
+		{
+			i->current_word = ft_strdup("");
+			i->type = TYPE_PATH;
+		}
+		else
+			i->type = TYPE_PATH;
+		if (info.current_word)
+			free(info.current_word);
+	}
 }

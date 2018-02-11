@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/03 18:41:11 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/10 13:54:37 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/11 18:04:28 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -95,5 +95,30 @@ int			call_left_redir(char **cmds)
 	free(cmds[k]);
 	free(cmds[k + 1]);
 	cmds[k] = NULL;
+	return (fd);
+}
+
+int			open_files(char ***cmds)
+{
+	int	k;
+	int i;
+	int	fd;
+
+	i = 0;
+	fd = 0;
+	while (cmds[i])
+	{
+		k = 0;
+		while (cmds[i][k])
+		{
+			if (ft_strequ(cmds[i][k], ">") || ft_strequ(cmds[i][k], ">>"))
+			{
+				fd = open(cmds[i][k + 1], O_RDONLY | O_CREAT, 0644);
+				close(fd);
+			}
+			k++;
+		}
+		i++;
+	}
 	return (fd);
 }

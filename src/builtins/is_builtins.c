@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/05 18:44:23 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/10 14:00:00 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/11 17:29:50 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -40,7 +40,7 @@ static int		is_builtins_env(char *cmd)
 {
 	const char	*builtins_env[] = {"setenv", "unsetenv", "cd",
 	"exit", "quit", 0};
-	int 		i;
+	int			i;
 
 	i = -1;
 	while (builtins_env[++i])

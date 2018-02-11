@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/29 17:26:58 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/10 13:54:37 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/11 17:59:43 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -40,7 +40,7 @@ char			**extract_cmd(t_token **tokens, int *index);
 int				is_executable(char *path);
 int				call_right_redir(char **cmds);
 int				call_left_redir(char **cmds);
-
+int				open_files(char ***cmds);
 int				exec_cmds(char ***argv, t_block *blocks, t_token **tokens);
 char			***extract_all_pipes(char **argv);
 

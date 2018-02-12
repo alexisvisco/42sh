@@ -6,14 +6,14 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/11 16:59:30 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/11 17:09:56 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/12 09:30:28 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-int 	ft_tab_contain(const char **tabi, char *src)
+int		ft_tab_contain(const char **tabi, char *src)
 {
 	while (*tabi)
 	{

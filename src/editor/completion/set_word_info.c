@@ -6,14 +6,14 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/01 10:03:32 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/11 18:49:13 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/12 09:29:49 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "editor.h"
 
-void	get_word_at(char *cmd, size_t position, t_word_info *w)
+void		get_word_at(char *cmd, size_t position, t_word_info *w)
 {
 	int64_t i;
 	size_t	j;
@@ -39,6 +39,14 @@ void	get_word_at(char *cmd, size_t position, t_word_info *w)
 	w->current_word = (ft_strsub(cmd, (unsigned int)i, j - (i - 1)));
 }
 
+static int	modify_x(const t_word_info *i, const t_editor *e, int x)
+{
+	x = (int)i->begin;
+	while (x > 0 && e->buf[--x] == ' ')
+		;
+	return (x);
+}
+
 /*
 ** Set all information about t_word_info, the word at cursor
 ** Define the end, the begin of the word and the type of the word
@@ -49,7 +57,7 @@ void	get_word_at(char *cmd, size_t position, t_word_info *w)
 ** variable, else its a command or a path
 */
 
-void	set_word_info(t_word_info *i, t_editor *e)
+void		set_word_info(t_word_info *i, t_editor *e)
 {
 	const char	*t[] = {"&&", "||", "&|", ";", 0};
 	t_word_info	info;
@@ -60,9 +68,7 @@ void	set_word_info(t_word_info *i, t_editor *e)
 		i->type = TYPE_ENV;
 	else
 	{
-		x = (int)i->begin;
-		while (x > 0 && e->buf[--x] == ' ')
-			;
+		x = modify_x(i, e, x);
 		info.current_word = NULL;
 		if (i->begin != 0)
 			get_word_at(e->buf, x, &info);

@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/07 14:22:23 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/12 15:40:03 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/12 18:51:43 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -97,7 +97,8 @@ int				exec_cmds(char ***argv, t_block *blocks, t_token **tokens)
 		pipe(p);
 		if ((fd.output = call_right_redir(*argv)) == -1)
 			return (1);
-		if ((fd.input = call_left_redir(*argv)) == -1)
+		if ((fd.input = call_left_redir(*argv)) == -1 ||
+				(fd.input = call_heredoc(*argv, fd.input)) == -1)
 			return (1);
 		if ((g_ret = built_in(argv, blocks, tokens)) != -1)
 			status = (g_ret == 1) ? 0 : 256;

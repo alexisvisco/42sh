@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/20 17:07:59 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/12 16:29:31 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/12 17:06:34 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -47,7 +47,7 @@ int				lex_all(t_token ***tokens, char *s)
 
 	if ((nbtokens = count_tokens(s)) == -2)
 	{
-		odd_quote_prompt(tokens, nbtokens, s);
+		odd_quote_prompt(tokens, s);
 		return (-3);
 	}
 	else if (nbtokens == 0)

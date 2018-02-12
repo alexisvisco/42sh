@@ -45,15 +45,16 @@ int		odd_quote(char *quote, char *line)
 	return (count % 2);
 }
 
-void	odd_quote_prompt(t_token ***tokens, int nbtokens, char *s)
+void	odd_quote_prompt(t_token ***tokens, char *s)
 {
 	char	*new_line;
 	char	*tmp;
+	int 	quote;
 
 	free(*tokens);
-	nbtokens = which_quote(s);
+	quote = which_quote(s);
 	new_line = heap_to_str(ask_line("dquote> ", 1, odd_quote,
-									nbtokens == -3 ? "\"" : "\'"));
+									quote == -3 ? "\"" : "\'"));
 	tmp = new_line;
 	new_line = ft_strjoin(s, new_line);
 	free(tmp);

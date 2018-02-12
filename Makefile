@@ -120,6 +120,7 @@ exec/return_executable.c \
 exec/redistribute_pipe_redir.c \
 exec/exec_pipe.c  \
 exec/open_file.c \
+exec/heredoc.c \
 \
 builtins/b_env.c \
 builtins/b_search_binary.c \

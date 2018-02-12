@@ -6,11 +6,12 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/22 16:21:06 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/12 09:27:53 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/12 12:27:08 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
+#include <f_colors.h>
 #include "shell.h"
 
 static char	*g_msg_list[] = {
@@ -81,9 +82,10 @@ void		message_err(t_msgs m, ...)
 {
 	va_list	ap;
 
-	ft_printf("%s » ", SHELL_NAME);
+	ft_dprintf(STDERR_FILENO, "%s%s » ", RED, SHELL_NAME);
 	va_start(ap, m);
 	core_pf(STDERR_FILENO, g_msg_list[m], ap);
+	ft_dprintf(STDERR_FILENO, "%s", RESET_ALL);
 	va_end(ap);
 }
 
@@ -96,7 +98,7 @@ void		message_fd(int fd, t_msgs m, ...)
 {
 	va_list	ap;
 
-	ft_printf("%s » ", SHELL_NAME);
+	ft_dprintf(fd, "%s » ", SHELL_NAME);
 	va_start(ap, m);
 	core_pf(fd, g_msg_list[m], ap);
 	va_end(ap);

@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/01 14:35:35 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/12 17:06:33 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/12 20:47:23 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -30,11 +30,12 @@ void	update_word(t_editor *e, char *word)
 		get_word_at(e->buf, e->pos, &info);
 		ef_move_cursor_to(e, info.end + 1);
 		if (info.current_word)
+		{
 			ef_del_backspace_times(e,
-			(unsigned int)ft_strlen(info.current_word));
-		editor_insert_str_without_refresh(e, word);
-		if (info.current_word)
+			(unsigned int) ft_strlen(info.current_word));
+			editor_insert_str_without_refresh(e, word);
 			free(info.current_word);
+		}
 	}
 	refresh_line(e);
 }

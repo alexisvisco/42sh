@@ -39,7 +39,7 @@ t_hashtable		*get_builtins(void)
 static int		is_builtins_env(char *cmd)
 {
 	const char	*builtins_env[] = {"setenv", "unsetenv", "cd",
-	"exit", "quit", 0};
+	"exit", "quit", "clear", 0};
 	int			i;
 
 	i = -1;

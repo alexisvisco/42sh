@@ -13,7 +13,7 @@
 
 NAME = minishell
 CC = gcc
-CC_FLAGS = -Wall -Wextra -Werror
+CC_FLAGS = -g -Wall -Wextra -Werror
 
 LFT_PATH = ./libft
 SRC_PATH = ./src/

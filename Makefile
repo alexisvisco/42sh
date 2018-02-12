@@ -108,6 +108,10 @@ util/delete_first.c  \
 util/ft_copy_str.c \
 util/equal_char.c \
 util/ft_tab_contain.c \
+util/ask_line.c \
+util/free_toks.c \
+util/odd_quote.c \
+util/multi_line.c \
 \
 exec/signal.c \
 exec/analyze_next_and_or.c  \

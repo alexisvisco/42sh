@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/12 12:35:59 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/12 12:36:10 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/12 16:23:19 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,7 +15,9 @@
 
 t_shell	g_shell;
 
-int	main(int n, char **args, char **env)
+
+
+int			main(int n, char **args, char **env)
 {
 	char	*str;
 
@@ -31,7 +33,8 @@ int	main(int n, char **args, char **env)
 	while ((str = readline(SHELL_NAME"> ", g_shell.line_edit)))
 	{
 		signal(SIGINT, sig_handler);
+		str = multi_line_prompt(str, 1);
 		shell_process(str);
-		free(str);
+		free(g_shell.line);
 	}
 }

@@ -1,38 +1,38 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   get_name_from.c                                  .::    .:/ .      .::   */
+/*   multi_line.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/02/01 10:23:39 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/12 15:40:03 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/02/12 16:16:15 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/12 16:19:32 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "editor.h"
+#include "shell.h"
 
-/*
-** Get only the name from a path
-** Sample:
-**  src/lex/hi.c -> hi.c
-**  src/editor/completion/get_name -> get_name
-*/
-
-char	*get_name_from(char *str)
+static int	is_end_multiline(char *cmp, char *line)
 {
-	const size_t	len = ft_strlen(str);
-	size_t			i;
-	size_t			prev;
+	(void)cmp;
+	return (!ft_strends_with(line, '\\'));
+}
 
-	i = 0;
-	prev = 0;
-	while (i < len)
+char		*multi_line_prompt(char *line, int free_line)
+{
+	char *tmp;
+	char *res_ml;
+
+	if (ft_strends_with(line,  '\\'))
 	{
-		if (str[i] == '/')
-			prev = i;
-		i++;
+		line[ft_strlen(line) - 1] = 0;
+		tmp = line;
+		res_ml = heap_to_str_rm_one(ask_line("> ", 0, is_end_multiline, NULL));
+		line = ft_strjoin(line, res_ml);
+		if (free_line)
+			free(tmp);
+		free(res_ml);
 	}
-	return (ft_strsub(str, (unsigned int)prev + 1, len - (prev + 1)));
+	return (line);
 }

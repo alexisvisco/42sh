@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   find_in_tab.c                                    .::    .:/ .      .::   */
+/*   free_toks.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/12/14 09:55:59 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/12 15:40:03 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/02/12 14:16:18 by ggranjon     #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/12 14:22:22 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "shell.h"
 
-int		find_in_tab(char **t, char *arg)
+void		free_toks(t_token **tokens)
 {
-	while (*t)
+	int i;
+
+	i = 0;
+	while (tokens[i])
 	{
-		if (ft_strequ(arg, *t))
-			return (1);
-		t++;
+		free(tokens[i]->value);
+		free(tokens[i]);
+		i++;
 	}
-	return (0);
+	free(tokens);
 }

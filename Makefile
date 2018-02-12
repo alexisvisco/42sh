@@ -6,14 +6,14 @@
 #    By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/01/19 13:46:02 by aviscogl     #+#   ##    ##    #+#        #
-#   Updated: 2018/02/12 09:27:52 by aviscogl    ###    #+. /#+    ###.fr     # #
+#   Updated: 2018/02/12 12:31:43 by aviscogl    ###    #+. /#+    ###.fr     # #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
 
-NAME = shell
+NAME = minishell
 CC = gcc
-CC_FLAGS = -g -Wall -Wextra -Werror
+CC_FLAGS = -Wall -Wextra -Werror
 
 LFT_PATH = ./libft
 SRC_PATH = ./src/

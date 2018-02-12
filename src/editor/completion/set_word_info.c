@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/01 10:03:32 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/12 09:29:49 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/12 09:46:19 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -39,8 +39,10 @@ void		get_word_at(char *cmd, size_t position, t_word_info *w)
 	w->current_word = (ft_strsub(cmd, (unsigned int)i, j - (i - 1)));
 }
 
-static int	modify_x(const t_word_info *i, const t_editor *e, int x)
+static int	modify_x(const t_word_info *i, const t_editor *e)
 {
+	int x;
+
 	x = (int)i->begin;
 	while (x > 0 && e->buf[--x] == ' ')
 		;
@@ -61,17 +63,15 @@ void		set_word_info(t_word_info *i, t_editor *e)
 {
 	const char	*t[] = {"&&", "||", "&|", ";", 0};
 	t_word_info	info;
-	int			x;
 
 	get_word_at(e->buf, e->pos, i);
 	if (ft_strstarts_with(i->current_word, '$'))
 		i->type = TYPE_ENV;
 	else
 	{
-		x = modify_x(i, e, x);
 		info.current_word = NULL;
 		if (i->begin != 0)
-			get_word_at(e->buf, x, &info);
+			get_word_at(e->buf, modify_x(&info, e), &info);
 		if (i->begin == 0 || ft_tab_contain(t, info.current_word))
 			i->type = TYPE_COMMAND;
 		else if (!i->current_word)

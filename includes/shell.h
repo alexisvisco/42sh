@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:00 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/12 09:27:52 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/12 09:41:31 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,7 +14,7 @@
 #ifndef SHELL_H
 # define SHELL_H
 
-# define SHELL_NAME "shell"
+# define SHELL_NAME "minishell"
 
 # include <sys/types.h>
 # include <sys/stat.h>

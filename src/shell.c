@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/12 12:35:59 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/12 12:36:10 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/12 13:51:59 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -32,6 +32,6 @@ int	main(int n, char **args, char **env)
 	{
 		signal(SIGINT, sig_handler);
 		shell_process(str);
-		free(str);
+		free(g_shell.line);
 	}
 }

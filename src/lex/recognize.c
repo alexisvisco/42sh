@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/20 17:07:59 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/12 12:35:44 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/12 15:03:27 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -44,11 +44,22 @@ static void		recognize_type(t_token ***tokens)
 int				lex_all(t_token ***tokens, char *s)
 {
 	int		nbtokens;
+	char	*new_line;
+	char	*tmp;
 
 	if ((nbtokens = count_tokens(s)) == -2)
 	{
-		message_err(ERR_QUOTE, NULL);
-		return (-2);
+		free(*tokens);
+		nbtokens = which_quote(s);
+		new_line = heap_to_str(ask_line("dquote> ", 1, odd_quote,
+			nbtokens == -3 ? "\"" : "\'"));
+		tmp = new_line;
+		new_line = ft_strjoin(s, new_line);
+		free(tmp);
+		g_shell.line = new_line;
+		free(s);
+		shell_process(new_line);
+		return (-3);
 	}
 	else if (nbtokens == 0)
 		return (-1);

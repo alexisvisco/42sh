@@ -31,13 +31,7 @@ int	shell_process(char *s)
 		return (0);
 	exec_or_and(tokens, blocks, tablea, 0);
 	i = 0;
-	while (tokens[i])
-	{
-		free(tokens[i]->value);
-		free(tokens[i]);
-		i++;
-	}
-	free(tokens);
+	free_toks(tokens);
 	free(blocks);
 	return (0);
 }

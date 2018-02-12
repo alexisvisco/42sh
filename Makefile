@@ -13,7 +13,7 @@
 
 NAME = minishell
 CC = gcc
-CC_FLAGS = -Wall -Wextra -Werror
+CC_FLAGS = -g -Wall -Wextra -Werror
 
 LFT_PATH = ./libft
 SRC_PATH = ./src/
@@ -108,6 +108,9 @@ util/delete_first.c  \
 util/ft_copy_str.c \
 util/equal_char.c \
 util/ft_tab_contain.c \
+util/ask_line.c \
+util/free_toks.c \
+util/odd_quote.c \
 \
 exec/signal.c \
 exec/analyze_next_and_or.c  \

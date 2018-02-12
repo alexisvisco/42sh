@@ -1,17 +1,28 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_isascii.c                                     .::    .:/ .      .::   */
+/*   free_toks.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/10/20 20:07:23 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/12 13:51:59 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/02/12 14:16:18 by ggranjon     #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/12 14:22:22 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-int		ft_isascii(int c)
+#include "shell.h"
+
+void		free_toks(t_token **tokens)
 {
-	return (c >= 0 && c <= 127);
+	int i;
+
+	i = 0;
+	while (tokens[i])
+	{
+		free(tokens[i]->value);
+		free(tokens[i]);
+		i++;
+	}
+	free(tokens);
 }

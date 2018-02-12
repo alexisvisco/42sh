@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/08 10:31:30 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/12 09:27:52 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/12 12:31:40 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,11 +18,11 @@ int			analyze_sep(t_token **tokens)
 	int i;
 
 	i = 0;
-	if (tokens[0]->value)
+	if (tokens[0])
 	{
-		if (tokens[0]->value[0] == ';')
+		if (tokens[0]->type == IO_REDIR || tokens[0]->type == SEP_OP)
 		{
-			message_err(ERR_SYNTAX_NEAR_TOKEN, tokens[i]->value);
+			message_err(ERR_SYNTAX_NEAR_TOKEN, tokens[0]->value);
 			return (-2);
 		}
 	}

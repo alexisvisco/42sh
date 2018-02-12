@@ -15,8 +15,6 @@
 
 t_shell	g_shell;
 
-
-
 int			main(int n, char **args, char **env)
 {
 	char	*str;

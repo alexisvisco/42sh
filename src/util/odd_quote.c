@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/12 14:47:56 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/12 16:29:03 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/12 18:05:07 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -49,7 +49,7 @@ void	odd_quote_prompt(t_token ***tokens, char *s)
 {
 	char	*new_line;
 	char	*tmp;
-	int 	quote;
+	int		quote;
 
 	free(*tokens);
 	quote = which_quote(s);

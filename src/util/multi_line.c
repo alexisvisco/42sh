@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/12 16:16:15 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/12 16:19:32 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/12 19:26:59 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -24,7 +24,7 @@ char		*multi_line_prompt(char *line, int free_line)
 	char *tmp;
 	char *res_ml;
 
-	if (ft_strends_with(line,  '\\'))
+	if (ft_strends_with(line, '\\'))
 	{
 		line[ft_strlen(line) - 1] = 0;
 		tmp = line;

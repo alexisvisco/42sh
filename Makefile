@@ -183,6 +183,8 @@ git_add:
 	@git add libft/Makefile
 	@git add Makefile
 	@git add auteur
+	@git add readme.md
+	@git add CMakeLists.txt
 
 norme:
 	norminette $(SRC)

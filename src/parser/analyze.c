@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/23 17:56:38 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/13 14:13:55 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/13 15:02:31 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -31,7 +31,7 @@ static int	bad_red(char *s, t_token **tokens, int j)
 			if (s[1] == '<')
 				return (-2);
 	}
-	if ((ft_strlen(s) > 2 && (tokens[j + 1]) && tokens[j + 1]->type != SEP_OP))
+	if ((ft_strlen(s) > 3 && (tokens[j + 1]) && tokens[j + 1]->type != SEP_OP))
 		return (-2);
 	return (0);
 }
@@ -55,7 +55,7 @@ static int	analyze_red(t_block **block, t_token **tokens)
 			if (tokens[j]->type == IO_REDIR)
 			{
 				(*block)[i].isredir[0] = TY_REDIR;
-				if (ft_strlen(tokens[j]->value) <= 2 && (!(tokens[j + 1])
+				if (ft_strlen(tokens[j]->value) <= 3 && (!(tokens[j + 1])
 				|| tokens[j + 1]->type != FD_FILE || (tokens[j]->value[1] &&
 				!ft_strchr(FT_REDIR, tokens[j]->value[1]))))
 					return (-2);

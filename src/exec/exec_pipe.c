@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/07 14:22:23 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/13 14:13:50 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/13 14:50:41 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,8 +22,6 @@ static void		child_fork(char ***argv, int fd, const int *p)
 	envp = env_to_array();
 	if (*(argv + 1) && fd == 1)
 		dup2(p[WRITE_END], STDOUT_FILENO);
-	else if (fd != 1)
-		dup2(fd, STDOUT_FILENO);
 	close(p[READ_END]);
 	if ((buitlin = builtins((*argv)[0])))
 	{
@@ -84,6 +82,14 @@ static void		close_fd(const int *p, int *status, t_fd *fd, char ****av)
 	(*av)++;
 }
 
+static void		output_redir(t_fd *fd, char ***argv)
+{
+	analyze_agreg(*argv);
+	if (call_ag_redir(*argv) == -1 ||
+		((*fd).output = call_right_redir(*argv)) == -1)
+		exit(256);
+}
+
 int				exec_cmds(char ***argv, t_block *blocks, t_token **tokens)
 {
 	int		p[2];
@@ -95,8 +101,6 @@ int				exec_cmds(char ***argv, t_block *blocks, t_token **tokens)
 	while (*argv)
 	{
 		pipe(p);
-		if ((fd.output = call_right_redir(*argv)) == -1)
-			return (1);
 		if ((fd.input = call_left_redir(*argv)) == -1 ||
 				(fd.input = call_heredoc(*argv, fd.input)) == -1)
 			return (1);
@@ -104,9 +108,7 @@ int				exec_cmds(char ***argv, t_block *blocks, t_token **tokens)
 			status = (g_ret == 1) ? 0 : 256;
 		if (g_ret == -1 && (fork()) == 0)
 		{
-			analyze_agreg(*argv);
-			if (call_ag_redir(*argv) == -1)
-				exit(256);
+			output_redir(&fd, argv);
 			dup2(fd.input != 0 ? fd.input : fd.save, STDIN_FILENO);
 			child_fork(argv, fd.output, p);
 		}

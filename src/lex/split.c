@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 17:04:06 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/13 14:13:55 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/13 15:16:17 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -37,8 +37,8 @@ static int		cpy_seprator(char **s, char **ret)
 		|| ft_strchr(FT_REDIR, **s))
 		{
 			simplify_cpy(s, ret, 1);
-			if (((*ret)[1] == '&' && ft_isdigit(**s)) ||
-			((*ret)[1] == '>' && **s == '&'))
+			if (((*ret)[1] == '&' && ft_isdigit(**s)) || ((*ret)[1] == '>' &&
+					**s == '&') || (ft_isdigit((*ret)[0]) && **s == '>'))
 			{
 				simplify_cpy(s, ret, 2);
 				if ((*ret)[2] == '&' && (ft_isdigit(**s) || **s == '-'))

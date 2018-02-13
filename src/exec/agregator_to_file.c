@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/13 13:56:35 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/13 14:28:06 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/13 15:10:45 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -32,6 +32,14 @@ static int	open_agreg_redir(char **str, int flag, int i)
 	else
 		dup2(file, str[i][0] - '0');
 	return (file);
+}
+
+static int	ret_fd(char **cmds, int k, int fd)
+{
+	free(cmds[k]);
+	free(cmds[k + 1]);
+	cmds[k] = NULL;
+	return (fd);
 }
 
 int			call_ag_redir(char **cmds)
@@ -60,8 +68,5 @@ int			call_ag_redir(char **cmds)
 	}
 	if (cmds[k] == NULL)
 		return (0);
-	free(cmds[k]);
-	free(cmds[k + 1]);
-	cmds[k] = NULL;
-	return (fd);
+	return (ret_fd(cmds, k, fd));
 }

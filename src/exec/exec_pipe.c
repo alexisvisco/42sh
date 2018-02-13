@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/07 14:22:23 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/12 18:51:43 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/13 13:40:12 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -104,6 +104,9 @@ int				exec_cmds(char ***argv, t_block *blocks, t_token **tokens)
 			status = (g_ret == 1) ? 0 : 256;
 		if (g_ret == -1 && (fork()) == 0)
 		{
+			analyze_agreg(*argv);
+			if (call_ag_redir(*argv) == -1)
+				exit(256);
 			dup2(fd.input != 0 ? fd.input : fd.save, STDIN_FILENO);
 			child_fork(argv, fd.output, p);
 		}

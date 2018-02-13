@@ -34,7 +34,7 @@ static void		recognize_type(t_token ***tokens)
 		else if (i == 0 || ((*tokens)[i - 1]->type == SEP_OP))
 			(*tokens)[i++]->type = COMMAND;
 		else if ((*tokens)[i - 1]->type == IO_REDIR &&
-		ft_strlen((*tokens)[i - 1]->value) <= 2)
+		ft_strlen((*tokens)[i - 1]->value) <= 3)
 			(*tokens)[i++]->type = FD_FILE;
 		else
 			(*tokens)[i++]->type = ARG;

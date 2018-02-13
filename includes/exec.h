@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/29 17:26:58 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/12 18:00:13 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/13 13:32:35 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -40,6 +40,9 @@ int				is_executable(char *path);
 int				call_right_redir(char **cmds);
 int				call_left_redir(char **cmds);
 int				call_heredoc(char **cmds, int fd2);
+
+int				analyze_agreg(char **cmds);
+int				call_ag_redir(char **cmds);
 
 int				open_files(char ***cmds);
 

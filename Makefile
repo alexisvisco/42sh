@@ -112,6 +112,8 @@ util/ask_line.c \
 util/free_toks.c \
 util/odd_quote.c \
 util/multi_line.c \
+util/replace_env_variables.c \
+util/ft_repall.c \
 \
 exec/signal.c \
 exec/analyze_next_and_or.c  \

@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   b_exit.c                                         .::    .:/ .      .::   */
+/*   ft_repall.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/02/05 18:56:46 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/13 09:43:51 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/02/13 12:58:31 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/13 13:34:13 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-/*
-** Exit the shell after free all requirements
-** Take no arguments
-*/
-
-int		b_exit(char **args, t_shell *shell)
+char	*ft_repall(char *target, char *by, char *src)
 {
-	int exit_status;
+	char *tmp;
+	char *full;
 
-	(void)shell;
-	disable_terminal(STDIN_FILENO);
-	exit_shell();
-	exit_status = (size_tab(args) >= 2) ? ft_atoi(args[1]) : 0;
-	message(SHELL_EXIT, exit_status);
-	free_3d_tab(g_shell.cmds);
-	exit(exit_status);
+	full = ft_strdup(src);
+	while (!ft_strequ(target, by) && ft_strstr(full, target))
+	{
+		tmp = full;
+		full = ft_strrep_first_aft(target, by, full, 0);
+		if (!full)
+			full = tmp;
+		else
+			free(tmp);
+	}
+	return (full);
 }

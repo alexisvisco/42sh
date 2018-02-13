@@ -1,6 +1,7 @@
 .vscode
 .idea
 shell
+minishell
 obj/
 obj/*
 *dSYM

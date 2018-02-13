@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   ft_tab_contain.c                                 .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/11 16:59:30 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/13 14:13:55 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/13 15:25:45 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,7 +15,7 @@
 
 int		ft_tab_contain(const char **tabi, char *src)
 {
-	while (*tabi)
+	while (*tabi && src)
 	{
 		if (ft_strequ(*tabi, src))
 			return (1);

@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ht_hash.c                                        .::    .:/ .      .::   */
+/*   ft_repall.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/23 14:47:15 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/13 15:33:21 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/02/13 12:58:31 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/13 14:09:25 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "shell.h"
 
-size_t	ht_hash(const char *key)
+char	*ft_repall(char *target, char *by, char *src)
 {
-	const size_t	len = ft_strlen(key);
-	size_t			hash;
-	size_t			i;
+	char *tmp;
+	char *full;
 
-	i = 0;
-	hash = i;
-	while (i < len)
+	full = ft_strdup(src);
+	while (!ft_strequ(target, by) && ft_strstr(full, target))
 	{
-		hash += key[i];
-		hash += hash << 10;
-		hash ^= hash >> 6;
-		i++;
+		tmp = full;
+		full = ft_strrep_first_aft(target, by, full, 0);
+		if (!full)
+			full = tmp;
+		else
+			free(tmp);
 	}
-	hash += (hash << 3);
-	hash ^= (hash >> 11);
-	hash += (hash << 15);
-	return (hash);
+	return (full);
 }

@@ -3,15 +3,19 @@
 /*                                                              /             */
 /*   set_word_info.c                                  .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/12 12:37:32 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/13 14:13:55 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/13 15:27:37 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "editor.h"
+
+#define IS_PS i->current_word[0] == '.' && i->current_word[1] == '/'
+#define IS_EXE i->current_word && (IS_PS)
+#define IS_CMD i->begin == 0 || ft_tab_contain(t, info.current_word)
 
 void		get_word_at(char *cmd, size_t position, t_word_info *w)
 {
@@ -72,7 +76,7 @@ void		set_word_info(t_word_info *i, t_editor *e)
 		info.current_word = NULL;
 		if (i->begin != 0)
 			get_word_at(e->buf, (size_t)modify_x(i, e), &info);
-		if (i->begin == 0 || ft_tab_contain(t, info.current_word))
+		if (!(IS_EXE) && (IS_CMD))
 			i->type = TYPE_COMMAND;
 		else if (!i->current_word)
 		{

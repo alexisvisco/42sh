@@ -3,14 +3,14 @@
 /*                                                              /             */
 /*   ft_numstr.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/09 14:08:08 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/13 14:13:55 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/13 15:31:28 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
-
+		
 #include "libft.h"
 
 uint8_t	ft_floatstr(char *dst, float n, int precision, uint8_t base)

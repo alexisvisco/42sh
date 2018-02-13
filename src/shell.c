@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   shell.c                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/12 12:35:59 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/13 14:13:55 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/13 15:26:00 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -32,6 +32,7 @@ int			main(int n, char **args, char **env)
 	{
 		signal(SIGINT, sig_handler);
 		str = multi_line_prompt(str, 1);
+		str = replace_env_variables(str, 1);
 		shell_process(str);
 		free(g_shell.line);
 	}

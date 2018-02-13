@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/12 14:47:56 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/13 14:13:55 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/13 15:25:56 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -54,7 +54,7 @@ void	odd_quote_prompt(t_token ***tokens, char *s)
 	free(*tokens);
 	quote = which_quote(s);
 	new_line = heap_to_str(ask_line("dquote> ", 1, odd_quote,
-									quote == -3 ? "\"" : "\'"));
+	quote == -3 ? "\"" : "\'"));
 	tmp = new_line;
 	new_line = ft_strjoin(s, new_line);
 	free(tmp);

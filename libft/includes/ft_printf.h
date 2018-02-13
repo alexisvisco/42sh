@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/20 09:32:20 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/12 17:06:33 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/13 09:43:51 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -120,7 +120,8 @@ wchar_t			*ft_wstrsubpf(wchar_t *ws, int end);
 char			*ft_strappend_at(int n, char *src, char *add);
 char			*ft_strappend_atc(int n, char *src, char c);
 char			*ft_strcat_ch(char *dest, const char c);
-char			*ft_strrep_first_aft(char *a, char *b, char *c, int d);
+char			*ft_strrep_first_aft(char *search,
+					char *replace, char *subject, int n);
 
 /*
 ** DEBUGGER

@@ -1,51 +1,32 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   free_tab.c                                       .::    .:/ .      .::   */
+/*   ft_repall.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/29 10:38:35 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/13 09:43:51 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/02/13 12:58:31 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/13 14:09:25 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-/*
-** Free an array of strings
-*/
-
-void	free_tab(char **table)
+char	*ft_repall(char *target, char *by, char *src)
 {
-	int i;
+	char *tmp;
+	char *full;
 
-	i = -1;
-	if (table)
+	full = ft_strdup(src);
+	while (!ft_strequ(target, by) && ft_strstr(full, target))
 	{
-		while (table[++i])
-			free(table[i]);
-		free(table);
+		tmp = full;
+		full = ft_strrep_first_aft(target, by, full, 0);
+		if (!full)
+			full = tmp;
+		else
+			free(tmp);
 	}
-}
-
-void	free_3d_tab(char ***array)
-{
-	int i;
-	int	j;
-
-	i = 0;
-	if (array)
-	{
-		while (array[i])
-		{
-			j = 0;
-			while (array[i][j])
-				free(array[i][j++]);
-			free(array[i]);
-			i++;
-		}
-		free(array);
-	}
+	return (full);
 }

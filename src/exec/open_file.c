@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/03 18:41:11 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/13 15:23:06 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/13 17:50:35 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -29,36 +29,32 @@ static int	open_right_redir(char **str, int flag, int i)
 		else
 			message_err(ERR_EXIST, str[i + 1]);
 	}
-	else
-		dup2(file, STDOUT_FILENO);
 	return (file);
 }
 
-int			call_right_redir(char **cmds)
+int			call_right_redir(char ***cmds)
 {
 	int	k;
 	int	fd;
 
 	k = 0;
-	while (cmds[k])
+	fd = 0;
+	while ((*cmds)[k])
 	{
-		if (ft_strequ(cmds[k], ">>"))
+		if (ft_strequ((*cmds)[k], ">>"))
 		{
-			fd = open_right_redir(cmds, O_APPEND, k);
+			fd = open_right_redir((*cmds), O_APPEND, k);
 			break ;
 		}
-		else if (ft_strequ(cmds[k], ">"))
+		else if (ft_strequ((*cmds)[k], ">"))
 		{
-			fd = open_right_redir(cmds, O_TRUNC, k);
+			fd = open_right_redir((*cmds), O_TRUNC, k);
 			break ;
 		}
 		k++;
 	}
-	if (cmds[k] == NULL)
+	if ((*cmds)[k] == NULL)
 		return (1);
-	free(cmds[k]);
-	free(cmds[k + 1]);
-	cmds[k] = NULL;
 	return (fd);
 }
 
@@ -75,28 +71,26 @@ static void	error_left_redir(int fd, int k, char **cmds)
 	}
 }
 
-int			call_left_redir(char **cmds)
+int			call_left_redir(char ***cmds)
 {
 	int	k;
 	int	fd;
 
 	k = 0;
 	fd = 0;
-	while (cmds[k])
+	while ((*cmds)[k])
 	{
-		if (ft_strequ(cmds[k], "<"))
+		if (ft_strequ((*cmds)[k], "<"))
 		{
-			fd = open(cmds[k + 1], O_RDONLY, 0644);
+			fd = open((*cmds)[k + 1], O_RDONLY, 0644);
 			break ;
 		}
 		k++;
 	}
-	error_left_redir(fd, k, cmds);
-	if (cmds[k] == NULL)
+	if ((*cmds)[k] == NULL)
 		return (0);
-	free(cmds[k]);
-	free(cmds[k + 1]);
-	cmds[k] = NULL;
+	error_left_redir(fd, k, *cmds);
+	tab_del_from_to(cmds, k, k + 1);
 	return (fd);
 }
 

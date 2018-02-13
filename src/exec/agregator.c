@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/13 13:08:19 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/13 13:40:12 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/13 15:39:39 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -38,17 +38,16 @@ static int	agregator(char *str)
 	return (1);
 }
 
-int			analyze_agreg(char **cmds)
+int			analyze_agreg(char ***cmds)
 {
 	int	k;
 
 	k = 0;
 	while (cmds[k])
 	{
-		if (agregator(cmds[k]) == 1)
+		if (agregator((*cmds)[k]) == 1)
 		{
-			free(cmds[k]);
-			cmds[k] = NULL;
+			tab_del_from_to(cmds, k, k);
 			return (1);
 		}
 		k++;

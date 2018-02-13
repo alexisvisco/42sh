@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/12 12:36:40 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/13 15:21:40 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/13 15:55:58 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -29,6 +29,7 @@ char			**env_to_array(void);
 size_t			env_size(void);
 
 void			delete_first_element(char ***s);
+void			tab_del_from_to(char ***t, int from, int to);
 void			free_toks(t_token **tokens);
 
 void			ft_copy_str(char *dest, char *src);

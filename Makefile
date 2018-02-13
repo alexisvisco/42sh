@@ -114,6 +114,7 @@ util/odd_quote.c \
 util/multi_line.c \
 util/replace_env_variables.c \
 util/ft_repall.c \
+util/remove_file.c \
 \
 exec/signal.c \
 exec/analyze_next_and_or.c  \
@@ -125,6 +126,7 @@ exec/open_file.c \
 exec/heredoc.c \
 exec/agregator.c \
 exec/agregator_to_file.c \
+exec/delete_redir.c \
 \
 builtins/b_env.c \
 builtins/b_search_binary.c \

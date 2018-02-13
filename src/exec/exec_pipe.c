@@ -6,12 +6,16 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/07 14:22:23 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/13 15:23:17 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/13 18:18:18 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
+
+#define INPUT_FILE_REDIR (fd.input = call_left_redir(argv)) == -1
+#define INPUT_FILE_HEREDOC (fd.input = call_heredoc(argv, fd.input)) == -1
+#define OUTPUT_AGREG (fd.output = call_ag_redir(argv)) == -1
 
 static void		child_fork(char ***argv, int fd, const int *p)
 {
@@ -22,6 +26,8 @@ static void		child_fork(char ***argv, int fd, const int *p)
 	envp = env_to_array();
 	if (*(argv + 1) && fd == 1)
 		dup2(p[WRITE_END], STDOUT_FILENO);
+	else if (fd != 1)
+		delete_redir_and_dup(argv, fd);
 	close(p[READ_END]);
 	if ((buitlin = builtins((*argv)[0])))
 	{
@@ -82,14 +88,6 @@ static void		close_fd(const int *p, int *status, t_fd *fd, char ****av)
 	(*av)++;
 }
 
-static void		output_redir(t_fd *fd, char ***argv)
-{
-	analyze_agreg(*argv);
-	if (call_ag_redir(*argv) == -1 ||
-		((*fd).output = call_right_redir(*argv)) == -1)
-		exit(256);
-}
-
 int				exec_cmds(char ***argv, t_block *blocks, t_token **tokens)
 {
 	int		p[2];
@@ -101,14 +99,14 @@ int				exec_cmds(char ***argv, t_block *blocks, t_token **tokens)
 	while (*argv)
 	{
 		pipe(p);
-		if ((fd.input = call_left_redir(*argv)) == -1 ||
-				(fd.input = call_heredoc(*argv, fd.input)) == -1)
+		if (INPUT_FILE_REDIR || INPUT_FILE_HEREDOC || OUTPUT_AGREG ||
+			(fd.output == 1 && (fd.output = call_right_redir(argv)) == -1))
 			return (1);
 		if ((g_ret = built_in(argv, blocks, tokens)) != -1)
 			status = (g_ret == 1) ? 0 : 256;
 		if (g_ret == -1 && (fork()) == 0)
 		{
-			output_redir(&fd, argv);
+			analyze_agreg(argv);
 			dup2(fd.input != 0 ? fd.input : fd.save, STDIN_FILENO);
 			child_fork(argv, fd.output, p);
 		}

@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/13 13:56:35 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/13 15:10:45 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/13 18:02:30 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -29,44 +29,34 @@ static int	open_agreg_redir(char **str, int flag, int i)
 		else
 			message_err(ERR_EXIST, str[i + 1]);
 	}
-	else
-		dup2(file, str[i][0] - '0');
 	return (file);
 }
 
-static int	ret_fd(char **cmds, int k, int fd)
-{
-	free(cmds[k]);
-	free(cmds[k + 1]);
-	cmds[k] = NULL;
-	return (fd);
-}
-
-int			call_ag_redir(char **cmds)
+int			call_ag_redir(char ***cmds)
 {
 	int	k;
 	int	fd;
 
 	k = 0;
-	fd = 0;
-	while (cmds[k])
+	fd = 1;
+	while ((*cmds)[k])
 	{
-		if (ft_isdigit(cmds[k][0]))
+		if (ft_isdigit((*cmds)[k][0]))
 		{
-			if (ft_strequ(cmds[k] + 1, ">>"))
+			if (ft_strequ((*cmds)[k] + 1, ">>"))
 			{
-				fd = open_agreg_redir(cmds, O_APPEND, k);
+				fd = open_agreg_redir((*cmds), O_APPEND, k);
 				break ;
 			}
-			else if (ft_strequ(cmds[k] + 1, ">"))
+			else if (ft_strequ((*cmds)[k] + 1, ">"))
 			{
-				fd = open_agreg_redir(cmds, O_TRUNC, k);
+				fd = open_agreg_redir((*cmds), O_TRUNC, k);
 				break ;
 			}
 		}
 		k++;
 	}
-	if (cmds[k] == NULL)
-		return (0);
-	return (ret_fd(cmds, k, fd));
+	if ((*cmds)[k] == NULL)
+		return (1);
+	return (fd);
 }

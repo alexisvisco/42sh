@@ -1,26 +1,36 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_putunum.c                                     .::    .:/ .      .::   */
+/*   remove_file.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/12/09 14:18:40 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/13 15:39:40 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/02/13 15:53:08 by ggranjon     #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/13 16:10:23 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "shell.h"
 
-size_t	ft_putunum_fd(int fd, uint64_t n, uint8_t base)
+void	tab_del_from_to(char ***t, int from, int to)
 {
-	char	buf[128];
+	char	**res_tab;
+	int		i;
+	int		j;
 
-	return (write(fd, buf, (size_t)ft_uintstr(buf, n, base)));
-}
-
-size_t	ft_putunum(uint64_t n, uint8_t base)
-{
-	return (ft_putunum_fd(1, n, base));
+	res_tab = malloc(size_tab(*t) - (to - from) + 1);
+	j = 0;
+	i = 0;
+	while ((*t)[i])
+	{
+		if (i >= from && i <= to)
+			;
+		else
+			res_tab[j++] = ft_strdup((*t)[i]);
+		i++;
+	}
+	res_tab[j] = NULL;
+	free_tab(*t);
+	*t = res_tab;
 }

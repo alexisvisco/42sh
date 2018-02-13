@@ -1,35 +1,43 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ht_remove.c                                      .::    .:/ .      .::   */
+/*   delete_redir.c                                   .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/23 14:46:08 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/13 15:39:40 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/02/13 17:51:00 by ggranjon     #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/13 17:56:06 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "shell.h"
 
-t_node	*ht_remove(t_hashtable *t, const char *key)
+int			delete_redir_and_dup(char ***cmds, int file)
 {
-	const size_t	len = ht_hash(key);
-	t_heap			*heap;
-	t_node			*node;
-	size_t			i;
+	int	k;
 
-	heap = t->heaps[len % t->size];
-	if (heap == 0)
-		return (NULL);
-	i = 0;
-	while (heap && heap->elements > 0 && i < heap->size)
+	k = 0;
+	while ((*cmds)[k])
 	{
-		node = (t_node *)heap->list[i];
-		if (node && ft_strequ(node->key, key))
-			return ((t_node *)heap_del(heap, i));
-		i++;
+		if (ft_strequ((*cmds)[k], ">>") || ft_strequ((*cmds)[k], ">"))
+		{
+			dup2(file, STDOUT_FILENO);
+			break ;
+		}
+		if (ft_isdigit((*cmds)[k][0]))
+		{
+			if (ft_strequ((*cmds)[k] + 1, ">>") ||
+					ft_strequ((*cmds)[k] + 1, ">"))
+			{
+				dup2(file, (*cmds)[k][0] - '0');
+				break ;
+			}
+		}
+		k++;
 	}
-	return (NULL);
+	if ((*cmds)[k] == NULL)
+		return (1);
+	tab_del_from_to(cmds, k, k + 1);
+	return (file);
 }

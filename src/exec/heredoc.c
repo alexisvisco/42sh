@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/12 17:53:32 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/13 14:13:55 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/13 16:14:23 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,6 +22,7 @@ static int		open_heredoc(char *str)
 		write(file, str, ft_strlen(str));
 	close(file);
 	file = open("/tmp/.heredoc", O_RDONLY);
+	free(str);
 	return (file);
 }
 
@@ -80,25 +81,23 @@ static char		*prompt_heredoc(char *str)
 	return (heap_to_str_here(ask_line_heredoc("heredoc> ", ft_strequ, str)));
 }
 
-int				call_heredoc(char **cmds, int fd2)
+int				call_heredoc(char ***cmds, int fd2)
 {
 	int	k;
 	int	fd;
 
 	k = 0;
-	while (cmds[k])
+	while ((*cmds)[k])
 	{
-		if (ft_strequ(cmds[k], "<<"))
+		if (ft_strequ((*cmds)[k], "<<"))
 			break ;
 		k++;
 	}
-	if (cmds[k] == NULL || fd2 > 0)
+	if ((*cmds)[k] == NULL || fd2 > 0)
 		return (fd2);
-	if (cmds[k + 1] == NULL)
+	if ((*cmds)[k + 1] == NULL)
 		return (-1);
-	fd = open_heredoc(prompt_heredoc(cmds[k + 1]));
-	free(cmds[k]);
-	free(cmds[k + 1]);
-	cmds[k] = NULL;
+	fd = open_heredoc(prompt_heredoc((*cmds)[k + 1]));
+	tab_del_from_to(cmds, k, k + 1);
 	return (fd);
 }

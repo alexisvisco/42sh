@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/12 12:37:32 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/13 15:39:40 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/14 14:00:16 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -65,7 +65,7 @@ static int	modify_x(const t_word_info *i, const t_editor *e)
 
 void		set_word_info(t_word_info *i, t_editor *e)
 {
-	const char	*t[] = {"&&", "||", "&|", ";", 0};
+	const char	*t[] = {"&&", "||", "&|", ";", "|", 0};
 	t_word_info	info;
 
 	get_word_at(e->buf, e->pos, i);

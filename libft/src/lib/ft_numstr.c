@@ -6,11 +6,11 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/09 14:08:08 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/13 15:39:40 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/14 13:59:09 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
-		
+
 #include "libft.h"
 
 uint8_t	ft_floatstr(char *dst, float n, int precision, uint8_t base)

@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/01 10:01:06 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/13 15:39:40 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/14 13:59:09 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -24,7 +24,11 @@ void	get_completions(t_editor *e)
 {
 	t_word_info	info;
 
+	info.begin = 0;
+	info.end = 0;
 	set_word_info(&info, e);
+	if (info.current_word == NULL)
+		info.current_word = ft_strdup("");
 	if (info.type == TYPE_COMMAND)
 		get_completions_bin(&info, e->options->completion_data->heap);
 	else if (info.type == TYPE_PATH)

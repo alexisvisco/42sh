@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/13 15:53:08 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/13 16:10:23 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/14 11:59:58 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,7 +19,7 @@ void	tab_del_from_to(char ***t, int from, int to)
 	int		i;
 	int		j;
 
-	res_tab = malloc(size_tab(*t) - (to - from) + 1);
+	res_tab = malloc(sizeof(char *) * (size_tab(*t) - (to - from) + 1));
 	j = 0;
 	i = 0;
 	while ((*t)[i])

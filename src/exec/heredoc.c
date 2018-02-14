@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/12 17:53:32 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/14 13:59:09 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/14 18:23:55 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -61,7 +61,7 @@ static char		*heap_to_str_here(t_heap *h)
 	size_t		i;
 
 	i = 0;
-	full = ft_strdup("");
+	full = ft_strdup("\0");
 	while (i < h->size)
 	{
 		if (h->list[i])

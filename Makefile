@@ -97,6 +97,9 @@ editor/completion/get_folder_from.c \
 editor/completion/get_name_from.c \
 editor/completion/set_word_info.c \
 editor/completion/update_word.c \
+editor/completion/word_is_env.c \
+editor/completion/word_is_command.c \
+editor/completion/word_is_path.c \
 \
 util/ft_levenshtein.c \
 util/exit_shell.c \

@@ -1,33 +1,19 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   heap_growth.c                                    .::    .:/ .      .::   */
+/*   word_is_env.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/23 10:44:25 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/14 18:23:55 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/02/14 18:29:13 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/14 18:29:13 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "shell.h"
 
-void	heap_growth(t_heap *hp)
+int 	word_is_env(t_word_info *i)
 {
-	void			**tmp;
-	size_t			i;
-
-	i = 0;
-	tmp = ft_memalloc(hp->size * 2);
-	while (i < hp->size)
-	{
-		if (hp->list[i] == 0)
-			hp->last_remove = i;
-		tmp[i] = hp->list[i];
-		i++;
-	}
-	free(hp->list);
-	hp->size *= 2;
-	hp->list = tmp;
+	return (ft_strstarts_with(i->current_word, '$'));
 }

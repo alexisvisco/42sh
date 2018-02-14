@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/01 10:39:36 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/14 13:59:09 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/14 18:23:55 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -87,7 +87,7 @@ void		get_completions_path(t_word_info *i, t_heap *heap)
 	else
 	{
 		folder = ft_strdup(".");
-		start_with = ft_strdup("");
+		start_with = ft_strdup("\0");
 	}
 	get_completions_path_a(folder, start_with, i->current_word, heap);
 	free(folder);

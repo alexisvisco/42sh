@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:35 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/14 13:59:09 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/14 18:23:59 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -186,6 +186,9 @@ char				*get_folder_from(char *str);
 char				*get_name_from(char *str);
 void				set_word_info(t_word_info *i, t_editor *e);
 void				update_word(t_editor *e, char *word);
+int 				word_is_command(t_word_info *i, t_word_info *prev);
+int 				word_is_path(t_word_info *i);
+int 				word_is_env(t_word_info *i);
 void				free_e_content(t_e_content *h);
 
 void				ef_clear_screen(t_editor *l);

@@ -59,7 +59,7 @@
 | Séparateur `&&` | Éxecute une commande ET une autre en fonction de si l'execution à été reussi| ✓ | ✓ |
 | Opérateur `>` | Redirige la sortie standard vers un autre file descriptor| ✓ | ✓ |
 | Opérateur `>>` | Redirige la sortie standard vers un autre file descriptor (ajout à la fin)| ✓ | ✓ |
-| Opérateur `<<` | Heredoc | ✗ | ✓ |
+| Opérateur `<<` | Heredoc |  ✓ | ✓ |
 | Opérateur `<` | Redirige l'entrée standard vers la commande| ✓ | ✓ |
 | Pipe <code>&#124;</code>| le fameux pipe (ex ls <code>&#124;</code> frep 21sh)| ✓ | ✓ |
 | Echappement des guillements dans les commandes | Exemple: "l"s | ✓ | ✓ |
@@ -74,3 +74,5 @@
 | ------------- |:----------------      | -----:| -----:|
 | Hashtable pour les binaires | table de hash pour les binaires | ✓ | ✓ |
 | Hashtable pour les variables d'environements | table de hash pour les variable d'environement | ✓ | ✓ |
+| Multi line support | > | ✓ | ✓ |
+| Dquote | dquote> | ✓ | ✓ |

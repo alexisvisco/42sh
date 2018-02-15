@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/12 12:36:20 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/15 11:52:09 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/15 12:08:03 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,7 +21,9 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdarg.h>
+# include <termcap.h>
 # include <termios.h>
+# include <term.h>
 # include <signal.h>
 # include <stdint.h>
 # include <sys/types.h>

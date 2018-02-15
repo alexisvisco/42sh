@@ -13,7 +13,7 @@
 
 #include "shell.h"
 
-int 	word_is_path(t_word_info *i)
+int	word_is_path(t_word_info *i)
 {
 	return ((ft_strstarts_with(i->current_word, '~') ||
 	ft_strstarts_with(i->current_word, '/') ||

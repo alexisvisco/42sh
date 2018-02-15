@@ -13,7 +13,7 @@
 
 #include "shell.h"
 
-int 	word_is_command(t_word_info *i, t_word_info *prev)
+int	word_is_command(t_word_info *i, t_word_info *prev)
 {
 	const char	*t[] = {"&&", "||", "&|", ";", "|", 0};
 

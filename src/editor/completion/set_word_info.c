@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/12 12:37:32 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/14 18:49:59 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/15 11:52:09 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -61,7 +61,6 @@ static int	modify_x(const t_word_info *i, const t_editor *e)
 
 void		set_word_info(t_word_info *i, t_editor *e)
 {
-
 	t_word_info	prev;
 
 	get_word_at(e->buf, e->pos, i);

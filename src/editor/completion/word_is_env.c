@@ -6,14 +6,14 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/14 18:29:13 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/14 18:29:13 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/15 11:54:05 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-int 	word_is_env(t_word_info *i)
+int	word_is_env(t_word_info *i)
 {
 	return (ft_strstarts_with(i->current_word, '$'));
 }

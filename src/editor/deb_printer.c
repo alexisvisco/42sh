@@ -21,12 +21,11 @@
 void	deb_printer(const char *format, ...)
 {
 	va_list	ap;
-	int		write;
 
 	disable_terminal(STDIN_FILENO);
 	ft_putchar('\n');
 	va_start(ap, format);
-	write = core_pf(1, format, ap);
+	core_pf(1, format, ap);
 	va_end(ap);
 	enable_terminal(STDIN_FILENO);
 }

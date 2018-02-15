@@ -21,8 +21,6 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdarg.h>
-# include <termcap.h>
-# include <term.h>
 # include <termios.h>
 # include <signal.h>
 # include <stdint.h>

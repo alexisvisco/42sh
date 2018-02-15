@@ -17,7 +17,6 @@ int	shell_process(char *s)
 {
 	t_token	**tokens;
 	t_block	*blocks;
-	int		i;
 	int		tablea[2];
 
 	tokens = NULL;
@@ -30,7 +29,6 @@ int	shell_process(char *s)
 	if (parse_block(tokens, &blocks) < 0)
 		return (0);
 	exec_or_and(tokens, blocks, tablea, 0);
-	i = 0;
 	free_toks(tokens);
 	free(blocks);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/13 13:08:19 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/13 15:39:39 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/16 11:13:56 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -43,7 +43,7 @@ int			analyze_agreg(char ***cmds)
 	int	k;
 
 	k = 0;
-	while (cmds[k])
+	while ((*cmds)[k])
 	{
 		if (agregator((*cmds)[k]) == 1)
 		{

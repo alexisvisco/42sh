@@ -14,7 +14,7 @@
 #ifndef SHELL_H
 # define SHELL_H
 
-# define SHELL_NAME "minishell"
+# define SHELL_NAME "21sh"
 
 # include <sys/types.h>
 # include <sys/stat.h>

@@ -11,7 +11,7 @@
 #                                                         /                   #
 #  ************************************************************************** #
 
-NAME = minishell
+NAME = 21sh
 CC = gcc
 CC_FLAGS = -g -Wall -Wextra -Werror
 

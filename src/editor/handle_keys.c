@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/12 15:40:09 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/16 11:22:57 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/16 15:39:20 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -34,17 +34,16 @@ int				handle_keys(t_editor *l)
 {
 	char	c;
 	char	seq[10];
+	int enter;
 
 	ft_bzero(seq, 10);
+	enter = 0;
 	while (42)
 	{
 		read(l->ifd, &c, 1);
-		if (c == CTRL_D && ft_strequ(l->buf, ""))
-		{
-			deb_printer("");
-			b_exit(NULL, &g_shell);
-		}
-		if (c == ENTER || c == '\n')
+		if (c == CTRL_D && ft_strequ(l->buf, "") && (enter = 1))
+			ft_copy_str(l->buf, "exit");
+		if (enter || c == ENTER || c == '\n')
 		{
 			if (l->mode == COMPLETION)
 			{

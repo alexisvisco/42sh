@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/12 15:40:09 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/16 15:39:20 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/16 15:39:43 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -34,7 +34,7 @@ int				handle_keys(t_editor *l)
 {
 	char	c;
 	char	seq[10];
-	int enter;
+	int		enter;
 
 	ft_bzero(seq, 10);
 	enter = 0;

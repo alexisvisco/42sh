@@ -6,11 +6,12 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/12 15:40:09 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/16 11:13:55 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/16 11:22:57 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
+#include <builtins.h>
 #include "editor.h"
 
 static int		add_history(t_editor *l)
@@ -38,6 +39,11 @@ int				handle_keys(t_editor *l)
 	while (42)
 	{
 		read(l->ifd, &c, 1);
+		if (c == CTRL_D && ft_strequ(l->buf, ""))
+		{
+			deb_printer("");
+			b_exit(NULL, &g_shell);
+		}
 		if (c == ENTER || c == '\n')
 		{
 			if (l->mode == COMPLETION)

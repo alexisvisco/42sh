@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/05 18:56:46 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/16 11:13:55 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/16 11:22:57 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,7 +25,7 @@ int		b_exit(char **args, t_shell *shell)
 	(void)shell;
 	disable_terminal(STDIN_FILENO);
 	exit_shell();
-	exit_status = (size_tab(args) >= 2) ? ft_atoi(args[1]) : 0;
+	exit_status = (args && size_tab(args) >= 2) ? ft_atoi(args[1]) : 0;
 	message(SHELL_EXIT, exit_status);
 	free_3d_tab(g_shell.cmds);
 	exit(exit_status);

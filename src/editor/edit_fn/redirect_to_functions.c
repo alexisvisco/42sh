@@ -6,11 +6,12 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/23 20:04:51 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/16 11:13:55 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/16 15:10:37 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
+#include <builtins.h>
 #include "editor.h"
 
 #define ISK(k) (k == c)

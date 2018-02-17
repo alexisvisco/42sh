@@ -60,6 +60,7 @@ editor/history/origin.c \
 editor/history/history.c \
 editor/history/history_search.c \
 editor/history/history_search_msg.c \
+editor/history/history_file_managing.c \
 editor/util/get_colums_len.c \
 editor/util/get_cursor_pos.c \
 editor/util/free_options.c \

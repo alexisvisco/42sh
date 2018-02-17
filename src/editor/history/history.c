@@ -6,11 +6,12 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/24 20:48:50 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/16 11:22:57 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/17 11:26:34 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
+#include <shell.h>
 #include "editor.h"
 
 static void		heap_to_buf(size_t i, t_editor *e)
@@ -107,5 +108,6 @@ void			init_history(t_editor *e)
 		e->options->history_data->heap = heap_new(32);
 		e->options->history_data->index = -1;
 		e->options->history_data->origin[0] = '\0';
+		get_previous_history(e->options->history_data->heap);
 	}
 }

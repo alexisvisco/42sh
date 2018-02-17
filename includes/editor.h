@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:35 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/16 11:22:57 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/17 11:26:33 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -163,6 +163,8 @@ void				set_colum(t_editor *e, t_refresher *r, t_buf *b);
 int					get_cursor_pos(int ifd, int ofd);
 int					get_colums_len(int ifd, int ofd);
 
+void				get_previous_history(t_heap *h);
+void				rewrite_history_file(t_heap *h);
 void				init_history(t_editor *e);
 void				history_search(t_editor *e);
 void				history_up(t_editor *e);

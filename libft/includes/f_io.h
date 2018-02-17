@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/11/25 14:27:35 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/16 11:22:57 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/17 11:26:34 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,6 +17,14 @@
 # include <string.h>
 
 # define BUFF_SIZE 32
+
+typedef struct		s_gnl
+{
+	char			*text;
+	char			*tempo;
+	struct s_gnl	*next;
+	int				fd;
+}					t_gnl;
 
 size_t	ft_putstr_fd(int fd, char const *s);
 size_t	ft_putnstr_fd(int fd, char const *s, size_t n);
@@ -35,6 +43,8 @@ size_t	ft_putunum(uint64_t n, uint8_t base);
 size_t	ft_putnum(int64_t n, uint8_t base);
 size_t	ft_putfloat(float n, int precision, uint8_t base);
 
+t_gnl	**get_gnl(void);
+void 	free_gnl(void);
 int		get_next_line(const int fd, char **line);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/11/25 14:15:22 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/16 11:22:57 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/17 11:26:34 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,7 +21,6 @@ typedef struct		s_heap
 	void			**list;
 	size_t			size;
 	size_t			next_insert;
-	int64_t			last_remove;
 	size_t			elements;
 	void			(*free_func)(void *);
 }					t_heap;
@@ -31,6 +30,7 @@ int64_t				heap_get_whole(t_heap *heap);
 void				*heap_get(t_heap *heap, size_t n);
 void				heap_growth(t_heap *hp);
 t_heap				*heap_new(size_t default_size);
+void				heap_reorder(t_heap *h);
 void				heap_print(t_heap *h, void (*print_function)(void*));
 void				*heap_del(t_heap *heap, size_t n);
 void				heap_free(t_heap *h);

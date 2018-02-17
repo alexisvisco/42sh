@@ -1,11 +1,11 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ht_new.c                                         .::    .:/ .      .::   */
+/*   heap_reorder.c                                   .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/23 13:17:41 by aviscogl     #+#   ##    ##    #+#       */
+/*   Created: 2018/02/16 21:10:12 by aviscogl     #+#   ##    ##    #+#       */
 /*   Updated: 2018/02/17 11:26:34 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
@@ -13,13 +13,21 @@
 
 #include "libft.h"
 
-t_hashtable	*ht_new(size_t size)
+void	heap_reorder(t_heap *h)
 {
-	t_hashtable *hasht;
+	void	**tmp;
+	size_t	i;
+	size_t	j;
 
-	hasht = malloc(sizeof(t_hashtable));
-	hasht->size = size;
-	hasht->heaps = ft_memalloc(size);
-	hasht->free_func = free;
-	return (hasht);
+	i = 0;
+	j = 0;
+	tmp = malloc(h->size);
+	while (j < h->size)
+	{
+		if (h->list[j])
+			tmp[i++] = h->list[j];
+		j++;
+	}
+	free(h->list);
+	h->list = tmp;
 }

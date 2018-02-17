@@ -6,84 +6,104 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/10 09:49:41 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/16 11:22:57 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/17 11:26:34 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		copyuntil(char **dst, char *src, char *er)
+static void		list_add(t_gnl **save, t_gnl *elem)
 {
-	int i;
+	t_gnl *list;
 
-	i = 0;
-	while (src[i] != '\n' && src[i] != '\0')
-		i++;
-	if (!(*dst = ft_strnew(i)))
-		return ((*er = 1));
-	i = 0;
-	while (src[i] != '\n' && src[i] != '\0')
-	{
-		(*dst)[i] = src[i];
-		i++;
-	}
-	if (src[i] == '\n')
-		return (i + 1);
-	return (i);
+	list = *save;
+	while (list->next != NULL)
+		list = list->next;
+	list->next = elem;
 }
 
-static int		join_mem_buf(char **memorized, int fd, int *last, char *er)
+static t_gnl	*new_list(int fd)
 {
-	char	buf[BUFF_SIZE + 1];
-	int		stream_size;
-	char	*tmp;
-	char	first_apple;
+	t_gnl *list;
 
-	first_apple = 0;
-	while ((stream_size = read(fd, buf, BUFF_SIZE)) > 0)
+	if (!(list = (t_gnl*)malloc(sizeof(*list))))
+		return (NULL);
+	list->fd = fd;
+	list->tempo = ft_strnew(0);
+	list->text = NULL;
+	list->next = NULL;
+	return (list);
+}
+
+static t_gnl	*check_fd(t_gnl *save, int fd)
+{
+	t_gnl *tmp;
+	t_gnl *d_list;
+
+	d_list = save;
+	while (d_list)
 	{
-		first_apple = 1;
-		buf[stream_size] = '\0';
-		if (!(tmp = ft_strjoin((!*memorized ? "" : *memorized + *last), buf)))
-			return (*er = 1);
-		*last = 0;
-		if (*memorized)
-			free(*memorized);
-		*memorized = tmp;
-		if (ft_strchr(buf, '\n'))
-			break ;
+		if (d_list->fd == fd)
+			return (d_list);
+		if (!(d_list->next))
+		{
+			tmp = new_list(fd);
+			list_add(&d_list, tmp);
+			return (tmp);
+		}
+		d_list = d_list->next;
 	}
-	if (stream_size < 0)
-		return (*er = 1);
-	return (!first_apple && !ft_strlen((*memorized) + (*last)));
+	return (NULL);
+}
+
+static int		check(char *save, char **line)
+{
+	char	*fin;
+
+	if (!save)
+		return (0);
+	fin = ft_strchr(save, '\n');
+	if (fin != NULL)
+	{
+		*fin = '\0';
+		*line = ft_strdup(save);
+		ft_strncpy(save, &fin[1], ft_strlen(&fin[1]) + 1);
+		return (1);
+	}
+	else if (ft_strlen(save) > 0)
+	{
+		*line = ft_strdup(save);
+		*save = '\0';
+		return (1);
+	}
+	return (0);
 }
 
 int				get_next_line(const int fd, char **line)
 {
-	static char		*memorized = NULL;
-	static int		last = 0;
-	char			eof;
-	char			er;
+	char			buf[BUFF_SIZE + 1];
+	static t_gnl	**save;
+	t_gnl			*tmp;
+	int				ret;
 
-	eof = 0;
-	er = 0;
-	if (fd < 0 || line == NULL)
+	save = get_gnl();
+	if (!(*save))
+		*save = new_list(fd);
+	if (fd == -1 || line == NULL || BUFF_SIZE <= 0)
 		return (-1);
-	if (memorized && ft_strchr(memorized + last, '\n'))
+	tmp = check_fd(*save, fd);
+	while (!(ft_strchr(tmp->tempo, '\n')))
 	{
-		last += copyuntil(line, memorized + last, &er);
-		if (er)
+		ret = (int)read(fd, buf, BUFF_SIZE);
+		if (ret == -1)
 			return (-1);
-		return (1);
+		if (ret == 0)
+			return (check(tmp->text, line));
+		buf[ret] = '\0';
+		tmp->text = ft_strjoin(tmp->tempo, buf);
+		free(tmp->tempo);
+		tmp->tempo = tmp->text;
 	}
-	eof = join_mem_buf(&memorized, fd, &last, &er);
-	if (er)
-		return (-1);
-	if (eof)
-		return (0);
-	last += copyuntil(line, memorized + last, &er);
-	if (er)
-		return (-1);
-	return (1);
+	return (check(tmp->text, line));
 }

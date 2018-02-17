@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/23 10:44:25 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/16 11:22:57 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/17 11:26:34 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,8 +22,6 @@ void	heap_growth(t_heap *hp)
 	tmp = ft_memalloc(hp->size * 2);
 	while (i < hp->size)
 	{
-		if (hp->list[i] == 0)
-			hp->last_remove = i;
 		tmp[i] = hp->list[i];
 		i++;
 	}

@@ -1,11 +1,11 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ht_new.c                                         .::    .:/ .      .::   */
+/*   get_next_line.c                                  .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/23 13:17:41 by aviscogl     #+#   ##    ##    #+#       */
+/*   Created: 2017/12/10 09:49:41 by aviscogl     #+#   ##    ##    #+#       */
 /*   Updated: 2018/02/17 11:26:34 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
@@ -13,13 +13,25 @@
 
 #include "libft.h"
 
-t_hashtable	*ht_new(size_t size)
+t_gnl	**get_gnl(void)
 {
-	t_hashtable *hasht;
+	static t_gnl *save = NULL;
+	return (&save);
+}
 
-	hasht = malloc(sizeof(t_hashtable));
-	hasht->size = size;
-	hasht->heaps = ft_memalloc(size);
-	hasht->free_func = free;
-	return (hasht);
+void	free_gnl(void)
+{
+	t_gnl	**gnl;
+	t_gnl	*b;
+
+	gnl = get_gnl();
+	while (*gnl)
+	{
+		free((*gnl)->tempo);
+		b = (*gnl);
+		*gnl = (*gnl)->next;
+		free(b);
+	}
+	free(*gnl);
+	*gnl = NULL;
 }

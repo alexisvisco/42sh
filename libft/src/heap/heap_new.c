@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/23 10:31:49 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/16 11:22:57 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/17 11:26:34 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,7 +21,6 @@ t_heap	*heap_new(size_t default_size)
 	heap->size = default_size;
 	heap->next_insert = 0;
 	heap->elements = 0;
-	heap->last_remove = -1;
 	heap->list = ft_memalloc(default_size);
 	heap->free_func = free;
 	return (heap);

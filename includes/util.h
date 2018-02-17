@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/12 12:36:40 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/17 11:26:33 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/17 13:26:45 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -47,5 +47,6 @@ char			*multi_line_prompt(char *line, int free_line);
 void			odd_quote_prompt(t_token ***tokens, char *s);
 char			*replace_env_variables(char *str, int free_str);
 char			*ft_repall(char *target, char *by, char *src);
+int 			ft_contain_any_seq(char *str, const char *seq);
 
 #endif

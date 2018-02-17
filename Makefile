@@ -119,6 +119,7 @@ util/multi_line.c \
 util/replace_env_variables.c \
 util/ft_repall.c \
 util/remove_file.c \
+util/ft_contain_any_seq.c \
 \
 exec/signal.c \
 exec/analyze_next_and_or.c  \

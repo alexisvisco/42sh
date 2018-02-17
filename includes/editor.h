@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:35 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/17 11:26:33 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/17 17:38:44 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -31,6 +31,8 @@
 # include <unistd.h>
 
 # define EDITOR_MAX_LINE 4096
+
+# define HISTORY_DATA g_shell.line_edit->history_data->heap
 
 typedef struct termios	t_termios;
 
@@ -85,6 +87,7 @@ typedef struct		s_edit_content
 	t_heap		*heap;
 	char		origin[EDITOR_MAX_LINE];
 	int64_t		index;
+	int 		plus;
 }					t_e_content;
 
 typedef struct		s_options
@@ -164,7 +167,9 @@ int					get_cursor_pos(int ifd, int ofd);
 int					get_colums_len(int ifd, int ofd);
 
 void				get_previous_history(t_heap *h);
-void				rewrite_history_file(t_heap *h);
+int					rewrite_history_file(t_heap *h);
+int					rewrite_history_file_in(t_heap *h, const char *path,
+											int from);
 void				init_history(t_editor *e);
 void				history_search(t_editor *e);
 void				history_up(t_editor *e);

@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   heap_get_whole.c                                 .::    .:/ .      .::   */
+/*   ft_contain_seq.c                                 .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/23 10:47:45 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/16 11:22:57 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/02/17 13:19:33 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/17 14:48:25 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "shell.h"
 
-int64_t	heap_get_whole(t_heap *heap)
+int 	ft_contain_any_seq(char *str, const char *seq)
 {
-	size_t i;
-
-	i = -1;
-	while (++i < heap->size)
+	while (*seq)
 	{
-		if (heap->list[i] == 0)
-			return (i);
+		if (ft_strchr(str, *seq))
+			return (1);
+		seq++;
 	}
-	return (int64_t)-1;
+	return (0);
 }

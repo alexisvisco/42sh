@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/12 12:36:20 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/17 11:26:33 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/17 21:06:49 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -82,7 +82,20 @@ typedef enum	e_msgs
 	ERR_NO_HISTORY_THAT_START,
 	ERR_NO_HISTORY_FROM_BEGIN,
 	ERR_NO_HISTORY_FROM_END,
-	ERR_NO_OLD_PWD
+	ERR_NO_OLD_PWD,
+	ERR_HISTORY_ARG_MERGED,
+	MSG_HISTORY_CLEARED,
+	ERR_HISTORY_OFFSET_NEEDED,
+	ERR_HISTORY_OFFSET_INVALID,
+	MSG_HISTORY_DELETED,
+	MSG_HISTORY_APPENDED,
+	ERR_HISTORY_APPENDED,
+	ERR_HISTORY_NON_READ,
+	MSG_HISTORY_NON_READ,
+	ERR_HISTORY_READ,
+	MSG_HISTORY_READ,
+	ERR_HISTORY_WRITE,
+	MSG_HISTORY_WRITE,
 }				t_msgs;
 
 int				shell_process(char *s);

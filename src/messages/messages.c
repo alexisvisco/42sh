@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/12 12:37:54 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/17 11:26:34 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/17 21:06:48 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -55,7 +55,20 @@ static char	*g_msg_list[] = {
 	"There is no history available that start with %s.\n",
 	"There is no history available at index %i from begin.\n",
 	"There is no history available at index %i from end.\n",
-	"There is no previous working directory.\n"
+	"There is no previous working directory.\n",
+	"History: can't support merged argument, check: history help.\n",
+	"History: was clear.\n",
+	"History: -d option need a offset.\n",
+	"History: there is no history at offset %i with -d option.\n",
+	"History: deleted element %i in history (line was %s).\n",
+	"History: successfully append history session in file %s.\n",
+	"History: error occurred while appending to file %s.\n",
+	"History: error occurred while reading the history file.\n",
+	"History: successfully added what was not read in the history file.\n",
+	"History: error occurred while reading the history file %s.\n",
+	"History: successfully set the history list with the history of file %s.\n",
+	"History: error while writing history to file %s.\n",
+	"History: successfully write the history to the file file %s.\n",
 };
 
 /*

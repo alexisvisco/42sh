@@ -20,7 +20,7 @@
 
 void	exit_shell(void)
 {
-	rewrite_history_file(g_shell.line_edit->history_data->heap);
+	rewrite_history_file(HISTORY_DATA);
 	ht_free(g_shell.bin);
 	ht_free(g_shell.env);
 	trie_free(g_shell.bin_trie);

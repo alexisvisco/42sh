@@ -17,7 +17,7 @@ void	*heap_del(t_heap *heap, size_t n)
 {
 	void *tmp;
 
-	if (n < heap->size)
+	if (n < heap->size && heap->list[n])
 	{
 		tmp = heap->list[n];
 		heap->list[n] = NULL;

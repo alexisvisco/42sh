@@ -6,7 +6,7 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/16 21:10:12 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/17 11:26:34 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/18 12:29:35 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,13 +21,17 @@ void	heap_reorder(t_heap *h)
 
 	i = 0;
 	j = 0;
-	tmp = malloc(h->size);
+	tmp = ft_memalloc(h->size);
 	while (j < h->size)
 	{
 		if (h->list[j])
-			tmp[i++] = h->list[j];
+		{
+			tmp[i] = h->list[j];
+			i++;
+		}
 		j++;
 	}
+	h->next_insert = i;
 	free(h->list);
 	h->list = tmp;
 }

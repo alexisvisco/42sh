@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/24 20:48:50 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/17 11:26:34 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/18 10:57:39 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,7 +25,7 @@ static void		heap_to_buf(size_t i, t_editor *e)
 	ef_delete_entire_line(e);
 	refresh_line(e);
 	j = 0;
-	while (str[j])
+	while (str && str[j])
 	{
 		editor_insert_without_refresh(e, str[j]);
 		j++;
@@ -72,7 +72,7 @@ void			history_down(t_editor *e)
 		hist->index = -1;
 		origin_to_buf(e);
 	}
-	else if (hist->index + 1 < (int64_t)hist->heap->next_insert)
+	else if (hist->index + 1 < (int64_t)hist->heap->elements)
 	{
 		hist->index++;
 		heap_to_buf((size_t)hist->index, e);

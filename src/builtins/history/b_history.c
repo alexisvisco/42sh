@@ -6,7 +6,7 @@
 /*   By: aviscogl <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/05 18:56:46 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/17 22:04:37 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/18 13:58:25 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -96,11 +96,11 @@ int show_history(t_shell *shell)
 	h = shell->line_edit->history_data->heap;
 	i = 0;
 	j = 0;
-	while (i < h->size)
+	while (i < h->elements)
 	{
 		if (h->list[i])
 		{
-			ft_printf(" * %i %s\n", j + 1, (char *) h->list[i]);
+			ft_printf(" * %i %s\n", j + 1, (char *)h->list[i]);
 			j++;
 		}
 		i++;

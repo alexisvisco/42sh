@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   b_history.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: aviscogl <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/02/05 18:56:46 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/18 13:58:25 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/02/18 18:00:16 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/18 18:00:25 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -199,7 +199,7 @@ static int history_non_read()
 	i = 0;
 	while (get_next_line(fd, &line))
 	{
-		if (i > g_shell.line_edit->history_data->plus)
+		if (i >= g_shell.line_edit->history_data->plus)
 			heap_add(HISTORY_DATA, ft_strdup(line));
 		free(line);
 		i++;
@@ -232,7 +232,7 @@ static int history_read(char **args)
 	HISTORY_DATA = heap_new(32);
 	while (get_next_line(fd, &line))
 	{
-		heap_add(HISTORY_DATA, line);
+		heap_add(HISTORY_DATA, ft_strdup(line));
 		free(line);
 	}
 	free_gnl();
@@ -275,6 +275,7 @@ static int write_history(char **args)
 static int history_exe(char **args)
 {
 	char full_str[4096];
+	char *tmp;
 
 	full_str[0] = 0;
 	args++;
@@ -288,7 +289,7 @@ static int history_exe(char **args)
 		}
 		args++;
 	}
-	shell_process(full_str);
+	//todo execute without add to g_shell.line
 	return (1);
 }
 
@@ -300,23 +301,28 @@ static int redistribute_action(char *ar, char **args)
 {
 	char *s;
 	int  i;
-	while (*ar)
+
+	if (*ar)
 	{
-		if (*ar == 'c')
-			return (clear_history());
-		if (*ar == 'd')
-			return (del_history_at(args));
-		if (*ar == 'a')
-			return (append_history(args));
-		if (*ar == 'n')
-			return (history_non_read());
-		if (*ar == 'r')
-			return (history_read(args));
-		if (*ar == 'w')
-			return (write_history(args));
-		if (*ar == 'e')
-			return (history_exe(args));
-		ar++;
+		while (*ar)
+		{
+			if (*ar == 'c' && !clear_history())
+				return (0);
+			if (*ar == 'd' && !del_history_at(args))
+				return (0);
+			if (*ar == 'a' && !append_history(args))
+				return (0);
+			if (*ar == 'n' && !history_non_read())
+				return (0);
+			if (*ar == 'r' && !history_read(args))
+				return (0);
+			if (*ar == 'w' && !write_history(args))
+				return (0);
+			if (*ar == 'e' && !history_exe(args))
+				return (0);
+			ar++;
+		}
+		return (1);
 	}
 	s = get_first_arg(args);
 	if (s == NULL)
@@ -327,7 +333,7 @@ static int redistribute_action(char *ar, char **args)
 		ft_printf(" * %i %s\n", i, HISTORY_DATA->list[i]);
 		return (1);
 	}
-	return (0);
+	return (1);
 }
 
 /*

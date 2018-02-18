@@ -64,7 +64,7 @@ static char	*g_msg_list[] = {
 	"History: successfully append history session in file %s.\n",
 	"History: error occurred while appending to file %s.\n",
 	"History: error occurred while reading the history file.\n",
-	"History: successfully added what was not read in the history file.\n",
+	"History: successfully added what was not read in the history list.\n",
 	"History: error occurred while reading the history file %s.\n",
 	"History: successfully set the history list with the history of file %s.\n",
 	"History: error while writing history to file %s.\n",

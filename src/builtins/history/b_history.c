@@ -5,11 +5,12 @@
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/02/18 18:00:16 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/18 18:00:25 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/02/19 15:41:57 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/19 16:26:29 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
+
 
 #include "shell.h"
 
@@ -275,7 +276,6 @@ static int write_history(char **args)
 static int history_exe(char **args)
 {
 	char full_str[4096];
-	char *tmp;
 
 	full_str[0] = 0;
 	args++;
@@ -289,7 +289,27 @@ static int history_exe(char **args)
 		}
 		args++;
 	}
-	//todo execute without add to g_shell.line
+	char *tmp = ft_strdup(full_str);
+	shell_process(tmp);
+	free(tmp);
+	return (1);
+}
+
+/*
+** Execute a command without adding it to the history
+*/
+
+static int history_help()
+{
+	ft_printf("\n* history [n]\n* history -c\n* history -d offset\n* history [-anrw] "
+				"[filename]\n* history -e arg\n\n");
+	ft_printf("Explanation of each arguments: \n");
+	ft_printf(" -c: Clear the history list. This may be combined with the other options to replace the history list completely.\n");
+	ft_printf(" -d: offset: Delete the history entry at position offset. offset should be specified as it appears when the history is displayed.\n");
+	ft_printf(" -a: Append the new history lines to the history file.\n");
+	ft_printf(" -n: Append the history lines not already read from the history file to the current history list.\n");
+	ft_printf(" -r: Write out the current history list to the history file.\n");
+	ft_printf(" -e: Perform a command without storing the results in the history list.\n");
 	return (1);
 }
 
@@ -347,6 +367,8 @@ int b_history(char **args, t_shell *shell)
 
 	(void) shell;
 	ar[0] = 0;
+	if (ft_strequ(get_first_arg(args), "help"))
+		return history_help();
 	parse_arguments(args, ar);
 	if (check_errors(ar))
 		return (0);

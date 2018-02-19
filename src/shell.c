@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/12 12:35:59 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/18 12:35:00 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/19 13:26:22 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -35,7 +35,7 @@ int			main(int n, char **args, char **env)
 		str = multi_line_prompt(str, 1);
 		str = replace_env_variables(str, 1);
 		shell_process(str);
-		free(g_shell.line);
+		free(str);
 	}
 	return (0);
 }

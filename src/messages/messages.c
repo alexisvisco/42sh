@@ -44,7 +44,7 @@ static char	*g_msg_list[] = {
 	"Env variable %s was unset (the value was %s).\n",
 	"You killed me (exit code: %i)! Just say me why ?\n",
 	"To search binary use: search-binary <query>.\n",
-	"One match found: %s.\n",
+	"One match found: %s at %s.\n",
 	"There is currently no history.\n",
 	"Cannot get current working directory.\n",
 	"Cannot access to the directory %s.\n",

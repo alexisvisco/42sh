@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/05 18:56:46 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/19 13:26:21 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/19 16:48:50 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -27,7 +27,8 @@ static void		b_best_matchs(char *key, t_trie_node *tries)
 	{
 		if (heap->list[i] && ft_levenshtein(key, heap->list[i], ft_strlen(key),
 		ft_strlen(heap->list[i])) <= 2)
-			ft_printf(" * %s\n", heap->list[i]);
+			ft_printf(" * %s (location %s)\n", heap->list[i],
+			ht_get(g_shell.bin, heap->list[i]));
 		i++;
 	}
 	free(first_letter);
@@ -47,7 +48,7 @@ int				b_search_binary(char **args, t_shell *shell)
 		return (0);
 	}
 	if (ht_get(shell->bin, args[1]))
-		message(MSG_SEARCH_BIN_FOUND, args[1]);
+		message(MSG_SEARCH_BIN_FOUND, args[1], ht_get(g_shell.bin, args[1]));
 	else if (ft_strlen(args[1]) >= 2)
 		b_best_matchs(args[1], shell->bin_trie);
 	return (1);

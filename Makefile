@@ -158,11 +158,28 @@ builtins/b_echo.c \
 builtins/b_exit.c \
 builtins/is_builtins.c \
 \
-expr/*.c
+expr/eval_expr.c \
+expr/te_base.c \
+expr/te_base_clos.c \
+expr/te_eval.c \
+expr/te_expr.c \
+expr/te_factor.c \
+expr/te_find_builtins.c \
+expr/te_find_lookup.c \
+expr/te_free.c \
+expr/te_funcs_0.c \
+expr/te_funcs_1.c \
+expr/te_funcs_2.c \
+expr/te_list.c \
+expr/te_new_expr.c \
+expr/te_next_tokens.c \
+expr/te_optimize.c \
+expr/te_power.c \
+expr/te_term.c \
 
 
 EDITOR_FOLDERS = editor editor/util editor/refresher editor/completion editor/keys_functions editor/edit_fn editor/history
-OBJ_FOLDERS = $(EDITOR_FOLDERS) init builtins builtins/history exec lex messages parser util
+OBJ_FOLDERS = $(EDITOR_FOLDERS) expr init builtins builtins/history exec lex messages parser util
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))

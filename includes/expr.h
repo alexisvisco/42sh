@@ -14,9 +14,16 @@
 #ifndef EXPR_H
 # define EXPR_H
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <ctype.h>
+# include <stdlib.h>
+# include <stdio.h>
+# include <ctype.h>
+
+# define ISWS(c) ((c) == ' ' || ((c) >= '\t' && (c) <= '\r'))
+# define OPEND(c) (ft_isdigit(c) || ISWS(c) || (c) == '$')
+
+extern int		g_stack[4096];
+extern int		g_idx;
+extern int		g_ustack[4096];
 
 typedef enum	e_priority
 {
@@ -40,5 +47,20 @@ typedef enum	e_priority
 
 int				*eval(char **s, t_priority p);
 int				eval_expr(char *str);
+int				*primary(char **s, int *a);
+int				*unary(char **s, t_priority *p, int *a);
+int				multiplicative(char **s, t_priority *p, int **a, int *i);
+int				additive(char **s, t_priority *p, int **a, int *i);
+int				shift(char **s, t_priority *p, int **a, int *i);
+int				relational(char **s, t_priority *p, int **a, int *i);
+int				equality(char **s, t_priority *p, int **a, int *i);
+int				andex(char **s, t_priority *p, int **a, int *i);
+int				xorex(char **s, t_priority *p, int **a, int *i);
+int				orex(char **s, t_priority *p, int **a, int *i);
+int				land(char **s, t_priority *p, int **a, int *i);
+int				lor(char **s, t_priority *p, int **a, int *i);
+int				conditionalex(char **s, int **a, int *i);
+int				assignex(char **s, t_priority *p, int **a);
+int				exprex(char **s, t_priority *p, int **a);
 
 #endif

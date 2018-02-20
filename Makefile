@@ -159,6 +159,9 @@ builtins/b_exit.c \
 builtins/is_builtins.c \
 \
 expr/eval_expr.c \
+expr/bundle_funcs_0.c \
+expr/bundle_funcs_1.c \
+expr/bundle_funcs_2.c \
 \
 
 

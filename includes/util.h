@@ -48,9 +48,8 @@ void			odd_quote_prompt(t_token ***tokens, char *s);
 char			*replace_env_variables(char *str, int free_str);
 char			*ft_repall(char *target, char *by, char *src);
 int				ft_contain_any_seq(char *str, const char *seq);
-int				eval_expr(char *expression);
+double			te_interp(const char *expression, int *error);
 char			*get_first_arg(char **a);
 void			parse_arguments(char **args, char *ar, const char *allowed);
-int				parse_number(char **expr);
 
 #endif

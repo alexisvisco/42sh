@@ -21,6 +21,7 @@ t_hashtable		*get_builtins(void)
 	{
 		builtins_methods = ht_new(10);
 		builtins_methods->free_func = NULL;
+		ht_set(builtins_methods, "calc", b_expr_eval);
 		ht_set(builtins_methods, "pwd", b_pwd);
 		ht_set(builtins_methods, "env", b_env);
 		ht_set(builtins_methods, "echo", b_echo);

@@ -120,7 +120,6 @@ util/replace_env_variables.c \
 util/ft_repall.c \
 util/remove_file.c \
 util/ft_contain_any_seq.c \
-util/eval_expr.c \
 util/util_command.c \
 \
 exec/signal.c \
@@ -141,6 +140,7 @@ builtins/b_env_unset.c \
 builtins/b_env_set.c \
 builtins/b_pwd.c \
 builtins/b_clear.c \
+builtins/b_expr_eval.c \
 builtins/b_cd.c \
 builtins/history/b_history.c \
 builtins/history/b_history_cmd.c \
@@ -157,6 +157,8 @@ builtins/history/bh_write_history.c \
 builtins/b_echo.c \
 builtins/b_exit.c \
 builtins/is_builtins.c \
+\
+expr/*.c
 
 
 EDITOR_FOLDERS = editor editor/util editor/refresher editor/completion editor/keys_functions editor/edit_fn editor/history

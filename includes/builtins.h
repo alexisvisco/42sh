@@ -39,6 +39,7 @@ int				b_set_history_contain(char **args, t_shell *shell);
 int				b_set_history_start(char **args, t_shell *shell);
 int				b_set_history_from_n_last(char **args, t_shell *shell);
 int				b_set_history_from_n(char **args, t_shell *shell);
+int				b_expr_eval(char **args, t_shell *shell);
 int				write_history(char **args);
 int				clear_history(void);
 int				del_history_at(char **args);

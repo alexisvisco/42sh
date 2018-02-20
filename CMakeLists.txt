@@ -10,4 +10,4 @@ file(GLOB_RECURSE 21sh_SRCS ${21sh_SRCS} *.h)
 include_directories(includes)
 include_directories(libft/includes)
 
-add_executable(21sh ${21sh_SRCS} src/util/eval_expr.c)
+add_executable(21sh ${21sh_SRCS} src/builtins/b_expr_eval.c includes/expr.h)

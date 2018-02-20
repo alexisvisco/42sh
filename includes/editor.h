@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   editor.h                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:35 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/19 13:26:21 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/20 10:16:08 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -87,7 +87,7 @@ typedef struct		s_edit_content
 	t_heap		*heap;
 	char		origin[EDITOR_MAX_LINE];
 	int64_t		index;
-	int 		plus;
+	int			plus;
 }					t_e_content;
 
 typedef struct		s_options

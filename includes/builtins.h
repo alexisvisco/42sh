@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   builtins.h                                       .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/05 18:45:07 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/19 13:26:21 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/20 10:19:17 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -39,6 +39,16 @@ int				b_set_history_contain(char **args, t_shell *shell);
 int				b_set_history_start(char **args, t_shell *shell);
 int				b_set_history_from_n_last(char **args, t_shell *shell);
 int				b_set_history_from_n(char **args, t_shell *shell);
+int				write_history(char **args);
+int				clear_history(void);
+int				del_history_at(char **args);
+int				history_exe(char **args);
+int				history_read(char **args);
+int				history_help(void);
+int				history_non_read(void);
+int				show_history(t_shell *shell);
+int				write_history(char **args);
+int				append_history(char **args);
 t_builtins_fun	*b_history_handler(char *cmd);
 
 #endif

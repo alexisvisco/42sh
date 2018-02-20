@@ -120,6 +120,8 @@ util/replace_env_variables.c \
 util/ft_repall.c \
 util/remove_file.c \
 util/ft_contain_any_seq.c \
+util/eval_expr.c \
+util/util_command.c \
 \
 exec/signal.c \
 exec/analyze_next_and_or.c  \
@@ -143,6 +145,15 @@ builtins/b_cd.c \
 builtins/history/b_history.c \
 builtins/history/b_history_cmd.c \
 builtins/history/b_history_func.c \
+builtins/history/bh_append_history.c \
+builtins/history/bh_clear_history.c \
+builtins/history/bh_del_history_at.c \
+builtins/history/bh_history_exec.c \
+builtins/history/bh_history_help.c \
+builtins/history/bh_history_non_read.c \
+builtins/history/bh_history_read.c \
+builtins/history/bh_show_history.c \
+builtins/history/bh_write_history.c \
 builtins/b_echo.c \
 builtins/b_exit.c \
 builtins/is_builtins.c \

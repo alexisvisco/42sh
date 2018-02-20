@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   b_search_binary.c                                .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/02/05 18:56:46 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/19 16:48:50 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/02/20 09:35:19 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/20 10:14:26 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -27,7 +27,7 @@ static void		b_best_matchs(char *key, t_trie_node *tries)
 	{
 		if (heap->list[i] && ft_levenshtein(key, heap->list[i], ft_strlen(key),
 		ft_strlen(heap->list[i])) <= 2)
-			ft_printf(" * %s (location %s)\n", heap->list[i],
+			ft_printf(" * %s at %s\n", heap->list[i],
 			ht_get(g_shell.bin, heap->list[i]));
 		i++;
 	}

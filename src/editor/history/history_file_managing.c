@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   get_history.c                                    .::    .:/ .      .::   */
+/*   history_file_managing.c                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/17 09:58:05 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/17 22:03:29 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/20 10:12:38 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-void get_previous_history(t_heap *hist)
+void	get_previous_history(t_heap *hist)
 {
 	char	path[2048];
 	char	*line;
 	int		fd;
-	int 	i;
+	int		i;
 
 	i = 0;
 	ft_copy_str(path, ht_get(g_shell.env, "HOME"));
 	ft_strcat(path, "/"HISTORY_FILE);
 	if (access(path, F_OK) == -1)
-		return;
+		return ;
 	fd = open(path, O_RDONLY);
 	while (get_next_line(fd, &line))
 	{
@@ -39,9 +39,9 @@ void get_previous_history(t_heap *hist)
 
 int		rewrite_history_file(t_heap *h)
 {
-	char path[2048];
-	int fd;
-	size_t i;
+	char	path[2048];
+	int		fd;
+	size_t	i;
 
 	ft_copy_str(path, ht_get(g_shell.env, "HOME"));
 	ft_strcat(path, "/"HISTORY_FILE);
@@ -62,11 +62,11 @@ int		rewrite_history_file(t_heap *h)
 
 int		rewrite_history_file_in(t_heap *h, const char *path, int from)
 {
-	int fd;
-	size_t i;
+	int		fd;
+	size_t	i;
 
 	fd = open(path, O_CREAT | O_WRONLY | O_TRUNC,
-			  S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH);
+			S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH);
 	i = from + (size_t)1;
 	if (fd < 0)
 		return (0);

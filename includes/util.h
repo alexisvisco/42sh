@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   util.h                                           .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/12 12:36:40 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/19 13:26:21 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/20 10:14:11 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -47,6 +47,10 @@ char			*multi_line_prompt(char *line, int free_line);
 void			odd_quote_prompt(t_token ***tokens, char *s);
 char			*replace_env_variables(char *str, int free_str);
 char			*ft_repall(char *target, char *by, char *src);
-int 			ft_contain_any_seq(char *str, const char *seq);
+int				ft_contain_any_seq(char *str, const char *seq);
+int				eval_expr(char *expression);
+char			*get_first_arg(char **a);
+void			parse_arguments(char **args, char *ar, const char *allowed);
+int				parse_number(char **expr);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   shell.c                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/12 12:35:59 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/19 13:26:22 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/20 10:13:08 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,10 +15,9 @@
 
 t_shell	g_shell;
 
-int			main(int n, char **args, char **env)
+int		main(int n, char **args, char **env)
 {
 	char	*str;
-
 
 	init_shell(env);
 	(void)n;
@@ -36,6 +35,7 @@ int			main(int n, char **args, char **env)
 		str = replace_env_variables(str, 1);
 		shell_process(str);
 		free(str);
+		g_shell.line = NULL;
 	}
 	return (0);
 }

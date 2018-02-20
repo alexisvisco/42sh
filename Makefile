@@ -158,11 +158,12 @@ builtins/b_echo.c \
 builtins/b_exit.c \
 builtins/is_builtins.c \
 \
-expr/*.c
+expr/eval_expr.c \
+\
 
 
 EDITOR_FOLDERS = editor editor/util editor/refresher editor/completion editor/keys_functions editor/edit_fn editor/history
-OBJ_FOLDERS = $(EDITOR_FOLDERS) init builtins builtins/history exec lex messages parser util
+OBJ_FOLDERS = $(EDITOR_FOLDERS) expr init builtins builtins/history exec lex messages parser util
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))

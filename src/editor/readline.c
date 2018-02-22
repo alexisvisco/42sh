@@ -53,7 +53,6 @@ char		*readline(const char *prompt, t_options *e)
 	if (!isatty(STDIN_FILENO))
 	{
 		message_err(ERR_UNSUPORTED_OPERATION);
-		exit_shell();
 		exit(2);
 	}
 	if (unsupported_term())

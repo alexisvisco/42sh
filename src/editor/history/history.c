@@ -108,6 +108,7 @@ void			init_history(t_editor *e)
 		e->options->history_data->heap = heap_new(32);
 		e->options->history_data->index = -1;
 		e->options->history_data->origin[0] = '\0';
-		get_previous_history(e->options->history_data->heap);
+		if (e->options->can_load_history)
+			get_previous_history(e->options->history_data->heap);
 	}
 }

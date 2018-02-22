@@ -24,6 +24,7 @@ t_heap		*ask_line(char *prompt, int nl,
 	options.completion_data = NULL;
 	options.has_completion = 1;
 	options.has_history = 1;
+	options.can_load_history = 0;
 	result = heap_new(4);
 	while ((line = readline(prompt, &options)))
 	{

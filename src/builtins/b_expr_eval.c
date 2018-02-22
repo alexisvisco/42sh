@@ -12,12 +12,13 @@
 /* ************************************************************************** */
 
 #include "shell.h"
+#include "expr.h"
 
 static int	is_end(char *cmp, char *line)
 {
 	if (ft_strequ(cmp, line))
 		return (1);
-	ft_printf("%i\n", (int)te_interp(line, 0));
+	ft_printf("%i\n", eval_expr(line));
 	return (0);
 }
 

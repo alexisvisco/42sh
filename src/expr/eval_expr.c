@@ -11,66 +11,54 @@
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "shell.h"
+#include <math.h>
 #include "expr.h"
 
 
-//static const t_te_vars g_functions[] =
-//		{
-//			{"abs", math_abs, TE_FUNCTION1 | TE_FLAG_PURE, 0},
-//			{"e", e, TE_FUNCTION0 | TE_FLAG_PURE, 0},
-//			{"fac", fac, TE_FUNCTION1 | TE_FLAG_PURE, 0},
-//			{"ncr", ncr, TE_FUNCTION2 | TE_FLAG_PURE, 0},
-//			{"npr", npr, TE_FUNCTION2 | TE_FLAG_PURE, 0},
-//			{"pgcd", math_pgcd, TE_FUNCTION2 | TE_FLAG_PURE, 0},
-//			{"pi", pi, TE_FUNCTION0 | TE_FLAG_PURE, 0},
-//			{"pow", math_pow, TE_FUNCTION2 | TE_FLAG_PURE, 0},
-//			{"sqrt", math_sqrt, TE_FUNCTION2 | TE_FLAG_PURE, 0},
-//			{0, 0, 0, 0}
-//		};
+int g_stack[4096]  = {0};
+int g_idx          = 0;
+int g_ustack[4096] = {0};
 
-
-t_expr *
-te_compile(const char *expression, const t_te_vars *variables, int var_count,
-		   int *error)
+static int	get_bool(t_priority p, char **s, int **a, int *i)
 {
-	t_state s;
-	s.start = s.next = expression;
-	s.lookup = variables;
-	s.lookup_len = var_count;
+	return (p == MULTIPLICATIVE && multiplicative(s, &p, a, i)) ||
+		(p == ADDITIVE && additive(s, &p, a, i)) ||
+		(p == SHIFT && shift(s, &p, a, i)) ||
+		(p == RELATIONAL && relational(s, &p, a, i)) ||
+		(p == EQUALITY && equality(s, &p, a, i)) ||
+		(p == AND && andex(s, &p, a, i)) ||
+		(p == XOR && xorex(s, &p, a, i)) ||
+		(p == OR && orex(s, &p, a, i)) ||
+		(p == LAND && land(s, &p, a, i)) ||
+		(p == LOR && lor(s, &p, a, i)) ||
+		(p == CONDITIONAL && conditionalex(s, a, i)) ||
+		(p == ASSIGN && assignex(s, &p, a)) ||
+		(p == EXPR && exprex(s, &p, a));
+}
 
-	next_token(&s);
-	t_expr *root = list(&s);
-	if (s.type != TOK_END)
+int			*eval(char **s, t_priority p)
+{
+	int	*a;
+	int	*i;
+
+	a = NULL;
+	if (p == PRIMARY)
+		return (primary(s, a));
+	if (p == UNARY)
+		return (unary(s, &p, a));
+	a = eval(s, p - 1);
+	i = g_stack + g_idx;
+	while (42)
 	{
-		te_free(root);
-		if (error)
-		{
-			*error = (int)(s.next - s.start);
-			if (*error == 0)
-				*error = 1;
-		}
-		return (0);
-	}
-	else
-	{
-		optimize(root);
-		if (error) *error = 0;
-		return (root);
+		if (ISWS(**s))
+			++*s;
+		else if (**s == '\0' || (get_bool(p, s, &a, i)))
+			return (a);
 	}
 }
 
-
-double te_interp(const char *expression, int *error)
+int eval_expr(char *str)
 {
-	t_expr *n = te_compile(expression, 0, 0, error);
-	double ret;
-	if (n)
-	{
-		ret = te_eval(n);
-		te_free(n);
-	}
-	else
-		ret = NAN;
-	return (ret);
+	int i = *(eval(&str, MAX));
+	return i;
 }

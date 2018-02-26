@@ -14,55 +14,64 @@
 #include "shell.h"
 #include "expr.h"
 
-int relational(char **s, t_priority *p, int **a, int *i)
+#define REL1 (*i = **a < GET_NEXT), i
+#define REL2 (*i = **a > GET_NEXT), i
+#define REL3 (*i = **a <= *eval((*s += 2, s), (*p) - 1)), i
+#define REL4 (*i = **a >= *eval((*s += 2, s), (*p) - 1)), i
+#define EQU1 (*i = **a == *eval((*s += 2, s), (*p) - 1)), i
+#define EQU2 (*i = **a != *eval((*s += 2, s), (*p) - 1)), i
+#define AND1 (*i = **a & GET_NEXT), i
+#define XOREX (*i = **a ^ GET_NEXT), i
+#define OREX (*i = **a | GET_NEXT), i
+
+int		relational(char **s, t_priority *p, int **a, int *i)
 {
 	if (**s == '<' && OPEND(*(*s + 1)))
-		*a = ((*i = **a < GET_NEXT), i);
+		*a = (REL1);
 	else if (**s == '>' && OPEND(*(*s + 1)))
-		*a = ((*i = **a > GET_NEXT), i);
+		*a = (REL2);
 	else if (**s == '<' && *(*s + 1) == '=' && OPEND(*(*s + 2)))
-		*a = ((*i = **a <= *eval((*s += 2, s), (*p) - 1)), i);
+		*a = (REL3);
 	else if (**s == '>' && *(*s + 1) == '=' && OPEND(*(*s + 2)))
-		*a = ((*i = **a >= *eval((*s += 2, s), (*p) - 1)), i);
+		*a = (REL4);
 	else
 		return (1);
 	return (0);
 }
 
-int equality(char **s, t_priority *p, int **a, int *i)
+int		equality(char **s, t_priority *p, int **a, int *i)
 {
-
 	if (**s == '=' && *(*s + 1) == '=' && OPEND(*(*s + 2)))
-		*a = ((*i = **a == *eval((*s += 2, s), (*p) - 1)), i);
+		*a = (EQU1);
 	else if (**s == '!' && *(*s + 1) == '=' && OPEND(*(*s + 2)))
-		*a = ((*i = **a != *eval((*s += 2, s), (*p) - 1)), i);
+		*a = (EQU2);
 	else
 		return (1);
 	return (0);
 }
 
-int andex(char **s, t_priority *p, int **a, int *i)
+int		andex(char **s, t_priority *p, int **a, int *i)
 {
 	if (**s == '&' && OPEND(*(*s + 1)))
-		*a = ((*i = **a & GET_NEXT), i);
+		*a = (AND1);
 	else
 		return (1);
 	return (0);
 }
 
-int xorex(char **s, t_priority *p, int **a, int *i)
+int		xorex(char **s, t_priority *p, int **a, int *i)
 {
 	if (**s == '^' && OPEND(*(*s + 1)))
-		*a = ((*i = **a ^ GET_NEXT), i);
+		*a = (XOREX);
 	else
 		return (1);
 	return (0);
 }
 
-int orex(char **s, t_priority *p, int **a, int *i)
+int		orex(char **s, t_priority *p, int **a, int *i)
 {
 	if (**s == '|' && OPEND(*(*s + 1)))
-		*a = ((*i = **a | GET_NEXT), i);
+		*a = (OREX);
 	else
 		return (1);
 	return (0);

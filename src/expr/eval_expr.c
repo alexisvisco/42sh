@@ -11,29 +11,27 @@
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include <math.h>
 #include "expr.h"
 
-
-int g_stack[4096]  = {0};
-int g_idx          = 0;
+int g_stack[4096] = {0};
+int g_idx = 0;
 int g_ustack[4096] = {0};
 
 static int	get_bool(t_priority p, char **s, int **a, int *i)
 {
 	return (p == MULTIPLICATIVE && multiplicative(s, &p, a, i)) ||
-		(p == ADDITIVE && additive(s, &p, a, i)) ||
-		(p == SHIFT && shift(s, &p, a, i)) ||
-		(p == RELATIONAL && relational(s, &p, a, i)) ||
-		(p == EQUALITY && equality(s, &p, a, i)) ||
-		(p == AND && andex(s, &p, a, i)) ||
-		(p == XOR && xorex(s, &p, a, i)) ||
-		(p == OR && orex(s, &p, a, i)) ||
-		(p == LAND && land(s, &p, a, i)) ||
-		(p == LOR && lor(s, &p, a, i)) ||
-		(p == CONDITIONAL && conditionalex(s, a, i)) ||
-		(p == ASSIGN && assignex(s, &p, a)) ||
-		(p == EXPR && exprex(s, &p, a));
+	(p == ADDITIVE && additive(s, &p, a, i)) ||
+	(p == SHIFT && shift(s, &p, a, i)) ||
+	(p == RELATIONAL && relational(s, &p, a, i)) ||
+	(p == EQUALITY && equality(s, &p, a, i)) ||
+	(p == AND && andex(s, &p, a, i)) ||
+	(p == XOR && xorex(s, &p, a, i)) ||
+	(p == OR && orex(s, &p, a, i)) ||
+	(p == LAND && land(s, &p, a, i)) ||
+	(p == LOR && lor(s, &p, a, i)) ||
+	(p == CONDITIONAL && conditionalex(s, a, i)) ||
+	(p == ASSIGN && assignex(s, &p, a)) ||
+	(p == EXPR && exprex(s, &p, a));
 }
 
 int			*eval(char **s, t_priority p)
@@ -57,8 +55,7 @@ int			*eval(char **s, t_priority p)
 	}
 }
 
-int eval_expr(char *str)
+int			eval_expr(char *str)
 {
-	int i = *(eval(&str, MAX));
-	return i;
+	return (*(eval(&str, MAX)));
 }

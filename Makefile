@@ -154,6 +154,9 @@ builtins/history/bh_history_non_read.c \
 builtins/history/bh_history_read.c \
 builtins/history/bh_show_history.c \
 builtins/history/bh_write_history.c \
+builtins/variables/b_export.c \
+builtins/variables/core_variable.c \
+builtins/variables/free_variable.c \
 builtins/b_echo.c \
 builtins/b_exit.c \
 builtins/is_builtins.c \

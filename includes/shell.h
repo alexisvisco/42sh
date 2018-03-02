@@ -29,14 +29,15 @@
 # include <stdint.h>
 # include <sys/types.h>
 # include <dirent.h>
-# include "libft.h"
 # include <sys/stat.h>
+# include "libft.h"
 # include "shell_struct.h"
 # include "editor.h"
 # include "lex.h"
 # include "exec.h"
 # include "util.h"
 # include "builtins.h"
+# include "variables.h"
 
 extern t_shell	g_shell;
 
@@ -83,6 +84,7 @@ typedef enum	e_msgs
 	ERR_NO_HISTORY_FROM_BEGIN,
 	ERR_NO_HISTORY_FROM_END,
 	ERR_NO_OLD_PWD,
+
 	ERR_HISTORY_ARG_MERGED,
 	MSG_HISTORY_CLEARED,
 	ERR_HISTORY_OFFSET_NEEDED,
@@ -96,6 +98,10 @@ typedef enum	e_msgs
 	MSG_HISTORY_READ,
 	ERR_HISTORY_WRITE,
 	MSG_HISTORY_WRITE,
+
+	ERR_VAR_USAGE,
+	ERR_VAR_NOT_EXIST,
+	MSG_VAR_EXPORTED,
 }				t_msgs;
 
 int				shell_process(char *s);
@@ -110,6 +116,7 @@ void			update_bin(t_shell *shell);
 void			set_builtins(void);
 void			set_options();
 void			exit_shell();
+void			set_vars(void);
 void			init_shell(char **env);
 
 #endif

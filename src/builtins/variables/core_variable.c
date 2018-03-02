@@ -1,33 +1,22 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   shell_struct.h                                   .::    .:/ .      .::   */
+/*   core_variable.c                                  .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/02/06 12:17:33 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/20 09:32:25 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/03/02 09:59:24 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/03/02 09:59:24 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef SHELL_STRUCT_H
-# define SHELL_STRUCT_H
+#include "shell.h"
 
-# include "libft.h"
-# include "editor.h"
-
-typedef struct	s_shell
+char	*v_value_to_str(t_var *v)
 {
-	t_hashtable	*env;
-	t_hashtable	*vars;
-	t_hashtable	*bin;
-	t_trie_node	*bin_trie;
-	t_trie_node	*env_trie;
-	t_options	*line_edit;
-	t_options	*history_search;
-	char		*line;
-	char		***cmds;
-}				t_shell;
-
-#endif
+	if (v->var_type == VAR_STRING)
+		return (ft_strdup(v->value));
+	if (v->var_type == VAR_NUMBER)
+		return (ft_sprintf("%i", *(int *)v->value));
+}

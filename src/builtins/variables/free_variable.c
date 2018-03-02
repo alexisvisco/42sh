@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   shell_struct.h                                   .::    .:/ .      .::   */
+/*   free_variable.c                                  .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/02/06 12:17:33 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/20 09:32:25 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/02/26 14:00:01 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/26 14:00:01 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef SHELL_STRUCT_H
-# define SHELL_STRUCT_H
+#include "shell.h"
 
-# include "libft.h"
-# include "editor.h"
-
-typedef struct	s_shell
+void	free_variable(void *var)
 {
-	t_hashtable	*env;
-	t_hashtable	*vars;
-	t_hashtable	*bin;
-	t_trie_node	*bin_trie;
-	t_trie_node	*env_trie;
-	t_options	*line_edit;
-	t_options	*history_search;
-	char		*line;
-	char		***cmds;
-}				t_shell;
+	t_var *variables;
 
-#endif
+	variables = (t_var *)var;
+	if (variables->value)
+		free(variables->value);
+	free(variables);
+}
+
+void	free_node_variable(void *var)
+{
+	t_node *node;
+
+	node = var;
+	free(node->value);
+	if (node->value)
+		free_variable(node);
+	free(node);
+}

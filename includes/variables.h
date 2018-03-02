@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   shell_struct.h                                   .::    .:/ .      .::   */
+/*   variables.h                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/02/06 12:17:33 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/20 09:32:25 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/02/26 13:12:52 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/26 13:12:52 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef SHELL_STRUCT_H
-# define SHELL_STRUCT_H
 
-# include "libft.h"
-# include "editor.h"
+#ifndef VARIABLES_H
+# define VARIABLES_H
 
-typedef struct	s_shell
+typedef enum	s_var_type{
+	VAR_STRING,
+	VAR_NUMBER
+}				t_var_type;
+
+typedef struct	s_variable
 {
-	t_hashtable	*env;
-	t_hashtable	*vars;
-	t_hashtable	*bin;
-	t_trie_node	*bin_trie;
-	t_trie_node	*env_trie;
-	t_options	*line_edit;
-	t_options	*history_search;
-	char		*line;
-	char		***cmds;
-}				t_shell;
+	char		symbol[32];
+	t_var_type	var_type;
+	void		*value;
+}				t_var;
+
+void			free_variable(void *var);
+void			free_node_variable(void *var);
+char			*v_value_to_str(t_var *v);
 
 #endif

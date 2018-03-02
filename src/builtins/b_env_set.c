@@ -13,19 +13,23 @@
 
 #include "shell.h"
 
-static int		b_set_env_a(t_hashtable *envs, char *str, t_shell *shell)
+static void 	b_set_env_b(t_hashtable *envs, char *key, char *val,
+t_shell *shell)
+{
+	ht_set(envs, key, ft_strdup(val));
+	trie_insert(g_shell.env_trie, key);
+	if (ft_strequ("PATH", key))
+		update_bin(shell);
+	message(MSG_SETENV, key, val);
+}
+
+int				b_set_env_a(t_hashtable *envs, char *str, t_shell *shell)
 {
 	char **splitted;
 
 	splitted = ft_strsplit(str, '=');
 	if (size_tab(splitted) >= 2)
-	{
-		ht_set(envs, splitted[0], ft_strdup(splitted[1]));
-		trie_insert(g_shell.env_trie, splitted[0]);
-		if (ft_strequ("PATH", splitted[0]))
-			update_bin(shell);
-		message(MSG_SETENV, splitted[0], splitted[1]);
-	}
+		b_set_env_b(envs, splitted[0], splitted[1], shell);
 	else
 	{
 		message_err(ERR_SETENV_FORMAT);

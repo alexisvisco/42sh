@@ -50,12 +50,14 @@ static char	*g_msg_list[] = {
 	"Cannot access to the directory %s.\n",
 	"No such directory.\n",
 	"Current directory is now %s.\n",
+
 	"There is no history available.\n",
 	"There is no history available that contain %s.\n",
 	"There is no history available that start with %s.\n",
 	"There is no history available at index %i from begin.\n",
 	"There is no history available at index %i from end.\n",
 	"There is no previous working directory.\n",
+
 	"History: can't support merged argument, check: history help.\n",
 	"History: was clear.\n",
 	"History: -d option need a offset.\n",
@@ -69,6 +71,10 @@ static char	*g_msg_list[] = {
 	"History: successfully set the history list with the history of file %s.\n",
 	"History: error while writing history to file %s.\n",
 	"History: successfully write the history to the file file %s.\n",
+
+	"Export: use export NAME[=value].\n",
+	"Export: variable %s not exist.\n",
+	"Export: variable %s was exported.\n",
 };
 
 /*

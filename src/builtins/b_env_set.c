@@ -13,7 +13,7 @@
 
 #include "shell.h"
 
-static void 	b_set_env_b(t_hashtable *envs, char *key, char *val,
+void 		b_set_env_b(t_hashtable *envs, char *key, char *val,
 t_shell *shell)
 {
 	ht_set(envs, key, ft_strdup(val));

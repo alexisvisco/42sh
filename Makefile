@@ -43,6 +43,7 @@ parser/parse_and_or.c  \
 init/init_shell.c \
 init/set_env.c \
 init/set_bin.c \
+init/set_vars.c \
 init/set_options.c \
 init/set_builtins.c \
 \
@@ -169,7 +170,7 @@ expr/bundle_funcs_2.c \
 
 
 EDITOR_FOLDERS = editor editor/util editor/refresher editor/completion editor/keys_functions editor/edit_fn editor/history
-OBJ_FOLDERS = $(EDITOR_FOLDERS) expr init builtins builtins/history exec lex messages parser util
+OBJ_FOLDERS = $(EDITOR_FOLDERS) expr init builtins builtins/history builtins/variables exec lex messages parser util
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))

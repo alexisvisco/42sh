@@ -1,36 +1,24 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   variables.h                                      .::    .:/ .      .::   */
+/*   validate_expr.c                                  .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/02/26 13:12:52 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/26 13:12:52 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/03/03 21:54:15 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/03/03 21:54:15 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
+#include "shell.h"
 
-#ifndef VARIABLES_H
-# define VARIABLES_H
-
-typedef enum	s_var_type{
-	VAR_STRING,
-	VAR_NUMBER
-}				t_var_type;
-
-typedef struct	s_variable
+static int is_an_operator(char c)
 {
-	char		symbol[32];
-	t_var_type	var_type;
-	void		*value;
-}				t_var;
+	return (c == '*' || c == '/' || c == '+' || c == '-' || c == '%');
+}
 
-void			free_variable(void *var);
-void			free_node_variable(void *var);
-char			*v_value_to_str(t_var *v);
-int				is_assignation_variable(char *str);
-t_var_type		get_type_of_assignation(char *str);
+int 		validate_simple_exp(char *expr)
+{
 
-#endif
+}

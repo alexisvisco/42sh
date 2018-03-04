@@ -49,7 +49,8 @@ static int		built_in(char ***argv, t_block *blocks, t_token **tok)
 	int				i;
 
 	i = 0;
-	printf("cmd = %s\n", *argv[0]);
+	if (is_assignation_variable(*argv[0]))
+		return (create_variable(*argv[0]));
 	if ((buitlin = builtins_env(*argv[0])))
 	{
 		if (ft_strequ(*argv[0], "exit") || ft_strequ(*argv[0], "quit"))

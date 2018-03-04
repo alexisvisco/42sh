@@ -24,9 +24,10 @@ t_hashtable		*get_builtins(void)
 		ht_set(builtins_methods, "calc", b_expr_eval);
 		ht_set(builtins_methods, "pwd", b_pwd);
 		ht_set(builtins_methods, "env", b_env);
+		ht_set(builtins_methods, "variables", b_variables);
 		ht_set(builtins_methods, "echo", b_echo);
 		ht_set(builtins_methods, "setenv", b_env_set);
-		ht_set(builtins_methods, "export", b_env_set);
+		ht_set(builtins_methods, "export", b_export);
 		ht_set(builtins_methods, "unsetenv", b_env_unset);
 		ht_set(builtins_methods, "clear", b_clear);
 		ht_set(builtins_methods, "history", b_history);

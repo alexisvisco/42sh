@@ -11,6 +11,7 @@
 /*                                                        /                   */
 /* ************************************************************************** */
 
+#include <expr.h>
 #include "shell.h"
 
 /*
@@ -37,13 +38,20 @@ int		create_variable(char *assignation)
 	t_var	*var;
 
 	assign = ft_strsplit(assignation, '=');
-	var = malloc(sizeof(var));
+	var = (t_var *)malloc(sizeof(t_var));
 	if (ft_strlen(assign[0]) > 32)
+	{
+		free(var);
+		free(assign);
 		return (0);
+	}
+	var->var_type = get_type_of_assignation(assign[1]);
 	ft_copy_str(var->symbol, assign[0]);
-	var->value = ft_strdup(assign[1]);
-	var->var_type = get_type_of_assignation(var->value);
-	ht_set(g_shell.vars, ft_strdup(assign[1]), var);
+	if (var->var_type == VAR_NUMBER)
+		var->value = (void *)ft_sprintf("%i", eval_expr(assign[1]));
+	else
+		var->value = ft_strdup(assign[1]);
+	ht_set(g_shell.vars, var->symbol, var);
 	free_tab(assign);
 	return (1);
 }
@@ -62,19 +70,9 @@ int		is_assignation_variable(char *str)
 	return (0);
 }
 
-t_var_type	get_type_of_assignation(char *str)
+t_var_type get_type_of_assignation(char *str)
 {
-	if (*str == '-')
-		++str;
-
-	if (!*str)
-		return (VAR_STRING);
-	while (*str)
-	{
-		if (!isdigit(*str))
-			return (VAR_STRING);
-		else
-			++str;
-	}
-	return (VAR_NUMBER);
+	if (validate_simple_exp(str))
+		return (VAR_NUMBER);
+	return (VAR_STRING);
 }

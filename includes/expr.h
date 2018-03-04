@@ -63,5 +63,6 @@ int				lor(char **s, t_priority *p, int **a, int *i);
 int				conditionalex(char **s, int **a, int *i);
 int				assignex(char **s, t_priority *p, int **a);
 int				exprex(char **s, t_priority *p, int **a);
+int 			validate_simple_exp(char *expr);
 
 #endif

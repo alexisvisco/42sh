@@ -16,5 +16,5 @@
 void	set_vars(void)
 {
 	g_shell.vars = ht_new(64);
-	g_shell.vars->free_func = free_node_variable;
+	g_shell.vars->free_func = free_variable;
 }

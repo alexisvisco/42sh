@@ -17,10 +17,12 @@ void	free_variable(void *var)
 {
 	t_var *variables;
 
-	variables = (t_var *)var;
-	if (variables->value)
+	if (var)
+	{
+		variables = (t_var *) var;
 		free(variables->value);
-	free(variables);
+	}
+	free(var);
 }
 
 void	free_node_variable(void *var)
@@ -28,8 +30,11 @@ void	free_node_variable(void *var)
 	t_node *node;
 
 	node = var;
-	free(node->value);
-	if (node->value)
-		free_variable(node);
-	free(node);
+	if (node)
+	{
+		free(node->key);
+		if (node->value)
+			free_variable(node->value);
+		free(node);
+	}
 }

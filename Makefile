@@ -156,6 +156,7 @@ builtins/history/bh_history_read.c \
 builtins/history/bh_show_history.c \
 builtins/history/bh_write_history.c \
 builtins/variables/b_export.c \
+builtins/variables/b_variables.c \
 builtins/variables/core_variable.c \
 builtins/variables/free_variable.c \
 builtins/b_echo.c \
@@ -163,6 +164,7 @@ builtins/b_exit.c \
 builtins/is_builtins.c \
 \
 expr/eval_expr.c \
+expr/validate_simple_expr.c \
 expr/bundle_funcs_0.c \
 expr/bundle_funcs_1.c \
 expr/bundle_funcs_2.c \

@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/23 14:07:56 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/14 13:45:45 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/14 17:23:49 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -62,7 +62,7 @@ t_block		*extract_blocks(t_token **tokens)
 		&& ft_strcmp(tokens[i]->value, "&|"))
 			i++;
 		blocks[j].start_tok = begin;
-		blocks[j++].end_tok = i - 1;
+		blocks[j++].end_tok = i == 0 ? i : i - 1;
 		if (tokens[i] && (ft_strcmp(tokens[i]->value, "&") == 0 ||
 		tokens[i]->value[0] == ';' || ft_strcmp(tokens[i]->value, "&;") == 0
 		|| ft_strcmp(tokens[i]->value, "&|") == 0))

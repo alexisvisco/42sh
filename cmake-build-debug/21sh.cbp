@@ -1,0 +1,1066 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="21sh"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="clang"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/ggranjon/Documents/21sh/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/ggranjon/Documents/21sh/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ggranjon/Documents/21sh/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ggranjon/Documents/21sh/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ggranjon/Documents/21sh/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/ggranjon/Documents/21sh/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/ggranjon/Documents/21sh/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ggranjon/Documents/21sh/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ggranjon/Documents/21sh/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ggranjon/Documents/21sh/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/ggranjon/Documents/21sh/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/ggranjon/Documents/21sh/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ggranjon/Documents/21sh/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ggranjon/Documents/21sh/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ggranjon/Documents/21sh/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="21sh">
+				<Option output="/Users/ggranjon/Documents/21sh/cmake-build-debug/21sh" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir=""/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add directory="/Users/ggranjon/Documents/21sh/includes"/>
+					<Add directory="/Users/ggranjon/Documents/21sh/libft/includes"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/ggranjon/Documents/21sh/cmake-build-debug/Makefile&quot;  VERBOSE=1 21sh"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ggranjon/Documents/21sh/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ggranjon/Documents/21sh/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ggranjon/Documents/21sh/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="21sh/fast">
+				<Option output="/Users/ggranjon/Documents/21sh/cmake-build-debug/21sh" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir=""/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add directory="/Users/ggranjon/Documents/21sh/includes"/>
+					<Add directory="/Users/ggranjon/Documents/21sh/libft/includes"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/ggranjon/Documents/21sh/cmake-build-debug/Makefile&quot;  VERBOSE=1 21sh/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ggranjon/Documents/21sh/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ggranjon/Documents/21sh/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ggranjon/Documents/21sh/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/ggranjon/Documents/21sh/includes/builtins.h">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/includes/editor.h">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/includes/exec.h">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/includes/expr.h">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/includes/lex.h">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/includes/shell.h">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/includes/shell_struct.h">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/includes/util.h">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/includes/f_colors.h">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/includes/f_hashtable.h">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/includes/f_heap.h">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/includes/f_io.h">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/includes/f_is.h">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/includes/f_lib.h">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/includes/f_lst.h">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/includes/f_map.h">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/includes/f_math.h">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/includes/f_mem.h">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/includes/f_str.h">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/includes/f_trie.h">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/includes/ft_printf.h">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/includes/libft.h">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/hashtable/ht_free.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/hashtable/ht_get.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/hashtable/ht_has.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/hashtable/ht_hash.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/hashtable/ht_new.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/hashtable/ht_print.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/hashtable/ht_print_preset.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/hashtable/ht_remove.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/hashtable/ht_set.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/heap/heap_add.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/heap/heap_del.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/heap/heap_free.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/heap/heap_get.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/heap/heap_growth.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/heap/heap_new.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/heap/heap_print.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/heap/heap_print_preset.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/heap/heap_reorder.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/io/ft_putchar.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/io/ft_putfloat.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/io/ft_putnum.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/io/ft_putstr.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/io/ft_putunum.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/io/get_next_line.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/io/get_next_line_ext.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/is/ft_isalnum.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/is/ft_isalpha.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/is/ft_isascii.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/is/ft_isdigit.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/is/ft_isprint.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/lib/find_in_tab.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/lib/ft_atoi.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/lib/ft_numstr.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/lib/size_tab.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/lst/lst_add.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/lst/lst_clear.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/lst/lst_collect_if.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/lst/lst_delete.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/lst/lst_find.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/lst/lst_foreach.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/lst/lst_foreach_i.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/lst/lst_get.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/lst/lst_map.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/lst/lst_new.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/lst/lst_pop.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/lst/lst_print.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/lst/lst_printer_preset.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/lst/lst_push.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/lst/lst_remove_at.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/lst/lst_remove_if.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/lst/lst_reverse.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/lst/lst_shift.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/lst/lst_size.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/lst/lst_sort.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/lst/lst_swap.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/map/map_del.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/map/map_get.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/map/map_getv.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/map/map_new.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/map/map_print.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/map/map_set.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/map/map_unset.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/math/math_abs.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/math/math_len.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/math/math_pgcd.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/math/math_pow.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/math/math_round.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/math/math_sqrt.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/mem/free_debug.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/mem/free_smart.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/mem/ft_bzero.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/mem/ft_memalloc.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/mem/ft_memccpy.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/mem/ft_memchr.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/mem/ft_memcmp.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/mem/ft_memcpy.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/mem/ft_memdel.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/mem/ft_memmove.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/mem/ft_memset.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/printf/converter/c_intmax.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/printf/converter/c_uintmax.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/printf/converter/c_unicode.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/printf/evaluator/core.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/printf/evaluator/dynamic_value.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/printf/evaluator/eval_base/compute/base_compute.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/printf/evaluator/eval_base/compute/base_delprec_0.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/printf/evaluator/eval_base/compute/base_hash.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/printf/evaluator/eval_base/compute/base_zero.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/printf/evaluator/eval_base/get_base.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/printf/evaluator/eval_char/get_char.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/printf/evaluator/eval_char/get_wchar.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/printf/evaluator/eval_number/compute/number_compute.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/printf/evaluator/eval_number/compute/number_plus.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/printf/evaluator/eval_number/compute/number_precision.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/printf/evaluator/eval_number/compute/number_space.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/printf/evaluator/eval_number/compute/number_zero.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/printf/evaluator/eval_number/get_number.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/printf/evaluator/eval_number/get_uval.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/printf/evaluator/eval_number/get_val.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/printf/evaluator/eval_pointer/compute/pointer_compute.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/printf/evaluator/eval_pointer/get_pointer.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/printf/evaluator/eval_string/compute/str_compute.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/printf/evaluator/eval_string/compute/str_delprec_0.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/printf/evaluator/eval_string/compute/str_padding.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/printf/evaluator/eval_string/compute/str_precision.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/printf/evaluator/eval_string/compute/wstr_precision.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/printf/evaluator/eval_string/get_string.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/printf/evaluator/eval_string/get_wstring.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/printf/evaluator/evaluator.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/printf/parser/extract_flags.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/printf/parser/extract_full.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/printf/parser/extract_length.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/printf/parser/extract_precision.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/printf/parser/extract_width.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/printf/parser/extractor.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/printf/printf.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/printf/struct/formatter.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/printf/util/ft_str_repeat.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/printf/util/ft_strrep_first_aft.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/printf/util/unicode.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/str/ft_split.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/str/ft_str_append.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/str/ft_strbasename.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/str/ft_strcat.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/str/ft_strchr.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/str/ft_strclr.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/str/ft_strcmp.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/str/ft_strcpy.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/str/ft_strdel.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/str/ft_strdel_at.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/str/ft_strdup.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/str/ft_strends_with.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/str/ft_strequ.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/str/ft_strisdigit.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/str/ft_striter.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/str/ft_striteri.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/str/ft_strjoin.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/str/ft_strjoin_multiple.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/str/ft_strjoinch.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/str/ft_strlcat.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/str/ft_strlen.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/str/ft_strlen_classic.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/str/ft_strmap.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/str/ft_strmapi.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/str/ft_strmatch.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/str/ft_strncat.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/str/ft_strncmp.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/str/ft_strncpy.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/str/ft_strnequ.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/str/ft_strnew.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/str/ft_strnstr.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/str/ft_strrchr.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/str/ft_strreplace.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/str/ft_strreplace_first.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/str/ft_strsplit.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/str/ft_strsplit_f.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/str/ft_strstarts_with.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/str/ft_strstr.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/str/ft_strsub.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/str/ft_strtrim.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/str/ft_tolower.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/str/ft_toupper.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/trie/trie_char_to_index.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/trie/trie_delete.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/trie/trie_free.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/trie/trie_insert.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/trie/trie_is_last_node.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/trie/trie_new.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/trie/trie_search.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/libft/src/trie/trie_start_with.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/builtins/b_cd.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/builtins/b_clear.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/builtins/b_echo.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/builtins/b_env.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/builtins/b_env_set.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/builtins/b_env_unset.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/builtins/b_exit.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/builtins/b_expr_eval.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/builtins/b_pwd.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/builtins/b_search_binary.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/builtins/history/b_history.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/builtins/history/b_history_cmd.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/builtins/history/b_history_func.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/builtins/history/bh_append_history.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/builtins/history/bh_clear_history.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/builtins/history/bh_del_history_at.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/builtins/history/bh_history_exec.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/builtins/history/bh_history_help.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/builtins/history/bh_history_non_read.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/builtins/history/bh_history_read.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/builtins/history/bh_show_history.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/builtins/history/bh_write_history.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/builtins/is_builtins.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/completion/completion.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/completion/completion_printer.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/completion/get_completions.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/completion/get_completions_bin.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/completion/get_completions_env.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/completion/get_completions_path.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/completion/get_folder_from.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/completion/get_name_from.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/completion/set_word_info.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/completion/update_word.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/completion/word_is_command.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/completion/word_is_env.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/completion/word_is_path.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/deb_printer.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/edit_fn/ef_clear_screen.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/edit_fn/ef_del_backspace.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/edit_fn/ef_del_prev_word.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/edit_fn/ef_del_simple.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/edit_fn/ef_delete_curr_to_end.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/edit_fn/ef_delete_entire_line.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/edit_fn/ef_go_end.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/edit_fn/ef_go_home.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/edit_fn/ef_move_cursor_to.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/edit_fn/ef_move_down.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/edit_fn/ef_move_left.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/edit_fn/ef_move_right.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/edit_fn/ef_move_up.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/edit_fn/ef_move_word.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/edit_fn/ef_swap_char.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/edit_fn/redirect_to_functions.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/editor.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/editor_insert.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/editor_insert_instant.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/free_e_content.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/handle_keys.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/history/history.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/history/history_file_managing.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/history/history_search.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/history/history_search_msg.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/history/origin.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/readline.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/readline_notty.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/readline_raw.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/refresher/buf_append.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/refresher/clean_and_go_up.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/refresher/clean_top_show_prompt.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/refresher/clear_used_before.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/refresher/insert_new_line.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/refresher/move_cursor.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/refresher/refresh_line.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/refresher/set_colum.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/terminal_manager.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/util/free_options.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/util/get_colums_len.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/editor/util/get_cursor_pos.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/exec/agregator.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/exec/agregator_to_file.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/exec/analyze_next_and_or.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/exec/core_exec.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/exec/delete_redir.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/exec/exec_built_in.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/exec/exec_pipe.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/exec/heredoc.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/exec/open_file.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/exec/redistribute_pipe_redir.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/exec/return_executable.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/exec/signal.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/expr/bundle_funcs_0.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/expr/bundle_funcs_1.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/expr/bundle_funcs_2.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/expr/eval_expr.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/init/init_shell.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/init/set_bin.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/init/set_builtins.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/init/set_env.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/init/set_options.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/lex/bad_format_sep.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/lex/count_tokens.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/lex/recognize.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/lex/split.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/messages/messages.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/parser/analyze.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/parser/block.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/parser/commentary.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/parser/extract_redir.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/parser/operator_error.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/parser/parse_all.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/parser/parse_and_or.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/parser/slash.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/shell.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/shell_process.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/util/ask_line.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/util/delete_first.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/util/env_to_array.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/util/equal_char.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/util/exit_shell.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/util/free_tab.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/util/free_toks.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/util/ft_char_to_str.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/util/ft_contain_any_seq.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/util/ft_copy_str.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/util/ft_levenshtein.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/util/ft_realloc.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/util/ft_repall.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/util/ft_tab_contain.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/util/multi_line.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/util/odd_quote.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/util/remove_file.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/util/replace_env_variables.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/src/util/util_command.c">
+			<Option target="21sh"/>
+		</Unit>
+		<Unit filename="/Users/ggranjon/Documents/21sh/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

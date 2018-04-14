@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/29 17:26:58 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/20 09:32:25 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/14 13:45:47 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -46,6 +46,8 @@ int				call_ag_redir(char ***cmds);
 int				delete_redir_and_dup(char ***cmds, int file);
 
 int				open_files(char ***cmds);
+
+int				exec_built_in(char ***argv, t_block *blocks, t_token **tok);
 
 int				exec_cmds(char ***argv, t_block *blocks, t_token **tokens);
 char			***extract_all_pipes(char **argv);

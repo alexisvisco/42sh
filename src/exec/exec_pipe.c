@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/07 14:22:23 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/20 09:32:25 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/14 14:00:45 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -43,31 +43,6 @@ static void		child_fork(char ***argv, int fd, const int *p)
 	exit(a == -1 ? EXIT_FAILURE : !a);
 }
 
-static int		built_in(char ***argv, t_block *blocks, t_token **tok)
-{
-	t_builtins_fun	*buitlin;
-	int				i;
-
-	i = 0;
-	if ((buitlin = builtins_env(*argv[0])))
-	{
-		if (ft_strequ(*argv[0], "exit") || ft_strequ(*argv[0], "quit"))
-		{
-			while (tok[i])
-			{
-				free(tok[i]->value);
-				free(tok[i]);
-				i++;
-			}
-			free(tok);
-			free(blocks);
-		}
-	}
-	else
-		return (-1);
-	return (buitlin(*argv, &g_shell));
-}
-
 /*
 ** dup2(input_file != 0 ? input_file : save_fd, STDIN_FILENO); =
 ** change the input according to the old output
@@ -77,15 +52,24 @@ static int		built_in(char ***argv, t_block *blocks, t_token **tok)
 */
 int	g_ret;
 
-static void		close_fd(const int *p, int *status, t_fd *fd, char ****av)
+static void		close_fd(const int *p, t_fd *fd, char ****av)
+{
+	if ((*fd).input > 0)
+		close((*fd).input);
+	close(((*fd).output != 1) ? (*fd).output : p[WRITE_END]);
+	if ((*fd).save)
+		close((*fd).save);
+	(*fd).save = p[READ_END];
+	(*av)++;
+}
+
+static int		wait_all_proc(int *status)
 {
 	if (g_ret == -1)
 		wait(status);
-	if ((*fd).input > 0)
-		close((*fd).input);
-	(*fd).save = p[READ_END];
-	close(((*fd).output != 1) ? (*fd).output : p[WRITE_END]);
-	(*av)++;
+	while (wait(NULL) > 0)
+		;
+	return (*status);
 }
 
 int				exec_cmds(char ***argv, t_block *blocks, t_token **tokens)
@@ -102,7 +86,7 @@ int				exec_cmds(char ***argv, t_block *blocks, t_token **tokens)
 		if (INPUT_FILE_REDIR || INPUT_FILE_HEREDOC || OUTPUT_AGREG ||
 			(fd.output == 1 && (fd.output = call_right_redir(argv)) == -1))
 			return (1);
-		if ((g_ret = built_in(argv, blocks, tokens)) != -1)
+		if ((g_ret = exec_built_in(argv, blocks, tokens)) != -1)
 			status = (g_ret == 1) ? 0 : 256;
 		if (g_ret == -1 && (fork()) == 0)
 		{
@@ -111,7 +95,8 @@ int				exec_cmds(char ***argv, t_block *blocks, t_token **tokens)
 			child_fork(argv, fd.output, p);
 		}
 		else
-			close_fd(p, &status, &fd, &argv);
+			close_fd(p, &fd, &argv);
 	}
+	status = wait_all_proc(&status);
 	return (WEXITSTATUS(status));
 }

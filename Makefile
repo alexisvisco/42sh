@@ -128,6 +128,7 @@ exec/core_exec.c \
 exec/return_executable.c \
 exec/redistribute_pipe_redir.c \
 exec/exec_pipe.c  \
+exec/exec_built_in.c \
 exec/open_file.c \
 exec/heredoc.c \
 exec/agregator.c \

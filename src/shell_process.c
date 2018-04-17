@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/08 13:17:46 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/14 16:06:16 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/17 17:01:30 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -28,6 +28,23 @@ int	shell_process(char *s)
 		return (0);
 	if (parse_block(tokens, &blocks) < 0)
 		return (0);
+
+/***/
+
+	printf("Ici on a s : %s\n", s);
+	int	i = 0;
+	while (tokens[i])
+	{
+		ft_printf("tokens %-2i : %-15s  valeur =  %i \n", i, tokens[i]->value, tokens[i]->type);
+		i++;
+	}
+	i = 0;
+	while (blocks[i].start_tok != -1)
+	{
+		ft_printf ("BLOCK begin : %i\tBLOCK end : %i\n", blocks[i].start_tok, blocks[i].end_tok);
+		i++;
+	}
+/****/
 	exec_or_and(tokens, blocks, tablea, 0);
 	free_toks(tokens);
 	free(blocks);

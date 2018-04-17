@@ -69,7 +69,7 @@ char			*cpy_special(char *s)
 	ret = ft_strnew(ft_strlen(s));
 	if (cpy_seprator(&s, &ret))
 		return (ret);
-	mod = (*s == '\'' || *s == '\"') ? 1 : 0;
+	mod = (*s == '\'' || *s == '\"' || *s == '`') ? 1 : 0;
 	c = (mod == 1) ? *s : '\"';
 	ret[i++] = *(s++);
 	while (*s)

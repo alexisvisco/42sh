@@ -1,6 +1,7 @@
 .vscode
 .idea
 shell
+21sh
 minishell
 obj/
 obj/*
@@ -8,3 +9,5 @@ obj/*
 .DS_Store
 libft/libft.a
 libft/auteur
+CM*
+cmake*

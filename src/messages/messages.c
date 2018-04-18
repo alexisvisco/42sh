@@ -42,7 +42,7 @@ static char	*g_msg_list[] = {
 	"To unset env user: unsetenv <key> [<key>...].\n",
 	"Env variable %s doesn't exist.\n",
 	"Env variable %s was unset (the value was %s).\n",
-	"You killed me (exit code: %i)! Just say me why ?\n",
+	"You killed me (exit code: %i)! JUST SAY ME WHY !?\n",
 	"To search binary use: search-binary <query>.\n",
 	"One match found: %s at %s.\n",
 	"There is currently no history.\n",

@@ -78,8 +78,10 @@ int		multiplicative(char **s, t_priority *p, int **a, int *i)
 		*a = MUL1;
 	else if ((**s == '/' || **s == '%') && GET_NEXT == 0)
 		**a = 0;
-	else if (**s == '/' && OPEND(*(*s + 1)))
-		*a = MUL2;
+	else if (**s == '/' && OPEND(*(*s + 1))) {
+        deb_printer("Hello world !!!!\n");
+        *a = MUL2;
+    }
 	else if (**s == '%' && OPEND(*(*s + 1)))
 		*a = MUL3;
 	else

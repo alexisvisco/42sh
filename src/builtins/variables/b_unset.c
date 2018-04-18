@@ -15,7 +15,7 @@
 
 int 	export_help()
 {
-	ft_printf("export [NAME[=VALUE] ...]\nexport -p\n");
+	ft_printf("unset name\nunset -v\n");
 	ft_printf("Explanation of each arguments: \n");
 	ft_printf("  -p: print all exported variables\n");
 	return (1);

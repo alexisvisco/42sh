@@ -96,6 +96,8 @@ typedef enum	e_msgs
 	MSG_HISTORY_READ,
 	ERR_HISTORY_WRITE,
 	MSG_HISTORY_WRITE,
+
+	ERR_BACKQUOTES
 }				t_msgs;
 
 int				shell_process(char *s);

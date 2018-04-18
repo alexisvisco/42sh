@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/19 12:54:48 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/14 13:45:45 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/18 18:43:32 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -83,6 +83,11 @@ void			analyze_or_and(t_block **block, t_token **tokens);
 int				operator_error(t_block **blocks, t_token **tokens);
 
 int				parse_tokens(t_token ***tokens, char *s);
+
+int				count_blocks(t_token **tokens);
 int				parse_block(t_token **tokens, t_block **blocks);
+
+
+int 			seek_backquotes(t_token **tokens);
 
 #endif

@@ -41,6 +41,8 @@ int			parse_tokens(t_token ***tokens, char *s)
 		return (-2);
 	replace_placeholder(tokens);
 	format_tokens_quotes(tokens);
+	if (seek_backquotes(*tokens) < 0)
+		return (-3);
 	return (1);
 }
 

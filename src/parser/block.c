@@ -17,7 +17,7 @@
 ** count sep to malloc extract blocks
 */
 
-static int	count_sep(t_token **tokens)
+int			count_blocks(t_token **tokens)
 {
 	int	i;
 	int	block;
@@ -50,7 +50,7 @@ t_block		*extract_blocks(t_token **tokens)
 	t_block	*blocks;
 	int		begin;
 
-	blocks = malloc(sizeof(t_block) * (count_sep(tokens) + 1));
+	blocks = malloc(sizeof(t_block) * (count_blocks(tokens) + 1));
 	i = 0;
 	j = 0;
 	while (tokens[i])

@@ -37,11 +37,12 @@ int				b_variables(char **args, t_shell *shell)
 	size_t	i;
 	size_t	j;
 
+    (void) shell;
 	i = 0;
 	(void)args;
-	while (i < shell->vars->size)
+	while (i < g_shell.vars->size)
 	{
-		heap = shell->vars->heaps[i];
+		heap = g_shell.vars->heaps[i];
 		j = 0;
 		while (heap && heap->elements > 0 && j < heap->size)
 		{

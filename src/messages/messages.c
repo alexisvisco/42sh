@@ -75,6 +75,7 @@ static char	*g_msg_list[] = {
 	"Export: use export NAME[=value].\n",
 	"Export: variable %s not exist.\n",
 	"Export: variable %s was exported.\n",
+	"Unset: variable %s was unset.\n",
 };
 
 /*

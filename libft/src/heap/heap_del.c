@@ -19,6 +19,7 @@ void	*heap_del(t_heap *heap, size_t n)
 
 	if (n < heap->size && heap->list[n])
 	{
+		ft_printf("heyt\n");
 		tmp = heap->list[n];
 		heap->list[n] = NULL;
 		heap->elements--;

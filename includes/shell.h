@@ -102,6 +102,7 @@ typedef enum	e_msgs
 	ERR_VAR_USAGE,
 	ERR_VAR_NOT_EXIST,
 	MSG_VAR_EXPORTED,
+	MSG_VAR_UNSETED,
 }				t_msgs;
 
 int				shell_process(char *s);

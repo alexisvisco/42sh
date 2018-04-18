@@ -28,6 +28,7 @@ t_hashtable		*get_builtins(void)
 		ht_set(builtins_methods, "echo", b_echo);
 		ht_set(builtins_methods, "setenv", b_env_set);
 		ht_set(builtins_methods, "export", b_export);
+		ht_set(builtins_methods, "unset", b_unset);
 		ht_set(builtins_methods, "unsetenv", b_env_unset);
 		ht_set(builtins_methods, "clear", b_clear);
 		ht_set(builtins_methods, "history", b_history);
@@ -42,7 +43,7 @@ t_hashtable		*get_builtins(void)
 static int		is_builtins_env(char *cmd)
 {
 	const char	*builtins_env[] = {"setenv", "unsetenv", "cd",
-	"exit", "quit", "clear", "history", "export", 0};
+	"exit", "quit", "clear", "history", "export", "unset", 0};
 	int			i;
 
 	i = -1;

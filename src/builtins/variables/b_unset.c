@@ -13,51 +13,45 @@
 
 #include "shell.h"
 
-int 	export_help()
+static int 	unset_help()
 {
-	ft_printf("unset name\nunset -v\n");
-	ft_printf("Explanation of each arguments: \n");
-	ft_printf("  -p: print all exported variables\n");
+	ft_printf("unset NAME.\n");
 	return (1);
 }
 
-int		export_variable(char *arg)
+static int		unset_variable(char *arg)
 {
-	t_node	*node;
-	t_var	*var;
+	t_node *node;
+    t_var *var;
+    char *to_print;
 	node = ht_has(g_shell.vars, arg);
+
 	if (!node)
 	{
 		message_err(ERR_VAR_NOT_EXIST, arg);
 		return (0);
 	}
 	node = ht_remove(g_shell.vars, arg);
-	var = node->value;
-	b_set_env_b(g_shell.env, var->symbol, var->value, &g_shell);
+    var = node->value;
+    to_print = ft_sprintf("%s=%s", var->symbol, var->value);
+	message(MSG_VAR_UNSETED, to_print);
 	free_node_variable(node);
-	message(MSG_VAR_EXPORTED, arg);
+    free(to_print);
 	return (1);
 }
 
-int 	b_export(char **args, t_shell *sh)
+int 			b_unset(char **args, t_shell *sh)
 {
 	char ar[3];
 	char *arg;
 
 	(void)sh;
 	if (ft_strequ(get_first_arg(args), "help"))
-		return (export_help());
+		return (unset_help());
 	parse_arguments(args, ar, "np");
-	if (ft_strchr(ar, 'p'))
-		return (b_env(args, sh));
 	arg = get_first_arg(args);
 	if (arg == NULL)
-	{
-		message_err(ERR_VAR_USAGE);
-		return (0);
-	}
-	if (ft_strchr(arg, '='))
-		return (b_set_env_a(g_shell.env, arg, sh));
+	    return (unset_help());
 	else
-		return (export_variable(arg));
+		return (unset_variable(arg));
 }

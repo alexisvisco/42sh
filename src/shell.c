@@ -34,7 +34,7 @@ int		main(int n, char **args, char **env)
 		str = multi_line_prompt(str, 1);
 		str = replace_env_variables(str, 1);
 		shell_process(str);
-		free(str);
+		free(g_shell.line);
 		g_shell.line = NULL;
 	}
 	return (0);

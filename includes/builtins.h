@@ -55,6 +55,7 @@ int				b_set_env_a(t_hashtable *envs, char *str, t_shell *shell);
 void 			b_set_env_b(t_hashtable *envs, char *key, char *val,
 				t_shell *shell);
 int				b_export(char **args, t_shell *sh);
+int 			b_unset(char **args, t_shell *sh);
 int				b_variables(char **args, t_shell *shell);
 
 #endif

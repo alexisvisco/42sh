@@ -125,6 +125,7 @@ str/ft_strequ.c \
 str/ft_striter.c \
 str/ft_striteri.c \
 str/ft_strjoin.c \
+str/ft_strreverse.c \
 str/ft_strjoinch.c \
 str/ft_strlcat.c \
 str/ft_strstarts_with.c \

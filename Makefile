@@ -122,6 +122,7 @@ util/ft_repall.c \
 util/remove_file.c \
 util/ft_contain_any_seq.c \
 util/util_command.c \
+util/vint.c \
 \
 exec/signal.c \
 exec/analyze_next_and_or.c  \
@@ -156,6 +157,7 @@ builtins/history/bh_history_read.c \
 builtins/history/bh_show_history.c \
 builtins/history/bh_write_history.c \
 builtins/variables/b_export.c \
+builtins/variables/b_typeof.c \
 builtins/variables/b_unset.c \
 builtins/variables/b_variables.c \
 builtins/variables/core_variable.c \
@@ -169,6 +171,7 @@ expr/validate_simple_expr.c \
 expr/bundle_funcs_0.c \
 expr/bundle_funcs_1.c \
 expr/bundle_funcs_2.c \
+expr/eval_expr_npi.c \
 \
 
 

@@ -59,6 +59,7 @@ int		ft_strstarts_with_str(const char *s, char *str);
 char	*ft_strappend_at(int n, char *src, char *add);
 char	*ft_strappend_atc(int n, char *src, char c);
 char	*ft_strcat_ch(char *dest, const char c);
+char    *ft_strrev(char *s);
 char	*ft_strdel_at(char *str, int pos);
 char	*ft_strdel_all_from(char *str, int pos);
 char	*ft_strdel_all_from_to(char *str, int from, int to);

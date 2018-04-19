@@ -28,6 +28,7 @@ t_hashtable		*get_builtins(void)
 		ht_set(builtins_methods, "echo", b_echo);
 		ht_set(builtins_methods, "setenv", b_env_set);
 		ht_set(builtins_methods, "export", b_export);
+		ht_set(builtins_methods, "typeof", b_typeof);
 		ht_set(builtins_methods, "unset", b_unset);
 		ht_set(builtins_methods, "unsetenv", b_env_unset);
 		ht_set(builtins_methods, "clear", b_clear);

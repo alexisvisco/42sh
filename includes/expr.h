@@ -65,4 +65,6 @@ int				assignex(char **s, t_priority *p, int **a);
 int				exprex(char **s, t_priority *p, int **a);
 int 			validate_simple_exp(char *expr);
 
+char    		*to_npi(char *str);
+
 #endif

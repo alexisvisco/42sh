@@ -73,9 +73,10 @@ static char	*g_msg_list[] = {
 	"History: successfully write the history to the file file %s.\n",
 
 	"Export: use export NAME[=value].\n",
-	"Export: variable %s not exist.\n",
+	"Variable %s not exist.\n",
 	"Export: variable %s was exported.\n",
 	"Unset: variable %s was unset.\n",
+	"%s: %s\n",
 };
 
 /*

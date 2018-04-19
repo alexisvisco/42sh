@@ -72,7 +72,8 @@ int		is_assignation_variable(char *str)
 
 t_var_type get_type_of_assignation(char *str)
 {
-	if (validate_simple_exp(str))
+	if (validate_simple_exp(str)) {
 		return (VAR_NUMBER);
+	}
 	return (VAR_STRING);
 }

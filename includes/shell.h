@@ -37,6 +37,7 @@
 # include "exec.h"
 # include "util.h"
 # include "builtins.h"
+# include "backquotes.h"
 
 extern t_shell	g_shell;
 

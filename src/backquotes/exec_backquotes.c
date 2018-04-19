@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   exec_pipe.c                                      .::    .:/ .      .::   */
+/*   exec_bacquotes.c                                 .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/02/07 14:22:23 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/19 16:22:26 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/04/19 14:57:51 by ggranjon     #+#   ##    ##    #+#       */
+/*   Updated: 2018/04/19 19:56:13 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,7 +14,6 @@
 #include "shell.h"
 
 #define INPUT_FILE_REDIR (fd.input = call_left_redir(argv)) == -1
-#define INPUT_FILE_HEREDOC (fd.input = call_heredoc(argv, fd.input)) == -1
 #define OUTPUT_AGREG (fd.output = call_ag_redir(argv)) == -1
 
 static void		child_fork(char ***argv, int fd, const int *p)
@@ -24,9 +23,8 @@ static void		child_fork(char ***argv, int fd, const int *p)
 	int				a;
 
 	envp = env_to_array();
-	if (*(argv + 1) && fd == 1)
-		dup2(p[WRITE_END], STDOUT_FILENO);
-	else if (fd != 1)
+	dup2(p[WRITE_END], STDOUT_FILENO);
+	if (fd != 1)
 		delete_redir_and_dup(argv, fd);
 	close(p[READ_END]);
 	if ((buitlin = builtins((*argv)[0])))
@@ -63,29 +61,40 @@ static void		close_fd(const int *p, t_fd *fd, char ****av)
 	(*av)++;
 }
 
-static int		wait_all_proc(int *status)
+static void		get_backq_string(const int *p, t_backquotes *ret)
 {
-	if (g_ret == -1)
-		wait(status);
-	while (wait(NULL) > 0)
-		;
-	return (*status);
+	char *line;
+	char *tmp;
+
+	while(get_next_line(p[READ_END], &line))
+	{
+		tmp = (*ret).str;
+		(*ret).str = ft_mine_strjoin((*ret).str, line);
+		free(tmp);
+		free(line);
+	}
+	free_gnl();
 }
 
-int				exec_cmds(char ***argv, t_block *blocks, t_token **tokens)
+t_backquotes	exec_backquotes(char ***argv, t_block *blocks, t_token **tokens)
 {
-	int		p[2];
-	int		status;
-	t_fd	fd;
+	int				p[2];
+	int				status;
+	t_fd			fd;
+	t_backquotes	ret;
 
 	fd.save = 0;
 	status = 0;
 	while (*argv)
 	{
 		pipe(p);
-		if (INPUT_FILE_REDIR || INPUT_FILE_HEREDOC || OUTPUT_AGREG ||
+		if (INPUT_FILE_REDIR || OUTPUT_AGREG ||
 			(fd.output == 1 && (fd.output = call_right_redir(argv)) == -1))
-			return (1);
+		{
+			ret.status = 1;
+			ret.str = NULL;
+			return (ret);
+		}
 		if ((g_ret = exec_built_in(argv, blocks, tokens)) != -1)
 			status = (g_ret == 1) ? 0 : 256;
 		if (g_ret == -1 && (fork()) == 0)
@@ -97,6 +106,12 @@ int				exec_cmds(char ***argv, t_block *blocks, t_token **tokens)
 		else
 			close_fd(p, &fd, &argv);
 	}
-	status = wait_all_proc(&status);
-	return (WEXITSTATUS(status));
+	if (g_ret == -1)
+		wait(&status);
+	while (wait(NULL) > 0)
+		;
+	ret.status = WEXITSTATUS(status);
+	ret.str = ft_strnew(1);
+	get_backq_string(p, &ret);
+	return (ret);
 }

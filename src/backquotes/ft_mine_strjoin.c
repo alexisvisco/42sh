@@ -1,35 +1,39 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   shell_process.c                                  .::    .:/ .      .::   */
+/*   ft_mine_strjoin.c                                .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/02/08 13:17:46 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/19 18:01:06 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/04/19 19:56:38 by ggranjon     #+#   ##    ##    #+#       */
+/*   Updated: 2018/04/19 19:56:38 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-int	shell_process(char *s)
+char			*ft_mine_strjoin(char const *s1, char const *s2)
 {
-	t_token	**tokens;
-	t_block	*blocks;
-	int		tablea[2];
+	size_t		total_size;
+	char	*res;
 
-	tokens = NULL;
-	blocks = NULL;
-	tablea[0] = 0;
-	tablea[1] = 0;
-	g_shell.line = s;
-	if (parse_tokens(&tokens, s) < 0)
-		return (0);
-	if (parse_block(tokens, &blocks) < 0)
-		return (0);
-	exec_or_and(tokens, blocks, tablea, 0);
-	free_toks(tokens);
-	free(blocks);
-	return (0);
+	if (!(*s1))
+		return (ft_strdup(s2));
+	total_size = ft_strlen(s1) + ft_strlen(s2) + 1;
+	if (!(res = malloc(sizeof(char) * (total_size + 1))))
+		return (NULL);
+	res[total_size] = '\0';
+	while (*s1)
+	{
+		*res++ = *s1;
+		s1++;
+	}
+	*res++ = ' ';
+	while (*s2)
+	{
+		*res++ = *s2;
+		s2++;
+	}
+	return (res - total_size);
 }

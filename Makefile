@@ -164,7 +164,10 @@ expr/bundle_funcs_0.c \
 expr/bundle_funcs_1.c \
 expr/bundle_funcs_2.c \
 \
-backquotes/backquotes_parsing.c
+backquotes/backquotes_parsing.c \
+backquotes/core_exec_backquotes.c \
+backquotes/exec_backquotes.c \
+backquotes/ft_mine_strjoin.c
 
 
 EDITOR_FOLDERS = editor editor/util editor/refresher editor/completion editor/keys_functions editor/edit_fn editor/history

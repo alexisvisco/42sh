@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/30 16:59:52 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/14 13:45:40 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/19 15:36:54 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,7 +23,6 @@ char		**extract_cmd(t_token **tokens, int *index)
 	char	**ret;
 	int		i;
 
-	ret = NULL;
 	i = 0;
 	ret = malloc(sizeof(char *) * (index[1] - index[0] + 2));
 	ret[index[1] - index[0] + 1] = NULL;
@@ -89,13 +88,10 @@ int			exec_or_and(t_token **tokens, t_block *blocks, int num[2], int ret)
 	if (blocks[num[1]].start_tok == -1)
 		return (EXEC_FINISH);
 	next_index(tokens, blocks, num, ind);
-	argv = extract_cmd(tokens, ind);
-	if ((ret == 1 && ft_strequ(argv[0], "&&"))
-	|| (ret == 0 && ft_strequ(argv[0], "||")))
-	{
-		free_tab(argv);
+	if ((ret == 1 && ft_strequ(tokens[ind[0]]->value, "&&")) ||
+			(ret == 0 && ft_strequ(tokens[ind[0]]->value, "||")))
 		return (exec_next_index(tokens, blocks, num, ret));
-	}
+	argv = extract_cmd(tokens, ind);
 	if (analyze_next_and_or(argv[0]))
 		delete_first_element(&argv);
 	cmds = extract_all_pipes(argv);

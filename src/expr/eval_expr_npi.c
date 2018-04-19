@@ -30,6 +30,8 @@ typedef struct  stack
     void        (*push)(struct stack *, char);
 }               t_stack;
 
+void lookup(const char *str, int i, char **postfix, struct stack *stack);
+
 char    pop_stack(t_stack *stack)
 {
     char c = stack->data[--stack->top];
@@ -89,55 +91,51 @@ int     get_cond(char o1, char o2) {
     return (is_left && inf_or_equ) || (is_right && inf);
 }
 
+void lookup(const char *str, int i, char **postfix, struct stack *stack) {
+    const char o1 = str[i];
+    char o2;
+
+    o2 = (*stack).peek(stack);
+    while (ft_strchr(OPS, o2) && get_cond(o1, o2))
+    {
+        add_to_postfix(postfix, o2, 1);
+        (*stack).pop(stack);
+        o2 = (*stack).peek(stack);
+    }
+    (*stack).push(stack, str[i]);
+}
+
+void    add_remaining(char **postfix, struct stack *stack) {
+    while ((*stack).top >= 0) {
+        add_to_postfix(postfix, (*stack).data[(*stack).top], 1);
+        (*stack).top--;
+    }
+}
+
 char    *to_npi(char *str)
 {
     char *postfix;
-
     struct stack stack;
-    char o1, o2;
+    int i;
+
 
     init_stack(&stack);
     postfix = ft_strdup("");
-
-    int i;
-    i = 0;
-    while (str[i] != 0)
+    i = -1;
+    while (str[++i] != 0)
     {
-        if (str[i] == ' ') {
-            i++;
-            continue;
-        }
         if (ft_isdigit(str[i]))
             add_to_postfix(&postfix, str[i], 1);
         else if (ft_strchr(OPS, str[i]))
-        {
-            o1 = str[i];
-            o2 = stack.peek(&stack);
-            while (ft_strchr(OPS, o2) && get_cond(o1, o2))
-            {
-                add_to_postfix(&postfix, o2, 1);
-                stack.pop(&stack);
-                o2 = stack.peek(&stack);
-            }
-            stack.push(&stack, str[i]);
-        }
-        else if (str[i] == '(')
-            stack.push(&stack, str[i]);
+            lookup(str, i, &postfix, &stack);
         else if (str[i] == ')')
         {
             while (stack.peek(&stack) != '(')
                 add_to_postfix(&postfix, stack.pop(&stack), 1);
             stack.pop(&stack);
         }
-        i++;
     }
-
-
-    while (stack.top >= 0) {
-
-        add_to_postfix(&postfix, stack.data[stack.top], 1);
-        stack.top--;
-    }
+    add_remaining(&postfix, &stack);
     return postfix;
 }
 

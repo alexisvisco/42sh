@@ -18,25 +18,28 @@ t_shell	g_shell;
 
 int		main(int n, char **args, char **env)
 {
-	char	*str;
-
-	init_shell(env);
+//	char	*str;
+//
+//	init_shell(env);
+//	(void)n;
+//	(void)args;
+//	if (!ht_get(g_shell.env, "TERM"))
+//	{
+//		message_err(TERM_ENV_NOT_SET, NULL);
+//		exit_shell();
+//		exit(EXIT_FAILURE);
+//	}
+//	while ((str = readline(SHELL_NAME"> ", g_shell.line_edit)))
+//	{
+//		signal(SIGINT, sig_handler);
+//		str = multi_line_prompt(str, 1);
+//		str = replace_env_variables(str, 1);
+//		shell_process(str);
+//		free(g_shell.line);
+//		g_shell.line = NULL;
+//	}
+	(void)env;
 	(void)n;
-	(void)args;
-	if (!ht_get(g_shell.env, "TERM"))
-	{
-		message_err(TERM_ENV_NOT_SET, NULL);
-		exit_shell();
-		exit(EXIT_FAILURE);
-	}
-	while ((str = readline(SHELL_NAME"> ", g_shell.line_edit)))
-	{
-		signal(SIGINT, sig_handler);
-		str = multi_line_prompt(str, 1);
-		str = replace_env_variables(str, 1);
-		shell_process(str);
-		free(g_shell.line);
-		g_shell.line = NULL;
-	}
+	ft_printf("%s\n", to_npi(args[1]));
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/04/19 19:56:38 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/19 19:56:38 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/19 19:57:43 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,7 +15,7 @@
 
 char			*ft_mine_strjoin(char const *s1, char const *s2)
 {
-	size_t		total_size;
+	size_t	total_size;
 	char	*res;
 
 	if (!(*s1))

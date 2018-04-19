@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/04/17 14:28:33 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/19 19:39:31 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/19 20:12:41 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -42,7 +42,7 @@ static int	parsing(t_token **tokens, int i)
 	return (0);
 }
 
-int 		seek_backquotes(t_token **tokens)
+int			seek_backquotes(t_token **tokens)
 {
 	int		i;
 
@@ -56,4 +56,3 @@ int 		seek_backquotes(t_token **tokens)
 	}
 	return (0);
 }
-

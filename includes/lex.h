@@ -87,6 +87,4 @@ int				parse_tokens(t_token ***tokens, char *s);
 int				count_blocks(t_token **tokens);
 int				parse_block(t_token **tokens, t_block **blocks);
 
-
-
 #endif

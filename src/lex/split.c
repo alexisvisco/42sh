@@ -74,7 +74,7 @@ char			*cpy_special(char *s)
 	ret[i++] = *(s++);
 	while (*s)
 	{
-		if (mod % 2 == 0 && (*s == ' ' || ft_strchr(FT_SEP, *s) ||
+		if (mod % 2 == 0 && (c == '`' || *s == ' ' || ft_strchr(FT_SEP, *s) ||
 		ft_strchr(FT_REDIR, *s) || (*S && ft_strchr(FT_REDIR, (*S)))))
 			break ;
 		if (*s == c && *(s - 1) != '\\')

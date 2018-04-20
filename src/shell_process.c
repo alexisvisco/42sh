@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/08 13:17:46 by ggranjon     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/19 18:01:06 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/20 14:13:27 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,6 +23,7 @@ int	shell_process(char *s)
 	blocks = NULL;
 	tablea[0] = 0;
 	tablea[1] = 0;
+	escape_useless_backquotes(s);
 	g_shell.line = s;
 	if (parse_tokens(&tokens, s) < 0)
 		return (0);

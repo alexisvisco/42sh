@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/12 12:37:54 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/18 18:59:44 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/20 14:09:58 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -70,7 +70,8 @@ static char	*g_msg_list[] = {
 	"History: error while writing history to file %s.\n",
 	"History: successfully write the history to the file file %s.\n",
 
-	"There is an error in your backquotes!\n"
+	"There is an error in your backquotes!\n",
+	"Sorry bro, this backquotes inception isn't supported :(\n"
 };
 
 /*

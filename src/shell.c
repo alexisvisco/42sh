@@ -40,6 +40,11 @@ int		main(int n, char **args, char **env)
 //	}
 	(void)env;
 	(void)n;
-	ft_printf("%s\n", to_npi(args[1]));
+	char *str = infix2postfix(args[1]);
+	t_res_npi res;
+	ft_printf("%s\n", str != NULL ? str : "INVALID");
+	postfix2result(str, &res);
+	ft_printf("res: %i\n", res.res);
+	free(str);
 	return (0);
 }

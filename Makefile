@@ -166,12 +166,10 @@ builtins/b_echo.c \
 builtins/b_exit.c \
 builtins/is_builtins.c \
 \
-expr/eval_expr.c \
-expr/validate_simple_expr.c \
-expr/bundle_funcs_0.c \
-expr/bundle_funcs_1.c \
-expr/bundle_funcs_2.c \
-expr/eval_expr_npi.c \
+expr/stack.c \
+expr/stack_i.c \
+expr/infix2postfix.c \
+expr/postfix2result.c \
 \
 
 

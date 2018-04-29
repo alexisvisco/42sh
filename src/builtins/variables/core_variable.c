@@ -48,7 +48,7 @@ int		create_variable(char *assignation)
 	var->var_type = get_type_of_assignation(assign[1]);
 	ft_copy_str(var->symbol, assign[0]);
 	if (var->var_type == VAR_NUMBER)
-		var->value = (void *)ft_sprintf("%i", eval_expr(assign[1]));
+		var->value = (void *)ft_sprintf("%i", 1/*eval_expr(assign[1])*/);
 	else
 		var->value = ft_strdup(assign[1]);
 	ht_set(g_shell.vars, var->symbol, var);
@@ -72,7 +72,8 @@ int		is_assignation_variable(char *str)
 
 t_var_type get_type_of_assignation(char *str)
 {
-	if (validate_simple_exp(str)) {
+	(void)str;
+	if (/*validate_simple_exp(str)*/0) {
 		return (VAR_NUMBER);
 	}
 	return (VAR_STRING);

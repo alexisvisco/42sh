@@ -16,55 +16,38 @@
 
 # include <stdlib.h>
 # include <stdio.h>
-# include <ctype.h>
 
-# define ISWS(c) ((c) == ' ' || ((c) >= '\t' && (c) <= '\r'))
-# define OPEND(c) (ft_isdigit(c) || ISWS(c) || (c) == '$')
-# define GET_NEXT *eval((++*s, s), (*p) - 1)
+#define IS_OP(c) (c == '+' || c == '-' || c == '*' || c == '/' || c == '^')
+#define IS_LEFT(c) (c != '^')
 
-extern int		g_stack[4096];
-extern int		g_idx;
-extern int		g_ustack[4096];
-
-typedef enum	e_priority
+typedef struct  stack
 {
-	PRIMARY = 0,
-	UNARY,
-	MULTIPLICATIVE,
-	ADDITIVE,
-	SHIFT,
-	RELATIONAL,
-	EQUALITY,
-	AND,
-	XOR,
-	OR,
-	LAND,
-	LOR,
-	CONDITIONAL,
-	ASSIGN,
-	EXPR,
-	MAX = EXPR
-}				t_priority;
+	char        *data[4096];
+	int         top;
+	char        *(*pop)(struct stack *);
+	char        *(*peek)(struct stack *);
+	void        (*push)(struct stack *, char *);
+}               t_stack;
 
-int				*eval(char **s, t_priority p);
-int				eval_expr(char *str);
-int				*primary(char **s, int *a);
-int				*unary(char **s, t_priority *p, int *a);
-int				multiplicative(char **s, t_priority *p, int **a, int *i);
-int				additive(char **s, t_priority *p, int **a, int *i);
-int				shift(char **s, t_priority *p, int **a, int *i);
-int				relational(char **s, t_priority *p, int **a, int *i);
-int				equality(char **s, t_priority *p, int **a, int *i);
-int				andex(char **s, t_priority *p, int **a, int *i);
-int				xorex(char **s, t_priority *p, int **a, int *i);
-int				orex(char **s, t_priority *p, int **a, int *i);
-int				land(char **s, t_priority *p, int **a, int *i);
-int				lor(char **s, t_priority *p, int **a, int *i);
-int				conditionalex(char **s, int **a, int *i);
-int				assignex(char **s, t_priority *p, int **a);
-int				exprex(char **s, t_priority *p, int **a);
-int 			validate_simple_exp(char *expr);
+typedef struct  stack_i
+{
+	int       	data[4096];
+	int         top;
+	int        	(*pop)(struct stack_i *);
+	int        	(*peek)(struct stack_i *);
+	void        (*push)(struct stack_i *, int);
+}               t_stack_i;
 
-char    		*to_npi(char *str);
+typedef struct	result_npi
+{
+	int 		res;
+	char 		*error;
+}				t_res_npi;
+
+void			init_stack(t_stack *stack);
+void			init_stack_i(t_stack_i *stack);
+
+char    		*infix2postfix(char *str);
+void 			postfix2result(char *str, t_res_npi *res);
 
 #endif

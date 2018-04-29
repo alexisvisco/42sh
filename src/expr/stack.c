@@ -1,35 +1,44 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   b_expr_eval.c                                    .::    .:/ .      .::   */
+/*   stack.c                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/02/20 09:35:19 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/02/20 10:37:56 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/04/20 09:05:01 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/04/20 09:05:01 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "shell.h"
-#include "expr.h"
+#include <expr.h>
 
-static int	is_end(char *cmp, char *line)
+
+static char *pop_stack(t_stack *stack)
 {
-	if (ft_strequ(cmp, line))
-		return (1);
-	//ft_printf("%i\n", eval_expr(line));
-	return (0);
+	return stack->data[--stack->top];
 }
 
-int			b_expr_eval(char **args, t_shell *shell)
+static char *peek_stack(t_stack *stack)
 {
-	t_heap *tmp;
+	if (stack->top == 0)
+		return NULL;
+	return stack->data[stack->top - 1];
+}
 
-	(void)args;
-	(void)shell;
-	ft_printf("Type `exit` to quit this prompt.\n");
-	tmp = ask_line("(calc) ", 0, is_end, "exit");
-	heap_free(tmp);
-	return (1);
+static void push_stack(t_stack *stack, char *c)
+{
+	stack->data[stack->top++] = c;
+}
+
+void init_stack(t_stack *stack)
+{
+	stack->top  = 0;
+	stack->pop  = pop_stack;
+	stack->peek = peek_stack;
+	stack->push = push_stack;
+	for (int i  = 0; i < 4096; ++i)
+	{
+		stack->data[i] = NULL;
+	}
 }

@@ -166,10 +166,8 @@ builtins/b_echo.c \
 builtins/b_exit.c \
 builtins/is_builtins.c \
 \
-expr/stack.c \
-expr/stack_i.c \
-expr/infix2postfix.c \
-expr/postfix2result.c \
+expr/expr.c \
+expr/custom_fun.c \
 \
 
 

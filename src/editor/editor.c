@@ -25,6 +25,7 @@ static void		init_editor(t_editor *editor)
 	editor->buflen = EDITOR_MAX_LINE;
 	editor->plen = ft_strlen(editor->prompt);
 	editor->buf[0] = 0;
+	editor->mode = INSERTION;
 	init_history(editor);
 }
 

@@ -16,9 +16,16 @@
 
 static int	is_end(char *cmp, char *line)
 {
+	t_res	res;
+
 	if (ft_strequ(cmp, line))
 		return (1);
-	//ft_printf("%i\n", eval_expr(line));
+	res.error = NULL;
+	eval_expr(line, &res);
+	if (res.error)
+		ft_printf("Error: %s\n", res.error);
+	else ft_printf("%i\n", res.res);
+	free(res.error);
 	return (0);
 }
 

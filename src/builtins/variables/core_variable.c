@@ -36,6 +36,7 @@ int		create_variable(char *assignation)
 {
 	char	**assign;
 	t_var	*var;
+	t_res	res;
 
 	assign = ft_strsplit(assignation, '=');
 	var = (t_var *)malloc(sizeof(t_var));
@@ -47,10 +48,12 @@ int		create_variable(char *assignation)
 	}
 	var->var_type = get_type_of_assignation(assign[1]);
 	ft_copy_str(var->symbol, assign[0]);
-	if (var->var_type == VAR_NUMBER)
-		var->value = (void *)ft_sprintf("%i", 1/*eval_expr(assign[1])*/);
+	eval_expr(assign[1], &res);
+	if (var->var_type == VAR_NUMBER && !res.error)
+		var->value = (void *)ft_sprintf("%i", res.res);
 	else
 		var->value = ft_strdup(assign[1]);
+	if (res.error) free(res.error);
 	ht_set(g_shell.vars, var->symbol, var);
 	free_tab(assign);
 	return (1);
@@ -73,7 +76,7 @@ int		is_assignation_variable(char *str)
 t_var_type get_type_of_assignation(char *str)
 {
 	(void)str;
-	if (/*validate_simple_exp(str)*/0) {
+	if (valid_expr(str)) {
 		return (VAR_NUMBER);
 	}
 	return (VAR_STRING);

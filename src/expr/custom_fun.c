@@ -1,44 +1,44 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   stack.c                                          .::    .:/ .      .::   */
+/*   custom_atoi.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/04/20 09:05:01 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/20 09:05:01 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/05/26 11:40:25 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/05/26 11:40:25 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include <expr.h>
 
-
-static char *pop_stack(t_stack *stack)
+int	custom_atoi(char **str)
 {
-	return stack->data[--stack->top];
-}
+	int nbr;
 
-static char *peek_stack(t_stack *stack)
-{
-	if (stack->top == 0)
-		return NULL;
-	return stack->data[stack->top - 1];
-}
-
-static void push_stack(t_stack *stack, char *c)
-{
-	stack->data[stack->top++] = c;
-}
-
-void init_stack(t_stack *stack)
-{
-	stack->top  = 0;
-	stack->pop  = pop_stack;
-	stack->peek = peek_stack;
-	stack->push = push_stack;
-	for (int i  = 0; i < 4096; ++i)
+	nbr = 0;
+	while (**str >= '0' && **str <= '9')
 	{
-		stack->data[i] = NULL;
+		nbr = nbr * 10 + (**str - '0');
+		(*str)++;
 	}
+	return (nbr);
+}
+
+int	can_exec(t_res *res, int number)
+{
+	if (number == 0)
+		res->error = ft_strdup("Infinity.");
+	return number != 0;
+}
+
+int	valid_expr(char *expr)
+{
+	while (*expr) {
+		if (!ALLOWEDS_CHARS(*expr))
+			return (0);
+		expr++;
+	}
+	return (1);
 }

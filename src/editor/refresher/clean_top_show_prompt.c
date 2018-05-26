@@ -21,7 +21,7 @@
 void	clean_top_show_prompt(t_editor *e, t_buf *b)
 {
 	const char	*s = "\r\x1b[0K";
-	const int	len = 6;
+	const int	len = sizeof(s);
 
 	buf_append(b, s, len);
 	buf_append(b, e->prompt, (int)e->plen);

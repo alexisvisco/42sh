@@ -19,6 +19,7 @@ LFT_PATH = ./libft
 SRC_PATH = ./src/
 INC_PATH = -I ./includes -I $(LFT_PATH)/includes
 OBJ_PATH = ./obj/
+TOTAL_FILES := 137
 
 SRC_NAME = \
 shell.c \
@@ -179,20 +180,33 @@ SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
 OBJ = $(addprefix $(OBJ_PATH),$(OBJ_NAME))
 OBJ_FOLDERS_BIS = $(addprefix $(OBJ_PATH),$(OBJ_FOLDERS))
 
+COUNT := 0
+
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	make -C $(LFT_PATH)
-	$(CC) -o $(NAME) $(OBJ) -L$(LFT_PATH) -lft
+	@make -C $(LFT_PATH)
+	@$(CC) -o $(NAME) $(OBJ) -L$(LFT_PATH) -lft
+	@printf "\nDone.\n"
 
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@mkdir -p $(OBJ_PATH) $(OBJ_FOLDERS_BIS)
-	$(CC) $(CC_FLAGS) $(INC_PATH) -o $@ -c $^
+
+	@$(CC) $(CC_FLAGS) $(INC_PATH) -o $@ -c $^
+	@printf "\r\e[0m\x1B[36m\e[21mCompiling C files \e[0m\e[32m["
+	@printf " %.0s" {0..$(shell printf "%.0f" $(shell echo "scale=3; (${COUNT}/${TOTAL_FILES} * 100)" | bc))}
+	@printf "ᗧ"
+	@printf "•%.0s" {0..$(shell printf "%.0f" $(shell echo "scale=3; 100 - ((${COUNT}/${TOTAL_FILES} * 100))" | bc))}
+	@printf "] %s" $(shell printf "%.0f" $(shell echo "scale=3; (${COUNT}/${TOTAL_FILES} * 100)" | bc))
+	@printf " %%  \e[0m"
+	@$(eval COUNT=$(shell echo $$(($(COUNT)+1))))
+
 
 clean:
-	make -C $(LFT_PATH) clean
-	rm -rf $(OBJ_PATH)
+	@printf "\x1B[36mCleaning files\n"
+	@make -C $(LFT_PATH) clean
+	@rm -rf $(OBJ_PATH)
 
 fclean: clean
 	@make -C $(LFT_PATH) fclean

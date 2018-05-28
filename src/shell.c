@@ -18,6 +18,7 @@ t_shell	g_shell;
 int		main(int n, char **args, char **env)
 {
 	char	*str;
+	char	prompt[255];
 
 	(void)n;
 	(void)args;
@@ -28,7 +29,7 @@ int		main(int n, char **args, char **env)
 		exit_shell();
 		exit(EXIT_FAILURE);
 	}
-	while ((str = readline(SHELL_NAME"> ", g_shell.line_edit)))
+	while (set_prompt(prompt) && (str = readline(prompt, g_shell.line_edit)))
 	{
 		signal(SIGINT, sig_handler);
 		str = multi_line_prompt(str, 1);

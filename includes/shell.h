@@ -115,5 +115,6 @@ void			set_builtins(void);
 void			set_options();
 void			exit_shell();
 void			init_shell(char **env);
+int				set_prompt(char *str);
 
 #endif

@@ -21,6 +21,7 @@ INC_PATH = -I ./includes -I $(LFT_PATH)/includes
 OBJ_PATH = ./obj/
 
 SRC_NAME = \
+prompt.c \
 shell.c \
 shell_process.c\
 \

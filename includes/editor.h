@@ -47,6 +47,7 @@ enum				e_key_action
 	CTRL_A = 1,
 	CTRL_B = 2,
 	CTRL_C = 3,
+	CTRL_V = 22,
 	CTRL_D = 4,
 	CTRL_E = 5,
 	CTRL_F = 6,
@@ -145,6 +146,7 @@ int					readline_raw(char *buf, const char *prompt, t_options *e);
 
 int					handle_keys(t_editor *e);
 void				redirect_key_fn(t_editor *e, char c, char *seq);
+int					redirect_control_key(t_editor *e, char c);
 int					editor(char *buf, char *prompt, t_options *opt);
 void				editor_insert(t_editor *l, char c);
 void				editor_insert_instant(t_editor *l, char c);
@@ -216,5 +218,6 @@ void				ef_swap_char(t_editor *l);
 void				ef_del_backspace(t_editor *e);
 void				ef_del_backspace_times(t_editor *l, unsigned int x);
 void				ef_del_simple(t_editor *l);
+void				ef_paste_clipboard(t_editor *l);
 
 #endif

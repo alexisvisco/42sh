@@ -1,41 +1,38 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   shell.c                                          .::    .:/ .      .::   */
+/*   handle_key_control.c                             .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/02/12 12:35:59 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/14 13:45:45 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/05/28 12:59:58 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/05/28 12:59:58 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "shell.h"
+#include "editor.h"
 
-t_shell	g_shell;
+#define ISK(k) (k == c)
 
-int		main(int n, char **args, char **env)
+int	redirect_control_key(t_editor *e, char c)
 {
-	char	*str;
-
-	(void)n;
-	(void)args;
-	init_shell(env);
-	if (!ht_get(g_shell.env, "TERM"))
+	if (ISK(CTRL_C))
 	{
-		message_err(TERM_ENV_NOT_SET, NULL);
-		exit_shell();
-		exit(EXIT_FAILURE);
+		ft_putchar('\n');
+		ef_delete_entire_line(e);
+		refresh_line(e);
+		return (1);
 	}
-	while ((str = readline(SHELL_NAME"> ", g_shell.line_edit)))
+	if (ISK(TAB) && e->options->has_completion)
 	{
-		signal(SIGINT, sig_handler);
-		str = multi_line_prompt(str, 1);
-		str = replace_env_variables(str, 1);
-		shell_process(str);
-		free(str);
-		g_shell.line = NULL;
+		completion_handler(e);
+		return (1);
+	}
+	if (ISK(CTRL_V))
+	{
+		ef_paste_clipboard(e);
+		return (1);
 	}
 	return (0);
 }

@@ -111,18 +111,7 @@ void					redirect_key_fn(t_editor *e, char c, char *seq)
 {
 	t_redirect_fn *func;
 
-	if (ISK(CTRL_C))
-	{
-		ft_putchar('\n');
-		ef_delete_entire_line(e);
-		refresh_line(e);
-	}
-	if (ISK(TAB) && e->options->has_completion)
-	{
-		completion_handler(e);
-		return ;
-	}
-	else if (e->mode == COMPLETION)
+	if (!redirect_control_key(e, c) && e->mode == COMPLETION)
 		completion_delete(e);
 	if ((ISK(ESC) && (func = esc_fn(e, seq))) ||
 		(func = ctrl_fn(c)) ||

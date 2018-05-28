@@ -28,11 +28,11 @@ void	editor_insert_instant(t_editor *l, char c)
 	{
 		if (l->len == l->pos)
 		{
-			ft_putchar(c);
 			l->buf[l->pos] = c;
 			l->pos++;
 			l->len++;
 			l->buf[l->len] = '\0';
+			ft_putchar(c);
 		}
 		else
 		{

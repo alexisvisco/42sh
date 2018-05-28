@@ -32,6 +32,7 @@ typedef struct	s_fd
 	int			input;
 }				t_fd;
 
+char			*exec_to_str(const char *argv[]);
 int				analyze_next_and_or(char *s);
 
 char			**extract_cmd(t_token **tokens, int *index);

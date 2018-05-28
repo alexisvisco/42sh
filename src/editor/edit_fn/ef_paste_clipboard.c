@@ -1,41 +1,29 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   shell.c                                          .::    .:/ .      .::   */
+/*   ef_clear_screen.c                                .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/02/12 12:35:59 by aviscogl     #+#   ##    ##    #+#       */
+/*   Created: 2018/01/23 20:31:56 by aviscogl     #+#   ##    ##    #+#       */
 /*   Updated: 2018/04/14 13:45:45 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "shell.h"
+#include "editor.h"
 
-t_shell	g_shell;
+/*
+** Insert text from clipboard
+*/
 
-int		main(int n, char **args, char **env)
+void	 ef_paste_clipboard(t_editor *l)
 {
-	char	*str;
+	const char	*t[] = {"/usr/bin/pbpaste", NULL};
+	char			*clipboard;
 
-	(void)n;
-	(void)args;
-	init_shell(env);
-	if (!ht_get(g_shell.env, "TERM"))
-	{
-		message_err(TERM_ENV_NOT_SET, NULL);
-		exit_shell();
-		exit(EXIT_FAILURE);
-	}
-	while ((str = readline(SHELL_NAME"> ", g_shell.line_edit)))
-	{
-		signal(SIGINT, sig_handler);
-		str = multi_line_prompt(str, 1);
-		str = replace_env_variables(str, 1);
-		shell_process(str);
-		free(str);
-		g_shell.line = NULL;
-	}
-	return (0);
+	clipboard = exec_to_str(t);
+	editor_insert_str(l, clipboard);
+	free(clipboard);
+	refresh_line(l);
 }

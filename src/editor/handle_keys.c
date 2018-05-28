@@ -26,6 +26,21 @@ static int		add_history(t_editor *l)
 }
 
 /*
+** If difference btw current size and previous size update it and refresh
+*/
+
+static void edit_size_colum(t_editor *l)
+{
+	const size_t temp = (size_t)get_colums_len(l->ifd, l->ofd);
+
+	if (temp != l->cols)
+	{
+		l->cols = temp;
+		refresh_line(l);
+	}
+}
+
+/*
 ** Handle the first key entered then redirect it to redirect_key_fn(..)
 ** If the key pressed is ENTER finish return the len of the buffer
 */
@@ -40,6 +55,7 @@ int				handle_keys(t_editor *l)
 	enter = 0;
 	while (42)
 	{
+		edit_size_colum(l);
 		read(l->ifd, &c, 1);
 		if (c == CTRL_D && ft_strequ(l->buf, "") && (enter = 1))
 			ft_copy_str(l->buf, "exit");

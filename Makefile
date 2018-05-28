@@ -77,6 +77,7 @@ editor/edit_fn/ef_del_prev_word.c \
 editor/edit_fn/ef_delete_curr_to_end.c \
 editor/edit_fn/ef_delete_entire_line.c \
 editor/edit_fn/ef_go_end.c \
+editor/edit_fn/ef_paste_clipboard.c \
 editor/edit_fn/ef_go_home.c \
 editor/edit_fn/ef_move_cursor_to.c \
 editor/edit_fn/ef_move_up.c \
@@ -88,6 +89,7 @@ editor/edit_fn/ef_del_backspace.c \
 editor/edit_fn/ef_del_simple.c \
 editor/edit_fn/ef_swap_char.c \
 editor/edit_fn/redirect_to_functions.c \
+editor/edit_fn/redirect_key_ctrl.c \
 editor/completion/completion.c \
 editor/completion/get_completions.c \
 editor/completion/completion_printer.c \
@@ -134,6 +136,7 @@ exec/heredoc.c \
 exec/agregator.c \
 exec/agregator_to_file.c \
 exec/delete_redir.c \
+exec/exec_str.c \
 \
 builtins/b_env.c \
 builtins/b_search_binary.c \

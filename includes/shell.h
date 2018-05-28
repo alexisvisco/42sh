@@ -14,7 +14,7 @@
 #ifndef SHELL_H
 # define SHELL_H
 
-# define SHELL_NAME "21sh"
+# define SHELL_NAME "42sh "
 # define HISTORY_FILE ".21sh_history"
 
 # include <sys/types.h>

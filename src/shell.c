@@ -15,13 +15,8 @@
 
 t_shell	g_shell;
 
-int		main(int n, char **args, char **env)
+static void		init(char **env)
 {
-	char	*str;
-	char	prompt[255];
-
-	(void)n;
-	(void)args;
 	init_shell(env);
 	if (!ht_get(g_shell.env, "TERM"))
 	{
@@ -29,13 +24,22 @@ int		main(int n, char **args, char **env)
 		exit_shell();
 		exit(EXIT_FAILURE);
 	}
+}
+
+int				main(int n, char **args, char **env)
+{
+	char	*str;
+	char	prompt[255];
+
+	(void)n;
+	(void)args;
+	init(env);
 	while (set_prompt(prompt) && (str = readline(prompt, g_shell.line_edit)))
 	{
 		signal(SIGINT, sig_handler);
 		str = multi_line_prompt(str, 1);
-		str = replace_env_variables(str, 1);
 		shell_process(str);
-		free(str);
+		free(g_shell.line);
 		g_shell.line = NULL;
 	}
 	return (0);

@@ -29,8 +29,18 @@ static void	replace_placeholder(t_token ***tokens)
 			free((*tokens)[i]->value);
 			(*tokens)[i]->value = tmp;
 		}
+		(*tokens)[i]->value = replace_env_variables((*tokens)[i]->value, 1);
 		i++;
 	}
+}
+
+static void		update_history(char *s)
+{
+	const size_t n = g_shell.line_edit->history_data->heap->next_insert;
+
+	free(g_shell.line_edit->history_data->heap->list[n == 0 ? 0 : n - 1]);
+	g_shell.line_edit->history_data->heap->list[n == 0 ? 0 : n - 1]
+			= ft_repall("\n", " ", s);
 }
 
 int			parse_tokens(t_token ***tokens, char *s)
@@ -39,6 +49,7 @@ int			parse_tokens(t_token ***tokens, char *s)
 		return (-1);
 	if (analyze_sep(*tokens) < 0)
 		return (-2);
+	update_history(s);
 	replace_placeholder(tokens);
 	format_tokens_quotes(tokens);
 	if (seek_backquotes(*tokens) < 0)

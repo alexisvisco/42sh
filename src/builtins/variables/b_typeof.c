@@ -43,7 +43,7 @@ int 			b_typeof(char **args, t_shell *sh)
 	(void)sh;
 	if (ft_strequ(get_first_arg(args), "help"))
 		return (typeof_help());
-	parse_arguments(args, ar, "np");
+	parse_arguments(args, ar, "");
 	arg = get_first_arg(args);
 	if (arg == NULL)
 	    return (typeof_help());

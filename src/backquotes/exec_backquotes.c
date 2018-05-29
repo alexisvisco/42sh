@@ -16,14 +16,14 @@
 #define INPUT_FILE_REDIR (fd.input = call_left_redir(argv)) == -1
 #define OUTPUT_AGREG (fd.output = call_ag_redir(argv)) == -1
 
-static void		child_fork(char ***argv, t_fd fd, const int *p)
+static void		child_fork(char ***argv, t_fd fd, int *p)
 {
 	char			**envp;
 	t_builtins_fun	*buitlin;
 	int				a;
 
 	envp = env_to_array();
-	analyze_agreg(argv);
+	analyze_agreg(argv, p);
 	dup2(fd.input != 0 ? fd.input : fd.save, STDIN_FILENO);
 	dup2(p[WRITE_END], STDOUT_FILENO);
 	if (fd.output != 1)

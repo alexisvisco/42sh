@@ -42,7 +42,7 @@ int				call_right_redir(char ***cmds);
 int				call_left_redir(char ***cmds);
 int				call_heredoc(char ***cmds, int fd2);
 
-int				analyze_agreg(char ***cmds);
+int				analyze_agreg(char ***cmds, int f[2]);
 int				call_ag_redir(char ***cmds);
 int				delete_redir_and_dup(char ***cmds, int file);
 

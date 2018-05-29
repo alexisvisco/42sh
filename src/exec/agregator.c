@@ -13,14 +13,17 @@
 
 #include "shell.h"
 
-static int	agregator(char *str)
+static int	agregator(char *str, int p[2])
 {
+	char int todo = 2;
+	// METTRE LES STDOUT CORRECTEMENT ET TESTER !!!
+	(void)todo;
 	if (ft_strequ(str, "2>&1") || ft_strequ(str, "1<&2"))
 		dup2(STDOUT_FILENO, STDERR_FILENO);
 	else if (ft_strequ(str, "1>&2") || ft_strequ(str, "2<&1"))
-		dup2(STDERR_FILENO, STDOUT_FILENO);
+		dup2(STDERR_FILENO, p[WRITE_END]);
 	else if (ft_strequ(str, "1>&0") || ft_strequ(str, "0<&1"))
-		dup2(STDIN_FILENO, STDOUT_FILENO);
+		dup2(STDIN_FILENO, p[WRITE_END]);
 	else if (ft_strequ(str, "0>&1") || ft_strequ(str, "1<&0"))
 		dup2(STDOUT_FILENO, STDIN_FILENO);
 	else if (ft_strequ(str, "2>&0") || ft_strequ(str, "0<&2"))
@@ -38,14 +41,14 @@ static int	agregator(char *str)
 	return (1);
 }
 
-int			analyze_agreg(char ***cmds)
+int			analyze_agreg(char ***cmds, int p[2])
 {
 	int	k;
 
 	k = 0;
 	while ((*cmds)[k])
 	{
-		if (agregator((*cmds)[k]) == 1)
+		if (agregator((*cmds)[k], p) == 1)
 		{
 			tab_del_from_to(cmds, k, k);
 			return (1);

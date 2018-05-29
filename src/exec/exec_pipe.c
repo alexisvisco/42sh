@@ -90,7 +90,7 @@ int				exec_cmds(char ***argv, t_block *blocks, t_token **tokens)
 			status = (g_ret == 1) ? 0 : 256;
 		if (g_ret == -1 && (fork()) == 0)
 		{
-			analyze_agreg(argv);
+			analyze_agreg(argv, p);
 			dup2(fd.input != 0 ? fd.input : fd.save, STDIN_FILENO);
 			child_fork(argv, fd.output, p);
 		}

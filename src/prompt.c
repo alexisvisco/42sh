@@ -53,7 +53,10 @@ int	set_prompt(char *str)
 
 	folder = get_current_folder();
 	branch = get_git_branch();
-	prompt = ft_sprintf("%s git:(%s) $ ", folder, branch);
+	if (ft_strequ("", branch))
+		prompt = ft_sprintf("%s $ ", folder, branch);
+	else
+		prompt = ft_sprintf("%s git:(%s) $ ", folder, branch);
 	ft_copy_str(str, prompt);
 	free(prompt);
 	free(folder);

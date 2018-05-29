@@ -32,5 +32,7 @@ int	shell_process(char *s)
 	exec_or_and(tokens, blocks, tablea, 0);
 	free_toks(tokens);
 	free(blocks);
+	free(g_shell.line);
+	g_shell.line = NULL;
 	return (0);
 }

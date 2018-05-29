@@ -20,6 +20,7 @@ static void     child_fork(const char *argv[], const int *p)
 	envp = env_to_array();
 	dup2(p[WRITE_END], STDOUT_FILENO);
 	close(p[READ_END]);
+	close(STDERR_FILENO);
 	execve(argv[0], (char *const *) argv, envp);
 	free_tab(envp);
 	exit(EXIT_FAILURE);

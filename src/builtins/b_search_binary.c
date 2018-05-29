@@ -27,7 +27,7 @@ static void		b_best_matchs(char *key, t_trie_node *tries)
 	{
 		if (heap->list[i] && ft_levenshtein(key, heap->list[i], ft_strlen(key),
 		ft_strlen(heap->list[i])) <= 2)
-			ft_printf(" * %s at %s\n", heap->list[i],
+			ft_printf(" * %-16s -> %s\n", heap->list[i],
 			ht_get(g_shell.bin, heap->list[i]));
 		i++;
 	}

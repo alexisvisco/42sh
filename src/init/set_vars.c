@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ef_move_left.c                                   .::    .:/ .      .::   */
+/*   set_vars.c                                       .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/23 20:31:56 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/14 13:45:45 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/02/26 13:57:53 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/26 13:57:53 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "editor.h"
+#include "shell.h"
 
-/*
-** Move current position of the cursor to the LEFT if it is possible
-*/
-
-void	ef_move_left(t_editor *l)
+void	set_vars(void)
 {
-	if (l->pos > 0)
-		l->pos--;
+	g_shell.vars = ht_new(64);
+	g_shell.vars->free_func = free_variable;
 }

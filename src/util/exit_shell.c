@@ -29,5 +29,6 @@ void	exit_shell(void)
 	free(g_shell.line);
 	free_options(g_shell.history_search);
 	ht_free(get_builtins());
+	ht_free(g_shell.vars);
 	disable_terminal(0);
 }

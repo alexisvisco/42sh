@@ -38,8 +38,8 @@ int			replace_argv0_by_exec(char ***cmds)
 	i = 0;
 	while (cmds[i])
 	{
-		if (is_executable(cmds[i][0]) || builtins(cmds[i][0])
-				|| builtins_env(cmds[i][0]))
+		if (is_assignation_variable(cmds[i][0]) || is_executable(cmds[i][0]) ||
+			builtins(cmds[i][0]) || builtins_env(cmds[i][0]))
 			;
 		else if ((tmp = ht_get(g_shell.bin, cmds[i][0])))
 		{

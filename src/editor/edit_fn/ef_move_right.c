@@ -14,7 +14,7 @@
 #include "editor.h"
 
 /*
-** Move current position of the cursor to the right if it is possible
+** Move current position of the cursor to the RIGHT if it is possible
 */
 
 void	ef_move_right(t_editor *l)

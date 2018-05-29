@@ -44,7 +44,7 @@ void			completion_printer(t_editor *e, t_heap *list)
 	if (max_colums < 0)
 		max_colums = 1;
 	disable_terminal(STDIN_FILENO);
-	ft_printf("\nListe des completions (%i):\n", list->elements);
+	ft_printf("\nCompletions list (%i):\n", list->elements);
 	i = 0;
 	j = 0;
 	while (i < list->size)

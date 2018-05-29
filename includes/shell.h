@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/12 12:36:20 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/14 13:45:45 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/20 09:32:25 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,7 +14,7 @@
 #ifndef SHELL_H
 # define SHELL_H
 
-# define SHELL_NAME "21sh"
+# define SHELL_NAME "42sh "
 # define HISTORY_FILE ".21sh_history"
 
 # include <sys/types.h>
@@ -29,14 +29,15 @@
 # include <stdint.h>
 # include <sys/types.h>
 # include <dirent.h>
-# include "libft.h"
 # include <sys/stat.h>
+# include "libft.h"
 # include "shell_struct.h"
 # include "editor.h"
 # include "lex.h"
 # include "exec.h"
 # include "util.h"
 # include "builtins.h"
+# include "variables.h"
 # include "backquotes.h"
 
 extern t_shell	g_shell;
@@ -84,6 +85,7 @@ typedef enum	e_msgs
 	ERR_NO_HISTORY_FROM_BEGIN,
 	ERR_NO_HISTORY_FROM_END,
 	ERR_NO_OLD_PWD,
+
 	ERR_HISTORY_ARG_MERGED,
 	MSG_HISTORY_CLEARED,
 	ERR_HISTORY_OFFSET_NEEDED,
@@ -97,6 +99,12 @@ typedef enum	e_msgs
 	MSG_HISTORY_READ,
 	ERR_HISTORY_WRITE,
 	MSG_HISTORY_WRITE,
+
+	ERR_VAR_USAGE,
+	ERR_VAR_NOT_EXIST,
+	MSG_VAR_EXPORTED,
+	MSG_VAR_UNSETED,
+	MSG_VAR_TYPEOF,
 
 	ERR_BACKQUOTES,
 	ERR_INCE_BACK
@@ -114,6 +122,7 @@ void			update_bin(t_shell *shell);
 void			set_builtins(void);
 void			set_options();
 void			exit_shell();
+void			set_vars(void);
 void			init_shell(char **env);
 int				set_prompt(char *str);
 

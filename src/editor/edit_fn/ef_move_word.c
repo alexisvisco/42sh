@@ -14,7 +14,7 @@
 #include "shell.h"
 
 /*
-** Move to the next word at right
+** Move to the next word at RIGHT
 */
 
 void	ef_move_word_right(t_editor *l)
@@ -26,7 +26,7 @@ void	ef_move_word_right(t_editor *l)
 }
 
 /*
-** Move to the next word at left
+** Move to the next word at LEFT
 */
 
 void	ef_move_word_left(t_editor *l)

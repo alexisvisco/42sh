@@ -14,7 +14,7 @@
 #include "editor.h"
 
 /*
-** Move cursor to right position
+** Move cursor to RIGHT position
 ** Go up till we reach the expected positon
 */
 

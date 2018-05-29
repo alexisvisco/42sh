@@ -1,24 +1,40 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ef_move_left.c                                   .::    .:/ .      .::   */
+/*   free_variable.c                                  .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/23 20:31:56 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/14 13:45:45 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/02/26 14:00:01 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/26 14:00:01 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "editor.h"
+#include "shell.h"
 
-/*
-** Move current position of the cursor to the LEFT if it is possible
-*/
-
-void	ef_move_left(t_editor *l)
+void	free_variable(void *var)
 {
-	if (l->pos > 0)
-		l->pos--;
+	t_var *variables;
+
+	if (var)
+	{
+		variables = (t_var *) var;
+		free(variables->value);
+	}
+	free(var);
+}
+
+void	free_node_variable(void *var)
+{
+	t_node *node;
+
+	node = var;
+	if (node)
+	{
+		free(node->key);
+		if (node->value)
+			free_variable(node->value);
+		free(node);
+	}
 }

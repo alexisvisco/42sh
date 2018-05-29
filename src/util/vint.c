@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ef_move_left.c                                   .::    .:/ .      .::   */
+/*   vint.c                                           .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/23 20:31:56 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/14 13:45:45 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/04/19 14:08:46 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/04/19 14:08:46 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "editor.h"
+#include <stdlib.h>
 
-/*
-** Move current position of the cursor to the LEFT if it is possible
-*/
-
-void	ef_move_left(t_editor *l)
+int *vint(int x)
 {
-	if (l->pos > 0)
-		l->pos--;
+    int *i;
+
+    i = malloc(1);
+    *i = x;
+    return i;
 }

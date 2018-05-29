@@ -16,52 +16,20 @@
 
 # include <stdlib.h>
 # include <stdio.h>
-# include <ctype.h>
+# include <libft.h>
 
-# define ISWS(c) ((c) == ' ' || ((c) >= '\t' && (c) <= '\r'))
-# define OPEND(c) (ft_isdigit(c) || ISWS(c) || (c) == '$')
-# define GET_NEXT *eval((++*s, s), (*p) - 1)
+# define ALLOWEDS_CHARS(c) (strchr("+-*/%() 0123456789", c) != NULL)
 
-extern int		g_stack[4096];
-extern int		g_idx;
-extern int		g_ustack[4096];
-
-typedef enum	e_priority
+typedef struct	result_expr
 {
-	PRIMARY = 0,
-	UNARY,
-	MULTIPLICATIVE,
-	ADDITIVE,
-	SHIFT,
-	RELATIONAL,
-	EQUALITY,
-	AND,
-	XOR,
-	OR,
-	LAND,
-	LOR,
-	CONDITIONAL,
-	ASSIGN,
-	EXPR,
-	MAX = EXPR
-}				t_priority;
+	int 		res;
+	char 		*error;
+}				t_res;
 
-int				*eval(char **s, t_priority p);
-int				eval_expr(char *str);
-int				*primary(char **s, int *a);
-int				*unary(char **s, t_priority *p, int *a);
-int				multiplicative(char **s, t_priority *p, int **a, int *i);
-int				additive(char **s, t_priority *p, int **a, int *i);
-int				shift(char **s, t_priority *p, int **a, int *i);
-int				relational(char **s, t_priority *p, int **a, int *i);
-int				equality(char **s, t_priority *p, int **a, int *i);
-int				andex(char **s, t_priority *p, int **a, int *i);
-int				xorex(char **s, t_priority *p, int **a, int *i);
-int				orex(char **s, t_priority *p, int **a, int *i);
-int				land(char **s, t_priority *p, int **a, int *i);
-int				lor(char **s, t_priority *p, int **a, int *i);
-int				conditionalex(char **s, int **a, int *i);
-int				assignex(char **s, t_priority *p, int **a);
-int				exprex(char **s, t_priority *p, int **a);
+int		parse_sum(char **expr, t_res *res);
+int		can_exec(t_res *res, int number);
+int		custom_atoi(char **str);
+void	eval_expr(char *expr, t_res *res);
+int		valid_expr(char *expr);
 
 #endif

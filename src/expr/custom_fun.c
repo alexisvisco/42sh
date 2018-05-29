@@ -1,24 +1,44 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ef_move_left.c                                   .::    .:/ .      .::   */
+/*   custom_atoi.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/23 20:31:56 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/14 13:45:45 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/05/26 11:40:25 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/05/26 11:40:25 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "editor.h"
+#include <expr.h>
 
-/*
-** Move current position of the cursor to the LEFT if it is possible
-*/
-
-void	ef_move_left(t_editor *l)
+int	custom_atoi(char **str)
 {
-	if (l->pos > 0)
-		l->pos--;
+	int nbr;
+
+	nbr = 0;
+	while (**str >= '0' && **str <= '9')
+	{
+		nbr = nbr * 10 + (**str - '0');
+		(*str)++;
+	}
+	return (nbr);
+}
+
+int	can_exec(t_res *res, int number)
+{
+	if (number == 0)
+		res->error = ft_strdup("Infinity.");
+	return number != 0;
+}
+
+int	valid_expr(char *expr)
+{
+	while (*expr) {
+		if (!ALLOWEDS_CHARS(*expr))
+			return (0);
+		expr++;
+	}
+	return (1);
 }

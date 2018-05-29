@@ -6,7 +6,7 @@
 /*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/12 12:37:54 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/20 14:09:58 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/20 09:32:25 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -42,7 +42,7 @@ static char	*g_msg_list[] = {
 	"To unset env user: unsetenv <key> [<key>...].\n",
 	"Env variable %s doesn't exist.\n",
 	"Env variable %s was unset (the value was %s).\n",
-	"You killed me (exit code: %i)! Just say me why ?\n",
+	"You killed me (exit code: %i)! JUST SAY ME WHY !?\n",
 	"To search binary use: search-binary <query>.\n",
 	"One match found: %s at %s.\n",
 	"There is currently no history.\n",
@@ -50,12 +50,14 @@ static char	*g_msg_list[] = {
 	"Cannot access to the directory %s.\n",
 	"No such directory.\n",
 	"Current directory is now %s.\n",
+
 	"There is no history available.\n",
 	"There is no history available that contain %s.\n",
 	"There is no history available that start with %s.\n",
 	"There is no history available at index %i from begin.\n",
 	"There is no history available at index %i from end.\n",
 	"There is no previous working directory.\n",
+
 	"History: can't support merged argument, check: history help.\n",
 	"History: was clear.\n",
 	"History: -d option need a offset.\n",
@@ -69,6 +71,12 @@ static char	*g_msg_list[] = {
 	"History: successfully set the history list with the history of file %s.\n",
 	"History: error while writing history to file %s.\n",
 	"History: successfully write the history to the file file %s.\n",
+
+	"Export: use export NAME[=value].\n",
+	"Variable %s not exist.\n",
+	"Export: variable %s was exported.\n",
+	"Unset: variable %s was unset.\n",
+	"%s: %s\n",
 
 	"There is an error in your backquotes!\n",
 	"Sorry bro, this backquotes inception isn't supported :(\n"

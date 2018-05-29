@@ -20,6 +20,7 @@
 typedef struct	s_shell
 {
 	t_hashtable	*env;
+	t_hashtable	*vars;
 	t_hashtable	*bin;
 	t_trie_node	*bin_trie;
 	t_trie_node	*env_trie;

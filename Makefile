@@ -19,6 +19,7 @@ LFT_PATH = ./libft
 SRC_PATH = ./src/
 INC_PATH = -I ./includes -I $(LFT_PATH)/includes
 OBJ_PATH = ./obj/
+TOTAL_FILES := 146
 
 SRC_NAME = \
 prompt.c \
@@ -44,6 +45,7 @@ parser/parse_and_or.c  \
 init/init_shell.c \
 init/set_env.c \
 init/set_bin.c \
+init/set_vars.c \
 init/set_options.c \
 init/set_builtins.c \
 \
@@ -124,6 +126,7 @@ util/ft_repall.c \
 util/remove_file.c \
 util/ft_contain_any_seq.c \
 util/util_command.c \
+util/vint.c \
 \
 exec/signal.c \
 exec/analyze_next_and_or.c  \
@@ -159,14 +162,18 @@ builtins/history/bh_history_non_read.c \
 builtins/history/bh_history_read.c \
 builtins/history/bh_show_history.c \
 builtins/history/bh_write_history.c \
+builtins/variables/b_export.c \
+builtins/variables/b_typeof.c \
+builtins/variables/b_unset.c \
+builtins/variables/b_variables.c \
+builtins/variables/core_variable.c \
+builtins/variables/free_variable.c \
 builtins/b_echo.c \
 builtins/b_exit.c \
 builtins/is_builtins.c \
 \
-expr/eval_expr.c \
-expr/bundle_funcs_0.c \
-expr/bundle_funcs_1.c \
-expr/bundle_funcs_2.c \
+expr/expr.c \
+expr/custom_fun.c \
 \
 backquotes/backquotes_parsing.c \
 backquotes/core_exec_backquotes.c \
@@ -175,27 +182,39 @@ backquotes/ft_mine_strjoin.c
 
 
 EDITOR_FOLDERS = editor editor/util editor/refresher editor/completion editor/keys_functions editor/edit_fn editor/history
-OBJ_FOLDERS = $(EDITOR_FOLDERS) expr init builtins builtins/history exec lex messages parser util backquotes
+OBJ_FOLDERS = $(EDITOR_FOLDERS) expr init builtins builtins/history builtins/variables exec lex messages parser util
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
 OBJ = $(addprefix $(OBJ_PATH),$(OBJ_NAME))
 OBJ_FOLDERS_BIS = $(addprefix $(OBJ_PATH),$(OBJ_FOLDERS))
 
+COUNT := 0
+
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	make -C $(LFT_PATH)
-	$(CC) -o $(NAME) $(OBJ) -L$(LFT_PATH) -lft
+	@make -C $(LFT_PATH)
+	@$(CC) -o $(NAME) $(OBJ) -L$(LFT_PATH) -lft
+	@printf "\nDone.\n"
 
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@mkdir -p $(OBJ_PATH) $(OBJ_FOLDERS_BIS)
-	$(CC) $(CC_FLAGS) $(INC_PATH) -o $@ -c $^
+	@$(CC) $(CC_FLAGS) $(INC_PATH) -o $@ -c $^
+	@printf "\r\e[0m\x1B[36m\e[21mCompiling C files \e[0m\e[32m["
+	@printf " %.0s" {0..$(shell printf "%.0f" $(shell echo "scale=3; (${COUNT}/${TOTAL_FILES} * 100)" | bc))}
+	@printf "ᗧ"
+	@printf "•%.0s" {0..$(shell printf "%.0f" $(shell echo "scale=3; 100 - ((${COUNT}/${TOTAL_FILES} * 100))" | bc))}
+	@printf "] %s" $(shell printf "%.0f" $(shell echo "scale=3; (${COUNT}/${TOTAL_FILES} * 100)" | bc))
+	@printf " %%  \e[0m"
+	@$(eval COUNT=$(shell echo $$(($(COUNT)+1))))
+
 
 clean:
-	make -C $(LFT_PATH) clean
-	rm -rf $(OBJ_PATH)
+	@printf "\x1B[36mCleaning files\n"
+	@make -C $(LFT_PATH) clean
+	@rm -rf $(OBJ_PATH)
 
 fclean: clean
 	@make -C $(LFT_PATH) fclean

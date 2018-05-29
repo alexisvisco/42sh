@@ -1,24 +1,37 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ef_move_left.c                                   .::    .:/ .      .::   */
+/*   variables.h                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/23 20:31:56 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/14 13:45:45 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/02/26 13:12:52 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/02/26 13:12:52 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "editor.h"
 
-/*
-** Move current position of the cursor to the LEFT if it is possible
-*/
+#ifndef VARIABLES_H
+# define VARIABLES_H
 
-void	ef_move_left(t_editor *l)
+typedef enum	s_var_type{
+	VAR_STRING,
+	VAR_NUMBER
+}				t_var_type;
+
+typedef struct	s_variable
 {
-	if (l->pos > 0)
-		l->pos--;
-}
+	char		symbol[32];
+	t_var_type	var_type;
+	void		*value;
+}				t_var;
+
+void			free_variable(void *var);
+char			*v_value_to_str(t_var *v);
+int				is_assignation_variable(char *str);
+t_var_type get_type_of_assignation(char *str);
+int				create_variable(char *assignation);
+void			free_node_variable(void *var);
+
+#endif

@@ -46,6 +46,7 @@ void			init_shell(char **env)
 	print_welcome_message();
 	set_env(env);
 	set_bin(&g_shell);
+	set_vars();
 	set_options();
 	set_builtins();
 }

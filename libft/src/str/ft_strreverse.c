@@ -1,24 +1,35 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ef_move_left.c                                   .::    .:/ .      .::   */
+/*   ft_strreverse.c                                  .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/23 20:31:56 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/14 13:45:45 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/04/19 12:26:35 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/04/19 12:26:35 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "editor.h"
+#include "libft.h"
 
-/*
-** Move current position of the cursor to the LEFT if it is possible
-*/
-
-void	ef_move_left(t_editor *l)
+char		*ft_strrev(char *s)
 {
-	if (l->pos > 0)
-		l->pos--;
+    int		i;
+    int		len;
+    char	tmp;
+
+    i = 0;
+    len = (ft_strlen(s) - 1);
+    if (s[i] == '-')
+        i++;
+    while (i < len)
+    {
+        tmp = s[len];
+        s[len] = s[i];
+        s[i] = tmp;
+        i++;
+        len--;
+    }
+    return (s);
 }

@@ -28,7 +28,7 @@ t_node	*ht_remove(t_hashtable *t, const char *key)
 	{
 		node = (t_node *)heap->list[i];
 		if (node && ft_strequ(node->key, key))
-			return ((t_node *)heap_del(heap, i));
+			return ((t_node *) heap_del(heap, i));
 		i++;
 	}
 	return (NULL);

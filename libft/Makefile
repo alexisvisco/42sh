@@ -225,9 +225,9 @@ $(OBJ_PATH)%.o: $(SRC_PATH)/%.c
 	@mkdir -p $(OBJ_SUB_PATHS)
 	@$(CC) $(CFLAGS) $(INC) -o $@ -c $<
 	@printf "\r\e[0m\x1B[36m\e[21mCompiling libft   \e[0m\e[32m["
-	@printf " %.0s" {0..$(shell printf "%.0f" $(shell echo "scale=3; (${COUNT}/${TOTAL_FILES} * 100)" | bc))}
+	@printf " %.0s" {0..$(shell printf "%.0f" $(shell echo "scale=3; (${COUNT}/${TOTAL_FILES} * 25)" | bc))}
 	@printf "ᗧ"
-	@printf "•%.0s" {0..$(shell printf "%.0f" $(shell echo "scale=3; 100 - ((${COUNT}/${TOTAL_FILES} * 100))" | bc))}
+	@printf "•%.0s" {0..$(shell printf "%.0f" $(shell echo "scale=3; 25 - ((${COUNT}/${TOTAL_FILES} * 25))" | bc))}
 	@printf "] %s" $(shell printf "%.0f" $(shell echo "scale=3; (${COUNT}/${TOTAL_FILES} * 100)" | bc))
 	@printf " %%  \e[0m"
 	@$(eval COUNT=$(shell echo $$(($(COUNT)+1))))

@@ -182,7 +182,7 @@ backquotes/ft_mine_strjoin.c
 
 
 EDITOR_FOLDERS = editor editor/util editor/refresher editor/completion editor/keys_functions editor/edit_fn editor/history
-OBJ_FOLDERS = $(EDITOR_FOLDERS) expr init builtins builtins/history builtins/variables exec lex messages parser util
+OBJ_FOLDERS = $(EDITOR_FOLDERS) expr init builtins backquotes builtins/history builtins/variables exec lex messages parser util
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
@@ -203,9 +203,9 @@ $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@mkdir -p $(OBJ_PATH) $(OBJ_FOLDERS_BIS)
 	@$(CC) $(CC_FLAGS) $(INC_PATH) -o $@ -c $^
 	@printf "\r\e[0m\x1B[36m\e[21mCompiling C files \e[0m\e[32m["
-	@printf " %.0s" {0..$(shell printf "%.0f" $(shell echo "scale=3; (${COUNT}/${TOTAL_FILES} * 100)" | bc))}
+	@printf " %.0s" {0..$(shell printf "%.0f" $(shell echo "scale=3; (${COUNT}/${TOTAL_FILES} * 25)" | bc))}
 	@printf "ᗧ"
-	@printf "•%.0s" {0..$(shell printf "%.0f" $(shell echo "scale=3; 100 - ((${COUNT}/${TOTAL_FILES} * 100))" | bc))}
+	@printf "•%.0s" {0..$(shell printf "%.0f" $(shell echo "scale=3; 25 - ((${COUNT}/${TOTAL_FILES} * 25))" | bc))}
 	@printf "] %s" $(shell printf "%.0f" $(shell echo "scale=3; (${COUNT}/${TOTAL_FILES} * 100)" | bc))
 	@printf " %%  \e[0m"
 	@$(eval COUNT=$(shell echo $$(($(COUNT)+1))))

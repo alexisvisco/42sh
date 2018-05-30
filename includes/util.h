@@ -39,10 +39,10 @@ int				nb_equal_char(char *s1, char *s2);
 
 t_heap			*ask_line(char *prompt, int nl,
 					int (*is_end)(char *cmp, char *line), char *cmp);
-char			*heap_to_str(t_heap *h);
+char			*heap_to_str(t_heap *h, int nl);
 char			*heap_to_str_rm_one(t_heap *h);
 int				odd_quote(char *quote, char *line);
-int				which_quote(char *s);
+char			which_quote(char *s);
 char			*multi_line_prompt(char *line, int free_line);
 void			odd_quote_prompt(t_token ***tokens, char *s);
 char			*replace_env_variables(char *str, int free_str);

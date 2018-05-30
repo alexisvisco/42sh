@@ -25,7 +25,7 @@ int	shell_process(char *s)
 	tablea[1] = 0;
 	escape_useless_backquotes(s);
 	g_shell.line = s;
-	if (parse_tokens(&tokens, s) < 0)
+	if (parse_tokens(&tokens, s, 0) < 0)
 		return (0);
 	if (parse_block(tokens, &blocks) < 0)
 		return (0);

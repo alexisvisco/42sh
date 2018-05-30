@@ -82,7 +82,7 @@ void			extract_type_redir(t_token **tokens, t_block **block);
 void			analyze_or_and(t_block **block, t_token **tokens);
 int				operator_error(t_block **blocks, t_token **tokens);
 
-int				parse_tokens(t_token ***tokens, char *s);
+int				parse_tokens(t_token ***tokens, char *s, int is_backquote);
 
 int				count_blocks(t_token **tokens);
 int				parse_block(t_token **tokens, t_block **blocks);

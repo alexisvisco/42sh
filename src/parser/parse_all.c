@@ -43,13 +43,14 @@ static void		update_history(char *s)
 			= ft_repall("\n", " ", s);
 }
 
-int			parse_tokens(t_token ***tokens, char *s)
+int			parse_tokens(t_token ***tokens, char *s, int is_backquote)
 {
 	if (lex_all(tokens, s) < 0)
 		return (-1);
 	if (analyze_sep(*tokens) < 0)
 		return (-2);
-	update_history(s);
+	if (!is_backquote)
+		update_history(s);
 	replace_placeholder(tokens);
 	format_tokens_quotes(tokens);
 	if (seek_backquotes(*tokens) < 0)

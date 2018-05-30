@@ -43,14 +43,14 @@ t_heap		*ask_line(char *prompt, int nl,
 	return (result);
 }
 
-char		*heap_to_str(t_heap *h)
+char		*heap_to_str(t_heap *h, int nl)
 {
 	char		*full;
 	char		*tmp;
 	size_t		i;
 
 	i = 0;
-	full = ft_strdup("\n");
+	full = ft_strdup(nl ? "\n" : "");
 	while (i < h->size)
 	{
 		if (h->list[i])

@@ -15,7 +15,7 @@
 
 static int	agregator(char *str, int p[2])
 {
-	char int todo = 2;
+	char todo = 2;
 	// METTRE LES STDOUT CORRECTEMENT ET TESTER !!!
 	(void)todo;
 	if (ft_strequ(str, "2>&1") || ft_strequ(str, "1<&2"))

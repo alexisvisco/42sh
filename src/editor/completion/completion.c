@@ -83,7 +83,7 @@ void	init_completion(t_editor *e)
 	if (!e->options->completion_data)
 	{
 		e->mode = COMPLETION;
-		e->options->completion_data = malloc(sizeof(t_e_content));
+		e->options->completion_data = ft_memalloc(sizeof(t_e_content));
 		e->options->completion_data->heap = heap_new(32);
 		e->options->completion_data->index = -1;
 		e->options->completion_data->origin[0] = '\0';

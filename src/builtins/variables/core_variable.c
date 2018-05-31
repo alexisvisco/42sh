@@ -39,7 +39,7 @@ int		create_variable(char *assignation)
 	t_res	res;
 
 	assign = ft_strsplit(assignation, '=');
-	var = (t_var *)malloc(sizeof(t_var));
+	var = (t_var *)ft_memalloc(sizeof(t_var));
 	if (ft_strlen(assign[0]) > 32)
 	{
 		free(var);

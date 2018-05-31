@@ -24,7 +24,7 @@ char		**extract_cmd(t_token **tokens, int *index)
 	int		i;
 
 	i = 0;
-	ret = malloc(sizeof(char *) * (index[1] - index[0] + 2));
+	ret = ft_memalloc(sizeof(char *) * (index[1] - index[0] + 2));
 	ret[index[1] - index[0] + 1] = NULL;
 	while (index[0] <= index[1])
 	{

@@ -19,7 +19,7 @@ void	tab_del_from_to(char ***t, int from, int to)
 	int		i;
 	int		j;
 
-	res_tab = malloc(sizeof(char *) * (size_tab(*t) - (to - from) + 1));
+	res_tab = ft_memalloc(sizeof(char *) * (size_tab(*t) - (to - from) + 1));
 	j = 0;
 	i = 0;
 	while ((*t)[i])

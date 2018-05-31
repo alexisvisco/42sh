@@ -21,7 +21,7 @@ char			*ft_mine_strjoin(char const *s1, char const *s2)
 	if (!(*s1))
 		return (ft_strdup(s2));
 	total_size = ft_strlen(s1) + ft_strlen(s2) + 1;
-	if (!(res = malloc(sizeof(char) * (total_size + 1))))
+	if (!(res = ft_memalloc(sizeof(char) * (total_size + 1))))
 		return (NULL);
 	res[total_size] = '\0';
 	while (*s1)

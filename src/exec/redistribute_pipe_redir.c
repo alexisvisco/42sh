@@ -48,11 +48,11 @@ char			***extract_all_pipes(char **argv)
 	int		k;
 
 	nb_cmds = count_pipes(argv);
-	cmds = malloc(sizeof(char**) * (nb_cmds + 2));
+	cmds = ft_memalloc(sizeof(char**) * (nb_cmds + 2));
 	cmds[nb_cmds + 1] = NULL;
 	i = -1;
 	while (++i <= nb_cmds)
-		cmds[i] = malloc(sizeof(char*) * (end_of_cmd(argv) + 1));
+		cmds[i] = ft_memalloc(sizeof(char*) * (end_of_cmd(argv) + 1));
 	i = 0;
 	j = 0;
 	while (i <= nb_cmds)

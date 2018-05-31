@@ -33,12 +33,12 @@ void	*ft_realloc(void *ptr, size_t size)
 
 	if (!size && ptr)
 	{
-		if (!(newptr = (char *)malloc(1)))
+		if (!(newptr = (char *)ft_memalloc(1)))
 			return (NULL);
 		ft_memdel(&ptr);
 		return (newptr);
 	}
-	if (!(newptr = (char *)malloc(size)))
+	if (!(newptr = (char *)ft_memalloc(size)))
 		return (NULL);
 	if (ptr)
 	{

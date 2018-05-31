@@ -91,11 +91,11 @@ t_token			**split_tokens(char *s, int nbtokens)
 	int		i;
 	int		len;
 
-	tokens = malloc(sizeof(t_token*) * (nbtokens + 1));
+	tokens = ft_memalloc(sizeof(t_token*) * (nbtokens + 1));
 	i = 0;
 	len = ft_strlen(s);
 	while (i < nbtokens)
-		tokens[i++] = malloc(sizeof(t_token));
+		tokens[i++] = ft_memalloc(sizeof(t_token));
 	i = 0;
 	while (*s)
 	{

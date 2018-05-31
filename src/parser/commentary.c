@@ -68,7 +68,7 @@ t_block			*extract_block_commentary(t_token **tokens, int nb_tokens)
 	t_block	*blocks;
 	int		begin;
 
-	blocks = malloc(sizeof(t_block) *
+	blocks = ft_memalloc(sizeof(t_block) *
 	(count_block_until_com(tokens, nb_tokens) + 1));
 	i = 0;
 	j = 0;

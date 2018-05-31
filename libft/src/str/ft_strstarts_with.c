@@ -23,7 +23,8 @@ int		ft_strstarts_with_str(const char *s, char *str)
 	int i;
 
 	i = 0;
-	while (s && (s[i] == str[i]))
+	while (s[i] && str[i] && pwd
+									 (s[i] == str[i]))
 		i++;
 	return (i == ((int)ft_strlen(str)));
 }

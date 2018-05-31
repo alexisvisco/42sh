@@ -71,7 +71,7 @@ char			**env_to_array(void)
 	int			k;
 
 	size = env_size();
-	env = (char **)malloc((size + 1) * sizeof(char *));
+	env = (char **)ft_memalloc((size + 1) * sizeof(char *));
 	env[size] = 0;
 	k = 0;
 	put_in_array(env, &k);

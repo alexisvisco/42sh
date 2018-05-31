@@ -22,7 +22,7 @@ void	delete_first_element(char ***s)
 	end = 0;
 	while ((*s)[end])
 		end++;
-	ret = malloc(sizeof(char *) * end);
+	ret = ft_memalloc(sizeof(char *) * end);
 	ret[end - 1] = NULL;
 	i = 1;
 	while (i < end)

@@ -11,13 +11,13 @@
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <f_mem.h>
 
 int *vint(int x)
 {
     int *i;
 
-    i = malloc(1);
+    i = ft_memalloc(1);
     *i = x;
     return i;
 }

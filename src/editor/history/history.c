@@ -104,7 +104,7 @@ void			init_history(t_editor *e)
 {
 	if (!e->options->history_data)
 	{
-		e->options->history_data = malloc(sizeof(t_e_content));
+		e->options->history_data = ft_memalloc(sizeof(t_e_content));
 		e->options->history_data->heap = heap_new(32);
 		e->options->history_data->index = -1;
 		e->options->history_data->origin[0] = '\0';

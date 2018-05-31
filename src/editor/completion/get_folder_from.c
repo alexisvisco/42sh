@@ -35,7 +35,7 @@ char	*get_folder_from(char *str)
 			prev = i;
 		i++;
 	}
-	n_str = (char *)malloc(sizeof(char) * (prev + 2));
+	n_str = (char *)ft_memalloc(sizeof(char) * (prev + 2));
 	n_str[prev + 1] = 0;
 	ft_strncpy(n_str, str, prev + 1);
 	return (n_str);

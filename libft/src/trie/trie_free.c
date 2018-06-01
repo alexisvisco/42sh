@@ -28,5 +28,5 @@ void	trie_free(t_trie_node *r)
 		trie_free(r->children[index]);
 		index++;
 	}
-	free(r);
+	ft_memdel((void **)&r);
 }

@@ -30,7 +30,7 @@ void	get_previous_history(t_heap *hist)
 	{
 		i++;
 		heap_add(hist, ft_strdup(line));
-		free(line);
+		ft_memdel((void **)&line);
 	}
 	g_shell.line_edit->history_data->plus = i;
 	close(fd);

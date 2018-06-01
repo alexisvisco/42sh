@@ -43,7 +43,7 @@ int			replace_argv0_by_exec(char ***cmds)
 			;
 		else if ((tmp = ht_get(g_shell.bin, cmds[i][0])))
 		{
-			free(cmds[i][0]);
+			ft_memdel((void **)&(cmds[i][0]));
 			cmds[i][0] = ft_strdup(tmp);
 		}
 		else

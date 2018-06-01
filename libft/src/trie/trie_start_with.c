@@ -22,7 +22,7 @@ static char	*set_next_prefix(char *tmp, int i)
 	tmp_ch[0] = (char)i;
 	tmp_ch[1] = 0;
 	tmpx = ft_strjoin(tmp, tmp_ch);
-	free(tmp_ch);
+	ft_memdel((void **)&tmp_ch);
 	return (tmpx);
 }
 
@@ -37,7 +37,7 @@ static void	trie_start_with_a(t_trie_node *root, char *prefix, t_heap *heap)
 		heap_add(heap, ft_strdup(prefix));
 	if (trie_is_last_node(root))
 	{
-		free(tmp);
+		ft_memdel((void **)&tmp);
 		return ;
 	}
 	i = -1;
@@ -47,10 +47,10 @@ static void	trie_start_with_a(t_trie_node *root, char *prefix, t_heap *heap)
 		{
 			tmpx = set_next_prefix(tmp, i);
 			trie_start_with_a(root->children[i], tmpx, heap);
-			free(tmpx);
+			ft_memdel((void **)&tmpx);
 		}
 	}
-	free(tmp);
+	ft_memdel((void **)&tmp);
 }
 
 void		trie_start_with(t_trie_node *root, char *prefix, t_heap *heap)

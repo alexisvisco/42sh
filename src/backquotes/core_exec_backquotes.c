@@ -46,8 +46,8 @@ static void			exec_and_join(t_token **tokens, t_block *blocks,
 	(*ret) = exec_backquotes(cmds, blocks, tokens);
 	tmp2 = (*ret).str;
 	(*ret).str = ft_mine_strjoin(tmp, (*ret).str);
-	free(tmp);
-	free(tmp2);
+	ft_memdel((void **)&tmp);
+	ft_memdel((void **)&tmp2);
 	free_3d_tab(cmds);
 }
 

@@ -24,7 +24,6 @@ void	heap_free(t_heap *h)
 			h->free_func(h->list[i]);
 		i++;
 	}
-	free(h->list);
-	free(h);
-	h = NULL;
+	ft_memdel((void **)&(h->list));
+	ft_memdel((void **)&h);
 }

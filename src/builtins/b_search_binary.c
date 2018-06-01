@@ -31,7 +31,7 @@ static void		b_best_matchs(char *key, t_trie_node *tries)
 			ht_get(g_shell.bin, heap->list[i]));
 		i++;
 	}
-	free(first_letter);
+	ft_memdel((void **)&first_letter);
 	heap_free(heap);
 }
 

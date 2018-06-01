@@ -18,7 +18,7 @@ void	lst_clear(t_list **lst)
 	if (lst && *lst)
 	{
 		lst_clear(&(*lst)->next);
-		free(*lst);
+		ft_memdel((void **)&(*lst));
 		*lst = NULL;
 	}
 }
@@ -29,8 +29,8 @@ void	lst_clear_free(t_list **lst)
 	{
 		lst_clear(&(*lst)->next);
 		if ((*lst)->content)
-			free((*lst)->content);
-		free(*lst);
+			ft_memdel(&((*lst)->content));
+		ft_memdel((void **)&(*lst));
 		*lst = NULL;
 	}
 }
@@ -42,7 +42,7 @@ void	lst_clear_fn(t_list **lst, void (*del)(void *, size_t s))
 		lst_clear(&(*lst)->next);
 		if (del)
 			(*del)((*lst)->content, (*lst)->content_size);
-		free(*lst);
+		ft_memdel((void **)&(*lst));
 		*lst = NULL;
 	}
 }

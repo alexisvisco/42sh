@@ -42,8 +42,8 @@ int		create_variable(char *assignation)
 	var = (t_var *)ft_memalloc(sizeof(t_var));
 	if (ft_strlen(assign[0]) > 32)
 	{
-		free(var);
-		free(assign);
+		ft_memdel((void **)&var);
+		ft_memdel((void **)&assign);
 		return (0);
 	}
 	var->var_type = get_type_of_assignation(assign[1]);
@@ -53,7 +53,7 @@ int		create_variable(char *assignation)
 		var->value = (void *)ft_sprintf("%i", res.res);
 	else
 		var->value = ft_strdup(assign[1]);
-	if (res.error) free(res.error);
+	if (res.error) ft_memdel((void **)&(res.error));
 	ht_set(g_shell.vars, var->symbol, var);
 	free_tab(assign);
 	return (1);

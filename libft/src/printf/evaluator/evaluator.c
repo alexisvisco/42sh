@@ -25,7 +25,7 @@ void	evaluate(char **str, void (*fn)(), t_formatter *fmt, va_list lst)
 	tmp = ft_strrep_first_aft(fmt->full_formatter,
 	fmt->to_replace, *str, fmt->index);
 	fmt->index_replace_end = fmt->index + ft_strlen(fmt->to_replace);
-	free(str[0]);
+	ft_memdel((void **)&(str[0]));
 	str[0] = tmp;
 }
 

@@ -35,7 +35,7 @@ void	number_precision(t_formatter *t)
 	else
 		str = ft_strappend_at(ft_strchr("xXp", t->type) ?
 		2 : 1, t->to_replace, pad);
-	free(t->to_replace);
-	free(pad);
+	ft_memdel((void **)&(t->to_replace));
+	ft_memdel((void **)&pad);
 	t->to_replace = str;
 }

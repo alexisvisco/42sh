@@ -37,6 +37,6 @@ int		del_history_at(char **args)
 	}
 	prev = heap_del(HISTORY_DATA, (size_t)offset);
 	message(MSG_HISTORY_DELETED, offset, prev);
-	free(prev);
+	ft_memdel((void **)&prev);
 	return (1);
 }

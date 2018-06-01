@@ -33,6 +33,6 @@ t_formatter	new_formatter(void)
 
 void		flush_formatter(t_formatter *t)
 {
-	free(t->full_formatter);
-	free(t->to_replace);
+	ft_memdel((void **)&(t->full_formatter));
+	ft_memdel((void **)&(t->to_replace));
 }

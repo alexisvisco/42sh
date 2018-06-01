@@ -36,7 +36,7 @@ static int		unset_variable(char *arg)
     to_print = ft_sprintf("%s=%s", var->symbol, var->value);
 	message(MSG_VAR_UNSETED, to_print);
 	free_node_variable(node);
-    free(to_print);
+    ft_memdel((void **)&to_print);
 	return (1);
 }
 

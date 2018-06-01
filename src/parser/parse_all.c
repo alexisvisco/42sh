@@ -26,7 +26,7 @@ static void	replace_placeholder(t_token ***tokens)
 		{
 			tmp = ft_strrep_first_aft("~", ht_get(g_shell.env, "HOME"),
 				(*tokens)[i]->value, 0);
-			free((*tokens)[i]->value);
+			ft_memdel((void **)&((*tokens)[i]->value));
 			(*tokens)[i]->value = tmp;
 		}
 		(*tokens)[i]->value = replace_env_variables((*tokens)[i]->value, 1);
@@ -38,7 +38,7 @@ static void		update_history(char *s)
 {
 	const size_t n = g_shell.line_edit->history_data->heap->next_insert;
 
-	free(g_shell.line_edit->history_data->heap->list[n == 0 ? 0 : n - 1]);
+	ft_memdel(&(g_shell.line_edit->history_data->heap->list[n == 0 ? 0 : n - 1]));
 	g_shell.line_edit->history_data->heap->list[n == 0 ? 0 : n - 1]
 			= ft_repall("\n", " ", s);
 }

@@ -29,7 +29,7 @@ void	str_padding(t_formatter *t)
 	ft_str_repeat(&to_add, ' ', diff);
 	ret = ft_strappend_at(is_left ? ft_strlen(t->to_replace) : 0,
 	t->to_replace, to_add);
-	free(to_add);
-	free(t->to_replace);
+	ft_memdel((void **)&to_add);
+	ft_memdel((void **)&(t->to_replace));
 	t->to_replace = ret;
 }

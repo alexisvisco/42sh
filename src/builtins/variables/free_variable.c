@@ -20,9 +20,9 @@ void	free_variable(void *var)
 	if (var)
 	{
 		variables = (t_var *) var;
-		free(variables->value);
+		ft_memdel((void **)&(variables->value));
 	}
-	free(var);
+	ft_memdel((void **)&var);
 }
 
 void	free_node_variable(void *var)
@@ -32,9 +32,9 @@ void	free_node_variable(void *var)
 	node = var;
 	if (node)
 	{
-		free(node->key);
+		ft_memdel((void **)&(node->key));
 		if (node->value)
 			free_variable(node->value);
-		free(node);
+		ft_memdel((void **)&node);
 	}
 }

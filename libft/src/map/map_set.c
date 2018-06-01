@@ -25,7 +25,7 @@ void	map_set(t_map *map, char *key, char *value)
 		tmp = (t_entry *)lst->content;
 		if (tmp && ft_strequ(key, tmp->key))
 		{
-			free(tmp->value);
+			ft_memdel((void **)&(tmp->value));
 			tmp->value = ft_strdup(value);
 			return ;
 		}
@@ -39,5 +39,5 @@ void	map_set(t_map *map, char *key, char *value)
 	entry->key = ft_strdup(key);
 	entry->value = ft_strdup(value);
 	lst_add(&(map->lst), lst_new(entry, sizeof(t_entry)));
-	free(entry);
+	ft_memdel((void **)&entry);
 }

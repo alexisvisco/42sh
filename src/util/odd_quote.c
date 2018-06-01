@@ -58,16 +58,16 @@ void    odd_quote_prompt(t_token ***tokens, char *s)
 	char    *tmp;
 	char 	*quote;
 
-	free(*tokens);
+	ft_memdel((void **)&(*tokens));
 	quote = ft_char_to_str(which_quote(s));
 	new_line = heap_to_str(ask_line("dquote> ", !ft_strequ(quote, "`"),
 	odd_quote, quote), !ft_strequ(quote, "`"));
-	free(quote);
+	ft_memdel((void **)&quote);
 	tmp = new_line;
 	new_line = ft_strjoin(s, new_line);
-	free(tmp);
+	ft_memdel((void **)&tmp);
 	g_shell.line = new_line;
-	free(s);
+	ft_memdel((void **)&s);
 	shell_process(multi_line_prompt(new_line, 0));
 }
 

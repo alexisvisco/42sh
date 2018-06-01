@@ -33,8 +33,8 @@ static void		char_pad_null(int w, t_formatter *t)
 	str = ft_str_repeatm(ft_strchr(t->flags, '0') ? '0' : ' ', w - 1);
 	strn = ft_strappend_at(ft_strchr(t->flags, '-') ? ft_strlen(t->to_replace)
 	: 0, t->to_replace, str);
-	free(str);
-	free(t->to_replace);
+	ft_memdel((void **)&str);
+	ft_memdel((void **)&(t->to_replace));
 	t->to_replace = strn;
 }
 
@@ -49,7 +49,7 @@ void			get_char(t_formatter *t, va_list lst)
 		arg = va_arg(lst, int);
 	else
 		arg = t->non_spec_arg;
-	free(t->to_replace);
+	ft_memdel((void **)&(t->to_replace));
 	str = get_char_st(arg);
 	t->to_replace = str;
 	if (arg)

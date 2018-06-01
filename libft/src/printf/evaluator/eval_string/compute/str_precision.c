@@ -18,6 +18,6 @@ void	str_precision(t_formatter *t)
 	char *tmp;
 
 	tmp = ft_strsub(t->to_replace, 0, (size_t)t->precision);
-	free(t->to_replace);
+	ft_memdel((void **)&(t->to_replace));
 	t->to_replace = tmp;
 }

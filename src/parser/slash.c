@@ -117,13 +117,13 @@ void			format_tokens_quotes(t_token ***tokens)
 	{
 		tmp = (*tokens)[i]->value;
 		(*tokens)[i]->value = change_quotes((*tokens)[i]->value);
-		free(tmp);
+		ft_memdel((void **)&tmp);
 		tmp = (*tokens)[i]->value;
 		(*tokens)[i]->value = remove_quotes((*tokens)[i]->value);
-		free(tmp);
+		ft_memdel((void **)&tmp);
 		tmp = (*tokens)[i]->value;
 		(*tokens)[i]->value = change_back_quotes((*tokens)[i]->value);
-		free(tmp);
+		ft_memdel((void **)&tmp);
 		i++;
 	}
 }

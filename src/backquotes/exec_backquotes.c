@@ -72,8 +72,8 @@ static void		get_backq_string(const int *p, t_backquotes *ret)
 	{
 		tmp = (*ret).str;
 		(*ret).str = ft_mine_strjoin((*ret).str, line);
-		free(tmp);
-		free(line);
+		ft_memdel((void **)&tmp);
+		ft_memdel((void **)&line);
 	}
 	free_gnl();
 }

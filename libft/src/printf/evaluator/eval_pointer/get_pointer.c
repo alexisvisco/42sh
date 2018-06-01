@@ -21,7 +21,7 @@ void	get_pointer(t_formatter *t, va_list lst)
 	pointer = va_arg(lst, uintmax_t);
 	str = ft_memalloc(sizeof(char) * 256);
 	str_uintmax(str, pointer, 16, BASE);
-	free(t->to_replace);
+	ft_memdel((void **)&(t->to_replace));
 	t->to_replace = str;
 	base_hash(t);
 	pointer_compute(t);

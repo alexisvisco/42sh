@@ -20,6 +20,6 @@ void	number_space(t_formatter *t)
 	if (t->to_replace[0] == '-' || t->to_replace[0] == '+')
 		return ;
 	str = ft_strappend_atc(0, t->to_replace, ' ');
-	free(t->to_replace);
+	ft_memdel((void **)&(t->to_replace));
 	t->to_replace = str;
 }

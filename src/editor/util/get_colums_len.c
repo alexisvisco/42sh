@@ -37,7 +37,7 @@ int		get_colums_len(int ifd, int ofd)
 			return (80);
 		tmp = ft_sprintf("\x1b[%dD", cols - start);
 		ft_putstr_fd(ofd, tmp);
-		free(tmp);
+		ft_memdel((void **)&tmp);
 		return (cols);
 	}
 	else

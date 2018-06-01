@@ -31,7 +31,7 @@ void	base_hash(t_formatter *t)
 			str = ft_strappend_at(0, t->to_replace, "0");
 		else
 			return ;
-		free(t->to_replace);
+		ft_memdel((void **)&(t->to_replace));
 		t->to_replace = str;
 	}
 }

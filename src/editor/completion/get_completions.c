@@ -38,5 +38,5 @@ void	get_completions(t_editor *e)
 	if (e->options->completion_data->origin[0] == '\0')
 		ft_copy_str(e->options->completion_data->origin, info.current_word);
 	if (info.current_word)
-		free(info.current_word);
+		ft_memdel((void **)&(info.current_word));
 }

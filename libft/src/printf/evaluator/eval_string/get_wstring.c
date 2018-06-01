@@ -30,10 +30,10 @@ void	get_wstring(t_formatter *t, va_list lst)
 		wstr_precision(&arg, t);
 		free_arg = 1;
 	}
-	free(t->to_replace);
+	ft_memdel((void **)&(t->to_replace));
 	t->to_replace = ft_wstr_to_str(arg);
 	if (free_arg)
-		free(arg);
+		ft_memdel((void **)&arg);
 	if (!h_z && t->width > 0 && (int)ft_strlen(t->to_replace) < t->width)
 		str_padding(t);
 	if (h_z)

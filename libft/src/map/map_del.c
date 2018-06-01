@@ -18,9 +18,9 @@ static void		del(void *c, size_t s)
 	t_entry	*tmp;
 
 	tmp = (t_entry *)c;
-	free(tmp->key);
-	free(tmp->value);
-	free(tmp);
+	ft_memdel((void **)&(tmp->key));
+	ft_memdel((void **)&(tmp->value));
+	ft_memdel((void **)&tmp);
 	if (s)
 		;
 }

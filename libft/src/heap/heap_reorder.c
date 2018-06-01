@@ -32,6 +32,6 @@ void	heap_reorder(t_heap *h)
 		j++;
 	}
 	h->next_insert = i;
-	free(h->list);
+	ft_memdel((void **)&(h->list));
 	h->list = tmp;
 }

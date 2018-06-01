@@ -34,6 +34,6 @@ void			get_wchar(t_formatter *t, va_list lst)
 
 	arg = va_arg(lst, wchar_t);
 	str = get_wchar_st(arg);
-	free(t->to_replace);
+	ft_memdel((void **)&(t->to_replace));
 	t->to_replace = str;
 }

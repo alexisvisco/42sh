@@ -27,7 +27,7 @@ void	lst_delete(t_list **list, void (*del)(void *, size_t s))
 				(*del)(current->content, current->content_size);
 			tmp = current;
 			current = current->next;
-			free(tmp);
+			ft_memdel((void **)&tmp);
 		}
 	}
 	*list = NULL;
@@ -46,10 +46,10 @@ void	lst_delete_free(t_list **list, void (*del)(void *, size_t s))
 			if (del)
 				(*del)(current->content, current->content_size);
 			if (current->content)
-				free(current->content);
+				ft_memdel(&(current->content));
 			tmp = current;
 			current = current->next;
-			free(tmp);
+			ft_memdel((void **)&tmp);
 		}
 	}
 	*list = NULL;

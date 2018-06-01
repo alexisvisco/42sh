@@ -31,8 +31,8 @@ int	shell_process(char *s)
 		return (0);
 	exec_or_and(tokens, blocks, tablea, 0);
 	free_toks(tokens);
-	ft_memdel(blocks);
-	ft_memdel(g_shell.line);
+	ft_memdel((void **)&blocks);
+	ft_memdel((void **)&g_shell.line);
 	g_shell.line = NULL;
 	return (0);
 }

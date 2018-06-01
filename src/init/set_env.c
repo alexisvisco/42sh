@@ -36,8 +36,8 @@ void	set_env(char **environ)
 			tmp = ft_strjoin(c, splitted[0]);
 			ht_set(g_shell.env, splitted[0], ft_strdup(splitted[1]));
 			trie_insert(g_shell.env_trie, tmp);
-			free(c);
-			free(tmp);
+			ft_memdel((void **)&c);
+			ft_memdel((void **)&tmp);
 		}
 		free_tab(splitted);
 	}

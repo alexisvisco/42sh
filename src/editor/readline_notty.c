@@ -17,7 +17,7 @@ static char	*readline_tty_end(char c, size_t len, char *line)
 {
 	if (c == EOF && len == 0)
 	{
-		free(line);
+		ft_memdel((void **)&line);
 		return (NULL);
 	}
 	else
@@ -38,7 +38,7 @@ static void	readline_notty_aux(size_t maxlen, char *old_val, char *line)
 		if (line == NULL)
 		{
 			if (old_val)
-				free(old_val);
+				ft_memdel((void **)&old_val);
 		}
 	}
 }

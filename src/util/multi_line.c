@@ -31,8 +31,8 @@ char		*multi_line_prompt(char *line, int free_line)
 		res_ml = heap_to_str_rm_one(ask_line("> ", 0, is_end_multiline, NULL));
 		line = ft_strjoin(line, res_ml);
 		if (free_line)
-			free(tmp);
-		free(res_ml);
+			ft_memdel((void **)&tmp);
+		ft_memdel((void **)&res_ml);
 	}
 	return (line);
 }

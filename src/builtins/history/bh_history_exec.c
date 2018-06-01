@@ -36,6 +36,6 @@ int	history_exe(char **args)
 	}
 	tmp = ft_strdup(full_str);
 	shell_process(tmp);
-	free(tmp);
+	ft_memdel((void **)&tmp);
 	return (1);
 }

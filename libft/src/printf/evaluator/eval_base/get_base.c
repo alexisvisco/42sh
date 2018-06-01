@@ -19,7 +19,7 @@ void	get_hex(t_formatter *t, va_list lst)
 	char		*str;
 
 	get_uval(t, &val, lst);
-	free(t->to_replace);
+	ft_memdel((void **)&(t->to_replace));
 	str = ft_memalloc(sizeof(char) * 256);
 	str_uintmax(str, val, 16, t->type == 'X' ? BASE_CAPS : BASE);
 	t->to_replace = str;
@@ -32,7 +32,7 @@ void	get_oct(t_formatter *t, va_list lst)
 	char		*str;
 
 	get_uval(t, &val, lst);
-	free(t->to_replace);
+	ft_memdel((void **)&(t->to_replace));
 	str = ft_memalloc(sizeof(char) * 256);
 	str_uintmax(str, val, 8, BASE);
 	t->to_replace = str;

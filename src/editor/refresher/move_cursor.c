@@ -27,6 +27,6 @@ void	move_cursor(t_editor *e, t_refresher *r, t_buf *b)
 	{
 		tmp = ft_sprintf("\x1b[%dA", r->rows - r->rpos2);
 		buf_append(b, tmp, (int)ft_strlen(tmp));
-		free(tmp);
+		ft_memdel((void **)&tmp);
 	}
 }

@@ -25,7 +25,7 @@ static int	is_end(char *cmp, char *line)
 	if (res.error)
 		ft_printf("Error: %s\n", res.error);
 	else ft_printf("%i\n", res.res);
-	free(res.error);
+	ft_memdel((void **)&(res.error));
 	return (0);
 }
 

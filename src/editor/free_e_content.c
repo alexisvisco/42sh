@@ -22,6 +22,6 @@ void	free_e_content(t_e_content *h)
 	if (h)
 	{
 		heap_free(h->heap);
-		free(h);
+		ft_memdel((void **)&h);
 	}
 }

@@ -50,7 +50,7 @@ int			core_pf(int fd, const char *format, va_list lst)
 	dup_fmt = ft_strdup(format);
 	evaluator_core(&dup_fmt, lst);
 	n = smart_printer(fd, dup_fmt, 0);
-	free(dup_fmt);
+	ft_memdel((void **)&dup_fmt);
 	return (n);
 }
 

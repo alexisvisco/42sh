@@ -28,11 +28,11 @@ void	free_gnl(void)
 	gnl = get_gnl();
 	while (*gnl)
 	{
-		free((*gnl)->tempo);
+		ft_memdel((void **)&((*gnl)->tempo));
 		b = (*gnl);
 		*gnl = (*gnl)->next;
-		free(b);
+		ft_memdel((void **)&b);
 	}
-	free(*gnl);
+	ft_memdel((void **)&(*gnl));
 	*gnl = NULL;
 }

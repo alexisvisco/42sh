@@ -37,7 +37,7 @@ int	history_non_read(void)
 	{
 		if (i >= g_shell.line_edit->history_data->plus)
 			heap_add(HISTORY_DATA, ft_strdup(line));
-		free(line);
+		ft_memdel((void **)&line);
 		i++;
 	}
 	free_gnl();

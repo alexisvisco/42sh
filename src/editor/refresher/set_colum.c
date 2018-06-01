@@ -28,5 +28,5 @@ void	set_colum(t_editor *e, t_refresher *r, t_buf *b)
 		tmp = ft_strdup("\r");
 	buf_append(b, tmp, (int)ft_strlen(tmp));
 	e->oldpos = e->pos;
-	free(tmp);
+	ft_memdel((void **)&tmp);
 }

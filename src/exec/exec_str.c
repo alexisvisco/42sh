@@ -36,8 +36,8 @@ static void     set_str(const int *p, char **ret)
 	{
 		tmp = *ret;
 		*ret = ft_mine_strjoin(*ret, line);
-		free(tmp);
-		free(line);
+		ft_memdel((void **)&tmp);
+		ft_memdel((void **)&line);
 	}
 	free_gnl();
 }

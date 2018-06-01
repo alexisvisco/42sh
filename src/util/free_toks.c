@@ -20,9 +20,9 @@ void		free_toks(t_token **tokens)
 	i = 0;
 	while (tokens[i])
 	{
-		free(tokens[i]->value);
-		free(tokens[i]);
+		ft_memdel((void **)&(tokens[i]->value));
+		ft_memdel((void **)&(tokens[i]));
 		i++;
 	}
-	free(tokens);
+	ft_memdel((void **)&tokens);
 }

@@ -57,7 +57,7 @@ static t_heap	*show_result(char *str, t_heap *history,
 			ft_printf(" * %i : %s\n", i, (char *)result->list[i]);
 		i++;
 	}
-	free(str);
+	ft_memdel((void **)&str);
 	return (result);
 }
 
@@ -73,7 +73,7 @@ static int		update_line(t_editor *e, char *str, t_heap *result)
 			ef_delete_entire_line(e);
 			editor_insert_str_without_refresh(e, tmp);
 			heap_free(result);
-			free(str);
+			ft_memdel((void **)&str);
 			return (1);
 		}
 	}

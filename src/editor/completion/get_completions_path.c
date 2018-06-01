@@ -61,7 +61,7 @@ static void	replace_tilde(t_word_info *i)
 		tmp = i->current_word;
 		i->current_word = ft_strrep_first_aft("~", ht_get(g_shell.env, "HOME"),
 		i->current_word, 0);
-		free(tmp);
+		ft_memdel((void **)&tmp);
 	}
 }
 
@@ -90,6 +90,6 @@ void		get_completions_path(t_word_info *i, t_heap *heap)
 		start_with = ft_strdup("\0");
 	}
 	get_completions_path_a(folder, start_with, i->current_word, heap);
-	free(folder);
-	free(start_with);
+	ft_memdel((void **)&folder);
+	ft_memdel((void **)&start_with);
 }

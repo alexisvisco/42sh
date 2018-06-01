@@ -37,7 +37,7 @@ int	history_read(char **args)
 	while (get_next_line(fd, &line))
 	{
 		heap_add(HISTORY_DATA, ft_strdup(line));
-		free(line);
+		ft_memdel((void **)&line);
 	}
 	free_gnl();
 	message(MSG_HISTORY_READ, file ? file : path);

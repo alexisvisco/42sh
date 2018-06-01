@@ -31,12 +31,12 @@ t_heap		*ask_line(char *prompt, int nl,
 		if ((is_end && is_end(cmp, line)))
 		{
 			heap_add(result, ft_strdup(line));
-			free(line);
+			ft_memdel((void **)&line);
 			break ;
 		}
 		else
 			heap_add(result, nl ? ft_strjoin(line, "\n") : ft_strdup(line));
-		free(line);
+		ft_memdel((void **)&line);
 	}
 	free_e_content(options.completion_data);
 	free_e_content(options.history_data);
@@ -57,7 +57,7 @@ char		*heap_to_str(t_heap *h, int nl)
 		{
 			tmp = full;
 			full = ft_strjoin(full, h->list[i]);
-			free(tmp);
+			ft_memdel((void **)&tmp);
 		}
 		i++;
 	}
@@ -81,7 +81,7 @@ char		*heap_to_str_rm_one(t_heap *h)
 			full = ft_strjoin(full, h->list[i]);
 			if (ft_strends_with(full, '\\'))
 				full[ft_strlen(full) - 1] = 0;
-			free(tmp);
+			ft_memdel((void **)&tmp);
 		}
 		i++;
 	}

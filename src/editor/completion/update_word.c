@@ -34,7 +34,7 @@ void	update_word(t_editor *e, char *word)
 			ef_del_backspace_times(e,
 			(unsigned int)ft_strlen(info.current_word));
 			editor_insert_str_without_refresh(e, word);
-			free(info.current_word);
+			ft_memdel((void **)&(info.current_word));
 		}
 	}
 	refresh_line(e);

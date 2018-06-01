@@ -15,15 +15,15 @@
 
 static void	free_map(t_entry *tmp, t_list *prev, t_list *lst, t_map *map)
 {
-	free(tmp->value);
-	free(tmp->key);
+	ft_memdel((void **)&(tmp->value));
+	ft_memdel((void **)&(tmp->key));
 	if (prev)
 		prev->next = lst->next;
 	else if (!prev && lst->next)
 		map->lst = lst->next;
 	else
 		map->lst = NULL;
-	free(lst);
+	ft_memdel((void **)&lst);
 	lst = NULL;
 }
 

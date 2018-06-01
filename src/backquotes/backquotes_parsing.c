@@ -32,7 +32,7 @@ void		escape_useless_backquotes(char *s)
 static int	error_inception(t_token **u_tokens, t_block *u_blocks)
 {
 	free_toks(u_tokens);
-	free(u_blocks);
+	ft_memdel((void **)&u_blocks);
 	message_err(ERR_INCE_BACK);
 	return (-1);
 }
@@ -59,10 +59,10 @@ static int	parsing(t_token **tokens, int i)
 	else if (parse_block(u_tokens, &u_blocks) < 0)
 		return (-3);
 	ret = core_exec_backquotes(u_tokens, u_blocks, tablea, &ret);
-	free(tokens[i]->value);
+	ft_memdel((void **)&(tokens[i]->value));
 	tokens[i]->value = ret.str;
 	free_toks(u_tokens);
-	free(u_blocks);
+	ft_memdel((void **)&u_blocks);
 	return (0);
 }
 

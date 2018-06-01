@@ -102,7 +102,7 @@ int				get_next_line(const int fd, char **line)
 			return (check(tmp->text, line));
 		buf[ret] = '\0';
 		tmp->text = ft_strjoin(tmp->tempo, buf);
-		free(tmp->tempo);
+		ft_memdel((void **)&(tmp->tempo));
 		tmp->tempo = tmp->text;
 	}
 	return (check(tmp->text, line));

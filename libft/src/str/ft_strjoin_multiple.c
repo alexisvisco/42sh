@@ -29,7 +29,7 @@ char	*ft_strjoin_multiple(int n, ...)
 			break ;
 		cpy = full;
 		full = ft_strjoin(cpy, tmp);
-		free(cpy);
+		ft_memdel((void **)&(cpy));
 	}
 	va_end(ap);
 	return (full);

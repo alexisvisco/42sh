@@ -21,8 +21,8 @@ static void		replace_with(t_node *n, char **str)
 	tmp = *str;
 	key = ft_strjoin("$", n->key);
 	*str = ft_repall(key, n->value, *str);
-	free(tmp);
-	free(key);
+	ft_memdel((void **)&tmp);
+	ft_memdel((void **)&key);
 }
 
 /*
@@ -53,6 +53,6 @@ char			*replace_env_variables(char *str, int free_str)
 		i++;
 	}
 	if (free_str)
-		free(str);
+		ft_memdel((void **)&str);
 	return (xstr);
 }

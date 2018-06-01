@@ -32,7 +32,7 @@ void	lst_remove_at(t_list **lst, int index, void (*del)(void *, size_t s))
 			else
 				*lst = node->next;
 			del(node->content, node->content_size);
-			free(node);
+			ft_memdel((void **)&(node));
 			return ;
 		}
 		prev = node;

@@ -48,5 +48,5 @@ void		refresh_line(t_editor *e)
 	move_cursor(e, &ref, &buf);
 	set_colum(e, &ref, &buf);
 	write(e->ofd, buf.b, (size_t)buf.len);
-	free(buf.b);
+	ft_memdel((void **)&(buf.b));
 }

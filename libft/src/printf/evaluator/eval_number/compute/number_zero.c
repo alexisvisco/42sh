@@ -27,7 +27,7 @@ void	number_zero(t_formatter *t)
 		return ;
 	pad = ft_str_repeatm('0', diff);
 	str = ft_strappend_at(t->to_replace[0] == '-' ? 1 : 0, t->to_replace, pad);
-	free(t->to_replace);
-	free(pad);
+	ft_memdel((void **)&(t->to_replace));
+	ft_memdel((void **)&pad);
 	t->to_replace = str;
 }

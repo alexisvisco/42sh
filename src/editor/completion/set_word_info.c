@@ -75,6 +75,6 @@ void		set_word_info(t_word_info *i, t_editor *e)
 		else
 			i->type = TYPE_PATH;
 		if (prev.current_word)
-			free(prev.current_word);
+			ft_memdel((void **)&(prev.current_word));
 	}
 }

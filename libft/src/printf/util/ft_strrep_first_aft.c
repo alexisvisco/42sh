@@ -60,7 +60,7 @@ static char		*build_str(char *first, char *mid, char *last)
 
 	tmp = ft_strjoin(first, mid);
 	ret = ft_strjoin(tmp, last);
-	free(tmp);
+	ft_memdel((void **)&tmp);
 	return (ret);
 }
 
@@ -75,8 +75,8 @@ char *replace)
 	tmp_2 = ft_strsub(subject, index + ft_strlen(search),
 			ft_strlen(subject) - (index + ft_strlen(search)));
 	ret = build_str(tmp_1, replace, tmp_2);
-	free(tmp_1);
-	free(tmp_2);
+	ft_memdel((void **)&tmp_1);
+	ft_memdel((void **)&tmp_2);
 	return (ret);
 }
 
@@ -99,7 +99,7 @@ char *replace, char *subject, int n)
 			str = ft_strsub(subject, ft_strlen(search), (ft_strlen(subject) -
 			ft_strlen(search)));
 			tmp = build_str("", replace, str);
-			free(str);
+			ft_memdel((void **)&str);
 			return (tmp);
 		}
 		else

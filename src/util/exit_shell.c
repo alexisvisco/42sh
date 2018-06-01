@@ -26,7 +26,7 @@ void	exit_shell(void)
 	trie_free(g_shell.bin_trie);
 	trie_free(g_shell.env_trie);
 	free_options(g_shell.line_edit);
-	free(g_shell.line);
+	ft_memdel((void **)&(g_shell.line));
 	free_options(g_shell.history_search);
 	ht_free(get_builtins());
 	ht_free(g_shell.vars);

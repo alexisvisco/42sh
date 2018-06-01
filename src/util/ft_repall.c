@@ -26,7 +26,7 @@ char	*ft_repall(char *target, char *by, char *src)
 		if (!full)
 			full = tmp;
 		else
-			free(tmp);
+			ft_memdel((void **)&tmp);
 	}
 	return (full);
 }

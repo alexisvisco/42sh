@@ -22,7 +22,7 @@ void	get_string(t_formatter *t, va_list lst)
 		return (get_wstring(t, lst));
 	tmp = va_arg(lst, char *);
 	arg = ft_strdup(tmp ? tmp : "(null)");
-	free(t->to_replace);
+	ft_memdel((void **)&(t->to_replace));
 	t->to_replace = arg;
 	str_compute(t);
 }

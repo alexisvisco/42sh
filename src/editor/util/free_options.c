@@ -18,12 +18,12 @@ void	free_options(t_options *t)
 	if (t->completion_data)
 	{
 		heap_free(t->completion_data->heap);
-		free(t->completion_data);
+		ft_memdel((void **)&(t->completion_data));
 	}
 	if (t->history_data)
 	{
 		heap_free(t->history_data->heap);
-		free(t->history_data);
+		ft_memdel((void **)&(t->history_data));
 	}
-	free(t);
+	ft_memdel((void **)&t);
 }

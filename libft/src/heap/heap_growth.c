@@ -25,7 +25,7 @@ void	heap_growth(t_heap *hp)
 		tmp[i] = hp->list[i];
 		i++;
 	}
-	free(hp->list);
+	ft_memdel((void **)&(hp->list));
 	hp->size *= 2;
 	hp->list = tmp;
 }

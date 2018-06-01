@@ -29,7 +29,7 @@ void	base_zero(t_formatter *t)
 		str = ft_strappend_at(ft_strchr(BASE_SX, t->type) ||
 		t->type == 'p' ? 2 : 1,
 		t->to_replace, pad);
-	free(t->to_replace);
-	free(pad);
+	ft_memdel((void **)&(t->to_replace));
+	ft_memdel((void **)&pad);
 	t->to_replace = str;
 }

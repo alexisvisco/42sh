@@ -22,7 +22,7 @@ static int		open_heredoc(char *str)
 		write(file, str, ft_strlen(str));
 	close(file);
 	file = open("/tmp/.heredoc", O_RDONLY);
-	free(str);
+	ft_memdel((void **)&str);
 	return (file);
 }
 
@@ -42,12 +42,12 @@ static t_heap	*ask_line_heredoc(char *prompt,
 	{
 		if ((is_end && is_end(cmp, line)))
 		{
-			free(line);
+			ft_memdel((void **)&line);
 			break ;
 		}
 		else
 			heap_add(result, ft_strjoin(line, "\n"));
-		free(line);
+		ft_memdel((void **)&line);
 	}
 	free_e_content(options.completion_data);
 	free_e_content(options.history_data);
@@ -68,7 +68,7 @@ static char		*heap_to_str_here(t_heap *h)
 		{
 			tmp = full;
 			full = ft_strjoin(full, h->list[i]);
-			free(tmp);
+			ft_memdel((void **)&tmp);
 		}
 		i++;
 	}

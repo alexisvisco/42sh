@@ -24,6 +24,6 @@ void	 ef_paste_clipboard(t_editor *l)
 
 	clipboard = exec_to_str(t);
 	editor_insert_str(l, clipboard);
-	free(clipboard);
+	ft_memdel((void **)&clipboard);
 	refresh_line(l);
 }

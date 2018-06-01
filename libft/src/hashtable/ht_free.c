@@ -21,10 +21,10 @@ void	ht_default_free(t_hashtable *t, void *a)
 	if (a)
 	{
 		n = (t_node *)a;
-		free(n->key);
+		ft_memdel((void **)&(n->key));
 		if (n->value && t->free_func)
 			t->free_func(n->value);
-		free(a);
+		ft_memdel(&a);
 	}
 }
 
@@ -47,11 +47,11 @@ void	ht_free(t_hashtable *t)
 					ht_default_free(t, h->list[j]);
 				j++;
 			}
-			free(h->list);
-			free(h);
+			ft_memdel((void **)&(h->list));
+			ft_memdel((void **)&h);
 		}
 		i++;
 	}
-	free(t->heaps);
-	free(t);
+	ft_memdel((void **)&(t->heaps));
+	ft_memdel((void **)&t);
 }

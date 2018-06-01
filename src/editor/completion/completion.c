@@ -67,7 +67,7 @@ void	completion_delete(t_editor *e)
 	{
 		e->mode = INSERTION;
 		heap_free(completion->heap);
-		free(e->options->completion_data);
+		ft_memdel((void **)&(e->options->completion_data));
 		e->options->completion_data = NULL;
 	}
 }

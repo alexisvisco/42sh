@@ -27,12 +27,12 @@ int		exec_built_in(char ***argv, t_block *blocks, t_token **tok)
 		{
 			while (tok[i])
 			{
-				free(tok[i]->value);
-				free(tok[i]);
+				ft_memdel((void **)&(tok[i]->value));
+				ft_memdel((void **)&(tok[i]));
 				i++;
 			}
-			free(tok);
-			free(blocks);
+			ft_memdel((void **)&tok);
+			ft_memdel((void **)&blocks);
 		}
 	}
 	else

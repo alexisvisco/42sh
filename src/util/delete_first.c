@@ -33,10 +33,10 @@ void	delete_first_element(char ***s)
 	i = 0;
 	while ((*s)[i])
 	{
-		free((*s)[i]);
+		ft_memdel((void **)&((*s)[i]));
 		i++;
 	}
-	free((*s));
+	ft_memdel((void **)&(*s));
 	(*s) = ret;
 	i = 0;
 }

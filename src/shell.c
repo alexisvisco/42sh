@@ -29,7 +29,7 @@ static void		init(char **env)
 int				main(int n, char **args, char **env)
 {
 	char	*str;
-	char	prompt[255];
+	char	prompt[256];
 
 	(void)n;
 	(void)args;

@@ -140,9 +140,9 @@ extern t_termios	g_origin;
 void				deb_printer(const char *format, ...);
 void				free_options(t_options *t);
 
-char				*readline(const char *prompt, t_options *opt);
+char				*readline(char *prompt, t_options *opt);
 char				*readline_notty();
-int					readline_raw(char *buf, const char *prompt, t_options *e);
+int					readline_raw(char *buf, char *prompt, t_options *e);
 
 int					handle_keys(t_editor *e);
 void				redirect_key_fn(t_editor *e, char c, char *seq);

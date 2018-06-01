@@ -45,11 +45,12 @@ static int	unsupported_term(void)
 ** Then return the line typed in the terminal.
 */
 
-char		*readline(const char *prompt, t_options *e)
+char		*readline(char *prompt, t_options *e)
 {
-	char	buf[EDITOR_MAX_LINE];
+	char	buf[EDITOR_MAX_LINE + 1];
 	int		count;
 
+	ft_bzero(buf, sizeof(buf));
 	if (!isatty(STDIN_FILENO))
 	{
 		message_err(ERR_UNSUPORTED_OPERATION);

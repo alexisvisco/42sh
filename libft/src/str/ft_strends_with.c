@@ -15,7 +15,9 @@
 
 int		ft_strends_with(const char *s, char c)
 {
-	return (s[ft_strlen(s) - 1] == c);
+	if (ft_strlen(s) > 0)
+		return (s[ft_strlen(s) - 1] == c);
+	return 0;
 }
 
 int		ft_strends_with_str(const char *s, char *str)

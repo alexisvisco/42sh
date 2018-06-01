@@ -18,13 +18,13 @@
 ** the STDIN file descriptor set in raw mode.
 */
 
-int		readline_raw(char *buf, const char *prompt, t_options *e)
+int		readline_raw(char *buf, char *prompt, t_options *e)
 {
 	int count;
 
 	if (EDITOR_MAX_LINE <= 0 || enable_terminal(STDIN_FILENO) == -1)
 		return (-1);
-	count = editor(buf, (char *)prompt, e);
+	count = editor(buf, prompt, e);
 	disable_terminal(STDIN_FILENO);
 	ft_putchar_fd(STDOUT_FILENO, '\n');
 	return (count);

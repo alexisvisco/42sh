@@ -24,7 +24,7 @@ char			*remove_quotes(char *s)
 	new = ft_strnew(ft_strlen(s));
 	while (s[i])
 	{
-		if ((s[i] == '\'' || s[i] == '\"') && (i != 0 && s[i - 1] != '\\'))
+		if ((s[i] == '\'' || s[i] == '\"') && s[i - 1] != '\\')
 			i++;
 		else
 			new[j++] = s[i++];

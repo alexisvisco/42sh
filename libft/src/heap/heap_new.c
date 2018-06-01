@@ -17,7 +17,7 @@ t_heap	*heap_new(size_t default_size)
 {
 	t_heap *heap;
 
-	heap = malloc(sizeof(t_heap));
+	heap = ft_memalloc(sizeof(t_heap));
 	heap->size = default_size;
 	heap->next_insert = 0;
 	heap->elements = 0;

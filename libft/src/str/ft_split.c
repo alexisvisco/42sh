@@ -29,7 +29,7 @@ char	*ft_str_split_dup(char *str, char *charset)
 	n = 0;
 	while (str[n] && !is_in(str[n], charset))
 		n++;
-	tmp = malloc(sizeof(char) * (n + 1));
+	tmp = ft_memalloc(sizeof(char) * (n + 1));
 	while (*str && !is_in(*str, charset))
 		*tmp++ = *str++;
 	*tmp = '\0';
@@ -50,7 +50,7 @@ char	**ft_split(char *str, char *charset)
 			size++;
 	if (!is_in(*(tmp - 1), charset))
 		size++;
-	tab = malloc((size + 1) * sizeof(char*));
+	tab = ft_memalloc((size + 1) * sizeof(char*));
 	tab[size] = 0;
 	if (!is_in(*str, charset))
 		*tab++ = ft_str_split_dup(str, charset);

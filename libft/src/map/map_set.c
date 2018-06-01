@@ -31,7 +31,7 @@ void	map_set(t_map *map, char *key, char *value)
 		}
 		lst = lst->next;
 	}
-	entry = (t_entry *)malloc(sizeof(t_entry));
+	entry = (t_entry *)ft_memalloc(sizeof(t_entry));
 	if (!entry)
 	{
 		return ;

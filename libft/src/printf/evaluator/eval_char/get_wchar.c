@@ -21,7 +21,7 @@ static char		*get_wchar_st(wchar_t arg)
 	if (arg == 0)
 		return (ft_strdup(PRNT_NULL));
 	len = ft_wcharlen(arg);
-	str = (char *)malloc(sizeof(char) * (len + 1));
+	str = (char *)ft_memalloc(sizeof(char) * (len + 1));
 	str[len] = 0;
 	ft_wchar_in_str(arg, str, 0);
 	return (str);

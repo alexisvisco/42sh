@@ -59,7 +59,7 @@ wchar_t		*ft_wstrsubpf(wchar_t *ws, int end)
 		return (NULL);
 	count = 0;
 	i = 0;
-	new = (wchar_t *)malloc(sizeof(wchar_t) * (end + 1));
+	new = (wchar_t *)ft_memalloc(sizeof(wchar_t) * (end + 1));
 	while (*ws)
 	{
 		count += ft_wcharlen(*ws);

@@ -20,7 +20,7 @@ char	*ft_strdel_at(char *str, int pos)
 	size_t	i;
 
 	size = ft_strlen(str) - 1;
-	new = malloc(sizeof(char) * (size + 1));
+	new = ft_memalloc(sizeof(char) * (size + 1));
 	new[size] = 0;
 	i = 0;
 	while (i <= size)
@@ -42,7 +42,7 @@ char	*ft_strdel_all_from(char *str, int pos)
 	while (str[i] && i != (size_t)pos)
 		i++;
 	size = i;
-	new = (char *)malloc(sizeof(char) * (size) + 1);
+	new = (char *)ft_memalloc(sizeof(char) * (size) + 1);
 	i = 0;
 	while (str[i] && i != (size_t)pos)
 	{
@@ -69,7 +69,7 @@ char	*ft_strdel_all_from_to(char *str, int from, int to)
 		j++;
 	}
 	size = i;
-	new = (char *)malloc(sizeof(char) * (size) + 1);
+	new = (char *)ft_memalloc(sizeof(char) * (size) + 1);
 	i = 0;
 	j = 0;
 	while (i < size)

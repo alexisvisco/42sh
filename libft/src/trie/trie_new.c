@@ -18,7 +18,7 @@ t_trie_node	*trie_new(void)
 	t_trie_node	*root;
 	int			i;
 
-	root = malloc(sizeof(t_trie_node));
+	root = ft_memalloc(sizeof(t_trie_node));
 	root->is_word_end = 0;
 	root->has_child = 0;
 	i = 0;

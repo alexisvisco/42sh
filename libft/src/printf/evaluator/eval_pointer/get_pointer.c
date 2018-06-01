@@ -19,7 +19,7 @@ void	get_pointer(t_formatter *t, va_list lst)
 	char		*str;
 
 	pointer = va_arg(lst, uintmax_t);
-	str = malloc(sizeof(char) * 256);
+	str = ft_memalloc(sizeof(char) * 256);
 	str_uintmax(str, pointer, 16, BASE);
 	free(t->to_replace);
 	t->to_replace = str;

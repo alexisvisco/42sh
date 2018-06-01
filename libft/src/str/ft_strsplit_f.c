@@ -38,7 +38,7 @@ static char		*get_word(char *s, int (*is_del)(char))
 	size = 0;
 	while (s[++i] && !is_del(s[i]))
 		size++;
-	word = malloc(sizeof(char) * (size + 1));
+	word = ft_memalloc(sizeof(char) * (size + 1));
 	word[size] = '\0';
 	while (*s && !is_del(*s))
 	{
@@ -57,7 +57,7 @@ char			**ft_strsplit_f(char *s, int (*is_del)(char))
 	if (!s)
 		return (NULL);
 	size = count_words(s, is_del);
-	if (!(tab = malloc((size + 1) * sizeof(char*))))
+	if (!(tab = ft_memalloc((size + 1) * sizeof(char*))))
 		return (NULL);
 	tab[size] = 0;
 	str = s;

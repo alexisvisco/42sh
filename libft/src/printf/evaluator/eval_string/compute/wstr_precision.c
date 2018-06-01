@@ -19,7 +19,7 @@ void	wstr_precision(wchar_t **w, t_formatter *t)
 
 	if (t->precision == 0)
 	{
-		tmp = malloc(sizeof(wchar_t) * 1);
+		tmp = ft_memalloc(sizeof(wchar_t) * 1);
 		tmp[0] = L'\0';
 		*w = tmp;
 	}

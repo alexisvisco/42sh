@@ -20,7 +20,7 @@ char	*ft_strappend_at(int n, char *src, char *add)
 	int		i;
 
 	size = ft_strlen(src) + ft_strlen(add);
-	new = (char *)malloc(sizeof(char) * (size + 1));
+	new = (char *)ft_memalloc(sizeof(char) * (size + 1));
 	new[size] = 0;
 	i = -1;
 	while ((size_t)(++i) < size)
@@ -44,7 +44,7 @@ char	*ft_strappend_atc(int n, char *src, char c)
 	int		i;
 
 	size = ft_strlen(src) + 1;
-	new = (char *)malloc(sizeof(char) * (size + 1));
+	new = (char *)ft_memalloc(sizeof(char) * (size + 1));
 	new[size] = 0;
 	i = -1;
 	while ((size_t)(++i) < size)

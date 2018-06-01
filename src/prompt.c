@@ -59,8 +59,8 @@ int	set_prompt(char *str)
 	else
 		prompt = ft_sprintf("%s git:(%s) $ ", folder, branch);
 	ft_copy_str(str, prompt);
-	free(prompt);
-	free(folder);
-	free(branch);
+	ft_memdel((void **)&prompt);
+	ft_memdel((void **)&folder);
+	ft_memdel((void **)&branch);
 	return (1);
 }

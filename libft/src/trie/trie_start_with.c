@@ -18,7 +18,7 @@ static char	*set_next_prefix(char *tmp, int i)
 	char	*tmpx;
 	char	*tmp_ch;
 
-	tmp_ch = malloc(sizeof(char) * 2);
+	tmp_ch = ft_memalloc(sizeof(char) * 2);
 	tmp_ch[0] = (char)i;
 	tmp_ch[1] = 0;
 	tmpx = ft_strjoin(tmp, tmp_ch);

@@ -20,7 +20,7 @@ void	get_number(t_formatter *t, va_list lst)
 
 	get_val(t, &val, lst);
 	free(t->to_replace);
-	str = malloc(sizeof(char) * 256);
+	str = ft_memalloc(sizeof(char) * 256);
 	str_intmax(str, val, 10, BASE);
 	t->to_replace = str;
 	number_compute(t);
@@ -33,7 +33,7 @@ void	get_unumber(t_formatter *t, va_list lst)
 
 	get_uval(t, &val, lst);
 	free(t->to_replace);
-	str = malloc(sizeof(char) * 256);
+	str = ft_memalloc(sizeof(char) * 256);
 	str_uintmax(str, val, 10, BASE);
 	t->to_replace = str;
 	number_compute(t);

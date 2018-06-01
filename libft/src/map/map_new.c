@@ -17,7 +17,7 @@ t_map	*map_new(void)
 {
 	t_map	*map;
 
-	map = malloc(sizeof(t_map));
+	map = ft_memalloc(sizeof(t_map));
 	map->lst = NULL;
 	return (map);
 }

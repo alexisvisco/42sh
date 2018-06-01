@@ -19,7 +19,7 @@ static char		*get_char_st(char c)
 
 	if (c == 0)
 		return (ft_strdup(PRNT_NULL));
-	str = malloc(sizeof(char) * (2));
+	str = ft_memalloc(sizeof(char) * (2));
 	str[1] = 0;
 	str[0] = c;
 	return (str);

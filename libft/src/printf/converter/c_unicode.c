@@ -53,7 +53,7 @@ char	*ft_wstr_to_str(wchar_t *ws)
 	i = 0;
 	k = 0;
 	len = ft_byte_wstrlen(ws);
-	fresh = (char*)malloc(sizeof(char) * (len + 1));
+	fresh = (char*)ft_memalloc(sizeof(char) * (len + 1));
 	fresh[len] = '\0';
 	while (ws[k])
 	{

@@ -27,7 +27,7 @@ static t_gnl	*new_list(int fd)
 {
 	t_gnl *list;
 
-	if (!(list = (t_gnl*)malloc(sizeof(*list))))
+	if (!(list = (t_gnl*)ft_memalloc(sizeof(*list))))
 		return (NULL);
 	list->fd = fd;
 	list->tempo = ft_strnew(0);

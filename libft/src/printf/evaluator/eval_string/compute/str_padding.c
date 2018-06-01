@@ -24,7 +24,7 @@ void	str_padding(t_formatter *t)
 	diff = t->width - ft_strlen(t->to_replace);
 	if (diff <= 0)
 		return ;
-	to_add = (char *)malloc(sizeof(char) * (diff + 1));
+	to_add = (char *)ft_memalloc(sizeof(char) * (diff + 1));
 	to_add[diff] = 0;
 	ft_str_repeat(&to_add, ' ', diff);
 	ret = ft_strappend_at(is_left ? ft_strlen(t->to_replace) : 0,

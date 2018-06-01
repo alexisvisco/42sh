@@ -18,7 +18,7 @@ void	str_delprec_0(t_formatter *t)
 	char *str;
 
 	free(t->to_replace);
-	str = malloc(sizeof(char) * 1);
+	str = ft_memalloc(sizeof(char) * 1);
 	str[0] = 0;
 	t->to_replace = str;
 }

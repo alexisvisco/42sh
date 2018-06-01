@@ -58,7 +58,7 @@ t_node			*ht_has_or_create(t_hashtable *t, const char *key)
 			return (node);
 		i++;
 	}
-	node = malloc(sizeof(t_node));
+	node = ft_memalloc(sizeof(t_node));
 	node->key = ft_strdup(key);
 	node->value = NULL;
 	heap_add(heap, node);

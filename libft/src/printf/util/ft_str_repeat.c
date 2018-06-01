@@ -27,7 +27,7 @@ char	*ft_str_repeatm(char c, int n)
 	char	*str;
 	int		x;
 
-	str = malloc(sizeof(char) * (n + 1));
+	str = ft_memalloc(sizeof(char) * (n + 1));
 	str[n] = 0;
 	x = -1;
 	while (++x < n)

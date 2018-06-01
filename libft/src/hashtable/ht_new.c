@@ -17,7 +17,7 @@ t_hashtable	*ht_new(size_t size)
 {
 	t_hashtable *hasht;
 
-	hasht = malloc(sizeof(t_hashtable));
+	hasht = ft_memalloc(sizeof(t_hashtable));
 	hasht->size = size;
 	hasht->heaps = ft_memalloc(size);
 	hasht->free_func = free;

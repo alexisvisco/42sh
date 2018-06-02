@@ -17,7 +17,7 @@ void	*ft_memalloc(size_t size)
 {
 	void	*str;
 
-	str = (void*)malloc(sizeof(void*) * size);
+	str = malloc(sizeof(void*) * size);
 	if (str == NULL)
 		return (NULL);
 	ft_bzero(str, sizeof(void *) * size);

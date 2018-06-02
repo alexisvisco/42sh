@@ -6,12 +6,12 @@
 #    By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2017/11/17 14:07:28 by aviscogl     #+#   ##    ##    #+#        #
-#   Updated: 2018/04/14 13:45:45 by ggranjon    ###    #+. /#+    ###.fr     # #
+#    Updated: 2018/04/14 13:45:45 by ggranjon    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
 
-TOTAL_FILES := 170
+TOTAL_FILES := 169
 
 C_FILES += \
 \
@@ -217,19 +217,14 @@ SRC = $(addprefix $(SRC_PATH),$(C_FILES))
 OBJ = $(addprefix $(OBJ_PATH),$(OBJ_NAME))
 INC = $(addprefix -I,$(INC_PATH))
 
-COUNT := 1
+COUNT := 0
 
 all: $(NAME)
 
 $(OBJ_PATH)%.o: $(SRC_PATH)/%.c
 	@mkdir -p $(OBJ_SUB_PATHS)
 	@$(CC) $(CFLAGS) $(INC) -o $@ -c $<
-	@printf "\r\e[0m\x1B[36m\e[21mCompiling libft   \e[0m\e[32m["
-	@printf " %.0s" {0..$(shell printf "%.0f" $(shell echo "scale=3; (${COUNT}/${TOTAL_FILES} * 25)" | bc))}
-	@printf "ᗧ"
-	@printf "•%.0s" {0..$(shell printf "%.0f" $(shell echo "scale=3; 25 - ((${COUNT}/${TOTAL_FILES} * 25))" | bc))}
-	@printf "] %s" $(shell printf "%.0f" $(shell echo "scale=3; (${COUNT}/${TOTAL_FILES} * 100)" | bc))
-	@printf " %%  \e[0m"
+	@sh ../loading_bar.sh $(COUNT) $(TOTAL_FILES) $^ "Compiling Libft" 69
 	@$(eval COUNT=$(shell echo $$(($(COUNT)+1))))
 
 $(NAME): $(OBJ)

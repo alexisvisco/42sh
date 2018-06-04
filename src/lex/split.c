@@ -100,7 +100,7 @@ t_token			**split_tokens(char *s, int nbtokens)
 	i = 0;
 	while (*s)
 	{
-		while (*s == ' ')
+		while (*s == ' ' || *s == '\t')
 			s++;
 		if (*s)
 		{

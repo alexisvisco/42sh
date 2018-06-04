@@ -25,7 +25,7 @@ int				count_tokens(char *s)
 	nbword = 0;
 	while (*s)
 	{
-		while (*s == ' ')
+		while (*s == ' ' || *s == '\t')
 			s++;
 		if (*s)
 		{

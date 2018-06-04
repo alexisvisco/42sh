@@ -66,18 +66,30 @@ static int	parsing(t_token **tokens, int i)
 	return (0);
 }
 
-static int 	nothing_to_do(t_token **tokens)
+
+static void		new_prompt(t_token **tokens)
 {
 	int		i;
+	char 	*str;
+	char 	*tmp;
 
+	str = ft_strnew(1);
 	i = 0;
 	while (tokens[i])
 	{
+		if (tokens[i]->value)
+		{
+			tmp = str;
+			str = ft_mine_strjoin(str, tokens[i]->value);
+			free(tmp);
+		}
 		i++;
 	}
-	if (i == 1 && tokens[0]->value[0] == '\0')
-		return (1);
-	return (0);
+	if (tokens)
+		free_toks(tokens);
+	ft_memdel((void **)&g_shell.line);
+	g_shell.line = NULL;
+	shell_process(str);
 }
 
 int			seek_backquotes(t_token **tokens)
@@ -88,11 +100,13 @@ int			seek_backquotes(t_token **tokens)
 	while (tokens[i])
 	{
 		if (tokens[i]->value && tokens[i]->value[0] == '`')
+		{
 			if (parsing(tokens, i) < 0)
 				return (-1);
+			new_prompt(tokens);
+			return (-2);
+		}
 		i++;
 	}
-	if (nothing_to_do(tokens) == 1)
-		return (2);
 	return (0);
 }

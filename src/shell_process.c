@@ -13,7 +13,7 @@
 
 #include "shell.h"
 
-static void	free_exit(t_token **tokens, t_block **blocks)
+static void		free_exit(t_token **tokens, t_block **blocks)
 {
 	if (tokens)
 		free_toks(tokens);
@@ -31,13 +31,12 @@ int			shell_process(char *s)
 
 	tokens = NULL;
 	blocks = NULL;
-	tablea[0] = 0;
-	tablea[1] = 0;
 	escape_useless_backquotes(s);
 	g_shell.line = s;
-	if (parse_tokens(&tokens, s, 0) < 0)
+	if ((tablea[0] = parse_tokens(&tokens, s, 0)) < 0)
 	{
-		free_exit(tokens, &blocks);
+		if (tablea[0] != -4)
+			free_exit(tokens, &blocks);
 		return (0);
 	}
 	if (parse_block(tokens, &blocks) < 0)
@@ -45,6 +44,8 @@ int			shell_process(char *s)
 		free_exit(tokens, &blocks);
 		return (0);
 	}
+	tablea[0] = 0;
+	tablea[1] = 0;
 	exec_or_and(tokens, blocks, tablea, 0);
 	free_exit(tokens, &blocks);
 	return (0);

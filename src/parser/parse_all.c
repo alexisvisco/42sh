@@ -56,9 +56,9 @@ int			parse_tokens(t_token ***tokens, char *s, int is_backquote)
 		update_history(s);
 	replace_placeholder(tokens);
 	format_tokens_quotes(tokens);
-	if ((a = seek_backquotes(*tokens)) < 0)
+	if ((a = seek_backquotes(*tokens)) == -1)
 		return (-3);
-	else if (a == 2)
+	else if (a == -2)
 		return (-4);
 	return (1);
 }

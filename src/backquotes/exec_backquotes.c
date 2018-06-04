@@ -13,8 +13,9 @@
 
 #include "shell.h"
 
-#define INPUT_FILE_REDIR (fd.input = call_left_redir(argv)) == -1
+#define INPUT_RED (fd.input = call_left_redir(argv)) == -1
 #define OUTPUT_AGREG (fd.output = call_ag_redir(argv)) == -1
+#define OUTPUT_RED (fd.output = call_right_redir(argv)) == -1
 
 static void		child_fork(char ***argv, t_fd fd, int *p)
 {
@@ -78,6 +79,13 @@ static void		get_backq_string(const int *p, t_backquotes *ret)
 	free_gnl();
 }
 
+t_backquotes	error_redir(t_backquotes *ret)
+{
+	(*ret).status = 1;
+	(*ret).str = NULL;
+	return (*ret);
+}
+
 t_backquotes	exec_backquotes(char ***argv, t_block *blocks, t_token **tokens)
 {
 	int				p[2];
@@ -90,13 +98,8 @@ t_backquotes	exec_backquotes(char ***argv, t_block *blocks, t_token **tokens)
 	while (*argv)
 	{
 		pipe(p);
-		if (INPUT_FILE_REDIR || OUTPUT_AGREG ||
-			(fd.output == 1 && (fd.output = call_right_redir(argv)) == -1))
-		{
-			ret.status = 1;
-			ret.str = NULL;
-			return (ret);
-		}
+		if (INPUT_RED || OUTPUT_AGREG || (fd.output == 1 && OUTPUT_RED))
+			return (error_redir(&ret));
 		if ((g_ret = exec_built_in(argv, blocks, tokens)) != -1)
 			status = (g_ret == 1) ? 0 : 256;
 		if (g_ret == -1 && (fork()) == 0)

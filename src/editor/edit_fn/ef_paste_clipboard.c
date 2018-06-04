@@ -17,9 +17,9 @@
 ** Insert text from clipboard
 */
 
-void	 ef_paste_clipboard(t_editor *l)
+void	ef_paste_clipboard(t_editor *l)
 {
-	const char	*t[] = {"/usr/bin/pbpaste", NULL};
+	const char		*t[] = {"/usr/bin/pbpaste", NULL};
 	char			*clipboard;
 
 	clipboard = exec_to_str(t);

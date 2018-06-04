@@ -14,12 +14,12 @@
 #include <f_colors.h>
 #include "shell.h"
 
-static char	*	get_current_folder()
+static char	*get_current_folder(void)
 {
-	char cwd[2048];
-	char folder[2048];
-	int i;
-	int prev;
+	char	cwd[2048];
+	char	folder[2048];
+	int		i;
+	int		prev;
 
 	if (!getcwd(cwd, sizeof(cwd)))
 		return (NULL);
@@ -38,14 +38,15 @@ static char	*	get_current_folder()
 	return (ft_strdup(folder));
 }
 
-static char*	get_git_branch()
+static char	*get_git_branch(void)
 {
-	const char	*t[] = {"/usr/bin/git", "rev-parse", "--abbrev-ref", "HEAD", NULL};
+	const char	*t[] = {"/usr/bin/git", "rev-parse", "--abbrev-ref",
+	"HEAD", NULL};
 
-	return exec_to_str(t);
+	return (exec_to_str(t));
 }
 
-int	set_prompt(char *str)
+int			set_prompt(char *str)
 {
 	char *folder;
 	char *branch;

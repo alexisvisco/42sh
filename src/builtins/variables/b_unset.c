@@ -13,7 +13,7 @@
 
 #include "shell.h"
 
-static int 	unset_help()
+static int		unset_help(void)
 {
 	ft_printf("unset NAME.\n");
 	return (1);
@@ -21,9 +21,9 @@ static int 	unset_help()
 
 static int		unset_variable(char *arg)
 {
-	t_node *node;
-    t_var *var;
-    char *to_print;
+	t_node	*node;
+	t_var	*var;
+	char	*to_print;
 
 	node = ht_has(g_shell.vars, arg);
 	if (!node)
@@ -32,18 +32,18 @@ static int		unset_variable(char *arg)
 		return (0);
 	}
 	node = ht_remove(g_shell.vars, arg);
-    var = node->value;
-    to_print = ft_sprintf("%s=%s", var->symbol, var->value);
+	var = node->value;
+	to_print = ft_sprintf("%s=%s", var->symbol, var->value);
 	message(MSG_VAR_UNSETED, to_print);
 	free_node_variable(node);
-    ft_memdel((void **)&to_print);
+	ft_memdel((void **)&to_print);
 	return (1);
 }
 
-int 			b_unset(char **args, t_shell *sh)
+int				b_unset(char **args, t_shell *sh)
 {
-	char ar[3];
-	char *arg;
+	char	ar[3];
+	char	*arg;
 
 	(void)sh;
 	if (ft_strequ(get_first_arg(args), "help"))
@@ -51,7 +51,7 @@ int 			b_unset(char **args, t_shell *sh)
 	parse_arguments(args, ar, "np");
 	arg = get_first_arg(args);
 	if (arg == NULL)
-	    return (unset_help());
+		return (unset_help());
 	else
 		return (unset_variable(arg));
 }

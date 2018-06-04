@@ -13,7 +13,7 @@
 
 #include "shell.h"
 
-static int 	typeof_help()
+static int		typeof_help(void)
 {
 	ft_printf("typeof NAME.\n");
 	return (1);
@@ -21,8 +21,8 @@ static int 	typeof_help()
 
 static int		typeof_variable(char *arg)
 {
-	t_node *node;
-    t_var *var;
+	t_node	*node;
+	t_var	*var;
 
 	node = ht_has(g_shell.vars, arg);
 	if (!node)
@@ -31,14 +31,15 @@ static int		typeof_variable(char *arg)
 		return (0);
 	}
 	var = ht_get(g_shell.vars, arg);
-	message(MSG_VAR_TYPEOF, var->symbol, var->var_type == 0 ? "String" : "Number");
+	message(MSG_VAR_TYPEOF, var->symbol, var->var_type == 0 ?
+	"String" : "Number");
 	return (1);
 }
 
-int 			b_typeof(char **args, t_shell *sh)
+int				b_typeof(char **args, t_shell *sh)
 {
-	char ar[3];
-	char *arg;
+	char	ar[3];
+	char	*arg;
 
 	(void)sh;
 	if (ft_strequ(get_first_arg(args), "help"))
@@ -46,7 +47,7 @@ int 			b_typeof(char **args, t_shell *sh)
 	parse_arguments(args, ar, "");
 	arg = get_first_arg(args);
 	if (arg == NULL)
-	    return (typeof_help());
+		return (typeof_help());
 	else
 		return (typeof_variable(arg));
 }

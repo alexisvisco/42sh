@@ -34,17 +34,20 @@ static void	replace_placeholder(t_token ***tokens)
 	}
 }
 
-static void		update_history(char *s)
+static void	update_history(char *s)
 {
 	const size_t n = g_shell.line_edit->history_data->heap->next_insert;
 
-	ft_memdel(&(g_shell.line_edit->history_data->heap->list[n == 0 ? 0 : n - 1]));
-	g_shell.line_edit->history_data->heap->list[n == 0 ? 0 : n - 1]
-			= ft_repall("\n", " ", s);
+	ft_memdel(&(g_shell.line_edit->history_data->heap->list[n == 0 ? 0
+	: n - 1]));
+	g_shell.line_edit->history_data->heap->list[n == 0 ? 0 : n - 1] =
+	ft_repall("\n", " ", s);
 }
 
 int			parse_tokens(t_token ***tokens, char *s, int is_backquote)
 {
+	int a;
+
 	if (lex_all(tokens, s) < 0)
 		return (-1);
 	if (analyze_sep(*tokens) < 0)
@@ -53,8 +56,10 @@ int			parse_tokens(t_token ***tokens, char *s, int is_backquote)
 		update_history(s);
 	replace_placeholder(tokens);
 	format_tokens_quotes(tokens);
-	if (seek_backquotes(*tokens) < 0)
+	if ((a = seek_backquotes(*tokens)) < 0)
 		return (-3);
+	else if (a == 2)
+		return (-4);
 	return (1);
 }
 

@@ -29,10 +29,10 @@ int		odd_quote(char *quote, char *line)
 	return (count % 2);
 }
 
-char    which_quote(char *s)
+char	which_quote(char *s)
 {
-	int simple_q;
-	int double_q;
+	int	simple_q;
+	int	double_q;
 
 	simple_q = 0;
 	double_q = 0;
@@ -52,11 +52,11 @@ char    which_quote(char *s)
 		return ('`');
 }
 
-void    odd_quote_prompt(t_token ***tokens, char *s)
+void	odd_quote_prompt(t_token ***tokens, char *s)
 {
-	char    *new_line;
-	char    *tmp;
-	char 	*quote;
+	char	*new_line;
+	char	*tmp;
+	char	*quote;
 
 	ft_memdel((void **)&(*tokens));
 	quote = ft_char_to_str(which_quote(s));
@@ -70,4 +70,3 @@ void    odd_quote_prompt(t_token ***tokens, char *s)
 	ft_memdel((void **)&s);
 	shell_process(multi_line_prompt(new_line, 0));
 }
-

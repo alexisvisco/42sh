@@ -66,6 +66,20 @@ static int	parsing(t_token **tokens, int i)
 	return (0);
 }
 
+static int 	nothing_to_do(t_token **tokens)
+{
+	int		i;
+
+	i = 0;
+	while (tokens[i])
+	{
+		i++;
+	}
+	if (i == 1 && tokens[0]->value[0] == '\0')
+		return (1);
+	return (0);
+}
+
 int			seek_backquotes(t_token **tokens)
 {
 	int		i;
@@ -78,5 +92,7 @@ int			seek_backquotes(t_token **tokens)
 				return (-1);
 		i++;
 	}
+	if (nothing_to_do(tokens) == 1)
+		return (2);
 	return (0);
 }

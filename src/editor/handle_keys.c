@@ -29,7 +29,7 @@ static int		add_history(t_editor *l)
 ** If difference btw current size and previous size update it and refresh
 */
 
-static void edit_size_colum(t_editor *l)
+static void		edit_size_colum(t_editor *l)
 {
 	const size_t temp = (size_t)get_colums_len(l->ifd, l->ofd);
 

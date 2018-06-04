@@ -6,18 +6,18 @@
 /*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/04/19 14:08:46 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/19 14:08:46 by aviscogl    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/06/04 18:08:18 by ggranjon    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include <f_mem.h>
+#include "f_mem.h"
 
-int *vint(int x)
+int	*vint(int x)
 {
-    int *i;
+	int *i;
 
-    i = ft_memalloc(1);
-    *i = x;
-    return i;
+	i = ft_memalloc(1);
+	*i = x;
+	return (i);
 }

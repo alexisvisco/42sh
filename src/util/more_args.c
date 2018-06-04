@@ -14,12 +14,12 @@
 #include "printf.h"
 #include "util.h"
 
-int 	has_arg(int args, int query)
+int		has_arg(int args, int query)
 {
 	return (args & query);
 }
 
-void 	i_want_to_print(int args)
+void	i_want_to_print(int args)
 {
 	if (has_arg(args, BOAT))
 		printf("I want to travel the world with a boat\n");

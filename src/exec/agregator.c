@@ -18,10 +18,10 @@ static int	agregator(char *str, int p[2])
 	if (ft_strequ(str, "2>&1") || ft_strequ(str, "1<&2"))
 		dup2(p[WRITE_END], STDERR_FILENO);
 	else if (ft_strequ(str, "1>&2") || ft_strequ(str, "2<&1")
-			 || ft_strequ(str, ">&2"))
+	|| ft_strequ(str, ">&2"))
 		dup2(STDERR_FILENO, p[WRITE_END]);
 	else if (ft_strequ(str, "1>&0") || ft_strequ(str, "0<&1")
-			 || ft_strequ(str, ">&0"))
+	|| ft_strequ(str, ">&0"))
 		dup2(STDIN_FILENO, p[WRITE_END]);
 	else if (ft_strequ(str, "0>&1") || ft_strequ(str, "1<&0"))
 		dup2(p[WRITE_END], STDIN_FILENO);
@@ -32,7 +32,7 @@ static int	agregator(char *str, int p[2])
 	else if (ft_strequ(str, "0>&-") || ft_strequ(str, "0<&-"))
 		close(STDIN_FILENO);
 	else if (ft_strequ(str, "1>&-") || ft_strequ(str, "1<&-")
-			 || ft_strequ(str, ">&-"))
+	|| ft_strequ(str, ">&-"))
 		close(STDOUT_FILENO);
 	else if (ft_strequ(str, "2>&-") || ft_strequ(str, "2<&-"))
 		close(STDERR_FILENO);

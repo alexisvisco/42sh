@@ -30,12 +30,13 @@ int	can_exec(t_res *res, int number)
 {
 	if (number == 0)
 		res->error = ft_strdup("Infinity.");
-	return number != 0;
+	return (number != 0);
 }
 
 int	valid_expr(char *expr)
 {
-	while (*expr) {
+	while (*expr)
+	{
 		if (!ALLOWEDS_CHARS(*expr))
 			return (0);
 		expr++;

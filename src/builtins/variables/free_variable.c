@@ -19,7 +19,7 @@ void	free_variable(void *var)
 
 	if (var)
 	{
-		variables = (t_var *) var;
+		variables = (t_var *)var;
 		ft_memdel((void **)&(variables->value));
 	}
 	ft_memdel((void **)&var);

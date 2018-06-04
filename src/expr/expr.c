@@ -13,7 +13,6 @@
 
 #include <expr.h>
 
-
 int		parse_number(char **expr, t_res *res)
 {
 	int nbr;
@@ -31,7 +30,7 @@ int		parse_number(char **expr, t_res *res)
 	return (custom_atoi(expr));
 }
 
-int parse_factors(char **expr, t_res *res)
+int		parse_factors(char **expr, t_res *res)
 {
 	int		nbr;
 	int		nbr2;
@@ -40,7 +39,8 @@ int parse_factors(char **expr, t_res *res)
 	nbr = parse_number(expr, res);
 	while (**expr)
 	{
-		if (res->error != NULL) return 0;
+		if (res->error != NULL)
+			return (0);
 		while (**expr == ' ')
 			(*expr)++;
 		op = **expr;
@@ -58,7 +58,7 @@ int parse_factors(char **expr, t_res *res)
 	return (nbr);
 }
 
-int parse_sum(char **expr, t_res *res)
+int		parse_sum(char **expr, t_res *res)
 {
 	int		nbr;
 	int		nbr2;
@@ -67,7 +67,8 @@ int parse_sum(char **expr, t_res *res)
 	nbr = parse_factors(expr, res);
 	while (**expr)
 	{
-		if (res->error != NULL) return 0;
+		if (res->error != NULL)
+			return (0);
 		while (**expr == ' ')
 			(*expr)++;
 		op = **expr;

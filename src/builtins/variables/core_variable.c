@@ -18,7 +18,7 @@
 ** Get the value of a variable into string value
 */
 
-char	*v_value_to_str(t_var *v)
+char		*v_value_to_str(t_var *v)
 {
 	if (v->var_type == VAR_STRING)
 		return (ft_strdup(v->value));
@@ -32,7 +32,7 @@ char	*v_value_to_str(t_var *v)
 ** Create a variable, set type and att it to g_shell.vars hashtable
 */
 
-int		create_variable(char *assignation)
+int			create_variable(char *assignation)
 {
 	char	**assign;
 	t_var	*var;
@@ -53,13 +53,14 @@ int		create_variable(char *assignation)
 		var->value = (void *)ft_sprintf("%i", res.res);
 	else
 		var->value = ft_strdup(assign[1]);
-	if (res.error) ft_memdel((void **)&(res.error));
+	if (res.error)
+		ft_memdel((void **)&(res.error));
 	ht_set(g_shell.vars, var->symbol, var);
 	free_tab(assign);
 	return (1);
 }
 
-int		is_assignation_variable(char *str)
+int			is_assignation_variable(char *str)
 {
 	char **assign;
 
@@ -73,11 +74,10 @@ int		is_assignation_variable(char *str)
 	return (0);
 }
 
-t_var_type get_type_of_assignation(char *str)
+t_var_type	get_type_of_assignation(char *str)
 {
 	(void)str;
-	if (valid_expr(str)) {
+	if (valid_expr(str))
 		return (VAR_NUMBER);
-	}
 	return (VAR_STRING);
 }

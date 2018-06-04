@@ -13,20 +13,20 @@
 
 #include "shell.h"
 
-static void     child_fork(const char *argv[], const int *p)
+static void	child_fork(const char *argv[], const int *p)
 {
-	char            **envp;
+	char	**envp;
 
 	envp = env_to_array();
 	dup2(p[WRITE_END], STDOUT_FILENO);
 	close(p[READ_END]);
 	close(STDERR_FILENO);
-	execve(argv[0], (char *const *) argv, envp);
+	execve(argv[0], (char *const *)argv, envp);
 	free_tab(envp);
 	exit(EXIT_FAILURE);
 }
 
-static void     set_str(const int *p, char **ret)
+static void	set_str(const int *p, char **ret)
 {
 	char *line;
 	char *tmp;
@@ -41,10 +41,10 @@ static void     set_str(const int *p, char **ret)
 	free_gnl();
 }
 
-char *exec_to_str(const char *argv[])
+char		*exec_to_str(const char *argv[])
 {
 	int		p[2];
-	char		*ret;
+	char	*ret;
 
 	pipe(p);
 	if (fork() == 0)

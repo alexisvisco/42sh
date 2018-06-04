@@ -13,7 +13,7 @@
 
 #include "shell.h"
 
-static void		free_exit(t_token **tokens, t_block **blocks)
+static void	free_exit(t_token **tokens, t_block **blocks)
 {
 	if (tokens)
 		free_toks(tokens);

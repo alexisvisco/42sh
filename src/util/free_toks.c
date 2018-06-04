@@ -18,7 +18,7 @@ void		free_toks(t_token **tokens)
 	int i;
 
 	i = 0;
-	while (tokens[i])
+	while (tokens && tokens[i])
 	{
 		ft_memdel((void **)&(tokens[i]->value));
 		ft_memdel((void **)&(tokens[i]));

@@ -90,7 +90,7 @@ int				get_next_line(const int fd, char **line)
 	save = get_gnl();
 	if (!(*save))
 		*save = new_list(fd);
-	if (fd == -1 || line == NULL || BUFF_SIZE <= 0)
+	if (fd < 0 || line == NULL || BUFF_SIZE <= 0 || read(fd, NULL, 0) < 0)
 		return (-1);
 	tmp = check_fd(*save, fd);
 	while (!(ft_strchr(tmp->tempo, '\n')))

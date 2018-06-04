@@ -58,7 +58,7 @@ static int	analyze_red(t_block **block, t_token **tokens)
 				if (ft_strlen(tokens[j]->value) <= 3 && (!(tokens[j + 1])
 				|| tokens[j + 1]->type != FD_FILE || (tokens[j]->value[1] &&
 				!ft_strchr(FT_REDIR, tokens[j]->value[1]))))
-					return (-2);
+					return (-3);
 				if (bad_red(tokens[j]->value, tokens, j) == -2)
 					return (-2);
 			}
@@ -132,7 +132,7 @@ static int	analyze_pipe(t_block **block, t_token **tokens)
 
 int			analyze_block(t_block **blocks, t_token **tokens)
 {
-	if (analyze_red(blocks, tokens) == -2)
+	if (analyze_red(blocks, tokens) <= -2)
 	{
 		message_err(ERR_REDIR);
 		return (-2);

@@ -68,7 +68,7 @@ static void		get_backq_string(const int *p, t_backquotes *ret)
 	char *line;
 	char *tmp;
 
-	while (get_next_line(p[READ_END], &line))
+	while (get_next_line(p[READ_END], &line) > 0)
 	{
 		tmp = (*ret).str;
 		(*ret).str = ft_mine_strjoin((*ret).str, line);
@@ -110,6 +110,7 @@ t_backquotes	exec_backquotes(char ***argv, t_block *blocks, t_token **tokens)
 		;
 	ret.status = WEXITSTATUS(status);
 	ret.str = ft_strnew(1);
-	get_backq_string(p, &ret);
+	if (fd.output == 1)
+		get_backq_string(p, &ret);
 	return (ret);
 }

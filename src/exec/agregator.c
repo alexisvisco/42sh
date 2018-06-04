@@ -17,15 +17,16 @@ static int	agregator(char *str, int p[2])
 {
 	char todo = 2;
 	// METTRE LES STDOUT CORRECTEMENT ET TESTER !!!
+	// faire les >&- >&1 >&2
 	(void)todo;
 	if (ft_strequ(str, "2>&1") || ft_strequ(str, "1<&2"))
-		dup2(STDOUT_FILENO, STDERR_FILENO);
+		dup2(p[WRITE_END], STDERR_FILENO);
 	else if (ft_strequ(str, "1>&2") || ft_strequ(str, "2<&1"))
 		dup2(STDERR_FILENO, p[WRITE_END]);
 	else if (ft_strequ(str, "1>&0") || ft_strequ(str, "0<&1"))
 		dup2(STDIN_FILENO, p[WRITE_END]);
 	else if (ft_strequ(str, "0>&1") || ft_strequ(str, "1<&0"))
-		dup2(STDOUT_FILENO, STDIN_FILENO);
+		dup2(p[WRITE_END], STDIN_FILENO);
 	else if (ft_strequ(str, "2>&0") || ft_strequ(str, "0<&2"))
 		dup2(STDIN_FILENO, STDERR_FILENO);
 	else if (ft_strequ(str, "0>&2") || ft_strequ(str, "2<&0"))

@@ -13,7 +13,7 @@
 
 #include "shell.h"
 
-int	shell_¶process(char *s)
+int	shell_process(char *s)
 {
 	t_token	**tokens;
 	t_block	*blocks;

@@ -13,6 +13,10 @@
 
 #include "shell.h"
 
+#define BAD_RED bad_red(tokens[j]->value, tokens, j) <= -2
+#define NOT_FD tokens[j + 1]->type != FD_FILE
+#define LEN_INF_3 ft_strlen(tokens[j]->value) <= 3
+
 /*
 ** Check if commentaries are well formated, it means
 ** there are not like this <> or this ><
@@ -22,6 +26,8 @@
 
 static int	bad_red(char *s, t_token **tokens, int j)
 {
+	if (ft_strequ(s, ">&-") || ft_strequ(s, ">&0") || ft_strequ(s, ">&2"))
+		return (0);
 	if (s[1])
 	{
 		if (s[0] == '<')
@@ -33,6 +39,9 @@ static int	bad_red(char *s, t_token **tokens, int j)
 	}
 	if ((ft_strlen(s) > 3 && (tokens[j + 1]) && tokens[j + 1]->type != SEP_OP))
 		return (-2);
+	if (LEN_INF_3 && (!(tokens[j + 1]) || NOT_FD ||
+	(tokens[j]->value[1] && !ft_strchr(FT_REDIR, tokens[j]->value[1]))))
+		return (-3);
 	return (0);
 }
 
@@ -55,12 +64,8 @@ static int	analyze_red(t_block **block, t_token **tokens)
 			if (tokens[j]->type == IO_REDIR)
 			{
 				(*block)[i].isredir[0] = TY_REDIR;
-				if (ft_strlen(tokens[j]->value) <= 3 && (!(tokens[j + 1])
-				|| tokens[j + 1]->type != FD_FILE || (tokens[j]->value[1] &&
-				!ft_strchr(FT_REDIR, tokens[j]->value[1]))))
+				if (BAD_RED)
 					return (-3);
-				if (bad_red(tokens[j]->value, tokens, j) == -2)
-					return (-2);
 			}
 			j++;
 		}

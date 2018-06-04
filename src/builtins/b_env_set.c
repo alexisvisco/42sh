@@ -13,7 +13,7 @@
 
 #include "shell.h"
 
-void 		b_set_env_b(t_hashtable *envs, char *key, char *val,
+void	b_set_env_b(t_hashtable *envs, char *key, char *val,
 t_shell *shell)
 {
 	ht_set(envs, key, ft_strdup(val));
@@ -23,7 +23,7 @@ t_shell *shell)
 	message(MSG_SETENV, key, val);
 }
 
-int				b_set_env_a(t_hashtable *envs, char *str, t_shell *shell)
+int		b_set_env_a(t_hashtable *envs, char *str, t_shell *shell)
 {
 	char **splitted;
 
@@ -45,7 +45,7 @@ int				b_set_env_a(t_hashtable *envs, char *str, t_shell *shell)
 ** Take one or more arguments
 */
 
-int				b_env_set(char **args, t_shell *shell)
+int		b_env_set(char **args, t_shell *shell)
 {
 	char *str;
 

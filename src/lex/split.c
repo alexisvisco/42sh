@@ -37,8 +37,9 @@ static int		cpy_seprator(char **s, char **ret)
 		|| ft_strchr(FT_REDIR, **s))
 		{
 			simplify_cpy(s, ret, 1);
-			if (((*ret)[1] == '&' && ft_isdigit(**s)) || ((*ret)[1] == '>' &&
-					**s == '&') || (ft_isdigit((*ret)[0]) && **s == '>'))
+			if (((*ret)[1] == '&' && (**s == '1' || **s == '2' || **s == '-'))
+			|| ((*ret)[1] == '&' && ft_isdigit(**s)) || ((*ret)[1] == '>' &&
+			**s == '&') || (ft_isdigit((*ret)[0]) && **s == '>'))
 			{
 				simplify_cpy(s, ret, 2);
 				if ((*ret)[2] == '&' && (ft_isdigit(**s) || **s == '-'))

@@ -26,7 +26,6 @@ static void     child_fork(const char *argv[], const int *p)
 	exit(EXIT_FAILURE);
 }
 
-
 static void     set_str(const int *p, char **ret)
 {
 	char *line;

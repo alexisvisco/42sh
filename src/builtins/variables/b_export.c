@@ -13,7 +13,7 @@
 
 #include "shell.h"
 
-int 	export_help()
+int		export_help(void)
 {
 	ft_printf("export [NAME[=VALUE] ...]\nexport -p\n");
 	ft_printf("Explanation of each arguments: \n");
@@ -25,6 +25,7 @@ int		export_variable(char *arg)
 {
 	t_node	*node;
 	t_var	*var;
+
 	node = ht_has(g_shell.vars, arg);
 	if (!node)
 	{
@@ -39,7 +40,7 @@ int		export_variable(char *arg)
 	return (1);
 }
 
-int 	b_export(char **args, t_shell *sh)
+int		b_export(char **args, t_shell *sh)
 {
 	char ar[3];
 	char *arg;

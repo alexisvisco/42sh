@@ -37,7 +37,10 @@ static void		child_fork(char ***argv, int fd, const int *p)
 	else
 	{
 		a = -1;
-		execve((*argv)[0], *argv, envp);
+		if (is_directory((*argv)[0]))
+			message_err(ERR_IS_DIR, (*argv)[0]);
+		else
+			execve((*argv)[0], *argv, envp);
 	}
 	free_tab(envp);
 	exit(a == -1 ? EXIT_FAILURE : !a);

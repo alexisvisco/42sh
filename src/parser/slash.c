@@ -18,7 +18,7 @@ char			*remove_quotes(char *s)
 	char	*new;
 	int		i;
 	int		j;
-	char 	c;
+	char	c;
 
 	i = 0;
 	j = 0;
@@ -136,4 +136,3 @@ void			format_tokens_quotes(t_token ***tokens)
 		i++;
 	}
 }
-

@@ -38,6 +38,8 @@ static void			child_fork(char ***argv, t_fd fd, int *p)
 	else
 	{
 		a = -1;
+		if (is_directory((*argv)[0]))
+			message_err(ERR_IS_DIR, (*argv)[0]);
 		execve((*argv)[0], *argv, envp);
 	}
 	free_tab(envp);

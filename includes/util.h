@@ -52,4 +52,6 @@ char			*get_first_arg(char **a);
 void			parse_arguments(char **args, char *ar, const char *allowed);
 int				*vint(int x);
 
+int				is_directory(const char *path);
+
 #endif

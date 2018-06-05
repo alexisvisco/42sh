@@ -17,7 +17,7 @@
 #define OUTPUT_AGREG (fd.output = call_ag_redir(argv)) == -1
 #define OUTPUT_RED (fd.output = call_right_redir(argv)) == -1
 
-static void		child_fork(char ***argv, t_fd fd, int *p)
+static void			child_fork(char ***argv, t_fd fd, int *p)
 {
 	char			**envp;
 	t_builtins_fun	*buitlin;
@@ -53,7 +53,7 @@ static void		child_fork(char ***argv, t_fd fd, int *p)
 */
 int	g_ret;
 
-static void		close_fd(const int *p, t_fd *fd, char ****av)
+static void			close_fd(const int *p, t_fd *fd, char ****av)
 {
 	if ((*fd).input > 0)
 		close((*fd).input);
@@ -64,29 +64,8 @@ static void		close_fd(const int *p, t_fd *fd, char ****av)
 	(*av)++;
 }
 
-static void		get_backq_string(const int *p, t_backquotes *ret)
-{
-	char *line;
-	char *tmp;
-
-	while (get_next_line(p[READ_END], &line) > 0)
-	{
-		tmp = (*ret).str;
-		(*ret).str = ft_mine_strjoin((*ret).str, line);
-		ft_memdel((void **)&tmp);
-		ft_memdel((void **)&line);
-	}
-	free_gnl();
-}
-
-t_backquotes	error_redir(t_backquotes *ret)
-{
-	(*ret).status = 1;
-	(*ret).str = NULL;
-	return (*ret);
-}
-
-t_backquotes	exec_backquotes(char ***argv, t_block *blocks, t_token **tokens)
+t_backquotes		exec_backquotes(char ***argv, t_block *blocks,
+									t_token **tokens)
 {
 	int				p[2];
 	int				status;
@@ -109,10 +88,7 @@ t_backquotes	exec_backquotes(char ***argv, t_block *blocks, t_token **tokens)
 	}
 	if (g_ret == -1)
 		wait(&status);
-	while (wait(NULL) > 0)
-		;
-	ret.status = WEXITSTATUS(status);
-	ret.str = ft_strnew(1);
+	get_backq_status(status, &ret);
 	if (fd.output == 1)
 		get_backq_string(p, &ret);
 	return (ret);

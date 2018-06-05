@@ -20,16 +20,16 @@
 
 # define ALLOWEDS_CHARS(c) (strchr("+-*/%() 0123456789", c) != NULL)
 
-typedef struct	result_expr
+typedef struct	s_result_expr
 {
-	int 		res;
-	char 		*error;
+	int		res;
+	char	*error;
 }				t_res;
 
-int		parse_sum(char **expr, t_res *res);
-int		can_exec(t_res *res, int number);
-int		custom_atoi(char **str);
-void	eval_expr(char *expr, t_res *res);
-int		valid_expr(char *expr);
+int				parse_sum(char **expr, t_res *res);
+int				can_exec(t_res *res, int number);
+int				custom_atoi(char **str);
+void			eval_expr(char *expr, t_res *res);
+int				valid_expr(char *expr);
 
 #endif

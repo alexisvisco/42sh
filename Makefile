@@ -178,7 +178,8 @@ expr/custom_fun.c \
 backquotes/backquotes_parsing.c \
 backquotes/core_exec_backquotes.c \
 backquotes/exec_backquotes.c \
-backquotes/ft_mine_strjoin.c
+backquotes/ft_mine_strjoin.c \
+backquotes/exec_simplify.c
 
 
 EDITOR_FOLDERS = editor editor/util editor/refresher editor/completion editor/keys_functions editor/edit_fn editor/history

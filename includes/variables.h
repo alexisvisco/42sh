@@ -11,11 +11,10 @@
 /*                                                        /                   */
 /* ************************************************************************** */
 
-
 #ifndef VARIABLES_H
 # define VARIABLES_H
 
-typedef enum	s_var_type{
+typedef enum	e_var_type{
 	VAR_STRING,
 	VAR_NUMBER
 }				t_var_type;
@@ -30,7 +29,7 @@ typedef struct	s_variable
 void			free_variable(void *var);
 char			*v_value_to_str(t_var *v);
 int				is_assignation_variable(char *str);
-t_var_type get_type_of_assignation(char *str);
+t_var_type		get_type_of_assignation(char *str);
 int				create_variable(char *assignation);
 void			free_node_variable(void *var);
 

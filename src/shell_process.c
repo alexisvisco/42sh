@@ -23,7 +23,7 @@ static void		free_exit(t_token **tokens, t_block **blocks)
 	g_shell.line = NULL;
 }
 
-int			shell_process(char *s, int is_backq)
+int				shell_process(char *s, int is_backq)
 {
 	t_token	**tokens;
 	t_block	*blocks;

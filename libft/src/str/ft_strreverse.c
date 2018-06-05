@@ -15,21 +15,21 @@
 
 char		*ft_strrev(char *s)
 {
-    int		i;
-    int		len;
-    char	tmp;
+	int		i;
+	int		len;
+	char	tmp;
 
-    i = 0;
-    len = (ft_strlen(s) - 1);
-    if (s[i] == '-')
-        i++;
-    while (i < len)
-    {
-        tmp = s[len];
-        s[len] = s[i];
-        s[i] = tmp;
-        i++;
-        len--;
-    }
-    return (s);
+	i = 0;
+	len = (ft_strlen(s) - 1);
+	if (s[i] == '-')
+		i++;
+	while (i < len)
+	{
+		tmp = s[len];
+		s[len] = s[i];
+		s[i] = tmp;
+		i++;
+		len--;
+	}
+	return (s);
 }

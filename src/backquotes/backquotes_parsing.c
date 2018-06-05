@@ -66,12 +66,11 @@ static int	parsing(t_token **tokens, int i)
 	return (0);
 }
 
-
-static void		new_prompt(t_token **tokens)
+static void	new_prompt(t_token **tokens)
 {
 	int		i;
-	char 	*str;
-	char 	*tmp;
+	char	*str;
+	char	*tmp;
 
 	str = ft_strnew(1);
 	i = 0;

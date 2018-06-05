@@ -126,6 +126,7 @@ util/ft_repall.c \
 util/remove_file.c \
 util/ft_contain_any_seq.c \
 util/util_command.c \
+util/which_quote.c \
 util/vint.c \
 \
 exec/signal.c \

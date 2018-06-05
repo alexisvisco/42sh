@@ -13,6 +13,8 @@
 
 #include "shell.h"
 
+#define C_DIF_BS (*s == c && *(s - 1) != '\\')
+
 static void		simplify_cpy(char **s, char **ret, int a)
 {
 	(*ret)[a] = **s;
@@ -23,7 +25,7 @@ static void		simplify_cpy(char **s, char **ret, int a)
 ** if there is a separator into a string, cut the seperator and the string
 */
 
-static int		cpy_seprator(char **s, char **ret)
+int				cpy_seprator(char **s, char **ret)
 {
 	int	i;
 
@@ -34,12 +36,12 @@ static int		cpy_seprator(char **s, char **ret)
 		i = 1;
 		simplify_cpy(s, ret, 0);
 		if ((ft_strchr(FT_SEP, **s) && !(ft_isdigit((*ret)[0])))
-			|| ft_strchr(FT_REDIR, **s))
+		|| ft_strchr(FT_REDIR, **s))
 		{
 			simplify_cpy(s, ret, 1);
 			if (((*ret)[1] == '&' && (**s == '1' || **s == '2' || **s == '-'))
-				|| ((*ret)[1] == '&' && ft_isdigit(**s)) || ((*ret)[1] == '>' &&
-															 **s == '&') || (ft_isdigit((*ret)[0]) && **s == '>'))
+			|| ((*ret)[1] == '&' && ft_isdigit(**s)) || ((*ret)[1] == '>' &&
+			**s == '&') || (ft_isdigit((*ret)[0]) && **s == '>'))
 			{
 				simplify_cpy(s, ret, 2);
 				if ((*ret)[2] == '&' && (ft_isdigit(**s) || **s == '-'))
@@ -76,12 +78,13 @@ char			*cpy_special(char *s)
 	while (*s)
 	{
 		if (mod % 2 == 0 && (c == '`' || *s == ' ' || ft_strchr(FT_SEP, *s) ||
-							 ft_strchr(FT_REDIR, *s) || (*S && ft_strchr(FT_REDIR, (*S)))))
+		ft_strchr(FT_REDIR, *s) || (*S && ft_strchr(FT_REDIR, (*S)))))
 			break ;
-		if ((*s == c && *(s - 1) != '\\' ) || (c == -2 && ((*s) == '\"' ||
-														   (*s) == '\'') && (c = *s)))
+		if (C_DIF_BS || (c == -2 && (*s == '\"' || *s == '\'') && (c = *s)))
 			mod++;
 		ret[i++] = *(s++);
+		if (mod % 2 == 0)
+			c = (char)-2;
 	}
 	(mod % 2) ? ft_strdel(&ret) : (long)mod;
 	return (ret);

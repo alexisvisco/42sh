@@ -29,29 +29,6 @@ int		odd_quote(char *quote, char *line)
 	return (count % 2);
 }
 
-char	which_quote(char *s)
-{
-	int	simple_q;
-	int	double_q;
-
-	simple_q = 0;
-	double_q = 0;
-	while (*s)
-	{
-		if (*s == '\'')
-			simple_q++;
-		else if (*s == '\"')
-			double_q++;
-		s++;
-	}
-	if (simple_q % 2)
-		return ('\'');
-	else if (double_q % 2)
-		return ('\"');
-	else
-		return ('`');
-}
-
 void	odd_quote_prompt(t_token ***tokens, char *s)
 {
 	char	*new_line;
@@ -60,8 +37,8 @@ void	odd_quote_prompt(t_token ***tokens, char *s)
 
 	ft_memdel((void **)&(*tokens));
 	quote = ft_char_to_str(which_quote(s));
-	new_line = heap_to_str(ask_line("dquote> ", !ft_strequ(quote, "`"),
-	odd_quote, quote), !ft_strequ(quote, "`"));
+	new_line = heap_to_str(ask_line(*quote == '\'' ? "quote> " : "dquote> ",
+	!ft_strequ(quote, "`"), odd_quote, quote), !ft_strequ(quote, "`"));
 	ft_memdel((void **)&quote);
 	tmp = new_line;
 	new_line = ft_strjoin(s, new_line);

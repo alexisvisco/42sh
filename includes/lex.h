@@ -62,6 +62,7 @@ typedef struct	s_block
 }				t_block;
 
 char			*cpy_special(char *s);
+int				cpy_seprator(char **s, char **ret);
 int				count_tokens(char *s);
 t_token			**split_tokens(char *s, int nbtokens);
 

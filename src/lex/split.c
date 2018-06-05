@@ -29,17 +29,17 @@ static int		cpy_seprator(char **s, char **ret)
 
 	i = 0;
 	if (ft_strchr(FT_SEP, **s) || ft_strchr(FT_REDIR, **s) ||
-	(ft_isdigit(**s) && ft_strchr(FT_REDIR, (*(*s + 1)))))
+		(ft_isdigit(**s) && ft_strchr(FT_REDIR, (*(*s + 1)))))
 	{
 		i = 1;
 		simplify_cpy(s, ret, 0);
 		if ((ft_strchr(FT_SEP, **s) && !(ft_isdigit((*ret)[0])))
-		|| ft_strchr(FT_REDIR, **s))
+			|| ft_strchr(FT_REDIR, **s))
 		{
 			simplify_cpy(s, ret, 1);
 			if (((*ret)[1] == '&' && (**s == '1' || **s == '2' || **s == '-'))
-			|| ((*ret)[1] == '&' && ft_isdigit(**s)) || ((*ret)[1] == '>' &&
-			**s == '&') || (ft_isdigit((*ret)[0]) && **s == '>'))
+				|| ((*ret)[1] == '&' && ft_isdigit(**s)) || ((*ret)[1] == '>' &&
+															 **s == '&') || (ft_isdigit((*ret)[0]) && **s == '>'))
 			{
 				simplify_cpy(s, ret, 2);
 				if ((*ret)[2] == '&' && (ft_isdigit(**s) || **s == '-'))
@@ -71,14 +71,15 @@ char			*cpy_special(char *s)
 	if (cpy_seprator(&s, &ret))
 		return (ret);
 	mod = (*s == '\'' || *s == '\"' || *s == '`') ? 1 : 0;
-	c = (mod == 1) ? *s : '\"';
+	c = (mod == 1) ? *s : (char)-2;
 	ret[i++] = *(s++);
 	while (*s)
 	{
 		if (mod % 2 == 0 && (c == '`' || *s == ' ' || ft_strchr(FT_SEP, *s) ||
-		ft_strchr(FT_REDIR, *s) || (*S && ft_strchr(FT_REDIR, (*S)))))
+							 ft_strchr(FT_REDIR, *s) || (*S && ft_strchr(FT_REDIR, (*S)))))
 			break ;
-		if (*s == c && *(s - 1) != '\\')
+		if ((*s == c && *(s - 1) != '\\' ) || (c == -2 && ((*s) == '\"' ||
+														   (*s) == '\'') && (c = *s)))
 			mod++;
 		ret[i++] = *(s++);
 	}

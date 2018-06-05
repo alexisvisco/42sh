@@ -18,13 +18,22 @@ char			*remove_quotes(char *s)
 	char	*new;
 	int		i;
 	int		j;
+	char 	c;
 
 	i = 0;
 	j = 0;
 	new = ft_strnew(ft_strlen(s));
 	while (s[i])
 	{
-		if ((s[i] == '\'' || s[i] == '\"') && (i - 1 < 0 || s[i - 1] != '\\'))
+		if ((s[i] == '\'' || s[i] == '\"') && (i - 1 < 0 || s[i - 1] != '\\')
+			&& (c = s[i]))
+			break ;
+		i++;
+	}
+	i = 0;
+	while (s[i])
+	{
+		if ((s[i] == c) && (i - 1 < 0 || s[i - 1] != '\\'))
 			i++;
 		else
 			new[j++] = s[i++];
@@ -127,3 +136,4 @@ void			format_tokens_quotes(t_token ***tokens)
 		i++;
 	}
 }
+

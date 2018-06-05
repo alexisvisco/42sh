@@ -89,7 +89,7 @@ static void		new_prompt(t_token **tokens)
 		free_toks(tokens);
 	ft_memdel((void **)&g_shell.line);
 	g_shell.line = NULL;
-	shell_process(str);
+	shell_process(str, 1);
 }
 
 int			seek_backquotes(t_token **tokens)

@@ -110,7 +110,7 @@ typedef enum	e_msgs
 	ERR_INCE_BACK
 }				t_msgs;
 
-int				shell_process(char *s);
+int				shell_process(char *s, int is_backq);
 
 void			message(t_msgs m, ...);
 void			message_err(t_msgs m, ...);

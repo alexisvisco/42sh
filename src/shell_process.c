@@ -23,7 +23,7 @@ static void		free_exit(t_token **tokens, t_block **blocks)
 	g_shell.line = NULL;
 }
 
-int			shell_process(char *s)
+int			shell_process(char *s, int is_backq)
 {
 	t_token	**tokens;
 	t_block	*blocks;
@@ -33,7 +33,7 @@ int			shell_process(char *s)
 	blocks = NULL;
 	escape_useless_backquotes(s);
 	g_shell.line = s;
-	if ((tablea[0] = parse_tokens(&tokens, s, 0)) < 0)
+	if ((tablea[0] = parse_tokens(&tokens, s, is_backq)) < 0)
 	{
 		if (tablea[0] != -4)
 			free_exit(tokens, &blocks);

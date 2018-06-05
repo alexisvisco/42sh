@@ -38,7 +38,7 @@ int				main(int n, char **args, char **env)
 	{
 		signal(SIGINT, sig_handler);
 		str = multi_line_prompt(str, 1);
-		shell_process(str);
+		shell_process(str, 0);
 	}
 	return (0);
 }

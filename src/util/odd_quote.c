@@ -68,5 +68,5 @@ void	odd_quote_prompt(t_token ***tokens, char *s)
 	ft_memdel((void **)&tmp);
 	g_shell.line = new_line;
 	ft_memdel((void **)&s);
-	shell_process(multi_line_prompt(new_line, 0));
+	shell_process(multi_line_prompt(new_line, 0), 0);
 }

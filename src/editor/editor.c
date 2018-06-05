@@ -51,7 +51,7 @@ int				editor(char *buf, char *prompt, t_options *opt)
 	init_editor(&l);
 	if (get_cursor_pos(l.ifd, l.ofd) != 1)
 		ft_putstr(END_NO_NEW_LINE);
-	ft_putstr_fd(l.ofd, l.prompt);
+	refresh_line(&l);
 	if (!ft_strequ(g_shell.line_edit->next_line, ""))
 		editor_insert_str(&l, g_shell.line_edit->next_line);
 	g_shell.line_edit->next_line[0] = 0;

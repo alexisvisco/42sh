@@ -25,7 +25,7 @@ int		b_exit(char **args, t_shell *shell)
 	(void)shell;
 	disable_terminal(STDIN_FILENO);
 	exit_shell();
-	exit_status = (args && size_tab(args) >= 2) ? ft_atoi(args[1]) : 0;
+	exit_status = (args && size_tab(args) >= 2) ? ft_atoi(args[1]) % 256 : 0;
 	message(SHELL_EXIT, exit_status);
 	free_3d_tab(g_shell.cmds);
 	exit(exit_status);

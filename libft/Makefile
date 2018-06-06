@@ -13,6 +13,22 @@
 
 TOTAL_FILES := 169
 
+HEADERS = \
+includes/f_colors.h \
+includes/f_hashtable.h \
+includes/f_heap.h \
+includes/f_io.h \
+includes/f_is.h \
+includes/f_lib.h \
+includes/f_lst.h \
+includes/f_map.h \
+includes/f_math.h \
+includes/f_mem.h \
+includes/f_str.h \
+includes/f_trie.h \
+includes/ft_printf.h \
+includes/libft.h
+
 C_FILES += \
 \
 io/ft_putchar.c \
@@ -221,10 +237,10 @@ COUNT := 0
 
 all: $(NAME)
 
-$(OBJ_PATH)%.o: $(SRC_PATH)/%.c
+$(OBJ_PATH)%.o: $(SRC_PATH)%.c $(HEADERS)
 	@mkdir -p $(OBJ_SUB_PATHS)
 	@$(CC) $(CFLAGS) $(INC) -o $@ -c $<
-	@sh ../loading_bar.sh $(COUNT) $(TOTAL_FILES) $^ "Compiling Libft" 69
+	@sh ../loading_bar.sh $(COUNT) $(TOTAL_FILES) $< "Compiling Libft" 69
 	@$(eval COUNT=$(shell echo $$(($(COUNT)+1))))
 
 $(NAME): $(OBJ)

@@ -18,12 +18,15 @@ void	heap_free(t_heap *h)
 	size_t i;
 
 	i = 0;
-	while (i < h->size)
+	while (h && i < h->size)
 	{
 		if (h->list[i])
 			h->free_func(h->list[i]);
 		i++;
 	}
-	ft_memdel((void **)&(h->list));
-	ft_memdel((void **)&h);
+	if (h)
+	{
+		ft_memdel((void **) &(h->list));
+		ft_memdel((void **) &h);
+	}
 }

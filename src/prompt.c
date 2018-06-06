@@ -11,7 +11,6 @@
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include <f_colors.h>
 #include "shell.h"
 
 static char	*get_current_folder(void)

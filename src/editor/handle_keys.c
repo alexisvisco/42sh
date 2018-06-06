@@ -67,6 +67,7 @@ int				handle_keys(t_editor *l)
 				continue ;
 			}
 			ef_go_end(l);
+			refresh_line(l);
 			return (add_history(l));
 		}
 		else

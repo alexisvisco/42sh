@@ -17,13 +17,19 @@ t_shell	g_shell;
 
 static void		init(char **env)
 {
-	init_shell(env);
-	if (!ht_get(g_shell.env, "TERM"))
+	int i;
+
+	i = -1;
+	while (env[++i])
 	{
-		message_err(TERM_ENV_NOT_SET, NULL);
-		exit_shell();
-		exit(EXIT_FAILURE);
+		if (ft_strstarts_with_str(env[i], "TERM="))
+		{
+			init_shell(env);
+			return ;
+		}
 	}
+	message_err(TERM_ENV_NOT_SET, NULL);
+	exit(EXIT_FAILURE);
 }
 
 int				main(int n, char **args, char **env)

@@ -19,12 +19,20 @@
 
 void	buf_append(t_buf *ab, const char *s, int len)
 {
-	char *new;
+	char		*new;
+	int		i;
+	int		j;
 
-	new = ft_realloc(ab->b, ab->len + (size_t)len);
-	if (new == NULL)
-		return ;
-	ft_memcpy(new + ab->len, s, (size_t)len);
+	new = ft_memalloc(ab->len + (size_t)len);
+	i = -1;
+	j = 0;
+	while (ab->b && ab->b[++i])
+		new[j++] = ab->b[i];
+	i = -1;
+	while (s && s[++i])
+		new[j++] = s[i];
+	new[j] = 0;
+	ft_memdel((void**)&(ab->b));
 	ab->b = new;
 	ab->len += len;
 }

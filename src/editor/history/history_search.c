@@ -42,8 +42,7 @@ static int		is_only_num(char *query)
 	return (1);
 }
 
-static t_heap	*show_result(char *str, t_heap *history,
-								t_heap *result)
+static t_heap	*show_result(char *str, t_heap *history, t_heap *result)
 {
 	size_t i;
 
@@ -100,7 +99,11 @@ void			history_search(t_editor *e)
 	{
 		disable_terminal(0);
 		if (ft_strequ("exit", str))
-			break ;
+		{
+			heap_free(result);
+			ft_memdel((void **)&str);
+			break;
+		}
 		if (update_line(e, str, result))
 			break ;
 		result = show_result(str, history, result);

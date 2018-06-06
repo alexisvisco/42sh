@@ -22,7 +22,7 @@ int		odd_quote(char *quote, char *line)
 	count = 0;
 	while (line[i])
 	{
-		if (line[i] == *quote)
+		if (line[i] == *quote && (i == 0 || line[i - 1] != '\\'))
 			count++;
 		i++;
 	}

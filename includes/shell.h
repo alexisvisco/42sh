@@ -22,9 +22,11 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdarg.h>
-# include <termcap.h>
 # include <termios.h>
-# include <term.h>
+# if defined(__APPLE__)
+#  include <termcap.h>
+#  include <term.h>
+# endif
 # include <signal.h>
 # include <stdint.h>
 # include <sys/types.h>

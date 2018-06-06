@@ -178,6 +178,7 @@ expr/expr.c \
 expr/custom_fun.c \
 \
 backquotes/backquotes_parsing.c \
+backquotes/escape_quotes.c \
 backquotes/core_exec_backquotes.c \
 backquotes/exec_backquotes.c \
 backquotes/ft_mine_strjoin.c \

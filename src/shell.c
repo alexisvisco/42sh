@@ -39,6 +39,11 @@ int				main(int n, char **args, char **env)
 
 	(void)n;
 	(void)args;
+	if (!isatty(STDIN_FILENO))
+	{
+		message_err(ERR_UNSUPORTED_OPERATION);
+		exit(EXIT_FAILURE);
+	}
 	init(env);
 	while (set_prompt(prompt) && (str = readline(prompt, g_shell.line_edit)))
 	{

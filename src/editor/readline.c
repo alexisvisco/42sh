@@ -51,11 +51,6 @@ char		*readline(char *prompt, t_options *e)
 	int		count;
 
 	ft_bzero(buf, sizeof(buf));
-	if (!isatty(STDIN_FILENO))
-	{
-		message_err(ERR_UNSUPORTED_OPERATION);
-		exit(2);
-	}
 	if (unsupported_term())
 	{
 		message_err(ERR_UNRECOGNIZED_TERM);

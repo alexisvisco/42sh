@@ -24,6 +24,9 @@ typedef struct	s_backquotes
 
 int				seek_backquotes(t_token **tokens);
 
+char			*extract_backq(t_token **tokens, int i, int start);
+int				is_backq_in(t_token **tokens, int i);
+
 void			escape_useless_backquotes(char *s);
 
 char			*ft_mine_strjoin(char const *s1, char const *s2);

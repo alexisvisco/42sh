@@ -60,7 +60,6 @@ static void			child_fork(char ***argv, t_fd fd, int *p)
 **  save_fd = (g_ret == -1) ? p[READ_END] : fd;
 ** save the input
 */
-int	g_ret;
 
 static void			close_fd(const int *p, t_fd *fd, char ****av)
 {
@@ -87,13 +86,11 @@ t_backquotes		exec_backquotes(char ***argv)
 		pipe(p);
 		if (INPUT_RED || OUTPUT_AGREG || (fd.output == 1 && OUTPUT_RED))
 			return (error_redir(&ret));
-		if (g_ret == -1 && (fork()) == 0)
+		if ((fork()) == 0)
 			child_fork(argv, fd, p);
 		else
 			close_fd(p, &fd, &argv);
 	}
-	if (g_ret == -1)
-		wait(&status);
 	get_backq_status(status, &ret);
 	if (fd.output == 1)
 		get_backq_string(p, &ret);

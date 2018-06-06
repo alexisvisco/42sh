@@ -181,6 +181,7 @@ backquotes/backquotes_parsing.c \
 backquotes/escape_quotes.c \
 backquotes/core_exec_backquotes.c \
 backquotes/exec_backquotes.c \
+backquotes/extract_backq.c \
 backquotes/ft_mine_strjoin.c \
 backquotes/exec_simplify.c
 

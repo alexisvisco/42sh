@@ -13,45 +13,46 @@
 
 #include "shell.h"
 
-static int	error_inception(t_token **u_tokens, t_block *u_blocks, char *str)
+static char	*my_str_rep(char *search, char *replace, char *subject, int n)
 {
-	free_toks(u_tokens);
-	ft_memdel((void **)&u_blocks);
-	message_err(ERR_INCE_BACK);
-	ft_memdel((void **)&str);
-	return (-1);
-}
+	char	*ret;
+	char	*tmp;
 
-static int	my_return(char *str, int ret)
-{
-	ft_memdel((void **)&str);
+	if (!search || !replace || !subject || !(ft_strstr(subject, search)))
+		return (NULL);
+	ret = ft_strnew(ft_strlen(subject) - n + ft_strlen(replace) + 1);
+	ft_strncpy(ret, subject, n);
+	tmp = ret;
+	ret = ft_strjoin(ret, replace);
+	free(tmp);
+	tmp = ret;
+	ret = ft_strjoin(ret, subject + ft_strlen(search) + n + 2);
+	free(tmp);
 	return (ret);
 }
 
-static int	parsing(t_token **tokens, int i)
+static int	parsing(t_token **tokens, char *str, int i, int start)
 {
 	t_token			**u_tokens;
 	t_block			*u_blocks;
 	int				tablea[2];
 	t_backquotes	ret;
+	char			*tmp;
 
 	tablea[0] = 0;
 	tablea[1] = 0;
 	u_tokens = NULL;
 	u_blocks = NULL;
-	ret.status = 0;
-	ret.str = ft_strnew(1);
-	if (tokens[i]->value[ft_strlen(tokens[i]->value) - 1] == '`')
-		tokens[i]->value[ft_strlen(tokens[i]->value) - 1] = '\0';
-	else
-		return (error_inception(u_tokens, u_blocks, ret.str));
-	if (parse_tokens(&u_tokens, (tokens[i]->value + 1), 1) < 0)
-		return (my_return(ret.str, -2));
+	ft_bzero(&ret, sizeof(t_backquotes));
+	if (parse_tokens(&u_tokens, str, 1) < 0)
+		return (-2);
 	else if (parse_block(u_tokens, &u_blocks) < 0)
-		return (my_return(ret.str, -3));
+		return (-3);
 	ret = core_exec_backquotes(u_tokens, u_blocks, tablea, &ret);
-	ft_memdel((void **)&(tokens[i]->value));
-	tokens[i]->value = ret.str;
+	tmp = tokens[i]->value;
+	tokens[i]->value = my_str_rep(str, ret.str, tokens[i]->value, start);
+	ft_memdel((void **)&tmp);
+	ft_memdel((void **)&ret.str);
 	free_toks(u_tokens);
 	ft_memdel((void **)&u_blocks);
 	return (0);
@@ -85,16 +86,24 @@ static void	new_prompt(t_token **tokens)
 int			seek_backquotes(t_token **tokens)
 {
 	int		i;
+	int		start;
+	char	*str;
 
 	i = 0;
 	while (tokens[i])
 	{
-		if (tokens[i]->value && tokens[i]->value[0] == '`')
+		if (tokens[i]->value)
 		{
-			if (parsing(tokens, i) < 0)
-				return (-1);
-			new_prompt(tokens);
-			return (-2);
+			if ((start = is_backq_in(tokens, i)) >= 0)
+			{
+				if ((str = extract_backq(tokens, i, start)))
+				{
+					if (parsing(tokens, str, i, start) < 0)
+						return (-1);
+					new_prompt(tokens);
+					return (-2);
+				}
+			}
 		}
 		i++;
 	}

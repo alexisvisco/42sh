@@ -45,8 +45,10 @@ static void			exec_and_join(t_backquotes *ret, char ***cmds)
 	(*ret) = exec_backquotes(cmds);
 	tmp2 = (*ret).str;
 	(*ret).str = ft_mine_strjoin(tmp, (*ret).str);
-	ft_memdel((void **)&tmp);
-	ft_memdel((void **)&tmp2);
+	if (tmp)
+		free(tmp);
+	if (tmp2)
+		free(tmp2);
 	free_3d_tab(cmds);
 }
 

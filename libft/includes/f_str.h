@@ -35,7 +35,7 @@ char	*ft_strmap(char const *s, char (*f)(char));
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char	*ft_strncat(char *dest, const char *src, size_t n);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
-char	*ft_strncpy(char *s1, const char *s2, size_t n);
+char	*ft_strncpy(char *dest, const char *src, size_t n);
 int		ft_strnequ(char const *s1, char const *s2, size_t n);
 char	*ft_strnew(size_t size);
 char	*ft_strnstr(const char *s, const char *find, size_t slen);

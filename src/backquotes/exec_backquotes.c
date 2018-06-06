@@ -17,7 +17,6 @@
 #define OUTPUT_AGREG (fd.output = call_ag_redir(argv)) == -1
 #define OUTPUT_RED (fd.output = call_right_redir(argv)) == -1
 
-
 static int			my_execve(char **const *argv, char *const *envp)
 {
 	int a;

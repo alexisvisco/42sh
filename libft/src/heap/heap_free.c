@@ -26,7 +26,7 @@ void	heap_free(t_heap *h)
 	}
 	if (h)
 	{
-		ft_memdel((void **) &(h->list));
-		ft_memdel((void **) &h);
+		ft_memdel((void **)&(h->list));
+		ft_memdel((void **)&h);
 	}
 }

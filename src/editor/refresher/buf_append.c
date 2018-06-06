@@ -19,7 +19,7 @@
 
 void	buf_append(t_buf *ab, const char *s, int len)
 {
-	char		*new;
+	char	*new;
 	int		i;
 	int		j;
 

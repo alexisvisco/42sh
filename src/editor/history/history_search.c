@@ -102,7 +102,7 @@ void			history_search(t_editor *e)
 		{
 			heap_free(result);
 			ft_memdel((void **)&str);
-			break;
+			break ;
 		}
 		if (update_line(e, str, result))
 			break ;

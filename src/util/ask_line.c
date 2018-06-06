@@ -13,19 +13,24 @@
 
 #include "shell.h"
 
+static void	init_options(t_options *options)
+{
+	options->history_data = NULL;
+	options->completion_data = NULL;
+	options->has_completion = 1;
+	options->has_history = 1;
+	options->can_load_history = 0;
+	options->can_ctrl_d = 0;
+}
+
 t_heap		*ask_line(char *prompt, int nl,
-					int (*is_end)(char *cmp, char *line), char *cmp)
+						int (*is_end)(char *cmp, char *line), char *cmp)
 {
 	char		*line;
 	t_heap		*result;
 	t_options	options;
 
-	options.history_data = NULL;
-	options.completion_data = NULL;
-	options.has_completion = 1;
-	options.has_history = 1;
-	options.can_load_history = 0;
-	options.can_ctrl_d = 0;
+	init_options(&options);
 	result = heap_new(4);
 	while ((line = readline(prompt, &options)))
 	{

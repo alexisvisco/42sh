@@ -99,7 +99,7 @@ typedef struct		s_options
 	t_e_content	*completion_data;
 	char		next_line[EDITOR_MAX_LINE];
 	int			can_load_history;
-	int 		can_ctrl_d;
+	int			can_ctrl_d;
 }					t_options;
 
 typedef struct		s_editor

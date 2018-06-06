@@ -40,6 +40,12 @@ static void		edit_size_colum(t_editor *l)
 	}
 }
 
+static void		go_end(t_editor *l)
+{
+	ef_go_end(l);
+	refresh_line(l);
+}
+
 /*
 ** Handle the first key entered then redirect it to redirect_key_fn(..)
 ** If the key pressed is ENTER finish return the len of the buffer
@@ -49,25 +55,24 @@ int				handle_keys(t_editor *l)
 {
 	char	c;
 	char	seq[10];
-	int		enter;
+	int		etr;
 
 	ft_bzero(seq, 10);
-	enter = 0;
+	etr = 0;
 	while (42)
 	{
 		edit_size_colum(l);
 		read(l->ifd, &c, 1);
-		if (l->options->can_ctrl_d && c == CTRL_D && !(*(l->buf)) && (enter = 1))
+		if (l->options->can_ctrl_d && c == CTRL_D && !(*(l->buf)) && (etr = 1))
 			ft_copy_str(l->buf, "exit");
-		if (enter || c == ENTER || c == '\n')
+		if (etr || c == ENTER || c == '\n')
 		{
 			if (l->mode == COMPLETION)
 			{
 				completion_delete(l);
 				continue ;
 			}
-			ef_go_end(l);
-			refresh_line(l);
+			go_end(l);
 			return (add_history(l));
 		}
 		else

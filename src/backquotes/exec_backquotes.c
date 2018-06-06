@@ -17,6 +17,19 @@
 #define OUTPUT_AGREG (fd.output = call_ag_redir(argv)) == -1
 #define OUTPUT_RED (fd.output = call_right_redir(argv)) == -1
 
+
+static int			my_execve(char **const *argv, char *const *envp)
+{
+	int a;
+
+	a = -1;
+	if (is_directory((*argv)[0]))
+		message_err(ERR_IS_DIR, (*argv)[0]);
+	else
+		execve((*argv)[0], *argv, envp);
+	return (a);
+}
+
 static void			child_fork(char ***argv, t_fd fd, int *p)
 {
 	char			**envp;
@@ -30,18 +43,13 @@ static void			child_fork(char ***argv, t_fd fd, int *p)
 	if (fd.output != 1)
 		delete_redir_and_dup(argv, fd.output);
 	close(p[READ_END]);
-	if ((buitlin = builtins((*argv)[0])))
+	if ((buitlin = builtins((*argv)[0])) && !(is_builtins_env((*argv)[0])))
 	{
 		a = buitlin(*argv, &g_shell);
 		exit_shell();
 	}
 	else
-	{
-		a = -1;
-		if (is_directory((*argv)[0]))
-			message_err(ERR_IS_DIR, (*argv)[0]);
-		execve((*argv)[0], *argv, envp);
-	}
+		a = my_execve(argv, envp);
 	free_tab(envp);
 	exit(a == -1 ? EXIT_FAILURE : !a);
 }
@@ -66,8 +74,7 @@ static void			close_fd(const int *p, t_fd *fd, char ****av)
 	(*av)++;
 }
 
-t_backquotes		exec_backquotes(char ***argv, t_block *blocks,
-									t_token **tokens)
+t_backquotes		exec_backquotes(char ***argv)
 {
 	int				p[2];
 	int				status;
@@ -81,8 +88,6 @@ t_backquotes		exec_backquotes(char ***argv, t_block *blocks,
 		pipe(p);
 		if (INPUT_RED || OUTPUT_AGREG || (fd.output == 1 && OUTPUT_RED))
 			return (error_redir(&ret));
-		if ((g_ret = exec_built_in(argv, blocks, tokens)) != -1)
-			status = (g_ret == 1) ? 0 : 256;
 		if (g_ret == -1 && (fork()) == 0)
 			child_fork(argv, fd, p);
 		else

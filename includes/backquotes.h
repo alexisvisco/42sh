@@ -30,8 +30,7 @@ char			*ft_mine_strjoin(char const *s1, char const *s2);
 
 t_backquotes	core_exec_backquotes(t_token **tokens,
 				t_block *blocks, int num[2], t_backquotes *ret);
-t_backquotes	exec_backquotes(char ***argv, t_block *blocks,
-				t_token **tokens);
+t_backquotes	exec_backquotes(char ***argv);
 
 void			get_backq_string(const int *p, t_backquotes *ret);
 t_backquotes	error_redir(t_backquotes *ret);

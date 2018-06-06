@@ -20,6 +20,7 @@ typedef int(t_builtins_fun)(char **, t_shell *);
 
 t_builtins_fun	*builtins(char *cmd);
 t_builtins_fun	*builtins_env(char *cmd);
+int				is_builtins_env(char *cmd);
 
 t_hashtable		*get_builtins();
 t_hashtable		*get_builtins_env(void);

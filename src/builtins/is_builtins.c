@@ -41,7 +41,7 @@ t_hashtable		*get_builtins(void)
 	return (builtins_methods);
 }
 
-static int		is_builtins_env(char *cmd)
+int				is_builtins_env(char *cmd)
 {
 	const char	*builtins_env[] = {"setenv", "unsetenv", "cd",
 	"exit", "quit", "clear", "history", "export", "unset", 0};

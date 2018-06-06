@@ -36,14 +36,13 @@ static t_backquotes	exec_next(t_token **tokens, t_block *blocks, int *num,
 	return (*ret);
 }
 
-static void			exec_and_join(t_token **tokens, t_block *blocks,
-					t_backquotes *ret, char ***cmds)
+static void			exec_and_join(t_backquotes *ret, char ***cmds)
 {
 	char	*tmp;
 	char	*tmp2;
 
 	tmp = (*ret).str;
-	(*ret) = exec_backquotes(cmds, blocks, tokens);
+	(*ret) = exec_backquotes(cmds);
 	tmp2 = (*ret).str;
 	(*ret).str = ft_mine_strjoin(tmp, (*ret).str);
 	ft_memdel((void **)&tmp);
@@ -82,6 +81,6 @@ t_backquotes		core_exec_backquotes(t_token **tokens, t_block *blocks,
 		return (exec_next(tokens, blocks, num, ret));
 	}
 	open_files(cmds);
-	exec_and_join(tokens, blocks, ret, cmds);
+	exec_and_join(ret, cmds);
 	return (exec_next(tokens, blocks, num, ret));
 }

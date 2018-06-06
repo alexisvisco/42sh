@@ -22,6 +22,7 @@ char			*remove_quotes(char *s)
 
 	i = 0;
 	j = 0;
+	c = 0;
 	new = ft_strnew(ft_strlen(s));
 	while (s[i])
 	{

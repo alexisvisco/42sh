@@ -28,6 +28,7 @@ void	set_options(void)
 	line_edit->has_history = 1;
 	line_edit->can_load_history = 1;
 	line_edit->has_completion = 1;
+	line_edit->can_ctrl_d = 1;
 	line_edit->next_line[0] = 0;
 	history_search = ft_memalloc(sizeof(t_options));
 	history_search->completion_data = NULL;
@@ -35,6 +36,7 @@ void	set_options(void)
 	history_search->has_history = 1;
 	history_search->has_completion = 1;
 	history_search->can_load_history = 0;
+	history_search->can_ctrl_d = 1;
 	history_search->next_line[0] = 0;
 	g_shell.history_search = history_search;
 	g_shell.line_edit = line_edit;

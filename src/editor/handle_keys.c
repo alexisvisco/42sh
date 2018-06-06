@@ -57,7 +57,7 @@ int				handle_keys(t_editor *l)
 	{
 		edit_size_colum(l);
 		read(l->ifd, &c, 1);
-		if (c == CTRL_D && ft_strequ(l->buf, "") && (enter = 1))
+		if (l->options->can_ctrl_d && c == CTRL_D && !(*(l->buf)) && (enter = 1))
 			ft_copy_str(l->buf, "exit");
 		if (enter || c == ENTER || c == '\n')
 		{

@@ -38,6 +38,7 @@ static t_heap	*ask_line_heredoc(char *prompt,
 	options.has_completion = 1;
 	options.has_history = 0;
 	options.can_load_history = 0;
+	options.can_ctrl_d = 0;
 	result = heap_new(4);
 	while ((line = readline(prompt, &options)))
 	{

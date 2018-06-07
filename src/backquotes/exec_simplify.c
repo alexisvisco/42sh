@@ -37,6 +37,7 @@ t_backquotes	error_redir(t_backquotes *ret)
 
 void			get_backq_status(int status, t_backquotes *ret)
 {
+	wait(&status);
 	while (wait(NULL) > 0)
 		;
 	(*ret).status = WEXITSTATUS(status);

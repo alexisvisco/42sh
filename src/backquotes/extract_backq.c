@@ -47,6 +47,7 @@ char	*extract_backq(t_token **tokens, int i, int start)
 	if (!(tokens[i]->value[k]))
 	{
 		message_err(ERR_BACKQUOTES);
+		ft_memdel((void **)&ret);
 		return (NULL);
 	}
 	ft_strncpy(ret, tokens[i]->value + start + 1, (size_t)k - start - 1);

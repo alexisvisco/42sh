@@ -31,12 +31,14 @@ static char	*my_str_rep(char *search, char *replace, char *subject, int n)
 	return (ret);
 }
 
-static int	return_and_free(t_token **tokens, t_block **blocks, int ret)
+static int	return_and_free(t_token **tokens, t_block **blocks, int ret,
+char **str)
 {
 	if (tokens)
 		free_toks(tokens);
 	if (blocks)
 		ft_memdel((void **)blocks);
+	ft_memdel((void**)str);
 	return (ret);
 }
 
@@ -54,18 +56,15 @@ static int	parsing(t_token **tokens, char **str, int i, int start)
 	u_blocks = NULL;
 	ft_bzero(&ret, sizeof(t_backquotes));
 	if (parse_tokens(&u_tokens, *str, 1) < 0)
-		return (return_and_free(u_tokens, &u_blocks, -2));
+		return (return_and_free(u_tokens, &u_blocks, -2, str));
 	else if (parse_block(u_tokens, &u_blocks) < 0)
-		return (return_and_free(u_tokens, &u_blocks, -3));
+		return (return_and_free(u_tokens, &u_blocks, -3, str));
 	ret = core_exec_backquotes(u_tokens, u_blocks, tablea, &ret);
 	tmp = tokens[i]->value;
 	tokens[i]->value = my_str_rep(*str, ret.str, tokens[i]->value, start);
-	free_toks(u_tokens);
 	ft_memdel((void **)&tmp);
 	ft_memdel((void **)&ret.str);
-	ft_memdel((void **)&u_blocks);
-	ft_memdel((void**)str);
-	return (0);
+	return (return_and_free(u_tokens, &u_blocks, 0, str));
 }
 
 static void	new_prompt(t_token **tokens)
@@ -113,6 +112,8 @@ int			seek_backquotes(t_token **tokens)
 					new_prompt(tokens);
 					return (-2);
 				}
+				else
+					return (-1);
 			}
 		}
 		i++;

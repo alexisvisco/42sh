@@ -89,34 +89,6 @@ char			*change_quotes(char *s)
 	return (new);
 }
 
-static char		*change_back_quotes(char *s)
-{
-	char	*new;
-	int		i;
-	int		k;
-	int		j;
-
-	i = 0;
-	j = 0;
-	new = ft_strnew(ft_strlen(s));
-	while (s[i] && (k = 0) == 0)
-	{
-		if (s[i] == '\\')
-		{
-			if (s[i + 1] == '\'' && (k = 1))
-				new[j++] = '\'';
-			else if (s[i + 1] == '\"' && (k = 1))
-				new[j++] = '\"';
-			else
-				new[j++] = s[i];
-			i = (k == 1) ? i + 2 : i + 1;
-		}
-		else
-			new[j++] = s[i++];
-	}
-	return (new);
-}
-
 void			format_tokens_quotes(t_token ***tokens)
 {
 	int		i;
@@ -125,6 +97,9 @@ void			format_tokens_quotes(t_token ***tokens)
 	i = 0;
 	while ((*tokens)[i])
 	{
+		tmp = (*tokens)[i]->value;
+		(*tokens)[i]->value = change_first_backquotes((*tokens)[i]->value);
+		ft_memdel((void **)&tmp);
 		tmp = (*tokens)[i]->value;
 		(*tokens)[i]->value = change_quotes((*tokens)[i]->value);
 		ft_memdel((void **)&tmp);

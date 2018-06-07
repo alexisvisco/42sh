@@ -77,6 +77,9 @@ int				analyze_block(t_block **blocks, t_token **tokens);
 
 char			*remove_quotes(char *s);
 char			*change_quotes(char *s);
+char			*change_back_quotes(char *s);
+char			*change_first_backquotes(char *s);
+
 void			format_tokens_quotes(t_token ***tokens);
 
 void			extract_type_redir(t_token **tokens, t_block **block);
@@ -87,5 +90,6 @@ int				parse_tokens(t_token ***tokens, char *s, int is_backquote);
 
 int				count_blocks(t_token **tokens);
 int				parse_block(t_token **tokens, t_block **blocks);
+
 
 #endif

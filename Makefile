@@ -37,6 +37,7 @@ parser/block.c \
 parser/analyze.c \
 parser/extract_redir.c \
 parser/slash.c \
+parser/first_backslash.c \
 parser/commentary.c \
 parser/operator_error.c \
 parser/parse_all.c \

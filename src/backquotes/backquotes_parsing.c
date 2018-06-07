@@ -13,6 +13,8 @@
 
 #include "shell.h"
 
+#define ERR_PARS parsing(tokens, &str, i, start) < 0
+
 static char	*my_str_rep(char *search, char *replace, char *subject, int n)
 {
 	char	*ret;
@@ -107,8 +109,7 @@ int			seek_backquotes(t_token **tokens)
 			{
 				if ((str = extract_backq(tokens, i, start)))
 				{
-					if (backq_quotes(&str) < 0 ||
-							parsing(tokens, &str, i, start) < 0)
+					if (backq_quotes(&str) < 0 || ERR_PARS)
 						return (-1);
 					new_prompt(tokens);
 					return (-2);

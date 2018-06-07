@@ -16,7 +16,7 @@
 char	*change_first_backquotes(char *s)
 {
 	char	*new;
-	int 	in_quote;
+	int		in_quote;
 	int		i;
 	int		j;
 
@@ -39,7 +39,7 @@ char	*change_first_backquotes(char *s)
 	return (new);
 }
 
-char		*change_back_quotes(char *s)
+char	*change_back_quotes(char *s)
 {
 	char	*new;
 	int		i;

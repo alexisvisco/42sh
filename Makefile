@@ -19,7 +19,19 @@ LFT_PATH = ./libft
 SRC_PATH = ./src/
 INC_PATH = -I ./includes -I $(LFT_PATH)/includes
 OBJ_PATH = ./obj/
-TOTAL_FILES := 146
+TOTAL_FILES := 150
+
+HEADERS = \
+includes/backquotes.h \
+includes/builtins.h \
+includes/editor.h \
+includes/exec.h \
+includes/expr.h \
+includes/lex.h \
+includes/shell.h \
+includes/shell_struct.h \
+includes/util.h \
+includes/variables.h
 
 SRC_NAME = \
 prompt.c \
@@ -197,18 +209,24 @@ OBJ_FOLDERS_BIS = $(addprefix $(OBJ_PATH),$(OBJ_FOLDERS))
 
 COUNT := 0
 
-all: $(NAME)
+all:
+	@clear
+	@make 101sh
+
+101sh: $(NAME)
 
 $(NAME): $(OBJ)
+	@echo "\nDone compiling 42sh."
 	@make -C $(LFT_PATH)
+	@echo "\nDone compiling libft."
 	@$(CC) -o $(NAME) $(OBJ) -L$(LFT_PATH) -lft
 	@printf "\n\e[5m42sh is ready !\n\e[0m"
 
 
-$(OBJ_PATH)%.o: $(SRC_PATH)%.c
+$(OBJ_PATH)%.o: $(SRC_PATH)%.c $(HEADERS)
 	@mkdir -p $(OBJ_PATH) $(OBJ_FOLDERS_BIS)
-	@$(CC) $(CC_FLAGS) $(INC_PATH) -o $@ -c $^
-	@sh loading_bar.sh $(COUNT) $(TOTAL_FILES) $^ "Compiling 42sh" 70
+	@$(CC) $(CC_FLAGS) $(INC_PATH) -o $@ -c $<
+	@sh loading_bar.sh $(COUNT) $(TOTAL_FILES) $< "Compiling 42sh" 70
 	@$(eval COUNT=$(shell echo $$(($(COUNT)+1))))
 
 

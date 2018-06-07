@@ -16,8 +16,12 @@
 void	b_set_env_b(t_hashtable *envs, char *key, char *val,
 t_shell *shell)
 {
+	char *tmp;
+
+	tmp = ft_strjoin("$", key);
 	ht_set(envs, key, ft_strdup(val));
-	trie_insert(g_shell.env_trie, key);
+	trie_insert(g_shell.env_trie, tmp);
+	ft_memdel((void **)&tmp);
 	if (ft_strequ("PATH", key))
 		update_bin(shell);
 	message(MSG_SETENV, key, val);

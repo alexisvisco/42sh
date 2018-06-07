@@ -27,7 +27,6 @@ typedef struct	s_variable
 }				t_var;
 
 void			free_variable(void *var);
-char			*v_value_to_str(t_var *v);
 int				is_assignation_variable(char *str);
 t_var_type		get_type_of_assignation(char *str);
 int				create_variable(char *assignation);

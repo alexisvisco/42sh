@@ -15,11 +15,6 @@ function ProgressBar {
 # 1.2.1 Output example:
 # 1.2.1.1 Progress : [########################################] 100%
 printf "\r\e[36m${4} ${_name}\e[0m \e[93m[${_fill// /#}${_empty// /-}] \e[1m${_progress}%%\e[0m"
-if [ ${1} = ${2} ]
-then
-    sleep 1
-    printf "\n\e[36mDone ${4}.\n"
-fi
 }
 
 

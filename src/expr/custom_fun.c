@@ -29,7 +29,7 @@ int	custom_atoi(char **str)
 int	can_exec(t_res *res, int number)
 {
 	if (number == 0)
-		res->error = ft_strdup("Infinity.");
+		res->error = ft_strdup("Invalid operation.");
 	return (number != 0);
 }
 

@@ -14,17 +14,13 @@
 #include <expr.h>
 #include "shell.h"
 
-/*
-** Get the value of a variable into string value
-*/
-
-char		*v_value_to_str(t_var *v)
+static void	set_var_to_trie(char *str)
 {
-	if (v->var_type == VAR_STRING)
-		return (ft_strdup(v->value));
-	if (v->var_type == VAR_NUMBER)
-		return (ft_sprintf("%i", *(int *)v->value));
-	return (ft_strdup("null"));
+	char *tmp;
+
+	tmp = ft_strjoin("$", str);
+	trie_insert(g_shell.vars_trie, tmp);
+	ft_memdel((void **)&tmp);
 }
 
 /*
@@ -56,6 +52,7 @@ int			create_variable(char *assignation)
 	if (res.error)
 		ft_memdel((void **)&(res.error));
 	ht_set(g_shell.vars, var->symbol, var);
+	set_var_to_trie(var->symbol);
 	free_tab(assign);
 	return (1);
 }

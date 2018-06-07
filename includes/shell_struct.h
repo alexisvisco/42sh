@@ -24,6 +24,7 @@ typedef struct	s_shell
 	t_hashtable	*bin;
 	t_trie_node	*bin_trie;
 	t_trie_node	*env_trie;
+	t_trie_node	*vars_trie;
 	t_options	*line_edit;
 	t_options	*history_search;
 	char		*line;

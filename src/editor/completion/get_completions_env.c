@@ -21,4 +21,5 @@
 void	get_completions_env(t_word_info *i, t_heap *h)
 {
 	trie_start_with(g_shell.env_trie, i->current_word, h);
+	trie_start_with(g_shell.vars_trie, i->current_word, h);
 }

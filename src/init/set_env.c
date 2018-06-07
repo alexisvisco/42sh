@@ -26,6 +26,7 @@ void	set_env(char **environ)
 
 	g_shell.env = ht_new(128);
 	g_shell.env_trie = trie_new();
+	g_shell.vars_trie = trie_new();
 	i = -1;
 	while (environ[++i])
 	{

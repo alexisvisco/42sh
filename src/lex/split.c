@@ -14,6 +14,7 @@
 #include "shell.h"
 
 #define C_DIF_BS (*s == c && *(s - 1) != '\\')
+#define IS_QUO (*s == '\"' || *s == '\'')
 
 static void		simplify_cpy(char **s, char **ret, int a)
 {
@@ -80,7 +81,7 @@ char			*cpy_special(char *s)
 		if (mod % 2 == 0 && (c == '`' || *s == ' ' || ft_strchr(FT_SEP, *s) ||
 		ft_strchr(FT_REDIR, *s) || (*S && ft_strchr(FT_REDIR, (*S)))))
 			break ;
-		if (C_DIF_BS || (c == -2 && (*s == '\"' || *s == '\'') && (c = *s)))
+		if (C_DIF_BS || (c == -2 && IS_QUO && *(s - 1) != '\\' && (c = *s)))
 			mod++;
 		ret[i++] = *(s++);
 		if (mod % 2 == 0)

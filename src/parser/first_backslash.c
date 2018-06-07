@@ -30,12 +30,11 @@ char	*change_first_backquotes(char *s)
 			in_quote = 1;
 		if (in_quote == 0 && s[i] == '\\')
 		{
-			if (s[i + 1] >= ' ' && s[i + 1] <= '~' && s[i + 1] >= '\''
-			&& s[i + 1] >= '\"' && s[i + 1] >= '`')
+			if (s[i + 1] >= ' ' && s[i + 1] <= '~' && s[i + 1] != '\''
+			&& s[i + 1] != '\"' && s[i + 1] != '`')
 				i++;
 		}
-		else
-			new[j++] = s[i++];
+		new[j++] = s[i++];
 	}
 	return (new);
 }

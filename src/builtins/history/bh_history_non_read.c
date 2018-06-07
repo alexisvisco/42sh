@@ -13,7 +13,7 @@
 
 #include "shell.h"
 
-static		add_non_read(char **line, int i)
+static void		add_non_read(char **line, int i)
 {
 	ft_printf("line: %i >= %i = /%s/\n", i, g_shell.line_edit->history_data->plus,
 			  (*line));

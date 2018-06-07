@@ -15,18 +15,16 @@
 
 static void		add_non_read(char **line, int i)
 {
-	ft_printf("line: %i >= %i = /%s/\n", i, g_shell.line_edit->history_data->plus,
-			  (*line));
 	if (i >= g_shell.line_edit->history_data->plus)
-			heap_add(HISTORY_DATA, ft_strdup((*line)));
-	ft_memdel((void **) line);
+		heap_add(HISTORY_DATA, ft_strdup((*line)));
+	ft_memdel((void **)line);
 }
 
 /*
 ** Read the line non read of the history file
 */
 
-int			history_non_read(void)
+int				history_non_read(void)
 {
 	char	path[2048];
 	char	*line;

@@ -13,6 +13,22 @@
 
 #include "shell.h"
 
+static int	in_quote(char *s)
+{
+	int		i;
+	int		in_quote;
+
+	i = 0;
+	in_quote = 0;
+	while (s[i])
+	{
+		if (s[i] == '\'' || s[i] == '\"' || s[i] == '`')
+			in_quote = 1;
+		i++;
+	}
+	return (in_quote);
+}
+
 static void	replace_placeholder(t_token ***tokens)
 {
 	int		i;
@@ -22,7 +38,7 @@ static void	replace_placeholder(t_token ***tokens)
 	while ((*tokens)[i])
 	{
 		if (ft_strrchr((*tokens)[i]->value, '~')
-			&& ht_has(g_shell.env, "HOME"))
+			&& ht_has(g_shell.env, "HOME") && !in_quote((*tokens)[i]->value))
 		{
 			tmp = ft_strrep_first_aft("~", ht_get(g_shell.env, "HOME"),
 				(*tokens)[i]->value, 0);

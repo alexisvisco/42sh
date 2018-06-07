@@ -45,6 +45,8 @@ int		rewrite_history_file(t_heap *h)
 	int		fd;
 	size_t	i;
 
+	if (!ht_has(g_shell.env, "HOME"))
+		return (0);
 	ft_copy_str(path, ht_get(g_shell.env, "HOME"));
 	ft_strcat(path, "/"HISTORY_FILE);
 	fd = open(path, O_CREAT | O_WRONLY | O_TRUNC,

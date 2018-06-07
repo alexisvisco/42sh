@@ -13,7 +13,7 @@
 
 #include "shell.h"
 
-int		odd_quote(char *quote, char *line)
+int			odd_quote(char *quote, char *line)
 {
 	int i;
 	int count;
@@ -29,7 +29,17 @@ int		odd_quote(char *quote, char *line)
 	return (count % 2);
 }
 
-void	odd_quote_prompt(t_token ***tokens, char *s)
+static char	*which_prompt(char *str)
+{
+	if (ft_strequ(str, "\""))
+		return ("dquote> ");
+	if (ft_strequ(str, "`"))
+		return ("bquote> ");
+	else
+		return ("quote> ");
+}
+
+void		odd_quote_prompt(t_token ***tokens, char *s)
 {
 	char	*new_line;
 	char	*tmp;
@@ -37,8 +47,8 @@ void	odd_quote_prompt(t_token ***tokens, char *s)
 
 	ft_memdel((void **)&(*tokens));
 	quote = ft_char_to_str(which_quote(s));
-	new_line = heap_to_str(ask_line(*quote == '\'' ? "quote> " : "dquote> ",
-	!ft_strequ(quote, "`"), odd_quote, quote), !ft_strequ(quote, "`"));
+	new_line = heap_to_str(ask_line(which_prompt(quote), !ft_strequ(quote, "`"),
+	odd_quote, quote), !ft_strequ(quote, "`"));
 	ft_memdel((void **)&quote);
 	tmp = new_line;
 	new_line = ft_strjoin(s, new_line);

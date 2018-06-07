@@ -19,7 +19,7 @@ LFT_PATH = ./libft
 SRC_PATH = ./src/
 INC_PATH = -I ./includes -I $(LFT_PATH)/includes
 OBJ_PATH = ./obj/
-TOTAL_FILES := 150
+TOTAL_FILES := 152
 
 HEADERS = \
 includes/backquotes.h \

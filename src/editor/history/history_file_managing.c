@@ -21,6 +21,8 @@ void	get_previous_history(t_heap *hist)
 	int		i;
 
 	i = 0;
+	if (!ht_has(g_shell.env, "HOME"))
+		return ;
 	ft_copy_str(path, ht_get(g_shell.env, "HOME"));
 	ft_strcat(path, "/"HISTORY_FILE);
 	if (access(path, F_OK) == -1)

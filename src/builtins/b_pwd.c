@@ -23,11 +23,9 @@ int		b_pwd(char **args, t_shell *shell)
 	char cwd[2048];
 
 	(void)args;
+	(void)shell;
 	if (getcwd(cwd, sizeof(cwd)) != NULL)
-	{
 		ft_printf("%s\n", cwd);
-		ht_set(shell->env, "PWD", cwd);
-	}
 	else
 	{
 		message_err(ERR_PWD_NOT_FOUND);

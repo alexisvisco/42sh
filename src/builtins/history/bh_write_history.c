@@ -23,6 +23,8 @@ int	write_history(char **args)
 	char	*file;
 	int		ret;
 
+	if (!ht_has(g_shell.env, "HOME"))
+		return (0);
 	ft_copy_str(path, ht_get(g_shell.env, "HOME"));
 	ft_strcat(path, "/"HISTORY_FILE);
 	file = get_first_arg(args);

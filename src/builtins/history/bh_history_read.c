@@ -24,6 +24,8 @@ int	history_read(char **args)
 	char	*line;
 	int		fd;
 
+	if (ht_get(g_shell.env, "HOME"))
+		return (0);
 	ft_copy_str(path, ht_get(g_shell.env, "HOME"));
 	ft_strcat(path, "/"HISTORY_FILE);
 	file = get_first_arg(args);

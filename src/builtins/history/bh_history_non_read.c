@@ -13,17 +13,28 @@
 
 #include "shell.h"
 
+static		add_non_read(char **line, int i)
+{
+	ft_printf("line: %i >= %i = /%s/\n", i, g_shell.line_edit->history_data->plus,
+			  (*line));
+	if (i >= g_shell.line_edit->history_data->plus)
+			heap_add(HISTORY_DATA, ft_strdup((*line)));
+	ft_memdel((void **) line);
+}
+
 /*
 ** Read the line non read of the history file
 */
 
-int	history_non_read(void)
+int			history_non_read(void)
 {
 	char	path[2048];
 	char	*line;
 	int		i;
 	int		fd;
 
+	if (!ht_get(g_shell.env, "HOME"))
+		return (0);
 	ft_copy_str(path, ht_get(g_shell.env, "HOME"));
 	ft_strcat(path, "/"HISTORY_FILE);
 	fd = open(path, O_RDONLY);
@@ -35,10 +46,7 @@ int	history_non_read(void)
 	i = 0;
 	while (get_next_line(fd, &line))
 	{
-		ft_printf("line: %i >= %i = /%s/\n", i, g_shell.line_edit->history_data->plus, line);
-		if (i >= g_shell.line_edit->history_data->plus)
-			heap_add(HISTORY_DATA, ft_strdup(line));
-		ft_memdel((void **)&line);
+		add_non_read(&line, i++);
 		i++;
 	}
 	free_gnl();

@@ -14,7 +14,7 @@
 #include "shell.h"
 
 #define C_DIF_BS (*s == c && *(s - 1) != '\\')
-#define IS_QUO (*s == '\"' || *s == '\'')
+#define IS_QUO (*s == '\"' || *s == '\'' || *s == '`')
 
 static void		simplify_cpy(char **s, char **ret, int a)
 {

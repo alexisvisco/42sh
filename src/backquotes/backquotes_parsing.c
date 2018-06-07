@@ -107,7 +107,8 @@ int			seek_backquotes(t_token **tokens)
 			{
 				if ((str = extract_backq(tokens, i, start)))
 				{
-					if (parsing(tokens, &str, i, start) < 0)
+					if (backq_quotes(&str) < 0 ||
+							parsing(tokens, &str, i, start) < 0)
 						return (-1);
 					new_prompt(tokens);
 					return (-2);

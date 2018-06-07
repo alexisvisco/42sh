@@ -38,5 +38,6 @@ t_backquotes	exec_backquotes(char ***argv);
 void			get_backq_string(const int *p, t_backquotes *ret);
 t_backquotes	error_redir(t_backquotes *ret);
 void			get_backq_status(int status, t_backquotes *ret);
+int				backq_quotes(char **str);
 
 #endif

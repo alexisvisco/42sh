@@ -196,7 +196,8 @@ backquotes/core_exec_backquotes.c \
 backquotes/exec_backquotes.c \
 backquotes/extract_backq.c \
 backquotes/ft_mine_strjoin.c \
-backquotes/exec_simplify.c
+backquotes/exec_simplify.c \
+backquotes/parse_quotes.c
 
 
 EDITOR_FOLDERS = editor editor/util editor/refresher editor/completion editor/keys_functions editor/edit_fn editor/history

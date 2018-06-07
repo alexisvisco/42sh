@@ -10,4 +10,4 @@ file(GLOB_RECURSE 21sh_SRCS ${21sh_SRCS} *.h)
 include_directories(includes)
 include_directories(libft/includes)
 
-add_executable(21sh ${21sh_SRCS} src/exec/exec_built_in.c src/backquotes/backquotes_parsing.c includes/backquotes.h src/backquotes/exec_backquotes.c src/backquotes/core_exec_backquotes.c src/backquotes/ft_mine_strjoin.c src/util/is_direct.c src/backquotes/escape_quotes.c src/backquotes/extract_backq.c src/parser/first_backslash.c)
+add_executable(21sh ${21sh_SRCS} src/exec/exec_built_in.c src/backquotes/backquotes_parsing.c includes/backquotes.h src/backquotes/exec_backquotes.c src/backquotes/core_exec_backquotes.c src/backquotes/ft_mine_strjoin.c src/util/is_direct.c src/backquotes/escape_quotes.c src/backquotes/extract_backq.c src/parser/first_backslash.c src/backquotes/parse_quotes.c)

@@ -27,9 +27,9 @@ void		get_word_at(char *cmd, size_t position, t_word_info *w)
 	if (cmd[position] == ' ' || (position > (ft_strlen(cmd) - 1)))
 		position--;
 	i = (int64_t)position + 1;
-	while (i >= 0 && cmd[--i] != ' ')
+	while (i > 0 && cmd[--i] != ' ')
 		;
-	i = i < 0 ? 0 : i + 1;
+	i = i <= 0 ? 0 : i + 1;
 	j = (size_t)i;
 	while (cmd[++j] != ' ' && cmd[j])
 		;

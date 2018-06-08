@@ -54,13 +54,14 @@ int			b_cd(char **args, t_shell *shell)
 	dir = args[1] == NULL ? ht_get(shell->env, "HOME") : args[1];
 	if (size_tab(args) > 1 && args[1][0] == '-')
 		return (b_cd_old(args, shell));
-	if (getcwd(cwd, sizeof(cwd)) == NULL || access(dir, R_OK) == -1)
+	if (dir != NULL && (getcwd(cwd, sizeof(cwd)) == NULL ||
+	access(dir, R_OK) == -1))
 	{
 		message_err(access(dir, R_OK) == -1 ? ERR_CD : ERR_CD_ACCESS,
 		access(dir, R_OK) == -1 ? NULL : dir);
 		return (0);
 	}
-	if (chdir(dir) == -1)
+	if (dir == NULL || chdir(dir) == -1)
 	{
 		message_err(ERR_CD_DIR, args[1]);
 		return (0);

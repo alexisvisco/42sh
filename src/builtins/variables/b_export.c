@@ -46,6 +46,7 @@ int		b_export(char **args, t_shell *sh)
 	char *arg;
 
 	(void)sh;
+	ft_bzero(ar, sizeof(ar));
 	if (ft_strequ(get_first_arg(args), "help"))
 		return (export_help());
 	parse_arguments(args, ar, "np");

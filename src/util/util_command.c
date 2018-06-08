@@ -19,12 +19,15 @@
 
 char	*get_first_arg(char **a)
 {
-	a++;
-	while (*a)
+	if (a)
 	{
-		if (!ft_strstarts_with(*a, '-'))
-			return (*a);
 		a++;
+		while (*a)
+		{
+			if (!ft_strstarts_with(*a, '-'))
+				return (*a);
+			a++;
+		}
 	}
 	return (NULL);
 }
@@ -37,20 +40,23 @@ void	parse_arguments(char **args, char *ar, const char *allowed)
 {
 	int i;
 
-	args++;
-	while (*args)
+	if (args)
 	{
-		if (ft_strstarts_with(*args, '-'))
-		{
-			i = 0;
-			while ((*args)[i])
-			{
-				if (ft_strchr(ar, (*args)[i]) == NULL &&
-					ft_strchr(allowed, (*args)[i]))
-					ft_strcat_ch(ar, (*args)[i]);
-				i++;
-			}
-		}
 		args++;
+		while (*args)
+		{
+			if (ft_strstarts_with(*args, '-'))
+			{
+				i = 0;
+				while ((*args)[i])
+				{
+					if (ft_strchr(ar, (*args)[i]) == NULL &&
+						ft_strchr(allowed, (*args)[i]))
+						ft_strcat_ch(ar, (*args)[i]);
+					i++;
+				}
+			}
+			args++;
+		}
 	}
 }

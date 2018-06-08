@@ -61,8 +61,6 @@ void		set_bin(t_shell *shell)
 	char	**paths;
 	int		i;
 
-	if (!ht_get(shell->env, "PATH"))
-		return ;
 	shell->bin = ht_new(512);
 	shell->bin_trie = trie_new();
 	path = (char *)ht_get(shell->env, "PATH");

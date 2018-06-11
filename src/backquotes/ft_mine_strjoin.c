@@ -18,8 +18,10 @@ char			*ft_mine_strjoin(char const *s1, char const *s2)
 	size_t	total_size;
 	char	*res;
 
-	if (!s1 || !(*s1))
+	if ((!s1 || !(*s1)) && s2)
 		return (ft_strdup(s2));
+	if (!s2 || !(*s2))
+		return (ft_strdup(s1));
 	total_size = ft_strlen(s1) + ft_strlen(s2) + 1;
 	if (!(res = ft_memalloc(sizeof(char) * (total_size + 1))))
 		return (NULL);

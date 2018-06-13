@@ -175,6 +175,8 @@ int					rewrite_history_file(t_heap *h);
 int					rewrite_history_file_in(t_heap *h, const char *path,
 											int from);
 void				init_history(t_editor *e);
+void				init_editor(t_editor *editor, char *buf, const char *prompt,
+								t_options *opt);
 void				history_search(t_editor *e);
 void				history_up(t_editor *e);
 void				history_down(t_editor *e);

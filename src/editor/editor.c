@@ -15,8 +15,14 @@
 
 #define END_NO_NEW_LINE "\e[7m\e[1m%\n\e[0m"
 
-static void		init_editor(t_editor *editor)
+void init_editor(t_editor *editor, char *buf, const char *prompt,
+				 t_options *opt)
 {
+	editor->ifd = STDIN_FILENO;
+	editor->ofd = STDOUT_FILENO;
+	editor->buf = buf;
+	editor->prompt = prompt;
+	editor->options = opt;
 	editor->pos = 0;
 	editor->len = 0;
 	editor->oldpos = 0;
@@ -43,12 +49,7 @@ int				editor(char *buf, char *prompt, t_options *opt)
 {
 	t_editor l;
 
-	l.ifd = STDIN_FILENO;
-	l.ofd = STDOUT_FILENO;
-	l.buf = buf;
-	l.prompt = prompt;
-	l.options = opt;
-	init_editor(&l);
+	init_editor(&l, buf, prompt, opt);
 	if (get_cursor_pos(l.ifd, l.ofd) != 1)
 		ft_putstr(END_NO_NEW_LINE);
 	refresh_line(&l);

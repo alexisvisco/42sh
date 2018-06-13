@@ -19,8 +19,11 @@ int	redirect_control_key(t_editor *e, char c)
 {
 	if (ISK(CTRL_C))
 	{
+		ef_go_end(e);
+		refresh_line(e);
 		ft_putchar('\n');
-		ef_delete_entire_line(e);
+		e->buf[0] = 0;
+		init_editor(e, e->buf, e->prompt, e->options);
 		refresh_line(e);
 		return (1);
 	}

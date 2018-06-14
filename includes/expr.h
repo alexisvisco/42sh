@@ -18,7 +18,7 @@
 # include <stdio.h>
 # include <libft.h>
 
-# define ALLOWEDS_CHARS(c) (strchr("+-*/%() 0123456789", c) != NULL)
+# define ALLOWEDS_CHARS(c) (ft_strchr("+-*/%() 0123456789", c) != NULL)
 
 typedef struct	s_result_expr
 {

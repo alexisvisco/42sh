@@ -31,8 +31,9 @@ int	history_help(void)
 					"ile.\n");
 	ft_printf(" -n: Append the history lines not already read fro"
 					"m the history file to the current history list.\n");
-	ft_printf(" -r: Write out the current history list to the his"
+	ft_printf(" -w: Write out the current history list to the his"
 					"tory file.\n");
+	ft_printf(" -r: Read and assign history.\n");
 	ft_printf(" -e: Perform a command without storing the results"
 					" in the history list.\n");
 	return (1);

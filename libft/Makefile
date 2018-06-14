@@ -240,7 +240,7 @@ all: $(NAME)
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c $(HEADERS)
 	@mkdir -p $(OBJ_SUB_PATHS)
 	@$(CC) $(CFLAGS) $(INC) -o $@ -c $<
-	@sh ../loading_bar.sh $(COUNT) $(TOTAL_FILES) $< "Compiling Libft" 69
+	@sh ../loading_bar.sh $(COUNT) $(TOTAL_FILES) $< "Libft: " 69
 	@$(eval COUNT=$(shell echo $$(($(COUNT)+1))))
 
 $(NAME): $(OBJ)

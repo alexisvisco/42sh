@@ -39,6 +39,8 @@ int				main(int n, char **args, char **env)
 
 	(void)n;
 	(void)args;
+	signal(SIGINT, sig_handler);
+	signal(SIGIO, sig_handler);
 	if (!isatty(STDIN_FILENO))
 	{
 		message_err(ERR_UNSUPORTED_OPERATION);
@@ -47,7 +49,6 @@ int				main(int n, char **args, char **env)
 	init(env);
 	while (set_prompt(prompt) && (str = readline(prompt, g_shell.line_edit)))
 	{
-		signal(SIGINT, sig_handler);
 		str = multi_line_prompt(str, 1);
 		shell_process(str, 0);
 	}

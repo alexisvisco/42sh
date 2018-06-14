@@ -34,8 +34,8 @@ int	history_exe(char **args)
 		}
 		args++;
 	}
-	tmp = ft_strdup(full_str);
-	shell_process(tmp, 0);
+	tmp = g_shell.line;
+	shell_process(ft_strdup(full_str), 0);
 	ft_memdel((void **)&tmp);
 	return (1);
 }

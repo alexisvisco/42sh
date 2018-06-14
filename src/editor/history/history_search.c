@@ -90,12 +90,13 @@ void			history_search(t_editor *e)
 	t_heap	*history;
 	t_heap	*result;
 
+	prepare_history(e);
 	e->mode = HISTORY_SEARCH;
 	history = e->options->history_data->heap;
 	disable_terminal(0);
 	result = NULL;
 	history_search_msg();
-	while ((str = readline("(search in history) ", g_shell.history_search)))
+	while ((str = readline("search in history> ", g_shell.history_search)))
 	{
 		disable_terminal(0);
 		if (ft_strequ("exit", str))

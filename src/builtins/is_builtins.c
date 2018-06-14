@@ -13,6 +13,27 @@
 
 #include "builtins.h"
 
+static void define_builtins(t_hashtable *builtins_methods)
+{
+	builtins_methods->free_func = NULL;
+	ht_set(builtins_methods, "calc", b_expr_eval);
+	ht_set(builtins_methods, "pwd", b_pwd);
+	ht_set(builtins_methods, "env", b_env);
+	ht_set(builtins_methods, "variables", b_variables);
+	ht_set(builtins_methods, "echo", b_echo);
+	ht_set(builtins_methods, "setenv", b_env_set);
+	ht_set(builtins_methods, "export", b_export);
+	ht_set(builtins_methods, "typeof", b_typeof);
+	ht_set(builtins_methods, "unset", b_unset);
+	ht_set(builtins_methods, "unsetenv", b_env_unset);
+	ht_set(builtins_methods, "clear", b_clear);
+	ht_set(builtins_methods, "history", b_history);
+	ht_set(builtins_methods, "cd", b_cd);
+	ht_set(builtins_methods, "searchbin", b_search_binary);
+	ht_set(builtins_methods, "exit", b_exit);
+	ht_set(builtins_methods, "quit", b_exit);
+}
+
 t_hashtable		*get_builtins(void)
 {
 	static t_hashtable *builtins_methods = NULL;
@@ -20,23 +41,8 @@ t_hashtable		*get_builtins(void)
 	if (!builtins_methods)
 	{
 		builtins_methods = ht_new(10);
-		builtins_methods->free_func = NULL;
-		ht_set(builtins_methods, "calc", b_expr_eval);
-		ht_set(builtins_methods, "pwd", b_pwd);
-		ht_set(builtins_methods, "env", b_env);
-		ht_set(builtins_methods, "variables", b_variables);
-		ht_set(builtins_methods, "echo", b_echo);
-		ht_set(builtins_methods, "setenv", b_env_set);
-		ht_set(builtins_methods, "export", b_export);
-		ht_set(builtins_methods, "typeof", b_typeof);
-		ht_set(builtins_methods, "unset", b_unset);
-		ht_set(builtins_methods, "unsetenv", b_env_unset);
-		ht_set(builtins_methods, "clear", b_clear);
-		ht_set(builtins_methods, "history", b_history);
-		ht_set(builtins_methods, "cd", b_cd);
-		ht_set(builtins_methods, "searchbin", b_search_binary);
-		ht_set(builtins_methods, "exit", b_exit);
-		ht_set(builtins_methods, "quit", b_exit);
+		if (builtins_methods)
+			define_builtins(builtins_methods);
 	}
 	return (builtins_methods);
 }

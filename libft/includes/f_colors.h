@@ -31,6 +31,7 @@
 
 # define BLACK "\e[30m"
 # define RED "\e[31m"
+# define CRITICAL_RED "\e[41m"
 # define GREEN "\e[32m"
 # define YELLOW "\e[33m"
 # define BLUE "\e[34m"

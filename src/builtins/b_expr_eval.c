@@ -37,7 +37,7 @@ int			b_expr_eval(char **args, t_shell *shell)
 	(void)args;
 	(void)shell;
 	ft_printf("Type `exit` to quit this prompt.\n");
-	tmp = ask_line("(calc) ", 0, is_end, "exit");
+	tmp = ask_line("calc> ", 0, is_end, "exit");
 	heap_free(tmp);
 	return (1);
 }

@@ -144,7 +144,8 @@ void				free_options(t_options *t);
 char				*readline(char *prompt, t_options *opt);
 char				*readline_notty();
 int					readline_raw(char *buf, char *prompt, t_options *e);
-
+void				init_editor(t_editor *editor, char *buf, const char *prompt,
+							t_options *opt);
 int					handle_keys(t_editor *e);
 void				redirect_key_fn(t_editor *e, char c, char *seq);
 int					redirect_control_key(t_editor *e, char c);
@@ -173,10 +174,8 @@ int					get_colums_len(int ifd, int ofd);
 void				get_previous_history(t_heap *h);
 int					rewrite_history_file(t_heap *h);
 int					rewrite_history_file_in(t_heap *h, const char *path,
-											int from);
+					int from);
 void				init_history(t_editor *e);
-void				init_editor(t_editor *editor, char *buf, const char *prompt,
-								t_options *opt);
 void				history_search(t_editor *e);
 void				history_up(t_editor *e);
 void				history_down(t_editor *e);
@@ -184,6 +183,7 @@ void				history_add(t_editor *e);
 void				set_origin(t_editor *e);
 void				origin_to_buf(t_editor *e);
 void				history_search_msg(void);
+void				prepare_history(t_editor *e);
 
 void				completion_next(t_editor *e);
 void				completion_printer(t_editor *e, t_heap *list);

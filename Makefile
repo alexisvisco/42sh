@@ -19,7 +19,7 @@ LFT_PATH = ./libft
 SRC_PATH = ./src/
 INC_PATH = -I ./includes -I $(LFT_PATH)/includes
 OBJ_PATH = ./obj/
-TOTAL_FILES := 152
+TOTAL_FILES := 153
 
 HEADERS = \
 includes/backquotes.h \
@@ -74,6 +74,7 @@ editor/handle_keys.c \
 editor/terminal_manager.c \
 editor/history/origin.c \
 editor/history/history.c \
+editor/history/history_prepare.c \
 editor/history/history_search.c \
 editor/history/history_search_msg.c \
 editor/history/history_file_managing.c \

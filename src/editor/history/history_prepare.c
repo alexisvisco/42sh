@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ht_new.c                                         .::    .:/ .      .::   */
+/*   history_prepare.c                                .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/23 13:17:41 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/14 13:45:45 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/06/14 09:36:10 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/06/14 09:36:10 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "shell.h"
 
-t_hashtable	*ht_new(size_t size)
+void	prepare_history(t_editor *e)
 {
-	t_hashtable *hasht;
-
-	hasht = ft_memalloc(sizeof(t_hashtable));
-	if (hasht)
-	{
-		hasht->size = size;
-		hasht->heaps = ft_memalloc(size);
-		hasht->free_func = free;
-	}
-	return (hasht);
+	ef_go_end(e);
+	refresh_line(e);
 }

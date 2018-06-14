@@ -13,7 +13,7 @@
 
 #include "shell.h"
 
-t_termios	g_origin;
+t_termios g_origin;
 
 /*
 ** Check if the terminal in the env TERM is

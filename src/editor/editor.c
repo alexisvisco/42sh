@@ -15,8 +15,8 @@
 
 #define END_NO_NEW_LINE "\e[7m\e[1m%\n\e[0m"
 
-void init_editor(t_editor *editor, char *buf, const char *prompt,
-				 t_options *opt)
+void		init_editor(t_editor *editor, char *buf, const char *prompt,
+t_options *opt)
 {
 	editor->ifd = STDIN_FILENO;
 	editor->ofd = STDOUT_FILENO;
@@ -45,7 +45,7 @@ void init_editor(t_editor *editor, char *buf, const char *prompt,
 ** The function returns the length of the current buffer.
 */
 
-int				editor(char *buf, char *prompt, t_options *opt)
+int			editor(char *buf, char *prompt, t_options *opt)
 {
 	t_editor l;
 

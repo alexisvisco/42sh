@@ -95,7 +95,7 @@ void			history_search(t_editor *e)
 	disable_terminal(0);
 	result = NULL;
 	history_search_msg();
-	while ((str = readline("(search in history) ", g_shell.history_search)))
+	while ((str = readline("search in history> ", g_shell.history_search)))
 	{
 		disable_terminal(0);
 		if (ft_strequ("exit", str))

@@ -12,6 +12,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "f_colors.h"
 
 void	*ft_memalloc(size_t size)
 {
@@ -19,7 +20,16 @@ void	*ft_memalloc(size_t size)
 
 	str = malloc(sizeof(void*) * size);
 	if (str == NULL)
-		return (NULL);
+	{
+		ft_putstr(CRITICAL_RED);
+		ft_putstr(WHITE);
+		ft_putstr("WARNING: the program does not behave correctly.");
+		ft_putstr(" The malloc function returned null. The program will try");
+		ft_putstr(" to exit.\nWe are absolutely not responsible for what can");
+		ft_putstr(" follow. We are in the 21st century.\n");
+		ft_putstr(RESET_ALL);
+		exit(1);
+	}
 	ft_bzero(str, sizeof(void *) * size);
 	return (str);
 }

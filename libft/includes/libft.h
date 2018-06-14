@@ -32,7 +32,4 @@
 # include "f_map.h"
 # include "ft_printf.h"
 
-# define SMART(type) __attribute__ ((__cleanup__(free_smart))) type
-# define SMART_DEBUG(type) __attribute__ ((__cleanup__(free_debug))) type
-
 #endif

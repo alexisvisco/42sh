@@ -20,16 +20,26 @@
 
 void	exit_shell(void)
 {
-	rewrite_history_file(HISTORY_DATA);
-	ht_free(g_shell.bin);
-	ht_free(g_shell.env);
-	trie_free(g_shell.bin_trie);
-	trie_free(g_shell.env_trie);
-	trie_free(g_shell.vars_trie);
-	free_options(g_shell.line_edit);
+	if (g_shell.line_edit)
+		rewrite_history_file(HISTORY_DATA);
+	if (g_shell.bin)
+		ht_free(g_shell.bin);
+	if (g_shell.bin)
+		ht_free(g_shell.env);
+	if (g_shell.bin_trie)
+		trie_free(g_shell.bin_trie);
+	if (g_shell.env_trie)
+		trie_free(g_shell.env_trie);
+	if (g_shell.vars_trie)
+		trie_free(g_shell.vars_trie);
+	if (g_shell.line_edit)
+		free_options(g_shell.line_edit);
 	ft_memdel((void **)&(g_shell.line));
-	free_options(g_shell.history_search);
-	ht_free(get_builtins());
-	ht_free(g_shell.vars);
+	if (g_shell.history_search)
+		free_options(g_shell.history_search);
+	if (g_shell.vars)
+		ht_free(g_shell.vars);
+	if (get_builtins())
+		ht_free(get_builtins());
 	disable_terminal(0);
 }

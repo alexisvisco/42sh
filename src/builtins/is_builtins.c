@@ -13,7 +13,7 @@
 
 #include "builtins.h"
 
-static void define_builtins(t_hashtable *builtins_methods)
+static void		define_builtins(t_hashtable *builtins_methods)
 {
 	builtins_methods->free_func = NULL;
 	ht_set(builtins_methods, "calc", b_expr_eval);

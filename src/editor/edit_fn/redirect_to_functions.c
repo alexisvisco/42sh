@@ -40,8 +40,6 @@ static t_redirect_fn	*ctrl_fn(char c)
 		return (ef_move_down);
 	if (ISK(CTRL_O))
 		return (ef_move_up);
-	if (ISK(CTRL_H))
-		return (history_search);
 	return (0);
 }
 
@@ -111,7 +109,12 @@ void					redirect_key_fn(t_editor *e, char c, char *seq)
 {
 	t_redirect_fn *func;
 
-	if (!redirect_control_key(e, c) && e->mode == COMPLETION)
+	if (ISK(CTRL_H))
+	{
+		prepare_history(e);
+		history_search(e);
+	}
+	else if (!redirect_control_key(e, c) && e->mode == COMPLETION)
 		completion_delete(e);
 	if ((ISK(ESC) && (func = esc_fn(e, seq))) ||
 		(func = ctrl_fn(c)) ||

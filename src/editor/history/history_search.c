@@ -90,7 +90,6 @@ void			history_search(t_editor *e)
 	t_heap	*history;
 	t_heap	*result;
 
-	prepare_history(e);
 	e->mode = HISTORY_SEARCH;
 	history = e->options->history_data->heap;
 	disable_terminal(0);

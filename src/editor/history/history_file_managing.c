@@ -69,8 +69,6 @@ int		rewrite_history_file_in(t_heap *h, const char *path, int from)
 	int		fd;
 	size_t	i;
 
-
-	ft_printf("path: %s\n", path);
 	fd = open(path, O_CREAT | O_WRONLY | O_TRUNC,
 			S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH);
 	i = from + (size_t)1;

@@ -13,18 +13,25 @@
 
 #include "shell.h"
 
+static void		end(const char *path, const char *file)
+{
+	rewrite_history_file(HISTORY_DATA);
+	free_gnl();
+	message(MSG_HISTORY_READ, file ? file : path);
+}
+
 /*
 ** Read entirely the file and reset the history heap
 */
 
-int	history_read(char **args)
+int				history_read(char **args)
 {
 	char	path[2048];
 	char	*file;
 	char	*line;
 	int		fd;
 
-	if (ht_get(g_shell.env, "HOME"))
+	if (!ht_get(g_shell.env, "HOME"))
 		return (0);
 	ft_copy_str(path, ht_get(g_shell.env, "HOME"));
 	ft_strcat(path, "/"HISTORY_FILE);
@@ -41,7 +48,6 @@ int	history_read(char **args)
 		heap_add(HISTORY_DATA, ft_strdup(line));
 		ft_memdel((void **)&line);
 	}
-	free_gnl();
-	message(MSG_HISTORY_READ, file ? file : path);
+	end(path, file);
 	return (1);
 }

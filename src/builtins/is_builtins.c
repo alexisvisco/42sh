@@ -54,7 +54,7 @@ int				is_builtins_env(char *cmd)
 	int			i;
 
 	i = -1;
-	while (builtins_env[++i])
+	while (cmd && builtins_env[++i])
 	{
 		if (ft_strequ(cmd, builtins_env[i]))
 			return (1);
@@ -64,7 +64,7 @@ int				is_builtins_env(char *cmd)
 
 t_builtins_fun	*builtins(char *cmd)
 {
-	if (ht_has(get_builtins(), cmd))
+	if (cmd && ht_has(get_builtins(), cmd))
 		return ((t_builtins_fun *)ht_get(get_builtins(), cmd));
 	else
 		return (NULL);

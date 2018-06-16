@@ -60,6 +60,8 @@ void		trie_start_with(t_trie_node *root, char *prefix, t_heap *heap)
 	size_t		length;
 	int			index;
 
+	if (!prefix || !root || !heap)
+		return ;
 	length = ft_strlen(prefix);
 	level = 0;
 	cr = root;

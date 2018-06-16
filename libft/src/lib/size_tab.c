@@ -18,7 +18,7 @@ size_t	size_tab(char **t)
 	size_t i;
 
 	i = 0;
-	while (t[i])
+	while (t && t[i])
 		i++;
 	return (i);
 }

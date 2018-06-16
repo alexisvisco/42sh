@@ -17,6 +17,10 @@ void	*ht_get(t_hashtable *ht, const char *key)
 {
 	t_node *node;
 
-	node = ht_has(ht, key);
-	return (node ? node->value : NULL);
+	if (key)
+	{
+		node = ht_has(ht, key);
+		return (node ? node->value : NULL);
+	}
+	return NULL;
 }

@@ -32,12 +32,6 @@ static void		init(char **env)
 	exit(EXIT_FAILURE);
 }
 
-void				test(int i) {
-	(void)i;
-	exit_shell();
-	exit(0);
-}
-
 int				main(int n, char **args, char **env)
 {
 	char	*str;
@@ -47,7 +41,6 @@ int				main(int n, char **args, char **env)
 	(void)args;
 	signal(SIGINT, sig_handler);
 	signal(SIGIO, sig_handler);
-	signal(SIGSEGV, test);
 	if (!isatty(STDIN_FILENO))
 	{
 		message_err(ERR_UNSUPORTED_OPERATION);
@@ -58,8 +51,6 @@ int				main(int n, char **args, char **env)
 	{
 		str = multi_line_prompt(str, 1);
 		shell_process(str, 0);
-		int * p = NULL;
-		*p = 12;
 	}
 	return (0);
 }

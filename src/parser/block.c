@@ -27,8 +27,8 @@ int			count_blocks(t_token **tokens)
 	while (tokens[i])
 	{
 		while (tokens[i] && ft_strcmp(tokens[i]->value, "&") &&
-		tokens[i]->value[0] != ';' && ft_strcmp(tokens[i]->value, "&;")
-		&& ft_strcmp(tokens[i]->value, "&|"))
+		(tokens[i]->value[0] != ';' || tokens[i]->type == COMMAND) &&
+		ft_strcmp(tokens[i]->value, "&;") && ft_strcmp(tokens[i]->value, "&|"))
 			i++;
 		block++;
 		if (tokens[i] && (ft_strcmp(tokens[i]->value, "&") == 0 ||
@@ -58,8 +58,8 @@ t_block		*extract_blocks(t_token **tokens)
 		ft_bzero(&(blocks[j]), sizeof(t_block));
 		begin = i;
 		while (tokens[i] && ft_strcmp(tokens[i]->value, "&") &&
-		tokens[i]->value[0] != ';' && ft_strcmp(tokens[i]->value, "&;")
-		&& ft_strcmp(tokens[i]->value, "&|"))
+		(tokens[i]->value[0] != ';' || tokens[i]->type == COMMAND) &&
+		ft_strcmp(tokens[i]->value, "&;") && ft_strcmp(tokens[i]->value, "&|"))
 			i++;
 		blocks[j].start_tok = begin;
 		blocks[j++].end_tok = i == 0 ? i : i - 1;

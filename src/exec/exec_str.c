@@ -17,7 +17,7 @@ static void	child_fork(const char *argv[], const int *p)
 {
 	char	**envp;
 
-	envp = env_to_array();
+	envp = env_to_array(g_shell.env);
 	dup2(p[WRITE_END], STDOUT_FILENO);
 	close(p[READ_END]);
 	close(STDERR_FILENO);

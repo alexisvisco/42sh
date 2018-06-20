@@ -23,7 +23,7 @@ static void		child_fork(char ***argv, int fd, const int *p)
 	t_builtins_fun	*buitlin;
 	int				a;
 
-	envp = env_to_array();
+	envp = env_to_array(g_shell.env);
 	if (*(argv + 1) && fd == 1)
 		dup2(p[WRITE_END], STDOUT_FILENO);
 	else if (fd != 1)

@@ -25,8 +25,8 @@ char			*ft_char_to_str(char c);
 void			free_tab(char **table);
 void			free_3d_tab(char ***array);
 
-char			**env_to_array(void);
-size_t			env_size(void);
+char			**env_to_array(t_hashtable *envx);
+size_t			env_size(t_hashtable *envx);
 
 void			delete_first_element(char ***s);
 void			tab_del_from_to(char ***t, int from, int to);
@@ -53,6 +53,7 @@ void			parse_arguments(char **args, char *ar, const char *allowed);
 int				*vint(int x);
 t_hashtable		*clone_hashtable(t_hashtable *t);
 char			**strsplit_first(char *str, const char *separator);
+void			free_node(t_node **d);
 
 int				is_directory(const char *path);
 

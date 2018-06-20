@@ -53,6 +53,7 @@ void			parse_arguments(char **args, char *ar, const char *allowed);
 int				*vint(int x);
 t_hashtable		*clone_hashtable(t_hashtable *t);
 char			**strsplit_first(char *str, const char *separator);
+char			*force_symbolic_link(char *cur, char *path);
 
 int				is_directory(const char *path);
 

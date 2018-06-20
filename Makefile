@@ -145,6 +145,7 @@ util/is_direct.c \
 util/vint.c \
 util/clone_hashtable.c \
 util/strsplit_first.c \
+util/paths.c \
 \
 exec/signal.c \
 exec/analyze_next_and_or.c  \

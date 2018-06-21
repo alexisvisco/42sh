@@ -31,8 +31,8 @@ int		b_set_env_a(t_hashtable *envs, char *str, t_shell *shell)
 {
 	char **splitted;
 
-	splitted = ft_strsplit(str, '=');
-	if (size_tab(splitted) >= 2)
+	splitted = strsplit_first(str, "=");
+	if (size_tab(splitted) >= 2 && splitted[0] && splitted[1])
 		b_set_env_b(envs, splitted[0], splitted[1], shell);
 	else
 	{

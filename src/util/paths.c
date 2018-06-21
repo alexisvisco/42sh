@@ -12,7 +12,8 @@
 /* ************************************************************************** */
 
 #include "shell.h"
-#define LAST(rsl) ((int)ft_strlen(rsl) - 1)
+#define LAST ((int)ft_strlen(rsl) - 1)
+#define LASTPTR ((int)ft_strlen(*rsl) - 1)
 
 static void prev_path(char **cur)
 {
@@ -49,7 +50,7 @@ static char *prev_or_concat(int i, char **rsl, char **splitted)
 			prev_path(rsl);
 	else if (!ft_strequ(splitted[i], "."))
 	{
-		if (LAST(*rsl) > 1 && (*rsl)[LAST(*rsl)] != '/')
+		if (LASTPTR > 1 && (*rsl)[LASTPTR] != '/')
 			ft_strcat((*rsl), "/");
 		ft_strcat((*rsl), splitted[i]);
 	}
@@ -74,7 +75,7 @@ char *force_symbolic_link(char *cur, char *path)
 	i = -1;
 	while (splitted && splitted[++i])
 		rsl = prev_or_concat(i, &rsl, splitted);
-	if (LAST(rsl) >= 0 && rsl[LAST(rsl)] != '/')
+	if (LAST >= 0 && rsl[LAST] != '/')
 		ft_strcat(rsl, "/");
 	free_tab(splitted);
 	return rsl;

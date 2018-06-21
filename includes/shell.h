@@ -116,7 +116,7 @@ typedef enum	e_msgs
 int				shell_process(char *s, int is_backq);
 
 void			message(t_msgs m, ...);
-void			message_err(t_msgs m, ...);
+int				message_err(t_msgs m, ...);
 void			message_fd(int fd, t_msgs m, ...);
 
 void			set_env(char **env);

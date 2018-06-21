@@ -147,6 +147,7 @@ util/clone_hashtable.c \
 util/strsplit_first.c \
 util/paths.c \
 util/free_node.c \
+util/get_cwd.c \
 \
 exec/signal.c \
 exec/analyze_next_and_or.c  \

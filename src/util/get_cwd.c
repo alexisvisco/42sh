@@ -1,35 +1,23 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   b_pwd.c                                          .::    .:/ .      .::   */
+/*   get_cwd.c                                        .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/02/05 18:56:46 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/14 13:45:45 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/06/21 10:44:23 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/06/21 10:44:23 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-/*
-** Show the current working directory
-** Take no arguments
-*/
-
-int		b_pwd(char **args, t_shell *shell)
+char 	*get_cwd(char *str, size_t s)
 {
-	char cwd[2048];
-
-	(void)args;
-	(void)shell;
-	if (get_cwd(cwd, sizeof(cwd)) != NULL)
-		ft_printf("%s\n", cwd);
+	if (ht_has(g_shell.env, "PWD"))
+		ft_strcpy(str, ht_get(g_shell.env, "PWD"));
 	else
-	{
-		message_err(ERR_PWD_NOT_FOUND);
-		return (0);
-	}
-	return (1);
+		getcwd(str, s);
+	return str;
 }

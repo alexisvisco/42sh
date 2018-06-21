@@ -13,61 +13,115 @@
 
 #include <shell.h>
 
-static int	b_cd_old(char *const *args, const t_shell *shell)
-{
-	char cwd[2048];
+#define MOVE(s) cd_is_ok(s) && move(s)
 
-	getcwd(cwd, sizeof(cwd));
-	if (args[1][0] == '-' && ht_get(shell->env, "OLDPWD"))
+static int 		move(char *path)
+{
+	char pwd[4096];
+	char *tmp;
+
+	if (!path)
+		return -1;
+	if (chdir(path) == -1)
 	{
-		if (chdir(ht_get(shell->env, "OLDPWD")) == -1)
+		message_err(ERR_CD_ACCESS, path);
+		return 0;
+	}
+	tmp = ft_strdup(path);
+	if (get_cwd(pwd, sizeof(pwd)))
+		ht_set(g_shell.env, "OLDPWD", ft_strdup(pwd));
+	ht_set(g_shell.env, "PWD", tmp);
+	return 1;
+}
+
+static int		cd_is_ok(char *path)
+{
+	struct stat	s;
+
+	if (!*path || lstat(path, &s) != 0)
+	{
+		message_err(ERR_CD_ACCESS, path);
+		return 0;
+	}
+	if (!S_ISDIR(s.st_mode) && !S_ISLNK(s.st_mode))
+	{
+		message_err(ERR_CD_DIR, path);
+		return 0;
+	}
+	if ((!S_ISLNK(s.st_mode) && access(path, R_OK) != 0) ||
+		access(path, X_OK) != 0)
+	{
+		message_err(ERR_CD_ACCESS, path);
+		return 0;
+	}
+	return (1);
+}
+
+static int 		cd_path(char *path, int p, int no_args)
+{
+	char		*rpath;
+	char		cwd[4096];
+	int			res;
+
+	if (no_args && !path)
+	{
+		if (ht_get(g_shell.env, "HOME"))
+			return MOVE(ht_get(g_shell.env, "HOME"));
+		message_err(ERR_CD);
+		return 0;
+	}
+	else if (path && path[0] == '-' && ft_strlen(path) == 1)
+	{
+		if (ht_get(g_shell.env, "OLDPWD"))
+			return MOVE(ht_get(g_shell.env, "OLDPWD"));
+		message_err(ERR_NO_OLD_PWD);
+		return 0;
+	}
+	else if (!p && path)
+	{
+		if (ht_get(g_shell.env, "PWD"))
 		{
-			message_err(ERR_CD_DIR, ht_get(shell->env, "OLDPWD"));
-			return (0);
+			rpath = force_symbolic_link(ht_get(g_shell.env, "PWD"), path);
+			res = MOVE(rpath);
+			free(rpath);
+			return res;
 		}
 		else
 		{
-			ht_set(shell->env, "OLDPWD", ft_strdup(cwd));
-			ht_set(shell->env, "PWD", ft_strdup(getcwd(cwd, sizeof(cwd))));
-			message(MSG_CD, getcwd(cwd, sizeof(cwd)));
+			message_err(ERR_CD);
+			return 0;
 		}
 	}
-	else
+	else if (path)
 	{
-		message_err(ERR_NO_OLD_PWD);
-		return (0);
+		if (cd_is_ok(path) && chdir(path) != 1)
+		{
+			getcwd(cwd, sizeof(cwd));
+			ht_set(g_shell.env, "PWD", ft_strdup(cwd));
+			return 1;
+		}
 	}
-	return (1);
+	return (0);
 }
 
 /*
 ** Change the current directory, if no arguments, go to home, if argument is a
 ** '-' go to the previous working directory, if its a valid argument and
 ** accessible path, go to the argument path
+**
+** Usage -P into absolute path
 */
 
 int			b_cd(char **args, t_shell *shell)
 {
-	char *dir;
-	char cwd[2048];
+	int		p;
+	(void)shell;
 
-	dir = args[1] == NULL ? ht_get(shell->env, "HOME") : args[1];
-	if (size_tab(args) > 1 && args[1][0] == '-')
-		return (b_cd_old(args, shell));
-	if (dir != NULL && (getcwd(cwd, sizeof(cwd)) == NULL ||
-	access(dir, R_OK) == -1))
+	p = (size_tab(args) == 3 && ft_strcmp("-P", args[1]) == 0);
+	if (size_tab(args) > 3)
 	{
-		message_err(access(dir, R_OK) == -1 ? ERR_CD : ERR_CD_ACCESS,
-		access(dir, R_OK) == -1 ? NULL : dir);
-		return (0);
+		message(USAGE_CD);
+		return 0;
 	}
-	if (dir == NULL || chdir(dir) == -1)
-	{
-		message_err(ERR_CD_DIR, args[1]);
-		return (0);
-	}
-	ht_set(shell->env, "OLDPWD", ft_strdup(cwd));
-	ht_set(shell->env, "PWD", ft_strdup(getcwd(cwd, sizeof(cwd))));
-	message(MSG_CD, getcwd(cwd, sizeof(cwd)));
-	return (1);
+	return cd_path(p ? args[2] : args[1], p, size_tab(args) == 1);
 }

@@ -55,6 +55,7 @@ t_hashtable		*clone_hashtable(t_hashtable *t);
 char			**strsplit_first(char *str, const char *separator);
 void			free_node(t_node **d);
 char			*force_symbolic_link(char *cur, char *path);
+char			*get_cwd(char *str, size_t s);
 
 int				is_directory(const char *path);
 

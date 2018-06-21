@@ -46,6 +46,7 @@ static char	*g_msg_list[] = {
 	"To search binary use: search-binary <query>.\n",
 	"One match found: %s at %s.\n",
 	"There is currently no history.\n",
+	"cd [-P|-] [directory]\n",
 	"Cannot get current working directory.\n",
 	"Cannot access to the directory %s.\n",
 	"No such directory.\n",

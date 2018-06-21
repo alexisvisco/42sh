@@ -12,7 +12,7 @@
 /* ************************************************************************** */
 
 #include "shell.h"
-#define LAST(rsl) (ft_strlen(rsl) - 1)
+#define LAST(rsl) ((int)ft_strlen(rsl) - 1)
 
 static void prev_path(char **cur)
 {

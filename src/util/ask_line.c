@@ -57,7 +57,7 @@ char		*heap_to_str(t_heap *h, int nl)
 
 	i = 0;
 	full = ft_strdup(nl ? "\n" : "");
-	while (i < h->size)
+	while (h && i < h->size)
 	{
 		if (h->list[i])
 		{
@@ -79,7 +79,7 @@ char		*heap_to_str_rm_one(t_heap *h)
 
 	i = 0;
 	full = ft_strdup("\0");
-	while (i < h->size)
+	while (h && i < h->size)
 	{
 		if (h->list[i])
 		{

@@ -59,7 +59,9 @@ static void		close_fd(const int *p, t_fd *fd, char ****av)
 {
 	if ((*fd).input > 0)
 		close((*fd).input);
-	close(((*fd).output != 1) ? (*fd).output : p[WRITE_END]);
+    if ((*fd).output != 1)
+        close((*fd).output);
+	close(p[WRITE_END]);
 	if ((*fd).save)
 		close((*fd).save);
 	(*fd).save = p[READ_END];

@@ -1,35 +1,24 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   b_pwd.c                                          .::    .:/ .      .::   */
+/*   free_node.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: ggranjon <ggranjon@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: aviscogl <aviscogl@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/02/05 18:56:46 by aviscogl     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/14 13:45:45 by ggranjon    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/06/20 10:57:52 by aviscogl     #+#   ##    ##    #+#       */
+/*   Updated: 2018/06/20 10:57:52 by aviscogl    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "shell.h"
+#include "libft.h"
 
-/*
-** Show the current working directory
-** Take no arguments
-*/
-
-int		b_pwd(char **args, t_shell *shell)
+void		free_node(t_node **d)
 {
-	char cwd[2048];
-
-	(void)args;
-	(void)shell;
-	if (get_cwd(cwd, sizeof(cwd)) != NULL)
-		ft_printf("%s\n", cwd);
-	else
+	if (d)
 	{
-		message_err(ERR_PWD_NOT_FOUND);
-		return (0);
+		ft_memdel((void **) &((*d)->key));
+		ft_memdel(&((*d)->value));
+		ft_memdel((void **) &(*d));
 	}
-	return (1);
 }

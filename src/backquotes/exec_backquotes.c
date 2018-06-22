@@ -35,7 +35,7 @@ static void			child_fork(char ***argv, t_fd fd, int *p)
 	t_builtins_fun	*buitlin;
 	int				a;
 
-	envp = env_to_array();
+	envp = env_to_array(g_shell.env);
 	analyze_agreg(argv, p);
 	dup2(fd.input != 0 ? fd.input : fd.save, STDIN_FILENO);
 	dup2(p[WRITE_END], STDOUT_FILENO);

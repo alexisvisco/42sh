@@ -31,6 +31,7 @@ int				b_echo(char **args, t_shell *shell);
 int				b_history(char **args, t_shell *shell);
 int				b_cd(char **args, t_shell *shell);
 int				b_env_set(char **args, t_shell *shell);
+int				execute_env_cmd(char **args, t_hashtable *envs);
 int				b_env_unset(char **args, t_shell *shell);
 int				b_clear(char **args, t_shell *shell);
 int				b_exit(char **args, t_shell *shell);

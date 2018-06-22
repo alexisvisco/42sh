@@ -13,88 +13,85 @@
 
 #include "shell.h"
 
-#define IS_ASSIGN(str) ft_strstr(str, "=")
+#define IS_ARGS (ftn & 1<<0 && ft_strstarts_with_str(*args, "-"))
 
-
-static void		print_env(const t_heap *heap, size_t j)
+static int		exec_args(int *ftn, char ***args, t_hashtable **temp)
 {
-	t_node *n;
+	t_node *d;
 
-	n = (t_node *)heap->list[j];
-	if (n->key && n->value)
-		ft_printf("%s=%s\n", n->key, n->value);
+	if ((*(*args))[1] == 'u')
+	{
+		ft_printf("-u\n");
+		(*args)++;
+		if (**args)
+		{
+			d = ht_remove(*temp, **args);
+			free_node(&d);
+		}
+		else
+			return (1);
+	}
+	else if ((*(*args))[1] == 'i')
+	{
+		*ftn = 0 << 0;
+		ht_free((*temp));
+		(*temp) = ht_new(128);
+	}
+	return (0);
 }
 
-int has_error(char ar[2])
+static void		exec_assign(char **args, t_hashtable *temp)
 {
-	if (ft_strchr(ar, 'i') && ft_strchr(ar, 'u'))
-		return 1;
-	return 0;
+	char **toks;
+
+	toks = strsplit_first(*args, "=");
+	if (toks && toks[0][0] != 0 && toks[1][0] != 0)
+	{
+		ht_set(temp, toks[0], ft_strdup(toks[1]));
+	}
+	free_tab(toks);
+}
+
+static void		end(t_hashtable *temp, int ftn)
+{
+	if (!(ftn & 1 << 2))
+		ht_print(temp, ht_print_str);
+	ht_free(temp);
 }
 
 /*
-** List all environments variables
-** Take no arguments
+** Set environment and execute command, or print environment
+**
+** PART_ARGS  = 1 << 0
+** EXIT_ERROR = 1 << 1
+** CAN_PRINT  = 1 << 2
 */
 
 int				b_env(char **args, t_shell *shell)
 {
 	t_hashtable		*temp;
-	int				part_args;
+	int				ftn;
 
-	part_args = 1;
+	(void)shell;
+	ftn = 1 << 0;
 	temp = clone_hashtable(g_shell.env);
+	args++;
 	while (*args)
 	{
-		if (part_args && ft_strstarts_with_str(*args, "-") && ft_strlen(*args) == 2)
+		if (IS_ARGS && ft_strlen(*args) == 2)
 		{
-			if ((*args)[1] == 'u')
-			{
-				args++;
-				if (*args)
-				{    /*remove *args from hashtable*/}
-				else return 0;
-			}
-			else if ((*args)[1] == 'i')
-			{
-				{    /*remove all from hashtable*/}
-				part_args = 0;
-				continue;
-			}
+			if ((ftn |= exec_args(&ftn, &args, &temp) << 1) & 1 << 1)
+				return (0);
 		}
 		else if (ft_strstr(*args, "="))
+			exec_assign(args, temp);
+		else
 		{
-			char **toks = strsplit_first(*args, "=");
-			if (toks && size_tab(toks) == 2)
-			{
-				ht_set(temp, toks[0], ft_strdup(toks[1]));
-				free_tab(toks);
-			}
+			ftn |= execute_env_cmd(args, temp) << 2;
+			break ;
 		}
-		else {
-
-		}
-
 		args++;
 	}
+	end(temp, ftn);
 	return (1);
 }
-/**
-arg_part = 1;
-while str
- 	if (arg_part && str is an arg as x)
- 		if (x == "u")
- 			next as u
- 			remove u from temp hashtable
- 		if (x == "i")
- 			remove all from hashtable
- 			arg_part = 0
- 	if (is assignation)
- 		res = splitfirst at = on str
- 		add res[0] as key and res[1] as value to hashtable
- 	else
- 		y = get rest of str as string
- 		g_shell.temp_env = hashtable
- 		execute_shell(y, 1)
- 		break
-

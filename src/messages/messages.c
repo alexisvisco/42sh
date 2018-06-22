@@ -46,6 +46,7 @@ static char	*g_msg_list[] = {
 	"To search binary use: search-binary <query>.\n",
 	"One match found: %s at %s.\n",
 	"There is currently no history.\n",
+	"cd [-P|-] [directory]\n",
 	"Cannot get current working directory.\n",
 	"Cannot access to the directory %s.\n",
 	"No such directory.\n",
@@ -102,7 +103,7 @@ void		message(t_msgs m, ...)
 ** on stderr
 */
 
-void		message_err(t_msgs m, ...)
+int		message_err(t_msgs m, ...)
 {
 	va_list	ap;
 
@@ -111,6 +112,7 @@ void		message_err(t_msgs m, ...)
 	core_pf(STDERR_FILENO, g_msg_list[m], ap);
 	ft_dprintf(STDERR_FILENO, "%s", RESET_ALL);
 	va_end(ap);
+	return 0;
 }
 
 /*

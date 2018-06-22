@@ -30,7 +30,7 @@ void	set_env(char **environ)
 	i = -1;
 	while (environ[++i])
 	{
-		splitted = ft_strsplit(environ[i], '=');
+		splitted = strsplit_first(environ[i], "=");
 		if (splitted && splitted[0] && splitted[1])
 		{
 			c = ft_char_to_str('$');

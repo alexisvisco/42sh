@@ -144,6 +144,10 @@ util/which_quote.c \
 util/is_direct.c \
 util/vint.c \
 util/clone_hashtable.c \
+util/strsplit_first.c \
+util/paths.c \
+util/free_node.c \
+util/get_cwd.c \
 \
 exec/signal.c \
 exec/analyze_next_and_or.c  \
@@ -160,6 +164,7 @@ exec/delete_redir.c \
 exec/exec_str.c \
 \
 builtins/b_env.c \
+builtins/b_env_exec.c \
 builtins/b_search_binary.c \
 builtins/b_env_unset.c \
 builtins/b_env_set.c \

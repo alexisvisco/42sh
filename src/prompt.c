@@ -16,25 +16,25 @@
 static char	*get_current_folder(void)
 {
 	char	cwd[2048];
-	char	folder[2048];
-	int		i;
-	int		prev;
+	char	*tmp;
+	char	**ta;
 
-	if (!getcwd(cwd, sizeof(cwd)))
-		return (NULL);
-	i = 0;
-	prev = 0;
-	while (cwd[i])
+	if (!get_cwd(cwd, sizeof(cwd)))
+		return ft_strdup("unknown");
+	ta = ft_strsplit(cwd, '/');
+	if (!ta)
+		return ft_strdup("/");
+	if (size_tab(ta) == 0)
 	{
-		if (cwd[i] == '/')
-			prev = i;
-		i++;
+		free_tab(ta);
+		return ft_strdup("/");
 	}
-	i = -1;
-	while (cwd[++i])
-		folder[i] = cwd[prev + (i + 1)];
-	folder[i] = 0;
-	return (ft_strdup(folder));
+	else
+	{
+		tmp = ft_strdup(ta[size_tab(ta) - 1]);
+		free_tab(ta);
+		return tmp;
+	}
 }
 
 static char	*get_git_branch(void)

@@ -13,8 +13,11 @@
 
 #include "shell.h"
 
-#define GRP_COND(x) (ft_contain_any_seq(ar, groups[x]))
-#define CONTAIN_GRP(i, n) (GRP_COND(i)|| GRP_COND(n))
+static int 		grp_contain(int i, int x, const char **grp, char *ar)
+{
+	return ((ft_contain_any_seq(ar, grp[i])) ||
+	(ft_contain_any_seq(ar, grp[x])));
+}
 
 /*
 ** Check compatibility betweens each arguments
@@ -22,15 +25,15 @@
 
 static int		check_errors(char *ar)
 {
-	const char	*groups[] = {"d", "e", "canwr"};
+	const char	*grp[] = {"d", "e", "canwr"};
 	int			i;
 
 	i = -1;
 	while (ar[++i])
 	{
-		if ((ft_strchr(groups[0], *ar) && CONTAIN_GRP(1, 2)) ||
-			(ft_strchr(groups[1], *ar) && CONTAIN_GRP(0, 2)) ||
-			(ft_strchr(groups[2], *ar) && CONTAIN_GRP(0, 1)))
+		if ((ft_strchr(grp[0], *ar) && grp_contain(1, 2, grp, ar)) ||
+			(ft_strchr(grp[1], *ar) && grp_contain(0, 2, grp, ar)) ||
+			(ft_strchr(grp[2], *ar) && grp_contain(0, 1, grp, ar)))
 		{
 			message_err(ERR_HISTORY_ARG_MERGED);
 			return (1);

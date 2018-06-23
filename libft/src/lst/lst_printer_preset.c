@@ -20,20 +20,20 @@ void	lst_print_str(t_list *l)
 
 void	lst_print_int(t_list *l)
 {
-	ft_putnum((int)l->content, 10);
+	ft_putnum(*(int *)l->content, 10);
 }
 
 void	lst_print_int_bin(t_list *l)
 {
-	ft_putnum((int)l->content, 2);
+	ft_putnum(*(int *)l->content, 2);
 }
 
 void	lst_print_int_hex(t_list *l)
 {
-	ft_putnum((int)l->content, 16);
+	ft_putnum(*(int *)l->content, 16);
 }
 
 void	lst_print_bool(t_list *l)
 {
-	ft_putstr((int)l->content == 0 ? "false" : "true");
+	ft_putstr(*(int *)l->content == 0 ? "false" : "true");
 }

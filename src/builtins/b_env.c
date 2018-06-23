@@ -15,13 +15,36 @@
 
 #define IS_ARGS (ftn & 1<<0 && ft_strstarts_with_str(*args, "-"))
 
+static void		print(t_hashtable *t)
+{
+	t_heap	*heap;
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	while (i < t->size)
+	{
+		heap = t->heaps[i];
+		j = 0;
+		while (heap && heap->elements > 0 && j < heap->size)
+		{
+			if (heap->list[j])
+			{
+				ft_printf("%s=%s\n", ((t_node *)heap->list[j])->key,
+						  ((t_node *)heap->list[j])->value);
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
 static int		exec_args(int *ftn, char ***args, t_hashtable **temp)
 {
 	t_node *d;
 
 	if ((*(*args))[1] == 'u')
 	{
-		ft_printf("-u\n");
 		(*args)++;
 		if (**args)
 		{
@@ -55,7 +78,7 @@ static void		exec_assign(char **args, t_hashtable *temp)
 static void		end(t_hashtable *temp, int ftn)
 {
 	if (!(ftn & 1 << 2))
-		ht_print(temp, ht_print_str);
+		print(temp);
 	ht_free(temp);
 }
 

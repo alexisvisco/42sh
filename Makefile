@@ -234,7 +234,7 @@ $(NAME): $(OBJ)
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c $(HEADERS)
 	@mkdir -p $(OBJ_PATH) $(OBJ_FOLDERS_BIS)
 	@$(CC) $(CC_FLAGS) $(INC_PATH) -o $@ -c $<
-	@sh loading_bar.sh $(COUNT) $(TOTAL_FILES) $< "42sh: " 70
+	@bash loading_bar.sh $(COUNT) $(TOTAL_FILES) $< "42sh: " 70
 	@$(eval COUNT=$(shell echo $$(($(COUNT)+1))))
 
 

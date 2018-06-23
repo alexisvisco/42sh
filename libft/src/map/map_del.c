@@ -17,12 +17,11 @@ static void		del(void *c, size_t s)
 {
 	t_entry	*tmp;
 
+	(void)s;
 	tmp = (t_entry *)c;
 	ft_memdel((void **)&(tmp->key));
 	ft_memdel((void **)&(tmp->value));
 	ft_memdel((void **)&tmp);
-	if (s)
-		;
 }
 
 void			map_del(t_map *map)

@@ -29,9 +29,7 @@ void		evaluator_core(char **str, va_list lst)
 {
 	t_formatter fmt;
 	int			i;
-	char		*s;
 
-	s = *str;
 	i = 0;
 	while (i < (int)ft_strlen(*str))
 	{

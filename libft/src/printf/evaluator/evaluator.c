@@ -15,16 +15,14 @@
 
 void	evaluate(char **str, void (*fn)(), t_formatter *fmt, va_list lst)
 {
-	char *to_free;
 	char *tmp;
 
 	if (fmt->precision == -2 || fmt->width == -2)
 		fill_dyn_val(fmt, lst);
-	to_free = *str;
 	fn(fmt, lst);
 	tmp = ft_strrep_first_aft(fmt->full_formatter,
 	fmt->to_replace, *str, fmt->index);
-	fmt->index_replace_end = fmt->index + ft_strlen(fmt->to_replace);
+	fmt->index_replace_end = (fmt->index + ft_strlen(fmt->to_replace));
 	ft_memdel((void **)&(str[0]));
 	str[0] = tmp;
 }

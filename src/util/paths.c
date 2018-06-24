@@ -65,6 +65,8 @@ char			*force_symbolic_link(char *cur, char *path)
 
 	rsl = ft_memalloc(4096);
 	splitted = ft_strsplit(path, '/');
+	if (!cur || !path)
+		return (NULL);
 	if (path[0] != '/')
 	{
 		rsl[0] = 0;

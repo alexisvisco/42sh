@@ -43,7 +43,7 @@ char			**strsplit_first(char *str, const char *separator)
 	t[0] = ft_memalloc(ft_strlen(str));
 	t[1] = ft_memalloc(ft_strlen(str));
 	i = -1;
-	while (str[++i])
+	while (str && separator && str[++i])
 	{
 		if (i == 0 && is_query(separator, str, i))
 			return (t);

@@ -53,15 +53,17 @@ static int		move_with_path(char *path)
 	char		*rpath;
 	int			res;
 
-	if (ht_get(g_shell.env, "PWD"))
+	if (path && ht_get(g_shell.env, "PWD"))
 	{
 		rpath = force_symbolic_link(ht_get(g_shell.env, "PWD"), path);
-		res = MOVE(rpath);
-		free(rpath);
-		return (res);
+		if (rpath)
+		{
+			res = MOVE(rpath);
+			free(rpath);
+			return (res);
+		}
 	}
-	else
-		return (message_err(ERR_CD));
+	return (message_err(ERR_CD));
 }
 
 static int		cd_path(char *path, int p, int no_args)

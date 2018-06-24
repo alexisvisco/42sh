@@ -15,6 +15,8 @@
 
 int		ft_tab_contain(const char **tabi, char *src)
 {
+	if (!tabi || !src)
+		return (0);
 	while (*tabi && src)
 	{
 		if (ft_strequ(*tabi, src))

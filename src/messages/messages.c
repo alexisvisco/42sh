@@ -103,7 +103,7 @@ void		message(t_msgs m, ...)
 ** on stderr
 */
 
-int		message_err(t_msgs m, ...)
+int			message_err(t_msgs m, ...)
 {
 	va_list	ap;
 
@@ -112,7 +112,7 @@ int		message_err(t_msgs m, ...)
 	core_pf(STDERR_FILENO, g_msg_list[m], ap);
 	ft_dprintf(STDERR_FILENO, "%s", RESET_ALL);
 	va_end(ap);
-	return 0;
+	return (0);
 }
 
 /*

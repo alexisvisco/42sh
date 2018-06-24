@@ -21,17 +21,17 @@ static int		move(char *path)
 	char *tmp;
 
 	if (!path)
-		return -1;
+		return (-1);
 	if (chdir(path) == -1)
 	{
 		message_err(ERR_CD_ACCESS, path);
-		return 0;
+		return (0);
 	}
 	tmp = ft_strdup(path);
 	if (get_cwd(pwd, sizeof(pwd)))
 		ht_set(g_shell.env, "OLDPWD", ft_strdup(pwd));
 	ht_set(g_shell.env, "PWD", tmp);
-	return 1;
+	return (1);
 }
 
 static int		cd_is_ok(char *path)
@@ -39,12 +39,12 @@ static int		cd_is_ok(char *path)
 	struct stat	s;
 
 	if (!*path || lstat(path, &s) != 0)
-		return message_err(ERR_CD_ACCESS, path);
+		return (message_err(ERR_CD_ACCESS, path));
 	if (!S_ISDIR(s.st_mode) && !S_ISLNK(s.st_mode))
-		return message_err(ERR_CD_DIR, path);
+		return (message_err(ERR_CD_DIR, path));
 	if ((!S_ISLNK(s.st_mode) && access(path, R_OK) != 0) ||
 		access(path, X_OK) != 0)
-		return message_err(ERR_CD_ACCESS, path);
+		return (message_err(ERR_CD_ACCESS, path));
 	return (1);
 }
 
@@ -58,36 +58,36 @@ static int		move_with_path(char *path)
 		rpath = force_symbolic_link(ht_get(g_shell.env, "PWD"), path);
 		res = MOVE(rpath);
 		free(rpath);
-		return res;
+		return (res);
 	}
 	else
-		return message_err(ERR_CD);
+		return (message_err(ERR_CD));
 }
 
-static int 		cd_path(char *path, int p, int no_args)
+static int		cd_path(char *path, int p, int no_args)
 {
 	char		cwd[4096];
 
 	if (no_args && !path)
 	{
 		if (ht_get(g_shell.env, "HOME"))
-			return MOVE(ht_get(g_shell.env, "HOME"));
-		return message_err(ERR_CD);
+			return (MOVE(ht_get(g_shell.env, "HOME")));
+		return (message_err(ERR_CD));
 	}
 	else if (path && path[0] == '-' && ft_strlen(path) == 1)
 	{
 		if (ht_get(g_shell.env, "OLDPWD"))
-			return MOVE(ht_get(g_shell.env, "OLDPWD"));
-		return message_err(ERR_NO_OLD_PWD);
+			return (MOVE(ht_get(g_shell.env, "OLDPWD")));
+		return (message_err(ERR_NO_OLD_PWD));
 	}
 	else if (!p && path)
-		return move_with_path(path);
+		return (move_with_path(path));
 	else if (path)
 		if (cd_is_ok(path) && chdir(path) != 1)
 		{
 			getcwd(cwd, sizeof(cwd));
 			ht_set(g_shell.env, "PWD", ft_strdup(cwd));
-			return 1;
+			return (1);
 		}
 	return (0);
 }
@@ -100,16 +100,16 @@ static int 		cd_path(char *path, int p, int no_args)
 ** Usage -P into absolute path
 */
 
-int					b_cd(char **args, t_shell *shell)
+int				b_cd(char **args, t_shell *shell)
 {
 	int		p;
-	(void)shell;
 
+	(void)shell;
 	p = (size_tab(args) == 3 && ft_strcmp("-P", args[1]) == 0);
 	if (size_tab(args) > 3)
 	{
 		message(USAGE_CD);
-		return 0;
+		return (0);
 	}
-	return cd_path(p ? args[2] : args[1], p, size_tab(args) == 1);
+	return (cd_path(p ? args[2] : args[1], p, size_tab(args) == 1));
 }

@@ -35,5 +35,5 @@ t_hashtable	*clone_hashtable(t_hashtable *t)
 		}
 		i++;
 	}
-	return new;
+	return (new);
 }

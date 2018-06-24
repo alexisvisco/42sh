@@ -17,8 +17,8 @@ void		free_node(t_node **d)
 {
 	if (d)
 	{
-		ft_memdel((void **) &((*d)->key));
+		ft_memdel((void **)&((*d)->key));
 		ft_memdel(&((*d)->value));
-		ft_memdel((void **) &(*d));
+		ft_memdel((void **)&(*d));
 	}
 }

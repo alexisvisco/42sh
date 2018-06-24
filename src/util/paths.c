@@ -15,7 +15,7 @@
 #define LAST ((int)ft_strlen(rsl) - 1)
 #define LASTPTR ((int)ft_strlen(*rsl) - 1)
 
-static void prev_path(char **cur)
+static void		prev_path(char **cur)
 {
 	int		i;
 	int		s;
@@ -44,10 +44,10 @@ static void prev_path(char **cur)
 	free_tab(splitted);
 }
 
-static char *prev_or_concat(int i, char **rsl, char **splitted)
+static char		*prev_or_concat(int i, char **rsl, char **splitted)
 {
 	if (ft_strequ(splitted[i], ".."))
-			prev_path(rsl);
+		prev_path(rsl);
 	else if (!ft_strequ(splitted[i], "."))
 	{
 		if (LASTPTR > 1 && (*rsl)[LASTPTR] != '/')
@@ -57,7 +57,7 @@ static char *prev_or_concat(int i, char **rsl, char **splitted)
 	return (*rsl);
 }
 
-char *force_symbolic_link(char *cur, char *path)
+char			*force_symbolic_link(char *cur, char *path)
 {
 	int		i;
 	char	*rsl;
@@ -78,5 +78,5 @@ char *force_symbolic_link(char *cur, char *path)
 	if (LAST >= 0 && rsl[LAST] != '/')
 		ft_strcat(rsl, "/");
 	free_tab(splitted);
-	return rsl;
+	return (rsl);
 }

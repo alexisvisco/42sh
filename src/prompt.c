@@ -20,20 +20,20 @@ static char	*get_current_folder(void)
 	char	**ta;
 
 	if (!get_cwd(cwd, sizeof(cwd)))
-		return ft_strdup("unknown");
+		return (ft_strdup("unknown"));
 	ta = ft_strsplit(cwd, '/');
 	if (!ta)
-		return ft_strdup("/");
+		return (ft_strdup("/"));
 	if (size_tab(ta) == 0)
 	{
 		free_tab(ta);
-		return ft_strdup("/");
+		return (ft_strdup("/"));
 	}
 	else
 	{
 		tmp = ft_strdup(ta[size_tab(ta) - 1]);
 		free_tab(ta);
-		return tmp;
+		return (tmp);
 	}
 }
 

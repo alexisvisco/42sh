@@ -31,7 +31,7 @@ static void		print(t_hashtable *t)
 			if (heap->list[j])
 			{
 				ft_printf("%s=%s\n", ((t_node *)heap->list[j])->key,
-						  ((t_node *)heap->list[j])->value);
+				((t_node *)heap->list[j])->value);
 			}
 			j++;
 		}

@@ -13,7 +13,7 @@
 
 #include "shell.h"
 
-static int 		grp_contain(int i, int x, const char **grp, char *ar)
+static int	grp_contain(int i, int x, const char **grp, char *ar)
 {
 	return ((ft_contain_any_seq(ar, grp[i])) ||
 	(ft_contain_any_seq(ar, grp[x])));
@@ -23,7 +23,7 @@ static int 		grp_contain(int i, int x, const char **grp, char *ar)
 ** Check compatibility betweens each arguments
 */
 
-static int		check_errors(char *ar)
+static int	check_errors(char *ar)
 {
 	const char	*grp[] = {"d", "e", "canwr"};
 	int			i;
@@ -46,7 +46,7 @@ static int		check_errors(char *ar)
 ** Redistribute with arguments
 */
 
-static int		exec_arguments(char *ar, char **args)
+static int	exec_arguments(char *ar, char **args)
 {
 	if (*ar)
 	{
@@ -78,7 +78,7 @@ static int		exec_arguments(char *ar, char **args)
 ** history, else show history at index i.
 */
 
-static int		redistribute_action(char *ar, char **args)
+static int	redistribute_action(char *ar, char **args)
 {
 	char	*s;
 	int		i;
@@ -102,7 +102,7 @@ static int		redistribute_action(char *ar, char **args)
 ** Arguments are decanwr
 */
 
-int				b_history(char **args, t_shell *shell)
+int			b_history(char **args, t_shell *shell)
 {
 	char ar[9];
 

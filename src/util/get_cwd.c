@@ -13,11 +13,11 @@
 
 #include "shell.h"
 
-char 	*get_cwd(char *str, size_t s)
+char	*get_cwd(char *str, size_t s)
 {
 	if (ht_has(g_shell.env, "PWD"))
 		ft_strcpy(str, ht_get(g_shell.env, "PWD"));
 	else
 		getcwd(str, s);
-	return str;
+	return (str);
 }

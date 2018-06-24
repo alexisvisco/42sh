@@ -34,10 +34,10 @@ static int		is_query(const char *query, const char *str, int index)
 	return (0);
 }
 
-char **strsplit_first(char *str, const char *separator)
+char			**strsplit_first(char *str, const char *separator)
 {
 	char	**t;
-	int 	i;
+	int		i;
 
 	t = ft_memalloc(3);
 	t[0] = ft_memalloc(ft_strlen(str));
@@ -46,7 +46,7 @@ char **strsplit_first(char *str, const char *separator)
 	while (str[++i])
 	{
 		if (i == 0 && is_query(separator, str, i))
-			return t;
+			return (t);
 		else if (!is_query(separator, str, i))
 		{
 			t[0][ft_strlen(t[0])] = str[i];
@@ -59,6 +59,5 @@ char **strsplit_first(char *str, const char *separator)
 			break ;
 		}
 	}
-	return t;
-
+	return (t);
 }

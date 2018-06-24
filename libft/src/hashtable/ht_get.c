@@ -22,5 +22,5 @@ void	*ht_get(t_hashtable *ht, const char *key)
 		node = ht_has(ht, key);
 		return (node ? node->value : NULL);
 	}
-	return NULL;
+	return (NULL);
 }

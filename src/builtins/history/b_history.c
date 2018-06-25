@@ -13,31 +13,16 @@
 
 #include "shell.h"
 
-static int	grp_contain(int i, int x, const char **grp, char *ar)
-{
-	return ((ft_contain_any_seq(ar, grp[i])) ||
-	(ft_contain_any_seq(ar, grp[x])));
-}
-
 /*
 ** Check compatibility betweens each arguments
 */
 
 static int	check_errors(char *ar)
 {
-	const char	*grp[] = {"d", "e", "canwr"};
-	int			i;
-
-	i = -1;
-	while (ar[++i])
+	if (!ft_strequ(ar, "d") && ft_strchr(ar, 'd'))
 	{
-		if ((ft_strchr(grp[0], *ar) && grp_contain(1, 2, grp, ar)) ||
-			(ft_strchr(grp[1], *ar) && grp_contain(0, 2, grp, ar)) ||
-			(ft_strchr(grp[2], *ar) && grp_contain(0, 1, grp, ar)))
-		{
-			message_err(ERR_HISTORY_ARG_MERGED);
-			return (1);
-		}
+		message_err(ERR_HISTORY_ARG_MERGED);
+		return (1);
 	}
 	return (0);
 }
@@ -63,8 +48,6 @@ static int	exec_arguments(char *ar, char **args)
 			if (*ar == 'r' && !history_read(args))
 				return (0);
 			if (*ar == 'w' && !write_history(args))
-				return (0);
-			if (*ar == 'e' && !history_exe(args))
 				return (0);
 			ar++;
 		}
@@ -110,7 +93,7 @@ int			b_history(char **args, t_shell *shell)
 	ar[0] = 0;
 	if (ft_strequ(get_first_arg(args), "help"))
 		return (history_help());
-	parse_arguments(args, ar, "decanwr");
+	parse_arguments(args, ar, "dcanwr");
 	if (check_errors(ar))
 		return (0);
 	return (redistribute_action(ar, args));

@@ -178,7 +178,6 @@ builtins/history/b_history_func.c \
 builtins/history/bh_append_history.c \
 builtins/history/bh_clear_history.c \
 builtins/history/bh_del_history_at.c \
-builtins/history/bh_history_exec.c \
 builtins/history/bh_history_help.c \
 builtins/history/bh_history_non_read.c \
 builtins/history/bh_history_read.c \

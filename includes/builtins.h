@@ -45,7 +45,6 @@ int				b_expr_eval(char **args, t_shell *shell);
 int				write_history(char **args);
 int				clear_history(void);
 int				del_history_at(char **args);
-int				history_exe(char **args);
 int				history_read(char **args);
 int				history_help(void);
 int				history_non_read(void);

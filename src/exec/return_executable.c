@@ -36,7 +36,7 @@ int			replace_argv0_by_exec(char ***cmds)
 	char			*tmp;
 
 	i = 0;
-	while (cmds[i])
+	while (cmds[i] && cmds[i][0])
 	{
 		if (is_assignation_variable(cmds[i][0]) || is_executable(cmds[i][0]) ||
 			builtins(cmds[i][0]) || builtins_env(cmds[i][0]))
